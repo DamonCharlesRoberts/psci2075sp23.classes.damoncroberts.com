@@ -16,5 +16,3 @@ format:
     theme:
       - journal
       - assets/custom.scss
-execute:
-  freeze: auto
