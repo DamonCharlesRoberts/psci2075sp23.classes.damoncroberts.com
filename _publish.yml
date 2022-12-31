@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: "306a5bfd-df71-4448-8c4c-50baaf34b4c2"
+      url: "https://papaya-pie-77d13b.netlify.app"
