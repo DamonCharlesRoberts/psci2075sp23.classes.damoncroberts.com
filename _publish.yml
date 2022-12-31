@@ -1,4 +1,4 @@
 - source: project
   netlify:
-    - id: "b40d1619-33d5-41fe-9dff-e1cf38087e50"
-      url: "https://warm-genie-4bb0d2.netlify.app"
+    - id: b40d1619-33d5-41fe-9dff-e1cf38087e50
+      url: 'https://warm-genie-4bb0d2.netlify.app'
