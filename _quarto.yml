@@ -7,6 +7,13 @@ book:
   date: today
   chapters:
     - index.qmd
+    - handout.qmd
+    - 01_setup.qmd
+    - 02_anatomy.qmd
+    - 03_run_code.qmd
+    - 04_quarto.qmd
+    - 05_r_syntax.qmd
+    - 06_loading_data.qmd
     - references.qmd
 toc-depth: 2
 bibliography: references.bib
@@ -16,3 +23,6 @@ format:
     theme:
       - journal
       - assets/custom.scss
+
+execute:
+  freeze: auto
