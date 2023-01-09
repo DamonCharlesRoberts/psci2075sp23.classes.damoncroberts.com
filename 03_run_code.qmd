@@ -6,6 +6,13 @@ I'll cover two primary ways that you can execute R code in R Studio:
 1. `script`
 2. `quarto`
 
+:::{.callout-important appearance="minimal"}
+
+The default for this class will be to write a `script` (`.R` file) and then copy and paste results into a Word or Google Doc.
+
+Though there are a few extra steps, my preference is `quarto` (`.qmd`), however. You'll see why in a second.
+:::
+
 ## Script (`.R`)
 
 - A file denoted with the `.R` file extension
@@ -27,6 +34,10 @@ I'll cover two primary ways that you can execute R code in R Studio:
         - HTML 
         - PDF
         - DOCX
+    - slide decks (presentations)
+        - PDF
+        - PPT
+        - a very pretty and interactive JavaScript
     - websites
     - books
         - HMTL

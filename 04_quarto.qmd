@@ -1,6 +1,6 @@
-# Quarto {#sec-quarto}
+# Quarto (Optional) {#sec-quarto}
 
-Remember, Quarto is a useful way to write a report, document, website, or book that you also want to execute R (or other common programming languages) for. Rather than an `.R` script, it allows you to write the document in the same file as you write your code. This allows you to compile a final document with text describing your analysis along with the results of your analysis. Even better, this requires you to only need to keep track of one file rather than an `.R` script and a `.docx` file where you have to copy and paste results from `.R` script to your `.docx` file. 
+Remember, Quarto is a useful way to write a report, document, presentation, website, or book that you also want to execute R (or other common programming languages) for. Rather than an `.R` script, it allows you to write the document in the same file as you write your code. This allows you to compile a final document with text describing your analysis along with the results of your analysis. The output document can come in a number of different formats that allow you to have lots of flexibility for where you display the output without having to deal with the normal complications to produce that file. Even better, this requires you to only need to keep track of one file rather than an `.R` script and a `.docx` file where you have to copy and paste results from `.R` script to your `.docx` file. 
 
 ## Setup Quarto
 
@@ -8,16 +8,17 @@ Remember, Quarto is a useful way to write a report, document, website, or book t
 2. Install Quarto on your computer
 3. Where it says *Step 2*, click on RStudio.
 4. Read through their website and look at the tutorials to learn some advanced features about quarto. For basic features, finish reading this chapter.
+
 ## Creating a `.qmd` file {#sec-create-qmd}
 
-1. In R studio, go to your `main panel` and click the dropdown button with the peice of paper and green plus sign. Click on Quarto Document...
+1. In R studio, go to your `main panel` and click the dropdown button with the piece of paper and green plus sign. Click on Quarto Document...
 2. This will bring up a new page giving you some options.
 3. Type in the title of your document
 4. Type in your name for the Author
 5. Click on the PDF option as you will want to make a PDF document
 6. Leave the other options and click Create
 
-:::{.callout-warning appearance="minimal"}
+:::{.callout-important appearance="minimal"}
 To compile pdf files, you will need to install an additional tool called `tinytex`. To do this, go to your `terminal` (not your `console`) in RStudio and type
 
 ```{.bash filename="Terminal"}
@@ -64,7 +65,7 @@ execute: # when you execute the R code...
 ### Body
 
 For non-R code parts of your document, you can write in the `.qmd` document normally. With a couple of exceptions:
-    - To create a header use `#`. For subheaders, just add another `#`. E.g., `##` creates a subheader.
+    - To create a header use `#`. For subheadings, just add another `#`. E.g., `##` creates a subheader.
     - To create a list, just type `-`. To make sublists, just type:
 ```{.markdown}
 - List item 1
@@ -80,7 +81,7 @@ If it weren't for R code, I'd just be writing all of this in a `.docx` or a Goog
 1+1
 ```
 
-To create a code chunk for R, you need to identify a few thinigs:
+To create a code chunk for R, you need to identify a few things:
 
 - First you need to tell the `.qmd` file where the code chunk starts and ends. This is done with the accent symbol. You should have six of these in total. Three to designate the start of the code chunk and three at the end of the code chunk.
 - At the start of the code chunk, you need to need to specify which coding language you are evaluating in the code chunk within the brackets (`{}`). Since we are writing R code, we have `{R}`
@@ -96,9 +97,9 @@ Say we want to evaluate the same expression $1+1$ and display the result in line
 The result of the expression 1+1 is ```{{r}} sprintf('%.2f', 1+1)```.
 ```
 
-You don't need to understand all the specifics of what the `sprintf('%.2f',)` part does. It basically just lets you display some integer value to the hundreth decimal place. The part after the `,` is the R code we want evaluated. So `1+1` in this case. This all together will print the number 2 instead of you manually typing that in. 
+You don't need to understand all the specifics of what the `sprintf('%.2f',)` part does. It basically just lets you display some integer value to the hundredth decimal place. The part after the `,` is the R code we want evaluated. So `1+1` in this case. This all together will print the number 2 instead of you manually typing that in. 
 
-Why would anyone want to do that to make it more complicated? In the case of $1+1$ that is a pretty simple expression with a pretty simple result. However, as things get more complicated, you may not want to have to do that manually such as caluclating the average of some set of data. 
+Why would anyone want to do that to make it more complicated? In the case of $1+1$ that is a pretty simple expression with a pretty simple result. However, as things get more complicated, you may not want to have to do that manually such as calculating the average of some set of data. 
 
 ### Non-inline results
 
@@ -114,7 +115,7 @@ Say I write the following R code to generate a graph (we'll teach you what this 
 
 ggplot() +
     geom_histogram(data=MY_DATASET, aes(x=bill_length)) +
-    labs(x = "Bill Lenghts", caption="Data Source: Palmer Penguins") +
+    labs(x = "Bill Lengths", caption="Data Source: Palmer Penguins") +
     theme_minimal()
 ```
 
