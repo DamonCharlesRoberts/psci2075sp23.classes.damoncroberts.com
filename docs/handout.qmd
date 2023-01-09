@@ -43,3 +43,7 @@ In the first five minutes of each recitation meeting, I will post a question to 
 The purpose of the questions are for me to gauge everyone's progress with the course. I do not want my students to fall behind and to slip through the cracks. I want to make sure that if you are struggling, that you are offered opportunities to receive help (should you choose to accept it). These questions will give me a weekly insight into where you are with the material and it gives me a sense of where the group is as a whole. This helps me customize what we focus on in recitation based on the needs of the group.
 
 Submission of these questions each week will also help with taking attendance and participation. This encourages you to come to recitation and to come on time (there is not much benefit if you arrive to our recitation meeting with only 10 minutes left). If you submit a response to a question (even if you get it incorrect), you will receive credit for attendance that week. To receive credit for participation that week, a correct (or almost correct) answer to that week's question will give you credit for the participation component.
+
+:::{.callout-note}
+Per the policies of the course, you are able to not submit a total of *three (3)* of these weekly questions before you begin to lose points toward your Attendance & Participation grade. The three misses can be for *any* reason such as arriving late, not attending class, not answering the question, etc. This means you should use these three misses when you absolutely need them.
+:::
