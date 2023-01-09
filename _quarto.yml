@@ -7,16 +7,16 @@ book:
   date: today
   chapters:
     - index.qmd
-    - handout.qmd
-    - 01_setup.qmd
-    - 02_anatomy.qmd
-    - 03_run_code.qmd
-    - 04_quarto.qmd
-    - 05_r_syntax_basics.qmd
+    - docs/handout.qmd
+    - docs/01_setup.qmd
+    - docs/02_anatomy.qmd
+    - docs/03_run_code.qmd
+    - docs/04_quarto.qmd
+    - docs/05_r_syntax_basics.qmd
     #- 06_loading_data.qmd
-    - references.qmd
+    - docs/references.qmd
 toc-depth: 2
-bibliography: references.bib
+bibliography: assets/references.bib
 
 format:
   html:
