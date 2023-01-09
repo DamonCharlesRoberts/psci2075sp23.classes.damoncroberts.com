@@ -12,6 +12,7 @@ book:
     - 02_anatomy.qmd
     - 03_run_code.qmd
     - 04_quarto.qmd
+    - quarto_example.qmd
     - 05_r_syntax_basics.qmd
     #- 06_loading_data.qmd
     - references.qmd
