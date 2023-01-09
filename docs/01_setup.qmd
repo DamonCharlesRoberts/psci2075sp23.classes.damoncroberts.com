@@ -1,4 +1,4 @@
-# Setup {#sec-setup}
+# R Setup {#sec-setup}
 
 ## Options for running R
 
