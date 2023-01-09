@@ -1,0 +1,27 @@
+# Anatomy of IDE interface {#sec-anatomy}
+
+## Main panel
+
+- This is where you will write all of your code.
+    - As we will talk about in the next section, your code is passed/sent to the `console` which actually is what evaluates/runs your code. 
+    - However, you need to document your code. So you will write a `script` so that you can save all of the code you wrote. Think of a script as a document outlining the steps you took to perform your analysis.
+    - You write your `script` in this main panel
+
+## Console
+
+- When you run code from a `script`, you send your code to your R `console`. This is done by either highlighting your code and using the shortcut <kbd>ctrl enter</kbd> (<kbd> ⌘ return </kbd> on Mac) or hitting the `run` button at the top of your main panel.
+- The code you write is evaluated and ran by your R `console`.
+
+## Terminal
+
+- The `terminal` is also an area to run code. This often runs a different coding language (i.e. `bash`) which is a coding language that tells your computer what to do from a systems standpoint. 
+
+## Environment
+
+- The `environment` displays your `cached` (temporarily saved) `objects` that you create with your R code.
+    - We will elaborate a bit more later on this point.
+- But this lets you see things that you've temporarily stored from your code. 
+
+## Files
+
+- Let's you see what files and where you have them on your computer.

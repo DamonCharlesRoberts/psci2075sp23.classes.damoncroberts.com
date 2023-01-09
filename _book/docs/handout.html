@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>PSCI 2075 Recitation Handout - Recitation Handout</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../docs/01_setup.html" rel="next">
+<link href="../index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Recitation Handout</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">PSCI 2075 Recitation Handout</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/handout.html" class="sidebar-item-text sidebar-link active">Recitation Handout</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/01_setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/02_anatomy.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Anatomy of IDE interface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/03_run_code.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Running Code</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/04_quarto.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Quarto (Optional)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/05_r_syntax_basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basics of R syntax</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#recitation-information" id="toc-recitation-information" class="nav-link active" data-scroll-target="#recitation-information">Recitation Information</a></li>
+  <li><a href="#purpose-of-a-recitation" id="toc-purpose-of-a-recitation" class="nav-link" data-scroll-target="#purpose-of-a-recitation">Purpose of a recitation</a></li>
+  <li><a href="#contacting-me" id="toc-contacting-me" class="nav-link" data-scroll-target="#contacting-me">Contacting me</a></li>
+  <li><a href="#recitation-policies" id="toc-recitation-policies" class="nav-link" data-scroll-target="#recitation-policies">Recitation policies</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-handout" class="quarto-section-identifier d-none d-lg-block">Recitation Handout</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="recitation-information" class="level2">
+<h2 class="anchored" data-anchor-id="recitation-information">Recitation Information</h2>
+<section id="section-011" class="level3">
+<h3 class="anchored" data-anchor-id="section-011">Section 011</h3>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Instructor: Damon C. Roberts</td>
+<td style="text-align: right;">Email: <a href="mailto:damon.roberts-1@colorado.edu">damon.roberts-1@colorado.edu</a></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Meeting time: Friday: 10:10-11:00 AM</td>
+<td style="text-align: right;">Meeting Location: Koelbel 140</td>
+<td style="text-align: center;"><a href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=Nm5oaGZscGlxbWRwb3BoMjNvaGxjcXFzaWVfMjAyMzAxMjBUMTcxMDAwWiBjX2NjMTYwNWZiMjc0YTU1NjM2YTNiYzY4N2Q2M2ZhMjQ0NzhiZGQwZGZhMGFkMjM1MDFmNjkyM2IxZDQxZDc0MGZAZw&amp;tmsrc=c_cc1605fb274a55636a3bc687d63fa24478bdd0dfa0ad23501f6923b1d41d740f%40group.calendar.google.com&amp;scp=ALL">Add to Google Calendar</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Office hours: Mondays and Thursdays: 12-1 PM</td>
+<td style="text-align: right;">Office: Ketchum 382</td>
+<td style="text-align: center;"><a href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=MzRlMG1yZnJtNWhkdjFiam1lOHVuMGgyYTNfMjAyMzAxMTlUMTkwMDAwWiBjX2NjMTYwNWZiMjc0YTU1NjM2YTNiYzY4N2Q2M2ZhMjQ0NzhiZGQwZGZhMGFkMjM1MDFmNjkyM2IxZDQxZDc0MGZAZw&amp;tmsrc=c_cc1605fb274a55636a3bc687d63fa24478bdd0dfa0ad23501f6923b1d41d740f%40group.calendar.google.com&amp;scp=ALL">Add to Google Calendar</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-018" class="level3">
+<h3 class="anchored" data-anchor-id="section-018">Section 018</h3>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Instructor: Damon C. Roberts</td>
+<td style="text-align: right;">Email: <a href="mailto:damon.roberts-1@colorado.edu">damon.roberts-1@colorado.edu</a></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Meeting time: Thursday: 10:10-11:00 AM</td>
+<td style="text-align: right;">Meeting Location: MCOL E155</td>
+<td style="text-align: center;"><a href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=NHM5dnBzM2YzOHFndWM4amRsZG11ZDI0a2tfMjAyMzAxMTlUMTcxMDAwWiBjX2NjMTYwNWZiMjc0YTU1NjM2YTNiYzY4N2Q2M2ZhMjQ0NzhiZGQwZGZhMGFkMjM1MDFmNjkyM2IxZDQxZDc0MGZAZw&amp;tmsrc=c_cc1605fb274a55636a3bc687d63fa24478bdd0dfa0ad23501f6923b1d41d740f%40group.calendar.google.com&amp;scp=ALL">Add to Google Calendar</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Office hours: Mondays and Thursdays: 12-1 PM</td>
+<td style="text-align: right;">Office: Ketchum 382</td>
+<td style="text-align: center;"><a href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=MzRlMG1yZnJtNWhkdjFiam1lOHVuMGgyYTNfMjAyMzAxMTlUMTkwMDAwWiBjX2NjMTYwNWZiMjc0YTU1NjM2YTNiYzY4N2Q2M2ZhMjQ0NzhiZGQwZGZhMGFkMjM1MDFmNjkyM2IxZDQxZDc0MGZAZw&amp;tmsrc=c_cc1605fb274a55636a3bc687d63fa24478bdd0dfa0ad23501f6923b1d41d740f%40group.calendar.google.com&amp;scp=ALL">Add to Google Calendar</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="purpose-of-a-recitation" class="level2">
+<h2 class="anchored" data-anchor-id="purpose-of-a-recitation">Purpose of a recitation</h2>
+<p>The purpose of my part in delivering the course for you, as all college courses should be viewed, is not to “lose points” or to earn a grade. Rather, I see our journey this semester as a collaborative effort for you to build knowledge to make you a more effective democratic citizen and for me to work with the instructor of record to give you a very small introduction to a potential career path. We provide you with information we think is relevant for this goal and your job is to learn it.</p>
+<p>Recitations meet separately from lecture but are still required. The purpose of a recitation, especially for large classes, is to help you, the student, to have a meeting time separate from lecture that reviews the lecture material and to provide a more in depth conversations. Recitations are a supplement to what you learn in lecture. In the recitation, broadly speaking, we will review and discuss the assigned readings for the class and will clarify any points of confusion from the material covered in the lecture. For this recitation, we will also take a deeper dive into the R code that allows researchers to perform many of these statistical computations we discuss in lecture. As a student, your goal for the recitation is to come prepared with questions and if you have none to do the work to understand the material. My goal as the instructor for this recitation is to guide your learning so that you get more in-depth understanding of the material for the class. For many, this is a required class that you are taking to complete your degree and are not interested in the material. My other goal is to persuade you of the importance of understanding the statistical concepts so that you may be competent consumers of political data and research; as well as to demonstrate the importance of argumentation with data analysis.</p>
+<p>The format of the recitations and the material for the course is determined by the faculty teaching the class. I, however, will do what I can to be flexible to the needs of the students for my recitations to maximize your learning.</p>
+</section>
+<section id="contacting-me" class="level2">
+<h2 class="anchored" data-anchor-id="contacting-me">Contacting me</h2>
+<p>You should feel free to contact me throughout the semester. I encourage you to come to office hours (what I refer to as student hours) so that I can help answer any questions you have about the course policies, the material covered in the class, any concerns you have, questions about navigating University, offering additional materials if there is a topic you are really interested in, etcetera. You are also welcomed to email me. I am usually responsive to email Monday-Friday from 9 AM – 5 PM (I may take a day or two, but I will get back to you). Please do note that email is not instantaneous communication; it is not a text message or a DM. I despite my best intentions, I receive too many emails and try to manage a decent work-life balance. This means that you if you have questions for me and send them over email, you should be prepared for a response to take a day or two. In other words, do not send me an email right before an assignment is due or some other deadline.</p>
+<section id="student-hours" class="level3">
+<h3 class="anchored" data-anchor-id="student-hours">Student hours</h3>
+<p>Many faculty call these office hours. I prefer to use the term student hours since it is what they really are. Student hours are designated times I (and all faculty and TA’s) set aside each week for students to visit me in my office. I will always be in my office during these designated times, so feel free to stop by. These hours are your chance to ask questions about the course material, about university in general, or just to chat so that we can get to know one another. Many students come to student hours after a test wondering what they need to know to prepare for an exam; however, I encourage you to come with questions before the exam. Student hours are most helpful to students if you have done some studying before coming to my office and having concrete questions about material you are struggling with. When you come in with substantive questions about the course material, I can explain a course concept a different way or help you work through a problem.</p>
+</section>
+</section>
+<section id="recitation-policies" class="level2">
+<h2 class="anchored" data-anchor-id="recitation-policies">Recitation policies</h2>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These are an elaboration upon what is covered in the syllabus for the course that Dr.&nbsp;Philips provided. They do not override nor provide complete information about the course. You can think of this as an addendum where I can present information about how my recitation sections will operate.</p>
+</div>
+</div>
+<p>In the first five minutes of each recitation meeting, I will post a question to the board based on that week’s material (reading or lecture). You will need to submit an answer to that question in those first five minutes.</p>
+<p>The purpose of the questions are for me to gauge everyone’s progress with the course. I do not want my students to fall behind and to slip through the cracks. I want to make sure that if you are struggling, that you are offered opportunities to receive help (should you choose to accept it). These questions will give me a weekly insight into where you are with the material and it gives me a sense of where the group is as a whole. This helps me customize what we focus on in recitation based on the needs of the group.</p>
+<p>Submission of these questions each week will also help with taking attendance and participation. This encourages you to come to recitation and to come on time (there is not much benefit if you arrive to our recitation meeting with only 10 minutes left). If you submit a response to a question (even if you get it incorrect), you will receive credit for attendance that week. To receive credit for participation that week, a correct (or almost correct) answer to that week’s question will give you credit for the participation component.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../docs/01_setup.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
