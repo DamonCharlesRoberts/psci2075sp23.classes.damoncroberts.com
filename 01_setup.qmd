@@ -26,7 +26,8 @@ There are pros and cons to each option.
         - Sometimes requires you to start from scratch each time you use the service. Does not save progress
         - Fre-tiers are often quite limited in terms of resources made available to you for your computations
 
-:::{.callout-important appearance="minimal"}
+:::{.callout-warning appearance="minimal"}
+## Note:
 
 The default in this class is to locally install R and to run it with RStudio.
 

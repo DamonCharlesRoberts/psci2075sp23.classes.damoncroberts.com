@@ -122,8 +122,10 @@ install.packages(c("FakePackage", "OtherPackage"))
 
 The `install.package()` `function` takes an input -- the name of the package you want to install (surrounded by quotations) -- and it will then perform some action with that input -- download the underlying code for that package and function. 
 
-:::{.callout-important appearance="minimal"}
-**Note:** The input for this and other functions **ARE case-sensitive**.
+:::{.callout-warning appearance="minimal"}
+## Note
+
+The input for this and other functions **ARE case-sensitive**.
 
 For example, if I ran the following instead:
 
