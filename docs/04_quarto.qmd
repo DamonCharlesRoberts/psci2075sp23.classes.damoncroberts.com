@@ -139,6 +139,7 @@ This will create a link connecting back to the figure for your reader. Pretty co
 ## More resources
 
 If you are stuck on how to do something in Quarto, want to add something but are not sure how, or want to get more details on it:
+
 - [you can find a complete working example of a quarto document (to even use as a template) by copying and pasting the contents of this file](https://github.com/DamonCharlesRoberts/psci2075sp23.classes.damoncroberts.com/blob/main/examples/quarto_example.qmd)
 - [you can look at this blog post I wrote on it](https://www.damoncroberts.com/sections/blog/posts/quarto_basics/quarto_basics_index.html)
 - [look at Quarto's documentation](https://quarto.org/). This is how I learned Quarto!!
