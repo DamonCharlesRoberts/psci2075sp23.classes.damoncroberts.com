@@ -1,0 +1,156 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PSCI 2075 Recitation Handout",
+    "section": "",
+    "text": "Welcome\nI am glad to have you in my recitation sections for PSCI 2075!\nI am looking forward to working together in this class.\nThis document provides a reference guide for you to look back on throughout the semester. This is not a supplement for attending lecture, recitation, or for taking notes. It also is not a study guide. This is simply a reference guide."
+  },
+  {
+    "objectID": "handout.html#recitation-information",
+    "href": "handout.html#recitation-information",
+    "title": "Recitation Handout",
+    "section": "Recitation Information",
+    "text": "Recitation Information\n\nSection 011\n\n\n\nInstructor: Damon C. Roberts\nEmail: damon.roberts-1@colorado.edu\n\n\n\nMeeting time: Friday: 10:10-11:00 AM\nMeeting Location: Koelbel 140\nAdd to Google Calendar\n\n\nOffice hours: Mondays and Thursdays: 12-1 PM\nOffice: Ketchum 382\nAdd to Google Calendar\n\n\n\n\n\nSection 018\n\n\n\nInstructor: Damon C. Roberts\nEmail: damon.roberts-1@colorado.edu\n\n\n\nMeeting time: Thursday: 10:10-11:00 AM\nMeeting Location: MCOL E155\nAdd to Google Calendar\n\n\nOffice hours: Mondays and Thursdays: 12-1 PM\nOffice: Ketchum 382\nAdd to Google Calendar"
+  },
+  {
+    "objectID": "handout.html#purpose-of-a-recitation",
+    "href": "handout.html#purpose-of-a-recitation",
+    "title": "Recitation Handout",
+    "section": "Purpose of a recitation",
+    "text": "Purpose of a recitation\nThe purpose of my part in delivering the course for you, as all college courses should be viewed, is not to “lose points” or to earn a grade. Rather, I see our journey this semester as a collaborative effort for you to build knowledge to make you a more effective democratic citizen and for me to work with the instructor of record to give you a very small introduction to a potential career path. We provide you with information we think is relevant for this goal and your job is to learn it.\nRecitations meet separately from lecture but are still required. The purpose of a recitation, especially for large classes, is to help you, the student, to have a meeting time separate from lecture that reviews the lecture material and to provide a more in depth conversations. Recitations are a supplement to what you learn in lecture. In the recitation, broadly speaking, we will review and discuss the assigned readings for the class and will clarify any points of confusion from the material covered in the lecture. For this recitation, we will also take a deeper dive into the R code that allows researchers to perform many of these statistical computations we discuss in lecture. As a student, your goal for the recitation is to come prepared with questions and if you have none to do the work to understand the material. My goal as the instructor for this recitation is to guide your learning so that you get more in-depth understanding of the material for the class. For many, this is a required class that you are taking to complete your degree and are not interested in the material. My other goal is to persuade you of the importance of understanding the statistical concepts so that you may be competent consumers of political data and research; as well as to demonstrate the importance of argumentation with data analysis.\nThe format of the recitations and the material for the course is determined by the faculty teaching the class. I, however, will do what I can to be flexible to the needs of the students for my recitations to maximize your learning."
+  },
+  {
+    "objectID": "handout.html#contacting-me",
+    "href": "handout.html#contacting-me",
+    "title": "Recitation Handout",
+    "section": "Contacting me",
+    "text": "Contacting me\nYou should feel free to contact me throughout the semester. I encourage you to come to office hours (what I refer to as student hours) so that I can help answer any questions you have about the course policies, the material covered in the class, any concerns you have, questions about navigating University, offering additional materials if there is a topic you are really interested in, etcetera. You are also welcomed to email me. I am usually responsive to email Monday-Friday from 9 AM – 5 PM (I may take a day or two, but I will get back to you). Please do note that email is not instantaneous communication; it is not a text message or a DM. I despite my best intentions, I receive too many emails and try to manage a decent work-life balance. This means that you if you have questions for me and send them over email, you should be prepared for a response to take a day or two. In other words, do not send me an email right before an assignment is due or some other deadline.\n\nStudent hours\nMany faculty call these office hours. I prefer to use the term student hours since it is what they really are. Student hours are designated times I (and all faculty and TA’s) set aside each week for students to visit me in my office. I will always be in my office during these designated times, so feel free to stop by. These hours are your chance to ask questions about the course material, about university in general, or just to chat so that we can get to know one another. Many students come to student hours after a test wondering what they need to know to prepare for an exam; however, I encourage you to come with questions before the exam. Student hours are most helpful to students if you have done some studying before coming to my office and having concrete questions about material you are struggling with. When you come in with substantive questions about the course material, I can explain a course concept a different way or help you work through a problem."
+  },
+  {
+    "objectID": "handout.html#recitation-policies",
+    "href": "handout.html#recitation-policies",
+    "title": "Recitation Handout",
+    "section": "Recitation policies",
+    "text": "Recitation policies\n\n\n\n\n\n\nNote\n\n\n\nThese are an elaboration upon what is covered in the syllabus for the course that Dr. Philips provided. They do not override nor provide complete information about the course. You can think of this as an addendum where I can present information about how my recitation sections will operate.\n\n\nIn the first five minutes of each recitation meeting, I will post a question to the board based on that week’s material (reading or lecture). You will need to submit an answer to that question in those first five minutes.\nThe purpose of the questions are for me to gauge everyone’s progress with the course. I do not want my students to fall behind and to slip through the cracks. I want to make sure that if you are struggling, that you are offered opportunities to receive help (should you choose to accept it). These questions will give me a weekly insight into where you are with the material and it gives me a sense of where the group is as a whole. This helps me customize what we focus on in recitation based on the needs of the group.\nSubmission of these questions each week will also help with taking attendance and participation. This encourages you to come to recitation and to come on time (there is not much benefit if you arrive to our recitation meeting with only 10 minutes left). If you submit a response to a question (even if you get it incorrect), you will receive credit for attendance that week. To receive credit for participation that week, a correct (or almost correct) answer to that week’s question will give you credit for the participation component."
+  },
+  {
+    "objectID": "01_setup.html#options-for-running-r",
+    "href": "01_setup.html#options-for-running-r",
+    "title": "1  Setup",
+    "section": "1.1 Options for running R",
+    "text": "1.1 Options for running R\nR is a programming language that you need to download onto a computer and you need to have some sort of way to interact with it via an Interactive Development Environment (IDE). In other words, you can’t just download RStudio or R. You need to download R (the language) and RStudio (a way to interact with R).\nYou can either download these onto your own computer (locally) or use them from another computer provided by a service (remotely/cloud).\nThere are pros and cons to each option.\n\nLocally:\n\nPros:\n\nDo not necessarily need stable internet access\nMore secure in that it is not published out there on the web\nOften have more computational capacity as you are not relying on some server.\n\nCons:\n\nRequires access to a laptop or desktop\nSpeed of computations are limited to your computer’s resources\nUnless you do some fancy stuff like setting up a virtual environment, it can create some clutter on your computer.\n\n\nRemotely:\n\nPros:\n\nCan use on anything that can connect to the internet\nEverything is set up for you. You do not need to download R or your IDE\nIf you have an older computer or one with lower capacity, can be faster\n\nCons:\n\nSometimes requires you to start from scratch each time you use the service. Does not save progress\nFre-tiers are often quite limited in terms of resources made available to you for your computations\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe default in this class is to locally install R and to run it with RStudio.\nIf you have a Chromebook or do not have a laptop (i.e. use a Tablet), then you should run R remotely with Posit.Cloud or Google Colaboratory (discussed below)"
+  },
+  {
+    "objectID": "01_setup.html#locally-setting-up-r",
+    "href": "01_setup.html#locally-setting-up-r",
+    "title": "1  Setup",
+    "section": "1.2 Locally setting up R",
+    "text": "1.2 Locally setting up R\n\n1.2.1 Downloading R\n\nGo to CRAN to download the base version of the language\nSelect the appropriate version for your Operating System (i.e. Windows, macOS, Linux)\nFollow the standard installation steps for software on your operating system\n\n\n\n1.2.2 Downloading your IDE (RSTUDIO)\nNote: There are other IDE’s that you can use, but they often require more technical know-how\n\nGo to Posit’s website to download RStudio\nSkip straight to step 2 (on the website) and Install RStudio Desktop\nFollow the standard install steps"
+  },
+  {
+    "objectID": "01_setup.html#access-r-remotely",
+    "href": "01_setup.html#access-r-remotely",
+    "title": "1  Setup",
+    "section": "1.3 Access R remotely",
+    "text": "1.3 Access R remotely\nIf you want to access R remotely, you’ve got two primary options:\n\nRStudio Cloud (Now called Posit.Cloud)\nGoogle Colaboratory\n\n\n1.3.1 Posit.Cloud\n\nGo to PositCloud\nCreate an account\nAt the top, click New Project and then click Start New RStudio Project\n\n\n\n1.3.2 Google Colaboratory\nNot really recommended. Talk to me if you do want to explore this option."
+  },
+  {
+    "objectID": "02_anatomy.html#main-panel",
+    "href": "02_anatomy.html#main-panel",
+    "title": "2  Anatomy of IDE interface",
+    "section": "2.1 Main panel",
+    "text": "2.1 Main panel\n\nThis is where you will write all of your code.\n\nAs we will talk about in the next section, your code is passed/sent to the console which actually is what evaluates/runs your code.\nHowever, you need to document your code. So you will write a script so that you can save all of the code you wrote. Think of a script as a document outlining the steps you took to perform your analysis.\nYou write your script in this main panel"
+  },
+  {
+    "objectID": "02_anatomy.html#console",
+    "href": "02_anatomy.html#console",
+    "title": "2  Anatomy of IDE interface",
+    "section": "2.2 Console",
+    "text": "2.2 Console\n\nWhen you run code from a script, you send your code to your R console. This is done by either highlighting your code and using the shortcut ctrl enter ( ⌘ return  on Mac) or hitting the run button at the top of your main panel.\nThe code you write is evaluated and ran by your R console."
+  },
+  {
+    "objectID": "02_anatomy.html#terminal",
+    "href": "02_anatomy.html#terminal",
+    "title": "2  Anatomy of IDE interface",
+    "section": "2.3 Terminal",
+    "text": "2.3 Terminal\n\nThe terminal is also an area to run code. This often runs a different coding language (i.e. bash) which is a coding language that tells your computer what to do from a systems standpoint."
+  },
+  {
+    "objectID": "02_anatomy.html#environment",
+    "href": "02_anatomy.html#environment",
+    "title": "2  Anatomy of IDE interface",
+    "section": "2.4 Environment",
+    "text": "2.4 Environment\n\nThe environment displays your cached (temporarily saved) objects that you create with your R code.\n\nWe will elaborate a bit more later on this point.\n\nBut this lets you see things that you’ve temporarily stored from your code."
+  },
+  {
+    "objectID": "02_anatomy.html#files",
+    "href": "02_anatomy.html#files",
+    "title": "2  Anatomy of IDE interface",
+    "section": "2.5 Files",
+    "text": "2.5 Files\n\nLet’s you see what files and where you have them on your computer."
+  },
+  {
+    "objectID": "03_run_code.html#options",
+    "href": "03_run_code.html#options",
+    "title": "3  Running Code",
+    "section": "3.1 Options",
+    "text": "3.1 Options\nI’ll cover two primary ways that you can execute R code in R Studio: 1. script 2. quarto\n\n\n\n\n\n\nNote\n\n\n\nThe default for this class will be to write a script (.R file) and then copy and paste results into a Word or Google Doc.\nThough there are a few extra steps, my preference is quarto (.qmd), however. You’ll see why in a second."
+  },
+  {
+    "objectID": "03_run_code.html#script-.r",
+    "href": "03_run_code.html#script-.r",
+    "title": "3  Running Code",
+    "section": "3.2 Script (.R)",
+    "text": "3.2 Script (.R)\n\nA file denoted with the .R file extension\nA file specifically designed to send code to an R console.\nOnly allows you to evaluate R code.\nHave to take the results of your script and place them in a document for your reports/papers/etc."
+  },
+  {
+    "objectID": "03_run_code.html#quarto-.qmd",
+    "href": "03_run_code.html#quarto-.qmd",
+    "title": "3  Running Code",
+    "section": "3.3 Quarto (.qmd)",
+    "text": "3.3 Quarto (.qmd)\n\nA file denoted with the .qmd file extension\nA file that allows you to not only write R code and to evaluate it but it also:\n\nlets you evaluate other coding languages too (e.g., python)\nuses code chunks which evaluates the R code, but also lets you write text around the chunk.\n\nThis is useful if you want to write a paper or report that requires you to evaluate some type of code in it\n\nYou write your code and the other parts of your paper all in the same document\nYou render the file and it evaluates the code in your chunks and spits out the result of the code in the document along with your text.\n\nAllows you to compile documents of many different file types\n\ndocuments\n\nHTML\nPDF\nDOCX\n\nslide decks (presentations)\n\nPDF\nPPT\na very pretty and interactive JavaScript\n\nwebsites\nbooks\n\nHMTL\nPDF\n\n\nThis document you are reading right now was created with .qmd.\nTo set all of this up though, it requires slightly extra work…"
+  },
+  {
+    "objectID": "04_quarto.html#setup-quarto",
+    "href": "04_quarto.html#setup-quarto",
+    "title": "4  Quarto (Optional)",
+    "section": "4.1 Setup Quarto",
+    "text": "4.1 Setup Quarto\n\nGo to the Quarto website\nInstall Quarto on your computer\nWhere it says Step 2, click on RStudio.\nRead through their website and look at the tutorials to learn some advanced features about quarto. For basic features, finish reading this chapter."
+  },
+  {
+    "objectID": "04_quarto.html#sec-create-qmd",
+    "href": "04_quarto.html#sec-create-qmd",
+    "title": "4  Quarto (Optional)",
+    "section": "4.2 Creating a .qmd file",
+    "text": "4.2 Creating a .qmd file\n\nIn R studio, go to your main panel and click the dropdown button with the piece of paper and green plus sign. Click on Quarto Document…\nThis will bring up a new page giving you some options.\nType in the title of your document\nType in your name for the Author\nClick on the PDF option as you will want to make a PDF document\nLeave the other options and click Create\n\n\n\n\n\n\n\nNote\n\n\n\nTo compile pdf files, you will need to install an additional tool called tinytex. To do this, go to your terminal (not your console) in RStudio and type\n\n\nTerminal\n\nquarto install tools tinytex"
+  },
+  {
+    "objectID": "04_quarto.html#basics-of-quarto",
+    "href": "04_quarto.html#basics-of-quarto",
+    "title": "4  Quarto (Optional)",
+    "section": "4.3 Basics of Quarto",
+    "text": "4.3 Basics of Quarto\n\n4.3.1 yaml section\nThe yaml section of your .qmd file provides high-level information about your document (e.g., title, author, and provides more custom formatting information).\nIf you followed the steps from Section 4.2, then you should see the following at the top of your .qmd file:\n---\ntitle: \"Untitled\"\nformat: pdf\neditor: visual\n---\nThis is your yaml section. It is distinguished by --- to let your computer know the start and end of this section.\nThis information is not super useful, let’s add some extra customization to our yaml section. I am going to include comments denoted by # to let you know what it does.\n---\ntitle: \"PSCI 2075 Quarto Example\" # define a title for the document\nauthor: \"Damon C. Roberts\" # define an author for the document\nformat: # add some custom formatting options. Indent options\n    pdf: # the format of the document is going to be pdf\n        self-contained: true # make sure to delete all the extra files and only keep the .qmd and .pdf once compilation is done\n        colorlinks: true # add color to hyperlinks\n        documentclass: article # make it look like a generic academic article in formatting\nexecute: # when you execute the R code...\n    echo: false #... do not show me the R code\n    warning: false #... do not display warnings from the R code\n    message: false #... do not show messages from the R code\n---\n\n\n4.3.2 Body\nFor non-R code parts of your document, you can write in the .qmd document normally. With a couple of exceptions: - To create a header use #. For subheadings, just add another #. E.g., ## creates a subheader. - To create a list, just type -. To make sublists, just type:\n- List item 1\n    - Sub list item 1\n\n\n4.3.3 Code Chunks\nIf it weren’t for R code, I’d just be writing all of this in a .docx or a Google Docs file. So let’s learn how to create a code chunk in a .qmd file.\n```{r}\n#| label: one-plus-one\n1+1\n```\nTo create a code chunk for R, you need to identify a few things:\n\nFirst you need to tell the .qmd file where the code chunk starts and ends. This is done with the accent symbol. You should have six of these in total. Three to designate the start of the code chunk and three at the end of the code chunk.\nAt the start of the code chunk, you need to need to specify which coding language you are evaluating in the code chunk within the brackets ({}). Since we are writing R code, we have {R}\nDirectly underneath the start of the code chunk, you can include some options about what you want to happen with the code chunk. These options are designated with #|. The option you should always specify is the label option. This option names the code chunk: one-plus-one. We do this because when we compile our .qmd file later, it tells us about the progress of our code blocks and can tell us in what code chunk there is an error in our code (which inevitably happens; even to the best of us)\n\nThere are other options that we can specify. But we’ll cover these a bit later.\nOnce we have done that, then we can write our R code. In this case we want to evaluate the expression: \\(1+1\\)\n\n\n\n\n4.3.4 Inline code chunks\nSay we want to evaluate the same expression \\(1+1\\) and display the result in line with our text. We can do that by writing:\nThe result of the expression 1+1 is ```{r} sprintf('%.2f', 1+1)```.\nYou don’t need to understand all the specifics of what the sprintf('%.2f',) part does. It basically just lets you display some integer value to the hundredth decimal place. The part after the , is the R code we want evaluated. So 1+1 in this case. This all together will print the number 2 instead of you manually typing that in.\nWhy would anyone want to do that to make it more complicated? In the case of \\(1+1\\) that is a pretty simple expression with a pretty simple result. However, as things get more complicated, you may not want to have to do that manually such as calculating the average of some set of data.\n\n\n4.3.5 Non-inline results\nThe inline code chunks are primarily useful for displaying the results of some R code “inline” with the text you are writing. But what if I have a table or a graph of some sort of results I want to display?\nThis is where specifying those other options come in handy.\nSay I write the following R code to generate a graph (we’ll teach you what this R code means later)\n```{r}\n#| label: fig-chart-1\n#| fig-cap: A histogram of Penguin Bill Lengths\n\nggplot() +\n    geom_histogram(data=MY_DATASET, aes(x=bill_length)) +\n    labs(x = \"Bill Lengths\", caption=\"Data Source: Palmer Penguins\") +\n    theme_minimal()\n```\nDon’t worry about the R code to create the graph for now. What is important to notice about this part is, the options we specified.\n\nWith label I specify that it is going to be a figure with fig- and then finish the name with chart-1\nWith fig-cap I define a title to give the figure.\n\nWhen I compile my document and it evaluates this code block, instead of it displaying the code, it will display the figure.\nIf I want to reference the figure. I can simply type:\n\n@fig-chart-1 displays a histogram of the bill length for the penguins in the Palmer Penguins dataset.\nThis will create a link connecting back to the figure for your reader. Pretty cool!"
+  },
+  {
+    "objectID": "04_quarto.html#more-resources",
+    "href": "04_quarto.html#more-resources",
+    "title": "4  Quarto (Optional)",
+    "section": "4.4 More resources",
+    "text": "4.4 More resources\nIf you are stuck on how to do something in Quarto, want to add something but are not sure how, or want to get more details on it:\n\nyou can look at this blog post I wrote on it\nlook at Quarto’s documentation. This is how I learned Quarto!!"
+  },
+  {
+    "objectID": "05_r_syntax_basics.html#commenting",
+    "href": "05_r_syntax_basics.html#commenting",
+    "title": "5  Basics of R syntax",
+    "section": "5.1 Commenting",
+    "text": "5.1 Commenting\n\nDenoted with # in a .qmd code chunk or your .R\nR does not evaluate this. So comments can be written in natural language\nUsed to explain what the code:\n\nis doing\nnotes for yourself or teammates\nhelp explain and document your code for the future\n\nYou must document your code\n\nThis is really important. Don’t just write the code, comment different parts to explain what it is doing\n\nPick a consistent commenting strategy and stick with it\n\nSome people only use # to add comments to their code.\nMy personal preference is to write my comments like a bulleted list.\n\n\n```{r}\n#| label: one-plus-one\n# Notes:\n    #* Description: R script to add one to one\n    #* Updated: 2023-01-01\n        #** by: dcr\n\n# Calculate 1+1\n1+1\n```\nNotice, that I don’t use #|. This is because #| is a special thing in a .qmd code chunk to specify options. I instead use # to represent headers and #* for subheadings in my comments. This allows me to create a bulleted-list-type set of comments that are pretty easy to read and to also follow for teammates."
+  },
+  {
+    "objectID": "05_r_syntax_basics.html#objects",
+    "href": "05_r_syntax_basics.html#objects",
+    "title": "5  Basics of R syntax",
+    "section": "5.2 Objects",
+    "text": "5.2 Objects\nObjects represent the temporarily stored (cached) result of any operation/function in R.\nYou define objects with the assignment operator (<-).\nHere is an example:\nSay that I want to evaluate the expression \\(1+1\\). But say I want to access the result of that expression later. Either because I don’t want to rerun the code or if I want to store the result and do some other things to it later.\nI can create an object to store the result of me evaluating the expression \\(1+1\\). R stores this object in your environment (see Chapter 2) and will stay accessible to you until you close out of RStudio.\n\n# Define a = 1+1\na <- 1+1\n\nSo with the code chunk above, what does a represent?\nLet’s check:\n\nprint(a)\n\n[1] 2\n\n\nNow let’s say that I want to evaluate the expression \\(1+1+1\\) later in my code. But I already evaluated part of this expression with \\(1+1\\)! Since I stored the result in a, I can just evaluate the expression \\(a+1\\) which is equivalent to \\(1+1+1\\).\n\n# Evaluate a+1\nb <- a+1\n\nWe should expect that \\(b=3\\):\n\nprint(b)\n\n[1] 3\n\n\n\n5.2.1 Functions\nFunctions are a specific type of object.\nFunctions are simply an object that takes an input and does something to that input. R is full of functions.\nSome examples of functions that we have already dealt with:\n\n<-: The input is the object and the name you want to assign the object\n+: The input are the numbers you want to sum\n\nFunctions more generally are predefined with underlying code (often very complex) that do some task for you. They are a shortcut so that you don’t have to rewrite that same code. Otherwise, everyone’s scripts would be much longer than they are.\nAs functions are a specific type of object, the whole idea behind a function is to only need to write the code once; rather than multiple times throughout a script.\nWe can write our own functions (advanced topic we aren’t going to go over), and we can access the functions written by other people to make our life easier.\nWhen someone writes a function and want to share it, they often have other related functions and code. They can package all of this code into a library and submit it to code repositories such as Github or CRAN (where you downloaded R; because what you downloaded came with basic functions like + and <-).\nIf there is a function that someone has written and packaged, you will need to install the underlying code onto your computer so that you can use it for your own work.\n\n5.2.1.1 Installing packages\nTo install a package from CRAN (often the default place to download packages from), you can use the built-in function install.packages()\n```{r}\n# Install some package called FakePackage\ninstall.packages(\"FakePackage\")\n\n# Install some package called FakePackage and another called OtherPackage\ninstall.packages(c(\"FakePackage\", \"OtherPackage\"))\n```\nThe install.package() function takes an input – the name of the package you want to install (surrounded by quotations) – and it will then perform some action with that input – download the underlying code for that package and function.\n\n\n\n\n\n\nNote\n\n\n\nThe input for this and other functions ARE case-sensitive.\nFor example, if I ran the following instead:\n```{r}\ninstall.packages(\"fakepackage\")\n```\nI would get an error!\n\n\n\n\n5.2.1.2 Loading packages\nNow, how do I use my function?\nWell, you’ve downloaded the package containing the function that you want to use, but you will need to now load it to your environment. Why? Well, again, remember that functions are just a type of object. More practically, think about the number of packages some one like me has on my computer. If every time I opened R, it automatically loaded all of that code, then my computer would probably melt. So instead, I just want to specify what I want to load.\nThere are a couple of options: 1. Most people load the entire package by writing:\n```{r}\n# Load packages\nlibrary(FakePackage) # load FakePackage\n```\n\nModularly loading only the functions you want from your packages:\n\n```{r}\n# Load packages\nbox::use(\n    FakePackage = FakePackage[FunctionIWant, OtherFunctionIWant], # Load FunctionIWant and OtherFunctionIWant in FakePackage\n    OtherPackage = [...] # load all functions in OtherPackage\n)\n```\nWhat are the benefits of the second option?\n\nI load only the functions that I actually am going to use\nSometimes functions can be named the same thing, do different things, and are from different packages. This can create a lot of confusion and can even lead to errors in R if R is confused about what to use. Loading things purposefully, you can identify all of this before you try to run it.\nPuts less strain on my computer\nEasier to read. Now I can see what functions I got from which package rather than it just loading everything from the packages I loaded with library()\n\nTo use one of the two options:\n\nUsing library(): No extra steps, library() comes with R when you downloaded it – from the base-r package (technically)\nUsing box::use(): Need to install the box package. And then you can just use the code from above!\n\n\ninstall.packages(\"box\")"
+  }
+]
