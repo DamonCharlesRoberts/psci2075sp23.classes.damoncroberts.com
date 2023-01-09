@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PSCI 2075 Recitation Handout - 1&nbsp; Setup</title>
+<title>PSCI 2075 Recitation Handout - References</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,25 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -30,8 +49,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./02_anatomy.html" rel="next">
-<link href="./handout.html" rel="prev">
+<link href="./05_r_syntax_basics.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></h1>
+      <h1 class="quarto-secondary-nav-title">References</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -105,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_setup.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></a>
+  <a href="./01_setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -130,7 +148,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link active">References</a>
   </div>
 </li>
     </ul>
@@ -138,22 +156,14 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul class="collapse">
-  <li><a href="#options-for-running-r" id="toc-options-for-running-r" class="nav-link active" data-scroll-target="#options-for-running-r"><span class="toc-section-number">1.1</span>  Options for running R</a></li>
-  <li><a href="#locally-setting-up-r" id="toc-locally-setting-up-r" class="nav-link" data-scroll-target="#locally-setting-up-r"><span class="toc-section-number">1.2</span>  Locally setting up R</a></li>
-  <li><a href="#access-r-remotely" id="toc-access-r-remotely" class="nav-link" data-scroll-target="#access-r-remotely"><span class="toc-section-number">1.3</span>  Access R remotely</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-setup" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></span></h1>
+<h1 class="title d-none d-lg-block">References</h1>
 </div>
 
 
@@ -168,99 +178,11 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="options-for-running-r" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="options-for-running-r"><span class="header-section-number">1.1</span> Options for running R</h2>
-<p>R is a programming language that you need to download onto a computer and you need to have some sort of way to interact with it via an Interactive Development Environment (IDE). In other words, you can’t just download RStudio or R. You need to download R (the language) and RStudio (a way to interact with R).</p>
-<p>You can either download these onto your own computer (locally) or use them from another computer provided by a service (remotely/cloud).</p>
-<p>There are pros and cons to each option.</p>
-<ul>
-<li>Locally:
-<ul>
-<li>Pros:
-<ul>
-<li>Do not necessarily need stable internet access</li>
-<li>More secure in that it is not published out there on the web</li>
-<li>Often have more computational capacity as you are not relying on some server.</li>
-</ul></li>
-<li>Cons:
-<ul>
-<li>Requires access to a laptop or desktop</li>
-<li>Speed of computations are limited to your computer’s resources</li>
-<li>Unless you do some fancy stuff like setting up a virtual environment, it can create some clutter on your computer.</li>
-</ul></li>
-</ul></li>
-<li>Remotely:
-<ul>
-<li>Pros:
-<ul>
-<li>Can use on anything that can connect to the internet</li>
-<li>Everything is set up for you. You do not need to download R or your IDE</li>
-<li>If you have an older computer or one with lower capacity, can be faster</li>
-</ul></li>
-<li>Cons:
-<ul>
-<li>Sometimes requires you to start from scratch each time you use the service. Does not save progress</li>
-<li>Fre-tiers are often quite limited in terms of resources made available to you for your computations</li>
-</ul></li>
-</ul></li>
-</ul>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div id="refs" role="doc-bibliography" style="display: none">
+
 </div>
-<div class="callout-caption-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The default in this class is to locally install R and to run it with RStudio.</p>
-<p>If you have a Chromebook or do not have a laptop (i.e.&nbsp;use a Tablet), then you should run R remotely with Posit.Cloud or Google Colaboratory (discussed below)</p>
-</div>
-</div>
-</section>
-<section id="locally-setting-up-r" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="locally-setting-up-r"><span class="header-section-number">1.2</span> Locally setting up R</h2>
-<section id="downloading-r" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="downloading-r"><span class="header-section-number">1.2.1</span> Downloading R</h3>
-<ol type="1">
-<li><a href="https://cran.r-project.org/">Go to CRAN to download the base version of the language</a></li>
-<li>Select the appropriate version for your Operating System (i.e.&nbsp;Windows, macOS, Linux)</li>
-<li>Follow the standard installation steps for software on your operating system</li>
-</ol>
-</section>
-<section id="downloading-your-ide-rstudio" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="downloading-your-ide-rstudio"><span class="header-section-number">1.2.2</span> Downloading your IDE (RSTUDIO)</h3>
-<p><em>Note: There are other IDE’s that you can use, but they often require more technical know-how</em></p>
-<ol type="1">
-<li><a href="https://posit.co/download/rstudio-desktop/">Go to Posit’s website to download RStudio</a></li>
-<li>Skip straight to step 2 (on the website) and Install RStudio Desktop</li>
-<li>Follow the standard install steps</li>
-</ol>
-</section>
-</section>
-<section id="access-r-remotely" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="access-r-remotely"><span class="header-section-number">1.3</span> Access R remotely</h2>
-<p>If you want to access R remotely, you’ve got two primary options:</p>
-<ol type="1">
-<li>RStudio Cloud (Now called Posit.Cloud)</li>
-<li>Google Colaboratory</li>
-</ol>
-<section id="posit.cloud" class="level3" data-number="1.3.1">
-<h3 data-number="1.3.1" class="anchored" data-anchor-id="posit.cloud"><span class="header-section-number">1.3.1</span> Posit.Cloud</h3>
-<ol type="1">
-<li><a href="https://posit.cloud/">Go to PositCloud</a></li>
-<li>Create an account</li>
-<li>At the top, click New Project and then click Start New RStudio Project</li>
-</ol>
-</section>
-<section id="google-colaboratory" class="level3" data-number="1.3.2">
-<h3 data-number="1.3.2" class="anchored" data-anchor-id="google-colaboratory"><span class="header-section-number">1.3.2</span> Google Colaboratory</h3>
-<p>Not really recommended. Talk to me if you do want to explore this option.</p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -398,14 +320,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./handout.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Recitation Handout</span>
+      <a href="./05_r_syntax_basics.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basics of R syntax</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02_anatomy.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Anatomy of IDE interface</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
