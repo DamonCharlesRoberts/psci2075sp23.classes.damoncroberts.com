@@ -34,7 +34,7 @@ Many faculty call these office hours. I prefer to use the term student hours sin
 
 ## Recitation policies
 
-:::{.callout-important appearance="minimal"}
+:::{.callout-note appearance="minimal"}
 These are an elaboration upon what is covered in the syllabus for the course that Dr. Philips provided. They do not override nor provide complete information about the course. You can think of this as an addendum where I can present information about how my recitation sections will operate.
 :::
 
