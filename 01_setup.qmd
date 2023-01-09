@@ -1,0 +1,66 @@
+# Setup {#sec-setup}
+
+## Options for running R
+
+R is a programming language that you need to download onto a computer and you need to have some sort of way to interact with it via an Interactive Development Environment (IDE). In other words, you can't just download RStudio or R. You need to download R (the language) and RStudio (a way to interact with R).
+
+You can either download these onto your own computer (locally) or use them from another computer provided by a service (remotely/cloud).
+
+There are pros and cons to each option.
+
+- Locally:
+    - Pros:
+        - Do not necessarily need stable internet access
+        - More secure in that it is not published out there on the web
+        - Often have more computational capacity as you are not relying on some server.
+    - Cons:
+        - Requires access to a laptop or desktop
+        - Speed of computations are limited to your computer's resources
+        - Unless you do some fancy stuff like setting up a virtual environment, it can create some clutter on your computer.
+- Remotely:
+    - Pros:
+        - Can use on anything that can connect to the internet
+        - Everything is set up for you. You do not need to download R or your IDE
+        - If you have an older computer or one with lower capacity, can be faster
+    - Cons:
+        - Sometimes requires you to start from scratch each time you use the service. Does not save progress
+        - Fre-tiers are often quite limited in terms of resources made available to you for your computations
+
+:::{.callout-important appearance="minimal"}
+
+The default in this class is to locally install R and to run it with RStudio.
+
+If you have a Chromebook or do not have a laptop (i.e. use a Tablet), then you should run R remotely with Posit.Cloud or Google Colaboratory (discussed below)
+:::
+
+## Locally setting up R
+### Downloading R
+
+1. [Go to CRAN to download the base version of the language](https://cran.r-project.org/)
+2. Select the appropriate version for your Operating System (i.e. Windows, macOS, Linux)
+3. Follow the standard installation steps for software on your operating system
+
+### Downloading your IDE (RSTUDIO)
+
+*Note: There are other IDE's that you can use, but they often require more technical know-how*
+
+1. [Go to Posit's website to download RStudio](https://posit.co/download/rstudio-desktop/)
+2. Skip straight to step 2 (on the website) and Install RStudio Desktop
+3. Follow the standard install steps
+
+## Access R remotely
+
+If you want to access R remotely, you've got two primary options:
+
+1. RStudio Cloud (Now called Posit.Cloud)
+2. Google Colaboratory
+
+### Posit.Cloud
+
+1. [Go to PositCloud](https://posit.cloud/)
+2. Create an account
+3. At the top, click New Project and then click Start New RStudio Project
+
+### Google Colaboratory
+
+Not really recommended. Talk to me if you do want to explore this option.

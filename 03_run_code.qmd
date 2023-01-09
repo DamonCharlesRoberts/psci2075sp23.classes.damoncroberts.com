@@ -1,0 +1,46 @@
+# Running Code {#sec-run-code}
+
+## Options
+
+I'll cover two primary ways that you can execute R code in R Studio:
+1. `script`
+2. `quarto`
+
+:::{.callout-important appearance="minimal"}
+
+The default for this class will be to write a `script` (`.R` file) and then copy and paste results into a Word or Google Doc.
+
+Though there are a few extra steps, my preference is `quarto` (`.qmd`), however. You'll see why in a second.
+:::
+
+## Script (`.R`)
+
+- A file denoted with the `.R` file extension
+- A file specifically designed to send code to an R `console`.
+- Only allows you to evaluate R code.
+- Have to take the results of your script and place them in a document for your reports/papers/etc.
+
+## Quarto (`.qmd`)
+
+- A file denoted with the `.qmd` file extension
+- A file that allows you to not only write R code and to evaluate it but it also:
+    - lets you evaluate other coding languages too (e.g., python)
+    - uses `code chunk`s which evaluates the R code, but also lets you write text around the `chunk`.
+- This is useful if you want to write a paper or report that requires you to evaluate some type of code in it
+    - You write your code and the other parts of your paper **all in the same document**
+    - You `render` the file and it evaluates the code in your `chunk`s and spits out the result of the code in the document along with your text.
+- Allows you to compile documents of many different file types
+    - documents
+        - HTML 
+        - PDF
+        - DOCX
+    - slide decks (presentations)
+        - PDF
+        - PPT
+        - a very pretty and interactive JavaScript
+    - websites
+    - books
+        - HMTL
+        - PDF
+- This document you are reading right now was created with `.qmd`.
+- To set all of this up though, it requires slightly extra work...
