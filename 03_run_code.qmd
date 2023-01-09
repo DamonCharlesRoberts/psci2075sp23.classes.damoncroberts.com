@@ -6,7 +6,7 @@ I'll cover two primary ways that you can execute R code in R Studio:
 1. `script`
 2. `quarto`
 
-:::{.callout-warning appearance="minimal"}
+:::{.callout-important appearance="minimal"}
 ## Note
 
 The default for this class will be to write a `script` (`.R` file) and then copy and paste results into a Word or Google Doc.
