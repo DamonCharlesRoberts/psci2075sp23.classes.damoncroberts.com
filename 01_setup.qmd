@@ -26,9 +26,7 @@ There are pros and cons to each option.
         - Sometimes requires you to start from scratch each time you use the service. Does not save progress
         - Fre-tiers are often quite limited in terms of resources made available to you for your computations
 
-:::{.callout-important appearance="minimal"}
-## Note:
-
+:::{.callout-note}
 The default in this class is to locally install R and to run it with RStudio.
 
 If you have a Chromebook or do not have a laptop (i.e. use a Tablet), then you should run R remotely with Posit.Cloud or Google Colaboratory (discussed below)

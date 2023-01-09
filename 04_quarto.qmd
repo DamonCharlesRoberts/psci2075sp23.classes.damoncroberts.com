@@ -18,9 +18,7 @@ Remember, Quarto is a useful way to write a report, document, presentation, webs
 5. Click on the PDF option as you will want to make a PDF document
 6. Leave the other options and click Create
 
-:::{.callout-important appearance="minimal"}
-## Note
-
+:::{.callout-note}
 To compile pdf files, you will need to install an additional tool called `tinytex`. To do this, go to your `terminal` (not your `console`) in RStudio and type
 
 ```{.bash filename="Terminal"}
