@@ -137,7 +137,7 @@
     "href": "docs/04_quarto.html#more-resources",
     "title": "4  Quarto (Optional)",
     "section": "4.4 More resources",
-    "text": "4.4 More resources\nIf you are stuck on how to do something in Quarto, want to add something but are not sure how, or want to get more details on it:\n\nyou can look at this blog post I wrote on it\nlook at Quarto’s documentation. This is how I learned Quarto!!"
+    "text": "4.4 More resources\nIf you are stuck on how to do something in Quarto, want to add something but are not sure how, or want to get more details on it: - you can find a complete working example of a quarto document (to even use as a template) by copying and pasting the contents of this file - you can look at this blog post I wrote on it - look at Quarto’s documentation. This is how I learned Quarto!!"
   },
   {
     "objectID": "docs/05_r_syntax_basics.html#commenting",
