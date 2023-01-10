@@ -24,6 +24,7 @@ format:
       - journal
       - assets/custom.scss
     css: styles.css
+    code-copy: true
 
 execute:
   freeze: auto
