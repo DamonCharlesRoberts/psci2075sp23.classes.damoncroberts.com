@@ -1,6 +1,6 @@
-# Quarto (Optional) {#sec-quarto}
+# 🙀 Quarto (Optional) {#sec-quarto}
 
-Remember, Quarto is a useful way to write a report, document, presentation, website, or book that you also want to execute R (or other common programming languages) for. Rather than an `.R` script, it allows you to write the document in the same file as you write your code. This allows you to compile a final document with text describing your analysis along with the results of your analysis. The output document can come in a number of different formats that allow you to have lots of flexibility for where you display the output without having to deal with the normal complications to produce that file. Even better, this requires you to only need to keep track of one file rather than an `.R` script and a `.docx` file where you have to copy and paste results from `.R` script to your `.docx` file. 
+Quarto is a useful way to write a report, document, presentation, website, or book that you also want to execute R (or other common programming languages) for. Rather than an `.R` script that you have to copy and paste results from, it allows you to write the document in the same file as you write your code. 🤯 This allows you to compile a final document with text describing your analysis along with the results of your analysis. The output document can come in a number of different formats that allow you to have lots of flexibility for where you display the output without having to deal with the normal complications to produce that file. Even better, this requires you to only need to keep track of one file rather than an `.R` script and a `.docx` file where you have to copy and paste results from `.R` script to your `.docx` file. 💪
 
 ## Setup Quarto
 
@@ -66,15 +66,18 @@ execute: # when you execute the R code...
 
 For non-R code parts of your document, you can write in the `.qmd` document normally. With a couple of exceptions:
     - To create a header use `#`. For subheadings, just add another `#`. E.g., `##` creates a subheader.
-    - To create a list, just type `-`. To make sublists, just type:
+    - To create an unumbered list, just type `-`; for numbered list just type the numbers. To make sublists, just type:
 ```{.markdown}
 - List item 1
     - Sub list item 1
+1. Numbered list item 1
+2. Numbered list item 2
+
 ```
 
 ### Code Chunks
 
-If it weren't for R code, I'd just be writing all of this in a `.docx` or a Google Docs file. So let's learn how to create a code chunk in a `.qmd` file. 
+If it weren't for R code, I'd make my life easier and skip all of this by writing all of this in a `.docx` or a Google Docs file. 🤦 So let's learn how to create a code chunk in a `.qmd` file. The ability to write your code and text all to display your analyses results along with your interpretation in the same document is where Quarto is powerful. 💪
 
 ```{{r}}
 #| label: one-plus-one
