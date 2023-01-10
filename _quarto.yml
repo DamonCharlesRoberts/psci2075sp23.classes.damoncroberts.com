@@ -23,6 +23,7 @@ format:
     theme:
       - journal
       - assets/custom.scss
+    css: styles.css
 
 execute:
   freeze: auto
