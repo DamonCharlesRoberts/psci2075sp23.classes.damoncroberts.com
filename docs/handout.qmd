@@ -7,7 +7,7 @@
 |                            |                                                                           |         |
 |---------------------------:|--------------------------------------------------------------------------:|:-------:|
 | Instructor: Damon C. Roberts | Email: damon.roberts-1@colorado.edu | [{{< fa envelope >}}](mailto:damon.roberts-1@colorado.edu) |
-| Meeting time: Friday: 10:10-11:00 AM |   Meeting Location: MCOL E155 | [{{< fa calendar-plus >}}](https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=Nm5oaGZscGlxbWRwb3BoMjNvaGxjcXFzaWVfMjAyMzAxMjBUMTcxMDAwWiBjX2NjMTYwNWZiMjc0YTU1NjM2YTNiYzY4N2Q2M2ZhMjQ0NzhiZGQwZGZhMGFkMjM1MDFmNjkyM2IxZDQxZDc0MGZAZw&tmsrc=c_cc1605fb274a55636a3bc687d63fa24478bdd0dfa0ad23501f6923b1d41d740f%40group.calendar.google.com&scp=ALL)
+| Meeting time: Friday: 10:10-11:00 AM |   Meeting Location: KOBL 140 | [{{< fa calendar-plus >}}](https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=Nm5oaGZscGlxbWRwb3BoMjNvaGxjcXFzaWVfMjAyMzAxMjBUMTcxMDAwWiBjX2NjMTYwNWZiMjc0YTU1NjM2YTNiYzY4N2Q2M2ZhMjQ0NzhiZGQwZGZhMGFkMjM1MDFmNjkyM2IxZDQxZDc0MGZAZw&tmsrc=c_cc1605fb274a55636a3bc687d63fa24478bdd0dfa0ad23501f6923b1d41d740f%40group.calendar.google.com&scp=ALL)
 | Office hours: Mondays and Thursdays: 12-1 PM| Office: Ketchum 382 | [{{< fa calendar-plus >}}](https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=MzRlMG1yZnJtNWhkdjFiam1lOHVuMGgyYTNfMjAyMzAxMTlUMTkwMDAwWiBjX2NjMTYwNWZiMjc0YTU1NjM2YTNiYzY4N2Q2M2ZhMjQ0NzhiZGQwZGZhMGFkMjM1MDFmNjkyM2IxZDQxZDc0MGZAZw&tmsrc=c_cc1605fb274a55636a3bc687d63fa24478bdd0dfa0ad23501f6923b1d41d740f%40group.calendar.google.com&scp=ALL) |
 
 
@@ -15,7 +15,7 @@
 |                            |                                                                           |         |
 |---------------------------:|--------------------------------------------------------------------------:|:-------:|
 | Instructor: Damon C. Roberts | Email: damon.roberts-1@colorado.edu | [{{< fa envelope >}}](mailto:damon.roberts-1@colorado.edu) | 
-| Meeting time: Thursday: 10:10-11:00 AM |   Meeting Location: MCOL E155 | [{{< fa calendar-plus >}}](https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NHM5dnBzM2YzOHFndWM4amRsZG11ZDI0a2tfMjAyMzAxMTlUMTcxMDAwWiBjX2NjMTYwNWZiMjc0YTU1NjM2YTNiYzY4N2Q2M2ZhMjQ0NzhiZGQwZGZhMGFkMjM1MDFmNjkyM2IxZDQxZDc0MGZAZw&tmsrc=c_cc1605fb274a55636a3bc687d63fa24478bdd0dfa0ad23501f6923b1d41d740f%40group.calendar.google.com&scp=ALL)
+| Meeting time: Thursday: 10:10-11:00 AM |   Meeting Location: CLRE 302 | [{{< fa calendar-plus >}}](https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NHM5dnBzM2YzOHFndWM4amRsZG11ZDI0a2tfMjAyMzAxMTlUMTcxMDAwWiBjX2NjMTYwNWZiMjc0YTU1NjM2YTNiYzY4N2Q2M2ZhMjQ0NzhiZGQwZGZhMGFkMjM1MDFmNjkyM2IxZDQxZDc0MGZAZw&tmsrc=c_cc1605fb274a55636a3bc687d63fa24478bdd0dfa0ad23501f6923b1d41d740f%40group.calendar.google.com&scp=ALL)
 | Office hours: Mondays and Thursdays: 12-1 PM| Office: Ketchum 382 | [{{< fa calendar-plus >}}](https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=MzRlMG1yZnJtNWhkdjFiam1lOHVuMGgyYTNfMjAyMzAxMTlUMTkwMDAwWiBjX2NjMTYwNWZiMjc0YTU1NjM2YTNiYzY4N2Q2M2ZhMjQ0NzhiZGQwZGZhMGFkMjM1MDFmNjkyM2IxZDQxZDc0MGZAZw&tmsrc=c_cc1605fb274a55636a3bc687d63fa24478bdd0dfa0ad23501f6923b1d41d740f%40group.calendar.google.com&scp=ALL) |
 
 ## Purpose of a recitation
