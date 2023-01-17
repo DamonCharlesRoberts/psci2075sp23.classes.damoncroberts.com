@@ -1,5 +1,7 @@
 # 🙀 Quarto (Optional) {#sec-quarto}
 
+<div class="tenor-gif-embed" data-postid="17797511" data-share-method="host" data-aspect-ratio="1.92771" data-width="100%"><a href="https://tenor.com/view/spongebob-squarepants-spongebob-fancy-nickelodeon-driving-gif-17797511">Spongebob Squarepants Spongebob GIF</a>from <a href="https://tenor.com/search/spongebob+squarepants-gifs">Spongebob Squarepants GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
 Quarto is a useful way to write a report, document, presentation, website, or book that you also want to execute R (or other common programming languages) for. Rather than an `.R` script that you have to copy and paste results from, it allows you to write the document in the same file as you write your code. 🤯 This allows you to compile a final document with text describing your analysis along with the results of your analysis. The output document can come in a number of different formats that allow you to have lots of flexibility for where you display the output without having to deal with the normal complications to produce that file. Even better, this requires you to only need to keep track of one file rather than an `.R` script and a `.docx` file where you have to copy and paste results from `.R` script to your `.docx` file. 💪
 
 ## Setup Quarto

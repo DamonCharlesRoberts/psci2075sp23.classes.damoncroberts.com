@@ -1,5 +1,7 @@
 # R Setup {#sec-setup}
 
+<div class="tenor-gif-embed" data-postid="21352118" data-share-method="host" data-aspect-ratio="1.52381" data-width="100%"><a href="https://tenor.com/view/spongebob-computer-fire-gif-21352118">Spongebob Computer GIF</a>from <a href="https://tenor.com/search/spongebob-gifs">Spongebob GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
 ## Options for running R
 
 R is a programming language that you need to download onto a computer and you need to have some sort of way to interact with it via an Interactive Development Environment (IDE). In other words, you can't just download RStudio or R. You need to download R (the language) and RStudio (a way to interact with R).

@@ -1,5 +1,8 @@
 # Anatomy of IDE interface {#sec-anatomy}
 
+
+<div class="tenor-gif-embed" data-postid="14322357" data-share-method="host" data-aspect-ratio="0.7" data-width="100%"><a href="https://tenor.com/view/gummy-bear-anatomy-the-insides-gif-14322357">Gummy Bear Anatomy GIF</a>from <a href="https://tenor.com/search/gummy+bear-gifs">Gummy Bear GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
 ## Main panel
 
 - This is where you will write all of your code.

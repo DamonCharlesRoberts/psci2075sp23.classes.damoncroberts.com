@@ -1,5 +1,7 @@
 # 👾 Basics of R syntax {#sec-r-basics}
 
+<div class="tenor-gif-embed" data-postid="24991578" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/code-works-code-not-working-error-scaler-create-impact-gif-24991578">Code Works Code Not Working GIF</a>from <a href="https://tenor.com/search/code+works-gifs">Code Works GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
 Okay, now we can start learning about the basics of the R coding syntax.
 
 R is a programming *language* {{< fa language >}}. This means just as you would with learning any other language, you need to immerse yourself into it by practicing and getting your hands dirty. (There's a reason that annoying owl doesn't do well when you 👻 it.) No one knows everything about the R coding language. You learn it over time and with more experience.
