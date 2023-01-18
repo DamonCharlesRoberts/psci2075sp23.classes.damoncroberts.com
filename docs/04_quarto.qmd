@@ -2,18 +2,18 @@
 
 <div class="tenor-gif-embed" data-postid="17797511" data-share-method="host" data-aspect-ratio="1.92771" data-width="100%"><a href="https://tenor.com/view/spongebob-squarepants-spongebob-fancy-nickelodeon-driving-gif-17797511">Spongebob Squarepants Spongebob GIF</a>from <a href="https://tenor.com/search/spongebob+squarepants-gifs">Spongebob Squarepants GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
-Quarto is a useful way to write a report, document, presentation, website, or book that you also want to execute R (or other common programming languages) for. Rather than an `.R` script that you have to copy and paste results from, it allows you to write the document in the same file as you write your code. 🤯 This allows you to compile a final document with text describing your analysis along with the results of your analysis. The output document can come in a number of different formats that allow you to have lots of flexibility for where you display the output without having to deal with the normal complications to produce that file. Even better, this requires you to only need to keep track of one file rather than an `.R` script and a `.docx` file where you have to copy and paste results from `.R` script to your `.docx` file. 💪
+Quarto [@quarto] is a useful way to write a report, document, presentation, website, or book that you also want to execute R [@r_software] -- or other common programming languages -- for. Rather than an `.R` script that you have to copy and paste results from, it allows you to write the document in the same file as you write your code. 🤯 This allows you to compile a final document with text describing your analysis along with the results of your analysis. The output document can come in a number of different formats that allow you to have lots of flexibility for where you display the output without having to deal with the normal complications to produce that file. Even better, this requires you to only need to keep track of one file rather than an `.R` script and a `.docx` file where you have to copy and paste results from `.R` script to your `.docx` file. 💪
 
 ## Setup Quarto
 
 1. [Go to the Quarto website](https://quarto.org/docs/get-started/)
-2. Install Quarto on your computer
-3. Where it says *Step 2*, click on RStudio.
+2. Install Quarto [@quarto] on your computer
+3. Where it says *Step 2*, click on RStudio [@r_studio].
 4. Read through their website and look at the tutorials to learn some advanced features about quarto. For basic features, finish reading this chapter.
 
 ## Creating a `.qmd` file {#sec-create-qmd}
 
-1. In R studio, go to your `main panel` and click the dropdown button with the piece of paper and green plus sign. Click on Quarto Document...
+1. In RStudio [@r_studio], go to your `main panel` and click the dropdown button with the piece of paper and green plus sign. Click on Quarto Document...
 2. This will bring up a new page giving you some options.
 3. Type in the title of your document
 4. Type in your name for the Author
@@ -21,7 +21,7 @@ Quarto is a useful way to write a report, document, presentation, website, or bo
 6. Leave the other options and click Create
 
 :::{.callout-note}
-To compile pdf files, you will need to install an additional tool called `tinytex`. To do this, go to your `terminal` (not your `console`) in RStudio and type
+To compile pdf files, you will need to install an additional tool called `tinytex` [@tinytex]. To do this, go to your `terminal` (not your `console`) in RStudio [@r_studio] and type
 
 ```{.bash filename="Terminal"}
 quarto install tools tinytex

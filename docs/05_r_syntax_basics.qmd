@@ -62,7 +62,7 @@ Here is an example:
 
 Say that I want to evaluate the expression $1+1$. But say I want to access the result of that expression later. Either because I don't want to rerun the code or if I want to store the result and do some other things to it later. 
 
-I can create an `object` to store the result of me evaluating the expression $1+1$. R stores this object in your `environment` (see @sec-anatomy) and will stay accessible to you until you close out of RStudio.
+I can create an `object` to store the result of me evaluating the expression $1+1$. R stores this object in your `environment` (see @sec-anatomy) and will stay accessible to you until you close out of RStudio [@r_studio].
 
 ```{r}
 # Define a = 1+1
@@ -148,7 +148,7 @@ There are a couple of options:
 # Load packages
 library(FakePackage) # load FakePackage
 ```
-2. Modularly loading only the functions you want from your packages:
+2. Modularly loading only the functions you want from your packages with the `box` package [@box]:
 ```{{r}}
 # Load packages
 box::use(

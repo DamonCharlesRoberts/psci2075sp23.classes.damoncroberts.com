@@ -83,6 +83,25 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -238,20 +257,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a href="https://tenor.com/view/spongebob-squarepants-spongebob-fancy-nickelodeon-driving-gif-17797511">Spongebob Squarepants Spongebob GIF</a>from <a href="https://tenor.com/search/spongebob+squarepants-gifs">Spongebob Squarepants GIFs</a>
 </div>
 <script type="text/javascript" async="" src="https://tenor.com/embed.js"></script>
-<p>Quarto is a useful way to write a report, document, presentation, website, or book that you also want to execute R (or other common programming languages) for. Rather than an <code>.R</code> script that you have to copy and paste results from, it allows you to write the document in the same file as you write your code. 🤯 This allows you to compile a final document with text describing your analysis along with the results of your analysis. The output document can come in a number of different formats that allow you to have lots of flexibility for where you display the output without having to deal with the normal complications to produce that file. Even better, this requires you to only need to keep track of one file rather than an <code>.R</code> script and a <code>.docx</code> file where you have to copy and paste results from <code>.R</code> script to your <code>.docx</code> file. 💪</p>
+<p>Quarto <span class="citation" data-cites="quarto">(<a href="references.html#ref-quarto" role="doc-biblioref">Allaire et al. 2022</a>)</span> is a useful way to write a report, document, presentation, website, or book that you also want to execute R <span class="citation" data-cites="r_software">(<a href="references.html#ref-r_software" role="doc-biblioref">R Core Team 2021</a>)</span> – or other common programming languages – for. Rather than an <code>.R</code> script that you have to copy and paste results from, it allows you to write the document in the same file as you write your code. 🤯 This allows you to compile a final document with text describing your analysis along with the results of your analysis. The output document can come in a number of different formats that allow you to have lots of flexibility for where you display the output without having to deal with the normal complications to produce that file. Even better, this requires you to only need to keep track of one file rather than an <code>.R</code> script and a <code>.docx</code> file where you have to copy and paste results from <code>.R</code> script to your <code>.docx</code> file. 💪</p>
 <section id="setup-quarto" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="setup-quarto"><span class="header-section-number">4.1</span> Setup Quarto</h2>
 <ol type="1">
 <li><a href="https://quarto.org/docs/get-started/">Go to the Quarto website</a></li>
-<li>Install Quarto on your computer</li>
-<li>Where it says <em>Step 2</em>, click on RStudio.</li>
+<li>Install Quarto <span class="citation" data-cites="quarto">(<a href="references.html#ref-quarto" role="doc-biblioref">Allaire et al. 2022</a>)</span> on your computer</li>
+<li>Where it says <em>Step 2</em>, click on RStudio <span class="citation" data-cites="r_studio">(<a href="references.html#ref-r_studio" role="doc-biblioref">RStudio Team 2020</a>)</span>.</li>
 <li>Read through their website and look at the tutorials to learn some advanced features about quarto. For basic features, finish reading this chapter.</li>
 </ol>
 </section>
 <section id="sec-create-qmd" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="sec-create-qmd"><span class="header-section-number">4.2</span> Creating a <code>.qmd</code> file</h2>
 <ol type="1">
-<li>In R studio, go to your <code>main panel</code> and click the dropdown button with the piece of paper and green plus sign. Click on Quarto Document…</li>
+<li>In RStudio <span class="citation" data-cites="r_studio">(<a href="references.html#ref-r_studio" role="doc-biblioref">RStudio Team 2020</a>)</span>, go to your <code>main panel</code> and click the dropdown button with the piece of paper and green plus sign. Click on Quarto Document…</li>
 <li>This will bring up a new page giving you some options.</li>
 <li>Type in the title of your document</li>
 <li>Type in your name for the Author</li>
@@ -268,7 +287,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>To compile pdf files, you will need to install an additional tool called <code>tinytex</code>. To do this, go to your <code>terminal</code> (not your <code>console</code>) in RStudio and type</p>
+<p>To compile pdf files, you will need to install an additional tool called <code>tinytex</code> <span class="citation" data-cites="tinytex">(<a href="references.html#ref-tinytex" role="doc-biblioref">Xie 2019</a>)</span>. To do this, go to your <code>terminal</code> (not your <code>console</code>) in RStudio <span class="citation" data-cites="r_studio">(<a href="references.html#ref-r_studio" role="doc-biblioref">RStudio Team 2020</a>)</span> and type</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
@@ -374,6 +393,20 @@ Note
 </ul>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-quarto" class="csl-entry" role="doc-biblioentry">
+Allaire, J. J., Charles Teague, Carlos Scheidegger, and Yihui Xie. 2022. <em>Quarto</em>. <a href="https://doi.org/10.5281/zenodo.5960048">https://doi.org/10.5281/zenodo.5960048</a>.
+</div>
+<div id="ref-r_software" class="csl-entry" role="doc-biblioentry">
+R Core Team. 2021. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-r_studio" class="csl-entry" role="doc-biblioentry">
+RStudio Team. 2020. <em>RStudio: Integrated Development Environment for r</em>. Boston, MA: RStudio, PBC. <a href="http://www.rstudio.com/">http://www.rstudio.com/</a>.
+</div>
+<div id="ref-tinytex" class="csl-entry" role="doc-biblioentry">
+Xie, Yihui. 2019. <span>“TinyTeX: A Lightweight, Cross-Platform, and Easy-to-Maintain LaTeX Distribution Based on TeX Live.”</span> <em>TUGboat</em> 40 (1): 30–32. <a href="https://tug.org/TUGboat/Contents/contents40-1.html">https://tug.org/TUGboat/Contents/contents40-1.html</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

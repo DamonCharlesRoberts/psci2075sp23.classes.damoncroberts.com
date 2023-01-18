@@ -4,9 +4,7 @@
 
 ## Options for running R
 
-R is a programming language that you need to download onto a computer and you need to have some sort of way to interact with it via an Interactive Development Environment (IDE). In other words, you can't just download RStudio or R. You need to download R (the language) and RStudio (a way to interact with R).
-
-R is a programming language that you need to download onto a computer and you need to have some sort of way to interact with it via an Interactive Development Environment (IDE). In other words, you can't just download RStudio or R. You need to download R (the language) and RStudio (a way to interact with R).
+R [@r_software] is a programming language that you need to download onto a computer and you need to have some sort of way to interact with it via an Interactive Development Environment (IDE). RStudio [@r_studio] is one such IDE; and it is the one we will be using for this course. In other words, you can't just download RStudio [@r_studio] or R [@r_software]. You need to download R [@r_software] -- the language -- and RStudio [@r_studio] -- a way to interact with R.
 
 You can either download these onto your own computer (locally) 💻  or use them from another computer provided by a service (remotely/cloud) ☁️.
 
@@ -53,7 +51,7 @@ If you have a Chromebook or do not have a laptop (i.e. use a Tablet), then you s
 
 ## ☁️ Access R remotely
 
-If you want to access R remotely, you've got two primary options:
+If you want to access R [@r_software] remotely, you've got two primary options:
 
 1. RStudio Cloud (Now called Posit.Cloud)
 2. Google Colaboratory

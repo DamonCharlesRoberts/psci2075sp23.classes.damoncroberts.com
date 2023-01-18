@@ -5,22 +5,22 @@
 
 ## Options
 
-I'll cover two primary ways that you can execute R code in R Studio:
+I'll cover two primary ways that you can execute R [@r_software] code in RStudio [@r_studio]:
 
-1. `script` 🫤
-2. `quarto` 🤩
+1. `script` [@r_software] 🫤
+2. `quarto` [@quarto] 🤩
 
 :::{.callout-note}
-The default for this class will be to write a `script` (`.R` file) and then copy and paste results into a Word or Google Doc. 🫤
+The default for this class will be to write a `script` [@r_software] -- `.R` file -- and then copy and paste results into a Word or Google Doc. 🫤
 
-Though there are a few extra steps, my preference is `quarto` (`.qmd`), however. 🤩 You'll see why in a second.
+Though there are a few extra steps, my preference is `quarto` [@r_studio] -- `.qmd`, however. 🤩 You'll see why in a second.
 :::
 
 ## Script (`.R`) 🫤
 
 - A file denoted with the `.R` file extension
-- A file specifically designed to send code to an R `console`.
-- Only allows you to evaluate R code.
+- A file specifically designed to send code to an RStudio [@r_studio] `console`.
+- Only allows you to evaluate R [@r_software] code.
 - Have to take the results of your script and place them in a document for your reports/papers/etc.
 
 ## Quarto (`.qmd`) 🤩
