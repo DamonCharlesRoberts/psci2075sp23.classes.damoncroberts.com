@@ -1,0 +1,83 @@
+---
+title: 'PSCI 2075: Week 1 - Introduction to the course and setting up R'
+author: 'Damon C. Roberts'
+format: 
+    revealjs:
+        self-contained: true
+        theme: serif
+        incremental: true
+        scrollable: true
+        slide-number: true
+        toc: true
+        toc-depth: 1
+        slide-level: 3
+execute:
+    echo: true
+---
+
+# Introductions
+
+- Who am I?
+- Who are you?
+
+## Who am I?
+
+![Damon with Max](../assets/IMG_2767.jpeg)
+
+---
+
+- PhD candidate in the political science department at CU Boulder
+- Recieved my Masters here at CU
+- Recieved my Bachelor of Science from Boise State University
+
+---
+
+- Studies:
+    - For politics: how politically-relevant visual information shapes political attitudes and behaviors
+    - Statistics: the causes of survey non-response, consequences of missing data on our models, and open science practices
+
+---
+
+- Spends free time running, building software, looking at sports data (mainly basketball and baseball), and watching the Nuggets
+
+## Who are you?
+
+::: {.notes}
+- Raise your hand if you grew up in:
+    - Colorado
+    - California
+    - Utah
+    - Nebraska
+    - Arizona
+    - New Mexico
+    - Where else?
+- What is your dream field?
+    - Law
+    - NGO's, IGO's, non-profit 
+    - Urban design
+    - Politician
+    - Campaign or political strategist
+    - Grad school
+    - No clue
+- Raise your hand if you are:
+    - Excited about this class
+    - Worried about this class
+- What class are you most excited to take this Fall?
+- Raise your hand if you are nervous about statistics?
+- Raise your hand if you are nervous about R?
+:::
+
+# Groups for the term project
+
+- Need to be in groups of 3 people
+- Can form the group yourselves
+
+# Recitation handout
+
+- I have created and will be maintaining a recitation handout or reference guide for you to take a look at as we progress through the course.
+
+- You can access it by:
+
+- sp23.psci2075.classes.damoncroberts.com
+- OR
+    - go to: damoncroberts.com then select teaching then psci-2075
