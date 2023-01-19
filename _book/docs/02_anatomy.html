@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PSCI 2075 Recitation Handout - 2&nbsp; Anatomy of IDE interface</title>
+<title>PSCI 2075 Recitation Handout - 3&nbsp; Anatomy of IDE interface</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,6 +41,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -71,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Anatomy of IDE interface</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Anatomy of IDE interface</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -101,32 +103,37 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/handout.html" class="sidebar-item-text sidebar-link">Recitation Handout</a>
+  <a href="../docs/handout.html" class="sidebar-item-text sidebar-link">Recitation Policies</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/01_setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">R Setup</span></a>
+  <a href="../docs/outline.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><i class="fa-solid fa-timeline-arrow" aria-label="timeline-arrow"></i> Outline: What we’ve done in recitation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/02_anatomy.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Anatomy of IDE interface</span></a>
+  <a href="../docs/01_setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R Setup</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/03_run_code.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Running Code</span></a>
+  <a href="../docs/02_anatomy.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Anatomy of IDE interface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/04_quarto.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">🙀 Quarto (Optional)</span></a>
+  <a href="../docs/03_run_code.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Running Code</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/05_r_syntax_basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">👾 Basics of R syntax</span></a>
+  <a href="../docs/04_quarto.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🙀 Quarto (Optional)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/05_r_syntax_basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">👾 Basics of R syntax</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -143,11 +150,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#main-panel" id="toc-main-panel" class="nav-link active" data-scroll-target="#main-panel"><span class="toc-section-number">2.1</span>  Main panel</a></li>
-  <li><a href="#console" id="toc-console" class="nav-link" data-scroll-target="#console"><span class="toc-section-number">2.2</span>  Console</a></li>
-  <li><a href="#terminal" id="toc-terminal" class="nav-link" data-scroll-target="#terminal"><span class="toc-section-number">2.3</span>  Terminal</a></li>
-  <li><a href="#environment" id="toc-environment" class="nav-link" data-scroll-target="#environment"><span class="toc-section-number">2.4</span>  Environment</a></li>
-  <li><a href="#files" id="toc-files" class="nav-link" data-scroll-target="#files"><span class="toc-section-number">2.5</span>  Files</a></li>
+  <li><a href="#main-panel" id="toc-main-panel" class="nav-link active" data-scroll-target="#main-panel"><span class="toc-section-number">3.1</span>  Main panel</a></li>
+  <li><a href="#console" id="toc-console" class="nav-link" data-scroll-target="#console"><span class="toc-section-number">3.2</span>  Console</a></li>
+  <li><a href="#terminal" id="toc-terminal" class="nav-link" data-scroll-target="#terminal"><span class="toc-section-number">3.3</span>  Terminal</a></li>
+  <li><a href="#environment" id="toc-environment" class="nav-link" data-scroll-target="#environment"><span class="toc-section-number">3.4</span>  Environment</a></li>
+  <li><a href="#files" id="toc-files" class="nav-link" data-scroll-target="#files"><span class="toc-section-number">3.5</span>  Files</a></li>
   </ul>
 </nav>
     </div>
@@ -156,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-anatomy" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Anatomy of IDE interface</span></span></h1>
+<h1 class="title"><span id="sec-anatomy" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Anatomy of IDE interface</span></span></h1>
 </div>
 
 
@@ -175,8 +182,8 @@ ul.task-list li input[type="checkbox"] {
 <a href="https://tenor.com/view/gummy-bear-anatomy-the-insides-gif-14322357">Gummy Bear Anatomy GIF</a>from <a href="https://tenor.com/search/gummy+bear-gifs">Gummy Bear GIFs</a>
 </div>
 <script type="text/javascript" async="" src="https://tenor.com/embed.js"></script>
-<section id="main-panel" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="main-panel"><span class="header-section-number">2.1</span> Main panel</h2>
+<section id="main-panel" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="main-panel"><span class="header-section-number">3.1</span> Main panel</h2>
 <ul>
 <li>This is where you will write all of your code.
 <ul>
@@ -186,21 +193,21 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="console" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="console"><span class="header-section-number">2.2</span> Console</h2>
+<section id="console" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="console"><span class="header-section-number">3.2</span> Console</h2>
 <ul>
 <li>When you run code from a <code>script</code>, you send your code to your R <code>console</code>. This is done by either highlighting your code and using the shortcut <kbd>ctrl enter</kbd> (<kbd> ⌘ return </kbd> on Mac) or hitting the <code>run</code> button at the top of your main panel.</li>
 <li>The code you write is evaluated and ran by your R <code>console</code>.</li>
 </ul>
 </section>
-<section id="terminal" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="terminal"><span class="header-section-number">2.3</span> Terminal</h2>
+<section id="terminal" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="terminal"><span class="header-section-number">3.3</span> Terminal</h2>
 <ul>
 <li>The <code>terminal</code> is also an area to run code. This often runs a different coding language (i.e.&nbsp;<code>bash</code>) which is a coding language that tells your computer what to do from a systems standpoint.</li>
 </ul>
 </section>
-<section id="environment" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="environment"><span class="header-section-number">2.4</span> Environment</h2>
+<section id="environment" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="environment"><span class="header-section-number">3.4</span> Environment</h2>
 <ul>
 <li>The <code>environment</code> displays your <code>cached</code> (temporarily saved) <code>objects</code> that you create with your R code.
 <ul>
@@ -209,8 +216,8 @@ ul.task-list li input[type="checkbox"] {
 <li>But this lets you see things that you’ve temporarily stored from your code.</li>
 </ul>
 </section>
-<section id="files" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="files"><span class="header-section-number">2.5</span> Files</h2>
+<section id="files" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="files"><span class="header-section-number">3.5</span> Files</h2>
 <ul>
 <li>Let’s you see what files and where you have them on your computer.</li>
 </ul>
@@ -355,12 +362,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../docs/01_setup.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">R Setup</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R Setup</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../docs/03_run_code.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Running Code</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Running Code</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

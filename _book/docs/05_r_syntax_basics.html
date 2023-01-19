@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PSCI 2075 Recitation Handout - 5&nbsp; 👾 Basics of R syntax</title>
+<title>PSCI 2075 Recitation Handout - 6&nbsp; 👾 Basics of R syntax</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -156,7 +156,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">👾 Basics of R syntax</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">👾 Basics of R syntax</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -186,32 +186,37 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/handout.html" class="sidebar-item-text sidebar-link">Recitation Handout</a>
+  <a href="../docs/handout.html" class="sidebar-item-text sidebar-link">Recitation Policies</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/01_setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">R Setup</span></a>
+  <a href="../docs/outline.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><i class="fa-solid fa-timeline-arrow" aria-label="timeline-arrow"></i> Outline: What we’ve done in recitation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/02_anatomy.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Anatomy of IDE interface</span></a>
+  <a href="../docs/01_setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R Setup</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/03_run_code.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Running Code</span></a>
+  <a href="../docs/02_anatomy.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Anatomy of IDE interface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/04_quarto.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">🙀 Quarto (Optional)</span></a>
+  <a href="../docs/03_run_code.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Running Code</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/05_r_syntax_basics.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">👾 Basics of R syntax</span></a>
+  <a href="../docs/04_quarto.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🙀 Quarto (Optional)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/05_r_syntax_basics.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">👾 Basics of R syntax</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -228,8 +233,8 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#commenting" id="toc-commenting" class="nav-link active" data-scroll-target="#commenting"><span class="toc-section-number">5.1</span>  Commenting</a></li>
-  <li><a href="#objects" id="toc-objects" class="nav-link" data-scroll-target="#objects"><span class="toc-section-number">5.2</span>  Objects</a></li>
+  <li><a href="#commenting" id="toc-commenting" class="nav-link active" data-scroll-target="#commenting"><span class="toc-section-number">6.1</span>  Commenting</a></li>
+  <li><a href="#objects" id="toc-objects" class="nav-link" data-scroll-target="#objects"><span class="toc-section-number">6.2</span>  Objects</a></li>
   </ul>
 </nav>
     </div>
@@ -238,7 +243,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-r-basics" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">👾 Basics of R syntax</span></span></h1>
+<h1 class="title"><span id="sec-r-basics" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">👾 Basics of R syntax</span></span></h1>
 </div>
 
 
@@ -273,8 +278,8 @@ div.csl-indent {
 </ul></li>
 </ul>
 <p>Okay… finally, some basics of R code. 😩</p>
-<section id="commenting" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="commenting"><span class="header-section-number">5.1</span> Commenting</h2>
+<section id="commenting" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="commenting"><span class="header-section-number">6.1</span> Commenting</h2>
 <ul>
 <li>Denoted with <code>#</code> in a <code>.qmd</code> code chunk or your <code>.R</code></li>
 <li>R does not evaluate this. So comments can be written in natural language</li>
@@ -306,13 +311,13 @@ div.csl-indent {
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Notice, that I don’t use <code>#|</code>. This is because <code>#|</code> is a special thing in a <code>.qmd</code> code chunk to specify options. I instead use <code>#</code> to represent headers and <code>#*</code> for subheadings in my comments. This allows me to create a bulleted-list-type set of comments that are pretty easy to read and to also follow for teammates.</p>
 </section>
-<section id="objects" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="objects"><span class="header-section-number">5.2</span> Objects</h2>
+<section id="objects" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="objects"><span class="header-section-number">6.2</span> Objects</h2>
 <p><strong><code>Objects</code> represent the temporarily stored (cached) result of any operation/function in R</strong>.</p>
 <p>You define objects with the <code>assignment operator</code> (<code>&lt;-</code>).</p>
 <p>Here is an example:</p>
 <p>Say that I want to evaluate the expression <span class="math inline">\(1+1\)</span>. But say I want to access the result of that expression later. Either because I don’t want to rerun the code or if I want to store the result and do some other things to it later.</p>
-<p>I can create an <code>object</code> to store the result of me evaluating the expression <span class="math inline">\(1+1\)</span>. R stores this object in your <code>environment</code> (see <a href="02_anatomy.html"><span>Chapter&nbsp;2</span></a>) and will stay accessible to you until you close out of RStudio <span class="citation" data-cites="r_studio">(<a href="references.html#ref-r_studio" role="doc-biblioref">RStudio Team 2020</a>)</span>.</p>
+<p>I can create an <code>object</code> to store the result of me evaluating the expression <span class="math inline">\(1+1\)</span>. R stores this object in your <code>environment</code> (see <a href="02_anatomy.html"><span>Chapter&nbsp;3</span></a>) and will stay accessible to you until you close out of RStudio <span class="citation" data-cites="r_studio">(<a href="references.html#ref-r_studio" role="doc-biblioref">RStudio Team 2020</a>)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a = 1+1</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">+</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -337,8 +342,8 @@ div.csl-indent {
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
-<section id="functions" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="functions"><span class="header-section-number">5.2.1</span> Functions</h3>
+<section id="functions" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="functions"><span class="header-section-number">6.2.1</span> Functions</h3>
 <p>Functions are a specific type of object.</p>
 <p>Functions are simply an object that takes an <code>input</code> and does something to that <code>input</code>. R is full of functions.</p>
 <p>Some examples of <code>functions</code> that we have already dealt with:</p>
@@ -351,8 +356,8 @@ div.csl-indent {
 <p>We can write our own <code>functions</code> (advanced topic we aren’t going to go over), and we can access the <code>functions</code> written by other people to make our life easier.</p>
 <p>When someone writes a <code>function</code> and want to share it, they often have other related <code>functions</code> and code. They can <code>package</code> all of this code into a <code>library</code> and submit it to code repositories such as <code>Github</code> or <code>CRAN</code> (where you downloaded R; because what you downloaded came with basic functions like <code>+</code> and <code>&lt;-</code>).</p>
 <p>If there is a <code>function</code> that someone has written and <code>package</code>d, you will need to install the underlying code onto your computer so that you can use it for your own work.</p>
-<section id="installing-packages" class="level4" data-number="5.2.1.1">
-<h4 data-number="5.2.1.1" class="anchored" data-anchor-id="installing-packages"><span class="header-section-number">5.2.1.1</span> Installing packages</h4>
+<section id="installing-packages" class="level4" data-number="6.2.1.1">
+<h4 data-number="6.2.1.1" class="anchored" data-anchor-id="installing-packages"><span class="header-section-number">6.2.1.1</span> Installing packages</h4>
 <p>To install a package from <code>CRAN</code> (often the default place to download packages from), you can use the built-in <code>function</code> <code>install.packages()</code></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Install some package called FakePackage</span></span>
@@ -381,8 +386,8 @@ Note
 </div>
 </div>
 </section>
-<section id="loading-packages" class="level4" data-number="5.2.1.2">
-<h4 data-number="5.2.1.2" class="anchored" data-anchor-id="loading-packages"><span class="header-section-number">5.2.1.2</span> Loading packages</h4>
+<section id="loading-packages" class="level4" data-number="6.2.1.2">
+<h4 data-number="6.2.1.2" class="anchored" data-anchor-id="loading-packages"><span class="header-section-number">6.2.1.2</span> Loading packages</h4>
 <p>Now, how do I use my function?</p>
 <p>Well, you’ve downloaded the <code>package</code> containing the <code>function</code> that you want to use, but you will need to now load it to your <code>environment</code>. Why? Well, again, remember that <code>functions</code> are just a type of <code>object</code>. More practically, think about the number of packages some one like me has on my computer. If every time I opened R, it automatically loaded <em>all</em> of that code, then my computer would probably melt. So instead, I just want to specify what I want to load.</p>
 <p>There are a couple of options: 1. Most people load the <em>entire</em> package by writing:</p>
@@ -566,7 +571,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../docs/04_quarto.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">🙀 Quarto (Optional)</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🙀 Quarto (Optional)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

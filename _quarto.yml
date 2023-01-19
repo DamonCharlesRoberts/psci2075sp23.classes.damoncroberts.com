@@ -8,6 +8,7 @@ book:
   chapters:
     - index.qmd
     - docs/handout.qmd
+    - docs/outline.qmd
     - docs/01_setup.qmd
     - docs/02_anatomy.qmd
     - docs/03_run_code.qmd
@@ -16,7 +17,7 @@ book:
     #- 06_loading_data.qmd
     - docs/references.qmd
 toc-depth: 2
-bibliography: assets/references.bib
+bibliography: references.bib
 
 format:
   html:
