@@ -4,6 +4,7 @@ author: 'Damon C. Roberts'
 format: 
     revealjs:
         self-contained: true
+        embed-resources: true
         theme: serif
         incremental: true
         scrollable: true
