@@ -1,0 +1,39 @@
+# {{< fa timeline-arrow >}} Outline: What we've done in recitation
+
+<div class="tenor-gif-embed" data-postid="18564553" data-share-method="host" data-aspect-ratio="1.57635" data-width="100%"><a href="https://tenor.com/view/charlie-day-gif-18564553">Charlie Day GIF</a>from <a href="https://tenor.com/search/charlie-gifs">Charlie GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+
+## Week 1
+
+- Slides: https://www.dropbox.com/s/n1ebrg7gc14wh3r/week_1.html?dl=0
+- Recitation Policies: [Reciation Policies](handout.qmd)
+    - Sign up term paper group: [Recitation Policies](handout.qmd#recitation-information) (under recitation information, click on csv icon to fill out google form)
+- Setting up R and RStudio: [R Setup](01_setup.qmd)
+
+## Week 2
+
+## Week 3
+
+## Week 4
+
+## Week 5
+
+## Week 6
+
+## Week 7
+
+## Week 8
+
+## Week 9
+
+## Week 10
+
+## Week 11
+
+## Week 12
+
+## Week 13
+
+## Week 14
+
+## Week 15
