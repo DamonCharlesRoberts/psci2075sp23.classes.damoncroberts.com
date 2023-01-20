@@ -6,7 +6,7 @@
 ## Week 1
 
 - Slides: [Week 1 Slides](../slides/week_1.html)
-- Recitation Policies: [Reciation Policies](handout.qmd)
+- Recitation Policies: [Recitation Policies](handout.qmd)
     - Sign up term paper group: [Recitation Policies](handout.qmd#recitation-information) (under recitation information, click on csv icon to fill out google form)
 - Setting up R and RStudio: [R Setup](01_setup.qmd)
 

@@ -17,7 +17,7 @@ book:
     #- 06_loading_data.qmd
     - docs/references.qmd
 toc-depth: 2
-bibliography: references.bib
+bibliography: assets/references.bib
 
 format:
   html:
