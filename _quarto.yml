@@ -16,6 +16,7 @@ book:
     - docs/05_r_syntax_basics.qmd
     #- 06_loading_data.qmd
     - docs/references.qmd
+  google-analytics: "G-8Z2BLG3VEE"
 toc-depth: 2
 bibliography: assets/references.bib
 
