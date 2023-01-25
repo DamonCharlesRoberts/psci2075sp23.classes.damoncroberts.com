@@ -81,7 +81,7 @@ While Windows specifically requires that you specify the hard drive (`C:`) for y
 
 Think of the file name as the specific apartment or house number. The rest of the file path would be information like the Street, City, State, and Zip Code. It provides a precise location as to where you are. If you only gave someone your apartment number to deliver a package, do you think that they would have much luck delivering it to the right apartment? Probably not. Same with accessing files on your computer.
 
-# Why should I know these things? I've never dealt with this before
+## Why should I know these things? I've never dealt with this before
 
 In R, you need to access files through file paths. You can't just click on a file to interact with it in R. You need to provide a file path to R so that it knows precisely what file you are talking about on your computer. You will see why this is important later on.
 
@@ -94,7 +94,7 @@ Say that you want to access `psci_2075.pdf` 📃 on your computer and your worki
 - Of course you can still access the file by providing the actual file path rather than the relative file path:
     - `/Users/damonroberts/Downloads/psci_2075.pdf`
 
-# Creating a folder for this class to make your life easier
+## Creating a folder for this class to make your life easier
 
 - On your desktop, `right-click` anywhere on your wall paper.
 - Click on `Create New Folder`.
@@ -119,7 +119,7 @@ D --> H["📂 Downloads"];
 F --> I["📂 psci_2075"];
 ```
 
-# Finding your default working directory in R
+## Finding your default working directory in R
 
 - Open up RStudio
 - In RStudio, type:

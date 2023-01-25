@@ -231,9 +231,9 @@ gtag('config', 'G-8Z2BLG3VEE', { 'anonymize_ip': true});
    
   <ul class="collapse">
   <li><a href="#working-directories-and-file-paths" id="toc-working-directories-and-file-paths" class="nav-link active" data-scroll-target="#working-directories-and-file-paths"><span class="toc-section-number">4.1</span>  Working directories and file paths</a></li>
-  <li><a href="#why-should-i-know-these-things-ive-never-dealt-with-this-before" id="toc-why-should-i-know-these-things-ive-never-dealt-with-this-before" class="nav-link" data-scroll-target="#why-should-i-know-these-things-ive-never-dealt-with-this-before"><span class="toc-section-number">5</span>  Why should I know these things? I’ve never dealt with this before</a></li>
-  <li><a href="#creating-a-folder-for-this-class-to-make-your-life-easier" id="toc-creating-a-folder-for-this-class-to-make-your-life-easier" class="nav-link" data-scroll-target="#creating-a-folder-for-this-class-to-make-your-life-easier"><span class="toc-section-number">6</span>  Creating a folder for this class to make your life easier</a></li>
-  <li><a href="#finding-your-default-working-directory-in-r" id="toc-finding-your-default-working-directory-in-r" class="nav-link" data-scroll-target="#finding-your-default-working-directory-in-r"><span class="toc-section-number">7</span>  Finding your default working directory in R</a></li>
+  <li><a href="#why-should-i-know-these-things-ive-never-dealt-with-this-before" id="toc-why-should-i-know-these-things-ive-never-dealt-with-this-before" class="nav-link" data-scroll-target="#why-should-i-know-these-things-ive-never-dealt-with-this-before"><span class="toc-section-number">4.2</span>  Why should I know these things? I’ve never dealt with this before</a></li>
+  <li><a href="#creating-a-folder-for-this-class-to-make-your-life-easier" id="toc-creating-a-folder-for-this-class-to-make-your-life-easier" class="nav-link" data-scroll-target="#creating-a-folder-for-this-class-to-make-your-life-easier"><span class="toc-section-number">4.3</span>  Creating a folder for this class to make your life easier</a></li>
+  <li><a href="#finding-your-default-working-directory-in-r" id="toc-finding-your-default-working-directory-in-r" class="nav-link" data-scroll-target="#finding-your-default-working-directory-in-r"><span class="toc-section-number">4.4</span>  Finding your default working directory in R</a></li>
   </ul>
 </nav>
     </div>
@@ -360,14 +360,14 @@ H --&gt; I["📃 psci_2075.pdf"];
 <p>While Windows specifically requires that you specify the hard drive (<code>C:</code>) for your computer at the start, the rest of the information is the same.</p>
 <p>Think of the file name as the specific apartment or house number. The rest of the file path would be information like the Street, City, State, and Zip Code. It provides a precise location as to where you are. If you only gave someone your apartment number to deliver a package, do you think that they would have much luck delivering it to the right apartment? Probably not. Same with accessing files on your computer.</p>
 </section>
-<section id="why-should-i-know-these-things-ive-never-dealt-with-this-before" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Why should I know these things? I’ve never dealt with this before</h1>
+<section id="why-should-i-know-these-things-ive-never-dealt-with-this-before" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="why-should-i-know-these-things-ive-never-dealt-with-this-before"><span class="header-section-number">4.2</span> Why should I know these things? I’ve never dealt with this before</h2>
 <p>In R, you need to access files through file paths. You can’t just click on a file to interact with it in R. You need to provide a file path to R so that it knows precisely what file you are talking about on your computer. You will see why this is important later on.</p>
 <p>Why should I know about working directories? Well, R uses working directories to help make your life easier. Rather than having to write out the <em>entire</em> file path each time you want to interact with a particular file in R, instead you can just write out, in reference to your working directory, where that file is.</p>
 <p>Say that you want to access <code>psci_2075.pdf</code> 📃 on your computer and your working directory is at your particular <code>Users</code> folder (working directory: <code>/Users/damonroberts/</code>). What would the file path be? - <code>./Downloads/psci_2075.pdf</code> - the <code>./</code> refers to the current working directory - the rest refers to where you are relative to the working directory. - Of course you can still access the file by providing the actual file path rather than the relative file path: - <code>/Users/damonroberts/Downloads/psci_2075.pdf</code></p>
 </section>
-<section id="creating-a-folder-for-this-class-to-make-your-life-easier" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Creating a folder for this class to make your life easier</h1>
+<section id="creating-a-folder-for-this-class-to-make-your-life-easier" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="creating-a-folder-for-this-class-to-make-your-life-easier"><span class="header-section-number">4.3</span> Creating a folder for this class to make your life easier</h2>
 <ul>
 <li>On your desktop, <code>right-click</code> anywhere on your wall paper.</li>
 <li>Click on <code>Create New Folder</code>.</li>
@@ -395,14 +395,14 @@ F --&gt; I["📂 psci_2075"];
 
 </div>
 <p></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.1: Course folder</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4.4: Course folder</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="finding-your-default-working-directory-in-r" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Finding your default working directory in R</h1>
+<section id="finding-your-default-working-directory-in-r" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="finding-your-default-working-directory-in-r"><span class="header-section-number">4.4</span> Finding your default working directory in R</h2>
 <ul>
 <li>Open up RStudio</li>
 <li>In RStudio, type:</li>

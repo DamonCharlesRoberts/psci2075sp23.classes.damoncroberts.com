@@ -196,18 +196,32 @@
     "text": "3.5 Files\n\nLet’s you see what files and where you have them on your computer."
   },
   {
-    "objectID": "docs/03_file_structure.html",
-    "href": "docs/03_file_structure.html",
-    "title": "4  Computer File Structure",
-    "section": "",
-    "text": "5 Why should I know these things? I’ve never dealt with this before\nIn R, you need to access files through file paths. You can’t just click on a file to interact with it in R. You need to provide a file path to R so that it knows precisely what file you are talking about on your computer. You will see why this is important later on.\nWhy should I know about working directories? Well, R uses working directories to help make your life easier. Rather than having to write out the entire file path each time you want to interact with a particular file in R, instead you can just write out, in reference to your working directory, where that file is.\nSay that you want to access psci_2075.pdf 📃 on your computer and your working directory is at your particular Users folder (working directory: /Users/damonroberts/). What would the file path be? - ./Downloads/psci_2075.pdf - the ./ refers to the current working directory - the rest refers to where you are relative to the working directory. - Of course you can still access the file by providing the actual file path rather than the relative file path: - /Users/damonroberts/Downloads/psci_2075.pdf\nThis means that your file tree would look something like this:"
-  },
-  {
     "objectID": "docs/03_file_structure.html#working-directories-and-file-paths",
     "href": "docs/03_file_structure.html#working-directories-and-file-paths",
     "title": "4  Computer File Structure",
     "section": "4.1 Working directories and file paths",
     "text": "4.1 Working directories and file paths\nWorking directories refer to the default location that we are working from. For many of us, our working directory is at our particular 📂 Users folder. So for my computer, it is 📂 damonroberts.\nWhy do we rely on a default location? Just because it is easier for us, the user, to reference anything relative to the location of our Users 📂.\nWhy do we need to know the location of a file? Because we may have a file called psci_2075.pdf somewhere else on our computer. We need to be sure that our computer knows which one we are referring to. To do this, our computer needs to know the file path.\nSo the file path to 📃 psci_2075.pdf would be:\n\nOn Mac:\n\nUsers/damonroberts/Downloads/psci_2075.pdf\n\nOn Windows:\n\nC:\\Users\\damonroberts\\Downloads\\psci_2075.pdf\n\nOn Linux:\n\nhome/damonroberts/Downloads/psci_2075.pdf\n\n\nNotice how we can essentially follow that file tree down to access our file?\nWhile Windows specifically requires that you specify the hard drive (C:) for your computer at the start, the rest of the information is the same.\nThink of the file name as the specific apartment or house number. The rest of the file path would be information like the Street, City, State, and Zip Code. It provides a precise location as to where you are. If you only gave someone your apartment number to deliver a package, do you think that they would have much luck delivering it to the right apartment? Probably not. Same with accessing files on your computer."
+  },
+  {
+    "objectID": "docs/03_file_structure.html#why-should-i-know-these-things-ive-never-dealt-with-this-before",
+    "href": "docs/03_file_structure.html#why-should-i-know-these-things-ive-never-dealt-with-this-before",
+    "title": "4  Computer File Structure",
+    "section": "4.2 Why should I know these things? I’ve never dealt with this before",
+    "text": "4.2 Why should I know these things? I’ve never dealt with this before\nIn R, you need to access files through file paths. You can’t just click on a file to interact with it in R. You need to provide a file path to R so that it knows precisely what file you are talking about on your computer. You will see why this is important later on.\nWhy should I know about working directories? Well, R uses working directories to help make your life easier. Rather than having to write out the entire file path each time you want to interact with a particular file in R, instead you can just write out, in reference to your working directory, where that file is.\nSay that you want to access psci_2075.pdf 📃 on your computer and your working directory is at your particular Users folder (working directory: /Users/damonroberts/). What would the file path be? - ./Downloads/psci_2075.pdf - the ./ refers to the current working directory - the rest refers to where you are relative to the working directory. - Of course you can still access the file by providing the actual file path rather than the relative file path: - /Users/damonroberts/Downloads/psci_2075.pdf"
+  },
+  {
+    "objectID": "docs/03_file_structure.html#creating-a-folder-for-this-class-to-make-your-life-easier",
+    "href": "docs/03_file_structure.html#creating-a-folder-for-this-class-to-make-your-life-easier",
+    "title": "4  Computer File Structure",
+    "section": "4.3 Creating a folder for this class to make your life easier",
+    "text": "4.3 Creating a folder for this class to make your life easier\n\nOn your desktop, right-click anywhere on your wall paper.\nClick on Create New Folder.\nName that folder psci_2075\n\nThis means that your file tree would look something like this:\n\n\n\n\n\n%%{init: {'theme':'base', 'themeVariables':{'primaryColor':'#ffffff', 'primaryBorderColor': '#000000'}}}%%\n\ngraph TD;\nA[Hard drive] --> B[\"📂 Operating System\"];\nA --> C[\"📂 Users\"];\nC --> D[\"📂 damonroberts\"];\nC --> E[\"📂 guest\"];\nD --> F[\"📂 Desktop\"];\nD --> G[\"📂 Documents\"];\nD --> H[\"📂 Downloads\"];\nF --> I[\"📂 psci_2075\"];\n\n\n\n\n\nFigure 4.4: Course folder"
+  },
+  {
+    "objectID": "docs/03_file_structure.html#finding-your-default-working-directory-in-r",
+    "href": "docs/03_file_structure.html#finding-your-default-working-directory-in-r",
+    "title": "4  Computer File Structure",
+    "section": "4.4 Finding your default working directory in R",
+    "text": "4.4 Finding your default working directory in R\n\nOpen up RStudio\nIn RStudio, type:\n\n\ngetwd()\n\n\nThis will return your default working directory\nTo change this to your psci_2075 folder, at the top of each .R or .qmd file you write, put:\n\n\nsetwd(\"./Desktop/psci_2075\")\n\n\nNow when you want to reference a file, you do it relative to your psci_2075 📂."
   },
   {
     "objectID": "docs/04_run_code.html#options",
