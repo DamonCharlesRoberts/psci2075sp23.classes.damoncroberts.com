@@ -1,0 +1,36 @@
+---
+title: 'PSCI 2075: Week 1 - Introduction to the course and setting up R'
+author: 'Damon C. Roberts'
+format: 
+    revealjs:
+        self-contained: true
+        embed-resources: true
+        theme: [default, assets/custom.scss]
+        incremental: true
+        scrollable: true
+        slide-number: true
+        toc: true
+        toc-depth: 1
+        slide-level: 3
+execute:
+    echo: true
+---
+
+
+# Group assignments
+
+- Make sure that you are in a group!
+    - Go to: https://sp23.psci2075.classes.damoncroberts.com/docs/handout.html
+- Come up with a group name!
+- Be sure to chat near the end of class to share contact info
+
+# ✅ RStudio and R
+
+- Be sure that it is installed
+- If not, come to my office hours!
+
+# Anatomy of RStudio
+
+# Key ways to write R code
+
+# R Code fundamentals

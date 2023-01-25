@@ -11,9 +11,10 @@ book:
     - docs/outline.qmd
     - docs/01_setup.qmd
     - docs/02_anatomy.qmd
-    - docs/03_run_code.qmd
-    - docs/04_quarto.qmd
-    - docs/05_r_syntax_basics.qmd
+    - docs/03_file_structure.qmd
+    - docs/04_run_code.qmd
+    - docs/05_quarto.qmd
+    - docs/06_r_syntax_basics.qmd
     #- 06_loading_data.qmd
     - docs/references.qmd
   google-analytics: "G-8Z2BLG3VEE"

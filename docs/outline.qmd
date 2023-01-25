@@ -7,10 +7,18 @@
 
 - Slides: [Week 1 Slides](../slides/week_1.html)
 - Recitation Policies: [Recitation Policies](handout.qmd)
-    - Sign up term paper group: [Recitation Policies](handout.qmd#recitation-information) (under recitation information, click on csv icon to fill out google form)
+    - Sign up term paper group: [Recitation Policies](handout.qmd#recitation-information) (under recitation information, click on {{< fa file-csv >}} icon to fill out google sheet)
 - Setting up R and RStudio: [R Setup](01_setup.qmd)
 
 ## Week 2
+
+- Slides: [Week 2 Slides](../slides/week_2.html)
+- Finalizing groups: [Recitation Policies](handout.qmd#recitation-information) (under recitation information, click on the {{< fa file-csv >}} icon to fill out google sheet)
+- Make sure everyone has R and RStudio set up. [R Setup](01_setup.qmd)
+- Go over the anatomy of RStudio. [RStudio Anatomy](02_anatomy.qmd)
+- Go over file structure on computers. [Computer file structure](03_file_structure.qmd)
+- Go over ways to run R code. [Writing R code](04_run_code.qmd)
+- Go over basic R syntax. [Basic R syntax](06_r_syntax_basics.qmd)
 
 ## Week 3
 

@@ -1,0 +1,140 @@
+# Computer File Structure {#sec-file-structure}
+
+In an age of cloud and mobile access, many of us have lost sight of the fact that files have to be stored somewhere. As we produce *a lot* of files, we need to make sure that they are relatively organized in some coherent way.
+
+Just as we organize our closets (or not), we want to find particular articles of our clothes somewhat easily. We put our pants in one area, our t-shirts in another, our workout clothes in some other spot. Computers need to do this as well.
+
+**Everything** on our computer is located on a Hard Drive. This hard drive contains everything about our computer. Our hard drives are separated up into different components. Some areas of our hard drive are dedicating to storing the information for our operating system (yes, operating systems are just collections of files). Other areas are dedicated to files for the Users of the computer. If there are multiple users, that section of our computer is separated even more. We separate our hard drives by placing things in folders. So from what I've discussed so far, this is one way to visualize this:
+
+```{mermaid}
+%%| label: fig-simple-file-structure
+%%| fig-cap: Simple file structure
+%%| fig-width: 6
+%%{init: {'theme':'base', 'themeVariables':{'primaryColor':'#ffffff', 'primaryBorderColor': '#000000'}}}%%
+
+graph TD;
+A[Hard drive] --> B["📂 Operating System"];
+A --> C["📂 Users"];
+C --> D["📂 damonroberts"];
+C --> E["📂 guest"];
+```
+
+For each user, we often have our own documents, applications (software), downloads, and other things that we want access to.
+
+```{mermaid}
+%%| label: fig-user-file-structure
+%%| fig-cap: User file structure
+%%| fig-width: 6
+%%{init: {'theme':'base', 'themeVariables':{'primaryColor':'#ffffff', 'primaryBorderColor': '#000000'}}}%%
+
+graph TD;
+A[Hard drive] --> B["📂 Operating System"];
+A --> C["📂 Users"];
+C --> D["📂 damonroberts"];
+C --> E["📂 guest"];
+D --> F["📂 Desktop"];
+D --> G["📂 Documents"];
+D --> H["📂 Downloads"];
+```
+
+We often have particular files or more folders inside these! Say I download a file called `psci_2075.pdf`. Where would it probably go on my computer? That's right, probably in 📂 `Downloads` (unless I've set it up to be something else on my computer).
+
+So how would the location of that file appear relative to my hard drive?
+
+```{mermaid}
+%%| label: fig-files
+%%| fig-cap: Files
+%%| fig-width: 6
+%%{init: {'theme':'base', 'themeVariables':{'primaryColor':'#ffffff', 'primaryBorderColor': '#000000'}}}%%
+
+graph TD;
+A[Hard drive] --> B["📂 Operating System"];
+A --> C["📂 Users"];
+C --> D["📂 damonroberts"];
+C --> E["📂 guest"];
+D --> F["📂 Desktop"];
+D --> G["📂 Documents"];
+D --> H["📂 Downloads"];
+H --> I["📃 psci_2075.pdf"];
+```
+
+## Working directories and file paths
+
+Working directories refer to the default location that we are working from. For many of us, our working directory is at our particular 📂 `Users` folder. So for my computer, it is 📂 `damonroberts`.
+
+Why do we rely on a default location? Just because it is easier for us, the user, to reference anything relative to the location of our `Users` 📂.
+
+Why do we need to know the location of a file? Because we may have a file called `psci_2075.pdf` somewhere else on our computer. We need to be sure that our computer knows which one we are referring to. To do this, our computer needs to know the file path.
+
+So the file path to 📃 `psci_2075.pdf` would be:
+
+- On Mac:
+    - `Users/damonroberts/Downloads/psci_2075.pdf`
+- On Windows:
+    - `C:\Users\damonroberts\Downloads\psci_2075.pdf`
+- On Linux:
+    - `home/damonroberts/Downloads/psci_2075.pdf`
+
+Notice how we can essentially follow that file tree down to access our file? 
+
+While Windows specifically requires that you specify the hard drive (`C:`) for your computer at the start, the rest of the information is the same.
+
+Think of the file name as the specific apartment or house number. The rest of the file path would be information like the Street, City, State, and Zip Code. It provides a precise location as to where you are. If you only gave someone your apartment number to deliver a package, do you think that they would have much luck delivering it to the right apartment? Probably not. Same with accessing files on your computer.
+
+# Why should I know these things? I've never dealt with this before
+
+In R, you need to access files through file paths. You can't just click on a file to interact with it in R. You need to provide a file path to R so that it knows precisely what file you are talking about on your computer. You will see why this is important later on.
+
+Why should I know about working directories? Well, R uses working directories to help make your life easier. Rather than having to write out the *entire* file path each time you want to interact with a particular file in R, instead you can just write out, in reference to your working directory, where that file is.
+
+Say that you want to access `psci_2075.pdf` 📃 on your computer and your working directory is at your particular `Users` folder (working directory: `/Users/damonroberts/`). What would the file path be?
+- `./Downloads/psci_2075.pdf`
+    - the `./` refers to the current working directory
+    - the rest refers to where you are relative to the working directory.
+- Of course you can still access the file by providing the actual file path rather than the relative file path:
+    - `/Users/damonroberts/Downloads/psci_2075.pdf`
+
+# Creating a folder for this class to make your life easier
+
+- On your desktop, `right-click` anywhere on your wall paper.
+- Click on `Create New Folder`.
+- Name that folder `psci_2075`
+
+This means that your file tree would look something like this:
+
+```{mermaid}
+%%| label: fig-course-folder
+%%| fig-cap: Course folder
+%%| fig-width: 6
+%%{init: {'theme':'base', 'themeVariables':{'primaryColor':'#ffffff', 'primaryBorderColor': '#000000'}}}%%
+
+graph TD;
+A[Hard drive] --> B["📂 Operating System"];
+A --> C["📂 Users"];
+C --> D["📂 damonroberts"];
+C --> E["📂 guest"];
+D --> F["📂 Desktop"];
+D --> G["📂 Documents"];
+D --> H["📂 Downloads"];
+F --> I["📂 psci_2075"];
+```
+
+# Finding your default working directory in R
+
+- Open up RStudio
+- In RStudio, type:
+
+```{R}
+#| label: get-wd
+#| eval: false
+getwd()
+```
+
+- This will return your default working directory
+- To change this to your `psci_2075` folder, at the top of *each* `.R` or `.qmd` file you write, put:
+```{R}
+#| label: set-wd
+#| eval: false
+setwd("./Desktop/psci_2075")
+```
+- Now when you want to reference a file, you do it relative to your `psci_2075` 📂.

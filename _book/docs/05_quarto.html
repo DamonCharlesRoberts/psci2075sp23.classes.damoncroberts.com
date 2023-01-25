@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>PSCI 2075 Recitation Handout - 6&nbsp; 🙀 Quarto (Optional)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../docs/06_r_syntax_basics.html" rel="next">
+<link href="../docs/04_run_code.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-8Z2BLG3VEE"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-8Z2BLG3VEE', { 'anonymize_ip': true});
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">🙀 Quarto (Optional)</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">PSCI 2075 Recitation Handout</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">👋 Welcome</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/handout.html" class="sidebar-item-text sidebar-link">Recitation Policies</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/outline.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><i class="fa-solid fa-timeline" aria-label="timeline"></i> Outline: What we’ve done in recitation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/01_setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R Setup</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/02_anatomy.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Anatomy of IDE interface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/03_file_structure.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Computer File Structure</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/04_run_code.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Running Code</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/05_quarto.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">🙀 Quarto (Optional)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/06_r_syntax_basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">👾 Basics of R syntax</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#setup-quarto" id="toc-setup-quarto" class="nav-link active" data-scroll-target="#setup-quarto"><span class="toc-section-number">6.1</span>  Setup Quarto</a></li>
+  <li><a href="#sec-create-qmd" id="toc-sec-create-qmd" class="nav-link" data-scroll-target="#sec-create-qmd"><span class="toc-section-number">6.2</span>  Creating a <code>.qmd</code> file</a></li>
+  <li><a href="#basics-of-quarto" id="toc-basics-of-quarto" class="nav-link" data-scroll-target="#basics-of-quarto"><span class="toc-section-number">6.3</span>  Basics of Quarto</a></li>
+  <li><a href="#more-resources" id="toc-more-resources" class="nav-link" data-scroll-target="#more-resources"><span class="toc-section-number">6.4</span>  More resources</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-quarto" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">🙀 Quarto (Optional)</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="tenor-gif-embed" data-postid="17797511" data-share-method="host" data-aspect-ratio="1.92771" data-width="100%">
+<a href="https://tenor.com/view/spongebob-squarepants-spongebob-fancy-nickelodeon-driving-gif-17797511">Spongebob Squarepants Spongebob GIF</a>from <a href="https://tenor.com/search/spongebob+squarepants-gifs">Spongebob Squarepants GIFs</a>
+</div>
+<script type="text/javascript" async="" src="https://tenor.com/embed.js"></script>
+<p>Quarto <span class="citation" data-cites="quarto">(<a href="#ref-quarto" role="doc-biblioref">Allaire et al. 2022</a>)</span> is a useful way to write a report, document, presentation, website, or book that you also want to execute R <span class="citation" data-cites="r_software">(<a href="#ref-r_software" role="doc-biblioref">R Core Team 2021</a>)</span> – or other common programming languages – for. Rather than an <code>.R</code> script that you have to copy and paste results from, it allows you to write the document in the same file as you write your code. 🤯 This allows you to compile a final document with text describing your analysis along with the results of your analysis. The output document can come in a number of different formats that allow you to have lots of flexibility for where you display the output without having to deal with the normal complications to produce that file. Even better, this requires you to only need to keep track of one file rather than an <code>.R</code> script and a <code>.docx</code> file where you have to copy and paste results from <code>.R</code> script to your <code>.docx</code> file. 💪</p>
+<section id="setup-quarto" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="setup-quarto"><span class="header-section-number">6.1</span> Setup Quarto</h2>
+<ol type="1">
+<li><a href="https://quarto.org/docs/get-started/">Go to the Quarto website</a></li>
+<li>Install Quarto <span class="citation" data-cites="quarto">(<a href="#ref-quarto" role="doc-biblioref">Allaire et al. 2022</a>)</span> on your computer</li>
+<li>Where it says <em>Step 2</em>, click on RStudio <span class="citation" data-cites="r_studio">(<a href="#ref-r_studio" role="doc-biblioref">RStudio Team 2020</a>)</span>.</li>
+<li>Read through their website and look at the tutorials to learn some advanced features about quarto. For basic features, finish reading this chapter.</li>
+</ol>
+</section>
+<section id="sec-create-qmd" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="sec-create-qmd"><span class="header-section-number">6.2</span> Creating a <code>.qmd</code> file</h2>
+<ol type="1">
+<li>In RStudio <span class="citation" data-cites="r_studio">(<a href="#ref-r_studio" role="doc-biblioref">RStudio Team 2020</a>)</span>, go to your <code>main panel</code> and click the dropdown button with the piece of paper and green plus sign. Click on Quarto Document…</li>
+<li>This will bring up a new page giving you some options.</li>
+<li>Type in the title of your document</li>
+<li>Type in your name for the Author</li>
+<li>Click on the PDF option as you will want to make a PDF document</li>
+<li>Leave the other options and click Create</li>
+</ol>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To compile pdf files, you will need to install an additional tool called <code>tinytex</code> <span class="citation" data-cites="tinytex">(<a href="#ref-tinytex" role="doc-biblioref">Xie 2019</a>)</span>. To do this, go to your <code>terminal</code> (not your <code>console</code>) in RStudio <span class="citation" data-cites="r_studio">(<a href="#ref-r_studio" role="doc-biblioref">RStudio Team 2020</a>)</span> and type</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> install tools tinytex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="basics-of-quarto" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="basics-of-quarto"><span class="header-section-number">6.3</span> Basics of Quarto</h2>
+<section id="yaml-section" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="yaml-section"><span class="header-section-number">6.3.1</span> yaml section</h3>
+<p>The yaml section of your <code>.qmd</code> file provides high-level information about your document (e.g., title, author, and provides more custom formatting information).</p>
+<p>If you followed the steps from <a href="#sec-create-qmd"><span class="quarto-unresolved-ref">sec-create-qmd</span></a>, then you should see the following at the top of your <code>.qmd</code> file:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Untitled"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> pdf</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">editor</span><span class="kw">:</span><span class="at"> visual</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is your yaml section. It is distinguished by <code>---</code> to let your computer know the start and end of this section.</p>
+<p>This information is not super useful, let’s add some extra customization to our yaml section. I am going to include <code>comments</code> denoted by <code>#</code> to let you know what it does.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"PSCI 2075 Quarto Example"</span><span class="co"> # define a title for the document</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Damon C. Roberts"</span><span class="co"> # define an author for the document</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="co"> # add some custom formatting options. Indent options</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">pdf</span><span class="kw">:</span><span class="co"> # the format of the document is going to be pdf</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">self-contained</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # make sure to delete all the extra files and only keep the .qmd and .pdf once compilation is done</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">colorlinks</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # add color to hyperlinks</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">documentclass</span><span class="kw">:</span><span class="at"> article</span><span class="co"> # make it look like a generic academic article in formatting</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span><span class="co"> # when you execute the R code...</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co"> #... do not show me the R code</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co"> #... do not display warnings from the R code</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co"> #... do not show messages from the R code</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="body" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="body"><span class="header-section-number">6.3.2</span> Body</h3>
+<p>For non-R code parts of your document, you can write in the <code>.qmd</code> document normally. With a couple of exceptions: - To create a header use <code>#</code>. For subheadings, just add another <code>#</code>. E.g., <code>##</code> creates a subheader. - To create an unumbered list, just type <code>-</code>; for numbered list just type the numbers. To make sublists, just type:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>List item 1</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Sub list item 1</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Numbered list item 1</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Numbered list item 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="code-chunks" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="code-chunks"><span class="header-section-number">6.3.3</span> Code Chunks</h3>
+<p>If it weren’t for R code, I’d make my life easier and skip all of this by writing all of this in a <code>.docx</code> or a Google Docs file. 🤦 So let’s learn how to create a code chunk in a <code>.qmd</code> file. The ability to write your code and text all to display your analyses results along with your interpretation in the same document is where Quarto is powerful. 💪</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: one-plus-one</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To create a code chunk for R, you need to identify a few things:</p>
+<ul>
+<li>First you need to tell the <code>.qmd</code> file where the code chunk starts and ends. This is done with the accent symbol. You should have six of these in total. Three to designate the start of the code chunk and three at the end of the code chunk.</li>
+<li>At the start of the code chunk, you need to need to specify which coding language you are evaluating in the code chunk within the brackets (<code>{}</code>). Since we are writing R code, we have <code>{R}</code></li>
+<li>Directly underneath the start of the code chunk, you can include some options about what you want to happen with the code chunk. These options are designated with <code>#|</code>. The option you should always specify is the <code>label</code> option. This option names the code chunk: <code>one-plus-one</code>. We do this because when we compile our <code>.qmd</code> file later, it tells us about the progress of our code blocks and can tell us in what code chunk there is an error in our code (which inevitably happens; even to the best of us)
+<ul>
+<li>There are other options that we can specify. But we’ll cover these a bit later.</li>
+<li>Once we have done that, then we can write our R code. In this case we want to evaluate the expression: <span class="math inline">\(1+1\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="inline-code-chunks" class="level3" data-number="6.3.4">
+<h3 data-number="6.3.4" class="anchored" data-anchor-id="inline-code-chunks"><span class="header-section-number">6.3.4</span> Inline code chunks</h3>
+<p>Say we want to evaluate the same expression <span class="math inline">\(1+1\)</span> and display the result in line with our text. We can do that by writing:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown include code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>The result of the expression 1+1 is ```{r} sprintf('%.2f', 1+1)```.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You don’t need to understand all the specifics of what the <code>sprintf('%.2f',)</code> part does. It basically just lets you display some integer value to the hundredth decimal place. The part after the <code>,</code> is the R code we want evaluated. So <code>1+1</code> in this case. This all together will print the number 2 instead of you manually typing that in.</p>
+<p>Why would anyone want to do that to make it more complicated? In the case of <span class="math inline">\(1+1\)</span> that is a pretty simple expression with a pretty simple result. However, as things get more complicated, you may not want to have to do that manually such as calculating the average of some set of data.</p>
+</section>
+<section id="non-inline-results" class="level3" data-number="6.3.5">
+<h3 data-number="6.3.5" class="anchored" data-anchor-id="non-inline-results"><span class="header-section-number">6.3.5</span> Non-inline results</h3>
+<p>The inline code chunks are primarily useful for displaying the results of some R code “inline” with the text you are writing. But what if I have a table or a graph of some sort of results I want to display?</p>
+<p>This is where specifying those other options come in handy.</p>
+<p>Say I write the following R code to generate a graph (we’ll teach you what this R code means later)</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-chart-1</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: A histogram of Penguin Bill Lengths</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">data=</span>MY_DATASET, <span class="fu">aes</span>(<span class="at">x=</span>bill_length)) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Bill Lengths"</span>, <span class="at">caption=</span><span class="st">"Data Source: Palmer Penguins"</span>) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Don’t worry about the R code to create the graph for now. What is important to notice about this part is, the options we specified.</p>
+<ul>
+<li>With <code>label</code> I specify that it is going to be a figure with <code>fig-</code> and then finish the name with <code>chart-1</code></li>
+<li>With <code>fig-cap</code> I define a title to give the figure.</li>
+</ul>
+<p>When I compile my document and it evaluates this code block, instead of it displaying the code, it will display the figure.</p>
+<p>If I want to reference the figure. I can simply type:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>@fig-chart-1 displays a histogram of the bill length for the penguins in the Palmer Penguins dataset.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will create a link connecting back to the figure for your reader. Pretty cool!</p>
+</section>
+</section>
+<section id="more-resources" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="more-resources"><span class="header-section-number">6.4</span> More resources</h2>
+<p>If you are stuck on how to do something in Quarto, want to add something but are not sure how, or want to get more details on it:</p>
+<ul>
+<li><a href="https://github.com/DamonCharlesRoberts/psci2075sp23.classes.damoncroberts.com/blob/main/examples/quarto_example.qmd">you can find a complete working example of a quarto document (to even use as a template) by copying and pasting the contents of this file</a></li>
+<li><a href="https://www.damoncroberts.com/sections/blog/posts/quarto_basics/quarto_basics_index.html">you can look at this blog post I wrote on it</a></li>
+<li><a href="https://quarto.org/">look at Quarto’s documentation</a>. This is how I learned Quarto!!</li>
+</ul>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-quarto" class="csl-entry" role="doc-biblioentry">
+Allaire, J. J., Charles Teague, Carlos Scheidegger, and Yihui Xie. 2022. <em>Quarto</em>. <a href="https://doi.org/10.5281/zenodo.5960048">https://doi.org/10.5281/zenodo.5960048</a>.
+</div>
+<div id="ref-r_software" class="csl-entry" role="doc-biblioentry">
+R Core Team. 2021. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-r_studio" class="csl-entry" role="doc-biblioentry">
+RStudio Team. 2020. <em>RStudio: Integrated Development Environment for r</em>. Boston, MA: RStudio, PBC. <a href="http://www.rstudio.com/">http://www.rstudio.com/</a>.
+</div>
+<div id="ref-tinytex" class="csl-entry" role="doc-biblioentry">
+Xie, Yihui. 2019. <span>“TinyTeX: A Lightweight, Cross-Platform, and Easy-to-Maintain LaTeX Distribution Based on TeX Live.”</span> <em>TUGboat</em> 40 (1): 30–32. <a href="https://tug.org/TUGboat/Contents/contents40-1.html">https://tug.org/TUGboat/Contents/contents40-1.html</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../docs/04_run_code.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Running Code</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../docs/06_r_syntax_basics.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">👾 Basics of R syntax</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

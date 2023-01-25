@@ -1,0 +1,150 @@
+# 🙀 Quarto (Optional) {#sec-quarto}
+
+<div class="tenor-gif-embed" data-postid="17797511" data-share-method="host" data-aspect-ratio="1.92771" data-width="100%"><a href="https://tenor.com/view/spongebob-squarepants-spongebob-fancy-nickelodeon-driving-gif-17797511">Spongebob Squarepants Spongebob GIF</a>from <a href="https://tenor.com/search/spongebob+squarepants-gifs">Spongebob Squarepants GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+Quarto [@quarto] is a useful way to write a report, document, presentation, website, or book that you also want to execute R [@r_software] -- or other common programming languages -- for. Rather than an `.R` script that you have to copy and paste results from, it allows you to write the document in the same file as you write your code. 🤯 This allows you to compile a final document with text describing your analysis along with the results of your analysis. The output document can come in a number of different formats that allow you to have lots of flexibility for where you display the output without having to deal with the normal complications to produce that file. Even better, this requires you to only need to keep track of one file rather than an `.R` script and a `.docx` file where you have to copy and paste results from `.R` script to your `.docx` file. 💪
+
+## Setup Quarto
+
+1. [Go to the Quarto website](https://quarto.org/docs/get-started/)
+2. Install Quarto [@quarto] on your computer
+3. Where it says *Step 2*, click on RStudio [@r_studio].
+4. Read through their website and look at the tutorials to learn some advanced features about quarto. For basic features, finish reading this chapter.
+
+## Creating a `.qmd` file {#sec-create-qmd}
+
+1. In RStudio [@r_studio], go to your `main panel` and click the dropdown button with the piece of paper and green plus sign. Click on Quarto Document...
+2. This will bring up a new page giving you some options.
+3. Type in the title of your document
+4. Type in your name for the Author
+5. Click on the PDF option as you will want to make a PDF document
+6. Leave the other options and click Create
+
+:::{.callout-note}
+To compile pdf files, you will need to install an additional tool called `tinytex` [@tinytex]. To do this, go to your `terminal` (not your `console`) in RStudio [@r_studio] and type
+
+```{.bash filename="Terminal"}
+quarto install tools tinytex
+```
+:::
+
+## Basics of Quarto
+
+### yaml section
+
+The yaml section of your `.qmd` file provides high-level information about your document (e.g., title, author, and provides more custom formatting information).
+
+If you followed the steps from @sec-create-qmd, then you should see the following at the top of your `.qmd` file:
+
+```{.yaml}
+---
+title: "Untitled"
+format: pdf
+editor: visual
+---
+```
+
+This is your yaml section. It is distinguished by `---` to let your computer know the start and end of this section. 
+
+This information is not super useful, let's add some extra customization to our yaml section. I am going to include `comments` denoted by `#` to let you know what it does.
+
+```{.yaml}
+---
+title: "PSCI 2075 Quarto Example" # define a title for the document
+author: "Damon C. Roberts" # define an author for the document
+format: # add some custom formatting options. Indent options
+    pdf: # the format of the document is going to be pdf
+        self-contained: true # make sure to delete all the extra files and only keep the .qmd and .pdf once compilation is done
+        colorlinks: true # add color to hyperlinks
+        documentclass: article # make it look like a generic academic article in formatting
+execute: # when you execute the R code...
+    echo: false #... do not show me the R code
+    warning: false #... do not display warnings from the R code
+    message: false #... do not show messages from the R code
+---
+```
+
+### Body
+
+For non-R code parts of your document, you can write in the `.qmd` document normally. With a couple of exceptions:
+    - To create a header use `#`. For subheadings, just add another `#`. E.g., `##` creates a subheader.
+    - To create an unumbered list, just type `-`; for numbered list just type the numbers. To make sublists, just type:
+```{.markdown}
+- List item 1
+    - Sub list item 1
+1. Numbered list item 1
+2. Numbered list item 2
+
+```
+
+### Code Chunks
+
+If it weren't for R code, I'd make my life easier and skip all of this by writing all of this in a `.docx` or a Google Docs file. 🤦 So let's learn how to create a code chunk in a `.qmd` file. The ability to write your code and text all to display your analyses results along with your interpretation in the same document is where Quarto is powerful. 💪
+
+```{{r}}
+#| label: one-plus-one
+1+1
+```
+
+To create a code chunk for R, you need to identify a few things:
+
+- First you need to tell the `.qmd` file where the code chunk starts and ends. This is done with the accent symbol. You should have six of these in total. Three to designate the start of the code chunk and three at the end of the code chunk.
+- At the start of the code chunk, you need to need to specify which coding language you are evaluating in the code chunk within the brackets (`{}`). Since we are writing R code, we have `{R}`
+- Directly underneath the start of the code chunk, you can include some options about what you want to happen with the code chunk. These options are designated with `#|`. The option you should always specify is the `label` option. This option names the code chunk: `one-plus-one`. We do this because when we compile our `.qmd` file later, it tells us about the progress of our code blocks and can tell us in what code chunk there is an error in our code (which inevitably happens; even to the best of us)
+    - There are other options that we can specify. But we'll cover these a bit later.
+    - Once we have done that, then we can write our R code. In this case we want to evaluate the expression: $1+1$
+
+### Inline code chunks
+
+Say we want to evaluate the same expression $1+1$ and display the result in line with our text. We can do that by writing:
+
+``` include
+The result of the expression 1+1 is ```{{r}} sprintf('%.2f', 1+1)```.
+```
+
+You don't need to understand all the specifics of what the `sprintf('%.2f',)` part does. It basically just lets you display some integer value to the hundredth decimal place. The part after the `,` is the R code we want evaluated. So `1+1` in this case. This all together will print the number 2 instead of you manually typing that in. 
+
+Why would anyone want to do that to make it more complicated? In the case of $1+1$ that is a pretty simple expression with a pretty simple result. However, as things get more complicated, you may not want to have to do that manually such as calculating the average of some set of data. 
+
+### Non-inline results
+
+The inline code chunks are primarily useful for displaying the results of some R code "inline" with the text you are writing. But what if I have a table or a graph of some sort of results I want to display? 
+
+This is where specifying those other options come in handy.
+
+Say I write the following R code to generate a graph (we'll teach you what this R code means later)
+
+```{{r}}
+#| label: fig-chart-1
+#| fig-cap: A histogram of Penguin Bill Lengths
+
+ggplot() +
+    geom_histogram(data=MY_DATASET, aes(x=bill_length)) +
+    labs(x = "Bill Lengths", caption="Data Source: Palmer Penguins") +
+    theme_minimal()
+```
+
+Don't worry about the R code to create the graph for now. What is important to notice about this part is, the options we specified.
+
+- With `label` I specify that it is going to be a figure with `fig-` and then finish the name with `chart-1`
+- With `fig-cap` I define a title to give the figure. 
+
+When I compile my document and it evaluates this code block, instead of it displaying the code, it will display the figure. 
+
+If I want to reference the figure. I can simply type:
+
+```{.markdown}
+
+@fig-chart-1 displays a histogram of the bill length for the penguins in the Palmer Penguins dataset.
+
+```
+
+This will create a link connecting back to the figure for your reader. Pretty cool!
+
+## More resources
+
+If you are stuck on how to do something in Quarto, want to add something but are not sure how, or want to get more details on it:
+
+- [you can find a complete working example of a quarto document (to even use as a template) by copying and pasting the contents of this file](https://github.com/DamonCharlesRoberts/psci2075sp23.classes.damoncroberts.com/blob/main/examples/quarto_example.qmd)
+- [you can look at this blog post I wrote on it](https://www.damoncroberts.com/sections/blog/posts/quarto_basics/quarto_basics_index.html)
+- [look at Quarto's documentation](https://quarto.org/). This is how I learned Quarto!!
