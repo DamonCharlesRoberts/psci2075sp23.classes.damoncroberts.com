@@ -19,7 +19,7 @@ book:
     - docs/references.qmd
   google-analytics: "G-8Z2BLG3VEE"
 toc-depth: 2
-bibliography: assets/references.bib
+bibliography: references.bib
 
 format:
   html:
