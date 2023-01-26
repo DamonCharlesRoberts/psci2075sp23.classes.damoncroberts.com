@@ -165,35 +165,35 @@
     "href": "docs/02_anatomy.html#main-panel",
     "title": "3  Anatomy of IDE interface",
     "section": "3.1 Main panel",
-    "text": "3.1 Main panel\n\nThis is where you will write all of your code.\n\nAs we will talk about in the next section, your code is passed/sent to the console which actually is what evaluates/runs your code.\nHowever, you need to document your code. So you will write a script so that you can save all of the code you wrote. Think of a script as a document outlining the steps you took to perform your analysis.\nYou write your script in this main panel"
+    "text": "3.1 Main panel\n\n\n\nMain Panel\n\n\n\nThis is where you will write all of your code.\n\nAs we will talk about in the next section, your code is passed/sent to the console which actually is what evaluates/runs your code.\nHowever, you need to document your code. So you will write a script so that you can save all of the code you wrote. Think of a script as a document outlining the steps you took to perform your analysis.\nYou write your script in this main panel"
   },
   {
     "objectID": "docs/02_anatomy.html#console",
     "href": "docs/02_anatomy.html#console",
     "title": "3  Anatomy of IDE interface",
     "section": "3.2 Console",
-    "text": "3.2 Console\n\nWhen you run code from a script, you send your code to your R console. This is done by either highlighting your code and using the shortcut ctrl enter ( ⌘ return  on Mac) or hitting the run button at the top of your main panel.\nThe code you write is evaluated and ran by your R console."
+    "text": "3.2 Console\n\n\n\nConsole\n\n\n\nWhen you run code from a script, you send your code to your R console. This is done by either highlighting your code and using the shortcut ctrl enter ( ⌘ return  on Mac) or hitting the run button at the top of your main panel.\nThe code you write is evaluated and ran by your R console."
   },
   {
     "objectID": "docs/02_anatomy.html#terminal",
     "href": "docs/02_anatomy.html#terminal",
     "title": "3  Anatomy of IDE interface",
     "section": "3.3 Terminal",
-    "text": "3.3 Terminal\n\nThe terminal is also an area to run code. This often runs a different coding language (i.e. bash) which is a coding language that tells your computer what to do from a systems standpoint."
+    "text": "3.3 Terminal\n\n\n\nTerminal\n\n\n\nThe terminal is also an area to run code. This often runs a different coding language (i.e. bash) which is a coding language that tells your computer what to do from a systems standpoint."
   },
   {
     "objectID": "docs/02_anatomy.html#environment",
     "href": "docs/02_anatomy.html#environment",
     "title": "3  Anatomy of IDE interface",
     "section": "3.4 Environment",
-    "text": "3.4 Environment\n\nThe environment displays your cached (temporarily saved) objects that you create with your R code.\n\nWe will elaborate a bit more later on this point.\n\nBut this lets you see things that you’ve temporarily stored from your code."
+    "text": "3.4 Environment\n\n\n\nEnvironment\n\n\n\nThe environment displays your cached (temporarily saved) objects that you create with your R code.\n\nWe will elaborate a bit more later on this point.\n\nBut this lets you see things that you’ve temporarily stored from your code."
   },
   {
     "objectID": "docs/02_anatomy.html#files",
     "href": "docs/02_anatomy.html#files",
     "title": "3  Anatomy of IDE interface",
     "section": "3.5 Files",
-    "text": "3.5 Files\n\nLet’s you see what files and where you have them on your computer."
+    "text": "3.5 Files\n\n\n\nFiles\n\n\n\nLet’s you see what files and where you have them on your computer."
   },
   {
     "objectID": "docs/03_file_structure.html#working-directories-and-file-paths",
