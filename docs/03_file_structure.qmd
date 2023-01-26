@@ -88,6 +88,7 @@ In R, you need to access files through file paths. You can't just click on a fil
 Why should I know about working directories? Well, R uses working directories to help make your life easier. Rather than having to write out the *entire* file path each time you want to interact with a particular file in R, instead you can just write out, in reference to your working directory, where that file is.
 
 Say that you want to access `psci_2075.pdf` 📃 on your computer and your working directory is at your particular `Users` folder (working directory: `/Users/damonroberts/`). What would the file path be?
+
 - `./Downloads/psci_2075.pdf`
     - the `./` refers to the current working directory
     - the rest refers to where you are relative to the working directory.
@@ -132,9 +133,11 @@ getwd()
 
 - This will return your default working directory
 - To change this to your `psci_2075` folder, at the top of *each* `.R` or `.qmd` file you write, put:
+
 ```{R}
 #| label: set-wd
 #| eval: false
 setwd("./Desktop/psci_2075")
 ```
+
 - Now when you want to reference a file, you do it relative to your `psci_2075` 📂.
