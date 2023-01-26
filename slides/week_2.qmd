@@ -1,5 +1,5 @@
 ---
-title: 'PSCI 2075: Week 1 - Introduction to the course and setting up R'
+title: 'PSCI 2075: Week 2 - Introduction to R'
 author: 'Damon C. Roberts'
 format: 
     revealjs:
