@@ -13,5 +13,11 @@ The central tendency of a variable (univariate) would describe where most of you
 
 There are a number of ways to quantify this. The most common are the **mean** ($\bar{x}$) and the **median**.
 
+<!--
+    Notes: 
+        - FINISH THIS ONE UP 
+        - Cover tables for descriptive stats
+        - Cover graphs for descriptive stats
 
+-->
 # The spread
