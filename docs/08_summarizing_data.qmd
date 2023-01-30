@@ -1,0 +1,17 @@
+# Descriptive statistics and Summarizing your data
+
+In the previous exercise, we successfully loaded our data and we were able to get a sense of how many observations and variables we had for our data. You may have noticed, however, that we were only previewing our data. We still do not have a super solid sense of what our data look like.
+
+There are two main ways that we can describe and get a handle on our data:
+
+1. get a measure of our **central tendency**
+2. get a measure of our **spread**
+
+# The central tendency
+
+The central tendency of a variable (univariate) would describe where most of your observations lie on possible values that a observation can take on for that particular variable.
+
+There are a number of ways to quantify this. The most common are the **mean** ($\bar{x}$) and the **median**.
+
+
+# The spread

@@ -15,7 +15,7 @@ book:
     - docs/04_run_code.qmd
     - docs/05_quarto.qmd
     - docs/06_r_syntax_basics.qmd
-    #- 06_loading_data.qmd
+    - docs/07_loading_data.qmd
     - docs/references.qmd
   google-analytics: "G-8Z2BLG3VEE"
 toc-depth: 2

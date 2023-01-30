@@ -1,2 +1,115 @@
 # Loading Data {#sec-loading-data}
 
+```{r}
+#| label: setup
+#| echo: false
+# Load libraries
+box::use(
+    dplyr = dplyr[select]
+)
+# Load data
+    #* Results in:
+        #* nes(data.frame)
+        #* world(data.frame)
+        #* states(data.frame)
+data <- load("C:/Users/damon/Desktop/psci_2075/psci_2075_data.RData")
+```
+
+In R, we aren't just adding `2+2`, we are often trying to analyze data that we've collected on Countries, Legislative bodies, or citizens. As a result, many of the calculations we are preforming in Political and Social Scientific research are too cumbersome to be doing by hand.
+
+One of the first things you need to know how to do to engage in research, is to load a dataset that which records `variables` in columns, and `rows` as observations. 
+
+A variable refers to some quantification of some concept. An example of a variable we often deal with in political science may be something like the GDP (Gross Domestic Product) of a Country. In this example, GDP would be the `variable` and `row` would be Country. Another example would be individual attitudes on Highway spending. The `variable` would be people's attitudes toward Highway spending (so if they like or dislike it) and the row would be the people that respondent to the survey question. You can visualize the first example below.
+
+```{r}
+#| label: gdp-example
+#| echo: false
+world_view <- world |>
+    select(country, gdppc)
+head(world_view, 5)
+```
+
+## How to load data for this class
+
+There are *technically* a couple of options, but you ideally should use the second one.
+
+Option 1. Load the data by double clicking on the file
+
+Option 2. Write code to load the data
+
+For this class only, will both options work. However, datasets come in many different forms. Sometimes data come to you as `.csv` files, sometimes as `.dta` files, sometimes in an SQL database, etc. In these cases, you will *not* be able to load the data by clicking on the file. You will *have* to write the code.
+
+Even for this class, you should ideally write code to load the data. Why? Well, you want *everything* you do for your analyses documented. Including loading the data. One of the main reasons for this is to reduce the number of steps that you have to take for you to run your analyses or for someone else to run your analyses. Writing the code that you need to load your dataset helps with this.
+
+To write the code to write your data, you can simply enter:
+
+```{r}
+#| eval: false
+# Load my data
+load("psci_2075_data_file.RData")
+```
+
+What did that do? Running that loaded three different datasets. The `nes`, the `world`, and the `states` dataset. These popped up as three objects called `nes`, `world`, and `states` in your RStudio environment.
+
+To access these, you can access them the way you would with any object: by referring to their name.
+
+If you want a preview of each you can use the `head()` function:
+
+```{r}
+#| label: preview
+
+# Preview first 5 rows of:
+    #* NES
+head(nes, 5)
+    #* States
+head(states, 5)
+    #* World
+head(world, 5)
+
+# Preview first 10 rows of NES:
+head(nes, 10)
+```
+
+If you want to see the entire thing, you can use the `View()` function:
+
+```{r}
+#| label: view-dataset
+#| eval: false
+
+# View NES
+View(nes)
+
+# View States
+View(states)
+
+# View World
+View(world)
+```
+
+## To view the number of rows you have in your dataset
+
+```{r}
+#| label: nrow-datasets
+
+# Number of observations (rows) for:
+    #* NES
+nrow(nes)
+    #* States
+nrow(states)
+    #* World
+nrow(world)
+```
+
+## To view the number of columns you have in your dataset
+
+```{r}
+#| label: ncol-datasets
+
+# Number of variables (columns) for:
+    #* NES
+ncol(nes)
+    #* States
+ncol(states)
+    #* World
+ncol(world)
+```
