@@ -154,9 +154,6 @@ gtag('js', new Date());
 gtag('config', 'G-8Z2BLG3VEE', { 'anonymize_ip': true});
 </script>
 
-<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
@@ -342,13 +339,13 @@ gtag('config', 'G-8Z2BLG3VEE', { 'anonymize_ip': true});
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>world <span class="sc">%&gt;%</span> <span class="co"># grab the world dataset, and do the following</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="co"># make a ggplot object</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>( <span class="co"># make a histogram</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x =</span> gdppc), <span class="co"># use the gdppc variable</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(gdppc)), <span class="co"># use the gdppc variable</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">"#D3D3D3"</span>, <span class="co"># fill the bars with light grey</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"#000000"</span> <span class="co"># make the outlines of the bars black</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="co"># change the theme to be prettier</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>( <span class="co"># clean up the labels</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">"GDP (Per Capita)"</span>, <span class="co"># change the x-axis label to this</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">"log(GDP per capita)"</span>, <span class="co"># change the x-axis label to this</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">"Count of countries"</span>, <span class="co"># change the y-axis label to this</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">captions =</span> <span class="st">"Data source: World dataset."</span> <span class="co"># add a caption</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -387,13 +384,13 @@ gtag('config', 'G-8Z2BLG3VEE', { 'anonymize_ip': true});
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>world <span class="sc">%&gt;%</span> <span class="co"># grab the world dataset</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="co"># make a ggplot object</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>( <span class="co"># make a geom_boxplot</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x =</span> gdppc), <span class="co"># using the gdppc variable</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(gdppc)), <span class="co"># using the gdppc variable</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">"#D3D3D3"</span>, <span class="co"># fill it with a light grey color</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> <span class="fl">0.7</span> <span class="co"># don't make the color solid</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="co"># use the minimal theme to look nicer</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>( <span class="co"># adjust the labels</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">"GDP (per capita)"</span>, <span class="co"># change the x axis to this</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">"log(GDP per capita)"</span>, <span class="co"># change the x axis to this</span></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">caption =</span> <span class="st">"Data source: World dataset."</span></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -465,8 +462,9 @@ Note
 <p>One super nifty function that we can use is the <code>datasummary_skim()</code> function from the <code>modelsummary</code> package <span class="citation" data-cites="modelsummary">(<a href="references.html#ref-modelsummary" role="doc-biblioref">Arel-Bundock 2022</a>)</span>. What the modelsummary package does, is it can calculate these things, along with quite a few others as well.</p>
 <p>So, I am going to tell R to grab my <code>world</code> dataset object, and to apply the following functions to it – I do this with the <code>pipe</code> function (<code>%&gt;%</code>):</p>
 <ul>
-<li>With <code>dplyr</code>’s <span class="citation" data-cites="dplyr">(<a href="references.html#ref-dplyr" role="doc-biblioref">Wickham et al. 2023</a>)</span> <code>select()</code> function, I am going to <code>select()</code> the <code>gdppc</code> column</li>
-<li>With <code>dplyr</code>’s <span class="citation" data-cites="dplyr">(<a href="references.html#ref-dplyr" role="doc-biblioref">Wickham et al. 2023</a>)</span> <code>rename()</code> function, I am going to <code>rename()</code> the <code>gdppc</code> column to <code>GDP (per capita)</code></li>
+<li>With <code>dplyr</code>’s <span class="citation" data-cites="dplyr">(<a href="references.html#ref-dplyr" role="doc-biblioref">Wickham et al. 2023</a>)</span> <code>mutate()</code> function, I am going to transform the <code>gdppc</code> column to be the <code>log()</code> of it. This log transformation makes it a bit easier to read the numbers. I am going to store the result of this into a new column called <code>log_gdppc</code>.</li>
+<li>With <code>dplyr</code>’s <span class="citation" data-cites="dplyr">(<a href="references.html#ref-dplyr" role="doc-biblioref">Wickham et al. 2023</a>)</span> <code>select()</code> function, I am going to <code>select()</code> the <code>log_gdppc</code> column.</li>
+<li>With <code>dplyr</code>’s <span class="citation" data-cites="dplyr">(<a href="references.html#ref-dplyr" role="doc-biblioref">Wickham et al. 2023</a>)</span> <code>rename()</code> function, I am going to <code>rename()</code> the <code>log_gdppc</code> column to <code>log(GDP per capita)</code></li>
 </ul>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -489,64 +487,23 @@ Note
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>world <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(gdppc) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">`</span><span class="at">GDP (per capita)</span><span class="st">`</span> <span class="ot">=</span> gdppc) <span class="sc">%&gt;%</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">datasummary_skim</span>(</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">notes =</span> <span class="st">"Data source: world dataset."</span>,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">output =</span> <span class="st">"gdppc_summary.html"</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>world <span class="sc">%&gt;%</span> <span class="co"># grab the world dataset</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>( <span class="co"># change the values for a variable</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">log_gdppc =</span> <span class="fu">log</span>(gdppc) <span class="co"># take the log of gdppc and store it in new column called log_gdppc</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>( <span class="co"># grab a variable...</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        log_gdppc <span class="co">#... specifically the log_gdppc column, drop all the other columns</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>( <span class="co"># rename columns</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">`</span><span class="at">log(GDP per capita)</span><span class="st">`</span> <span class="ot">=</span> log_gdppc <span class="co"># specifically rename log_gdppc to log(GDP per capita)</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">datasummary_skim</span>( <span class="co"># make a table sumamrizing the variables</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">notes =</span> <span class="st">"Data source: world dataset."</span>, <span class="co"># add notes to bottom of table</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">output =</span> <span class="st">"gdppc_summary.html"</span> <span class="co"># store result to a html file called gdppc_summary.html</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="tbl-gdppc-table" class="anchored">
+<div id="tbl-gdppc-table" class="cell tbl-parent quarto-layout-panel anchored" data-tbl-cap="Descriptive statistics of countries' GDP (per capita)">
 
-<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table"><caption>Table&nbsp;9.1:  Descriptive statistics of countries’ GDP (per capita) </caption>
- <thead>
-  <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:right;"> Unique (#) </th>
-   <th style="text-align:right;"> Missing (%) </th>
-   <th style="text-align:right;"> Mean </th>
-   <th style="text-align:right;"> SD </th>
-   <th style="text-align:right;"> Min </th>
-   <th style="text-align:right;"> Median </th>
-   <th style="text-align:right;"> Max </th>
-   <th style="text-align:right;">    </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> GDP (per capita) </td>
-   <td style="text-align:right;"> 177 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 16326.8 </td>
-   <td style="text-align:right;"> 18456.6 </td>
-   <td style="text-align:right;"> 683.8 </td>
-   <td style="text-align:right;"> 9863.2 </td>
-   <td style="text-align:right;"> 123593.0 </td>
-   <td style="text-align:right;">  <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewbox="0 0 48.00 12.00"><defs><style type="text/css">
-    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
-      fill: none;
-      stroke: #000000;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-miterlimit: 10.00;
-    }
-    .svglite text {
-      white-space: pre;
-    }
-  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clippath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
-</g><defs><clippath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clippath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.53" y="3.22" width="3.62" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="5.15" y="8.15" width="3.62" height="3.51" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="8.76" y="10.05" width="3.62" height="1.61" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="12.38" y="10.33" width="3.62" height="1.33" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.99" y="10.62" width="3.62" height="1.04" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.61" y="11.38" width="3.62" height="0.28" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="23.23" y="11.66" width="3.62" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="26.84" y="11.38" width="3.62" height="0.28" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="30.46" y="11.57" width="3.62" height="0.095" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="34.07" y="11.66" width="3.62" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.69" y="11.66" width="3.62" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="41.31" y="11.66" width="3.62" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="44.92" y="11.57" width="3.62" height="0.095" style="stroke-width: 0.38; fill: #000000;"></rect></g></svg>
-</td>
-  </tr>
-</tbody>
-<tfoot><tr><td style="padding: 0; " colspan="100%">
-<sup></sup> Data source: world dataset.</td></tr></tfoot>
-</table>
-
-</div>
-</div>
 </div>
 <p>It gives me a whole bunch of things. Including a (albeit small) histogram in the last column. Nice!</p>
 </section>

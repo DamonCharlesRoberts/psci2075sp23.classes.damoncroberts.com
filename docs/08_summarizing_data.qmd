@@ -15,7 +15,8 @@ box::use(
     #* Helpful functions for dataframe management
     dplyr = dplyr[
         rename,
-        select
+        select,
+        mutate
     ],
     #* Helpful functions for making graphs
     ggplot2 = ggplot2[
@@ -104,13 +105,13 @@ Say, for example we want to visualize the breakdown of countries' GDPPC. We can 
 world %>% # grab the world dataset, and do the following
     ggplot() + # make a ggplot object
     geom_histogram( # make a histogram
-        aes(x = gdppc), # use the gdppc variable
+        aes(x = log(gdppc)), # use the gdppc variable
         fill = "#D3D3D3", # fill the bars with light grey
         color = "#000000" # make the outlines of the bars black
     ) +
     theme_minimal() + # change the theme to be prettier
     labs( # clean up the labels
-        x = "GDP (Per Capita)", # change the x-axis label to this
+        x = "log(GDP per capita)", # change the x-axis label to this
         y = "Count of countries", # change the y-axis label to this
         captions = "Data source: World dataset." # add a caption
     )
@@ -139,7 +140,7 @@ world %>% # grab the world dataset, and do the following
     ) +
     theme_minimal() + # change the theme to be prettier
     labs( # clean up the labels
-        x = "GDP (Per Capita)", # change the x-axis label to this
+        x = "log(GDP per capita)", # change the x-axis label to this
         y = "Count of countries", # change the y-axis label to this
         captions = "Data source: World dataset." # add a caption
     )
@@ -156,13 +157,13 @@ Another common way to visually describe a variable in your data is through a box
 world %>% # grab the world dataset
     ggplot() + # make a ggplot object
     geom_boxplot( # make a geom_boxplot
-        aes(x = gdppc), # using the gdppc variable
+        aes(x = log(gdppc)), # using the gdppc variable
         fill = "#D3D3D3", # fill it with a light grey color
         alpha = 0.7 # don't make the color solid
     ) +
     theme_minimal() + # use the minimal theme to look nicer
     labs( # adjust the labels
-        x = "GDP (per capita)", # change the x axis to this
+        x = "log(GDP per capita)", # change the x axis to this
         caption = "Data source: World dataset."
     )
 ```
@@ -184,13 +185,13 @@ To make the boxplot for the GDP (per capita) `gdppc` variable in the `world` dat
 world %>% # grab the world dataset
     ggplot() + # make a ggplot object
     geom_boxplot( # make a geom_boxplot
-        aes(x = gdppc), # using the gdppc variable
+        aes(x = log(gdppc)), # using the gdppc variable
         fill = "#D3D3D3", # fill it with a light grey color
         alpha = 0.7 # don't make the color solid
     ) +
     theme_minimal() + # use the minimal theme to look nicer
     labs( # adjust the labels
-        x = "GDP (per capita)", # change the x axis to this
+        x = "log(GDP per capita)", # change the x axis to this
         caption = "Data source: World dataset."
     )
 ```
@@ -234,8 +235,9 @@ One super nifty function that we can use is the `datasummary_skim()` function fr
 
 So, I am going to tell R to grab my `world` dataset object, and to apply the following functions to it -- I do this with the `pipe` function (`%>%`):
 
-- With `dplyr`'s [@dplyr] `select()` function, I am going to `select()` the `gdppc` column
-- With `dplyr`'s [@dplyr] `rename()` function, I am going to `rename()` the `gdppc` column to `GDP (per capita)`
+- With `dplyr`'s [@dplyr] `mutate()` function, I am going to transform the `gdppc` column to be the `log()` of it. This log transformation makes it a bit easier to read the numbers. I am going to store the result of this into a new column called `log_gdppc`.
+- With `dplyr`'s [@dplyr] `select()` function, I am going to `select()` the `log_gdppc` column.
+- With `dplyr`'s [@dplyr] `rename()` function, I am going to `rename()` the `log_gdppc` column to `log(GDP per capita)`
 
 :::{.callout-note}
 
@@ -249,12 +251,19 @@ Note how instead of using quotations in the `rename()` function, I am using the 
 ```{r}
 #| label: gdppc-table
 #| eval: false
-world %>%
-    select(gdppc) %>%
-    rename(`GDP (per capita)` = gdppc) %>%
-    datasummary_skim(
-        notes = "Data source: world dataset.",
-        output = "gdppc_summary.html"
+world %>% # grab the world dataset
+    mutate( # change the values for a variable
+        log_gdppc = log(gdppc) # take the log of gdppc and store it in new column called log_gdppc
+    ) %>% 
+    select( # grab a variable...
+        log_gdppc #... specifically the log_gdppc column, drop all the other columns
+    ) %>% 
+    rename( # rename columns
+        `log(GDP per capita)` = log_gdppc # specifically rename log_gdppc to log(GDP per capita)
+    ) %>%
+    datasummary_skim( # make a table sumamrizing the variables
+        notes = "Data source: world dataset.", # add notes to bottom of table
+        output = "gdppc_summary.html" # store result to a html file called gdppc_summary.html
     )
 ```
 
@@ -262,11 +271,19 @@ world %>%
 #| label: tbl-gdppc-table
 #| tbl-cap: Descriptive statistics of countries' GDP (per capita)
 #| echo: false
-world %>%
-    select(gdppc) %>%
-    rename(`GDP (per capita)` = gdppc) %>%
-    datasummary_skim(
-        notes = "Data source: world dataset."
+world %>% # grab the world dataset
+    mutate( # change the values for a variable
+        log_gdppc = log(gdppc) # take the log of gdppc and store it in new column called log_gdppc
+    ) %>% 
+    select( # grab a variable...
+        log_gdppc #... specifically the log_gdppc column, drop all the other columns
+    ) %>% 
+    rename( # rename columns
+        `log(GDP per capita)` = log_gdppc # specifically rename log_gdppc to log(GDP per capita)
+    ) %>%
+    datasummary_skim( # make a table sumamrizing the variables
+        notes = "Data source: world dataset.", # add notes to bottom of table
+        output = "gdppc_summary.html" # store result to a html file called gdppc_summary.html
     )
 ```
 

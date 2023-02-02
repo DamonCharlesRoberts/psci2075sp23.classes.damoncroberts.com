@@ -25,7 +25,7 @@ head(world) # previews the first five lines of world dataset
 world %>% # grab the world dataset, and do the following
     ggplot() + # make a ggplot object
     geom_histogram( # make a histogram
-        aes(x = gdppc), # use the gdppc variable
+        aes(x = log(gdppc)), # use the gdppc variable and take the log of it
         fill = "#D3D3D3", # fill the bars with light grey
         color = "#000000" # make the outlines of the bars black
     ) +
@@ -39,7 +39,7 @@ world %>% # grab the world dataset, and do the following
 world %>% # grab the world dataset
     ggplot() + # make a ggplot object
     geom_boxplot( # make a geom_boxplot
-        aes(x = gdppc), # using the gdppc variable
+        aes(x = log(gdppc)), # using the log transformed gdppc variable
         fill = "#D3D3D3", # fill it with a light grey color
         alpha = 0.7 # don't make the color solid
     ) +
@@ -59,8 +59,13 @@ summary(world$gdppc) # from the world dataset, grab ($) the column called gdppc
     #* Use the modelsummary package to make a couple of these calculations...
     #* ... and to make a table of them
 world %>%
-    select(gdppc) %>%
-    rename(`GDP (per capita)` = gdppc) %>%
+    mutate(
+        log_gdppc = log(gdppc)
+    ) %>%
+    select(
+        log_gdppc
+    ) %>%
+    rename(`log(GDP per capita)` = log_gdppc) %>%
     datasummary_skim(
         notes = "Data source: world dataset.",
         output = "gdppc_summary.html"
