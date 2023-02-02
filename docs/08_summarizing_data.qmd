@@ -283,7 +283,6 @@ world %>% # grab the world dataset
     ) %>%
     datasummary_skim( # make a table sumamrizing the variables
         notes = "Data source: world dataset.", # add notes to bottom of table
-        output = "gdppc_summary.html" # store result to a html file called gdppc_summary.html
     )
 ```
 
