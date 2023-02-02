@@ -1,3 +1,7 @@
+# 👀 Descriptive statistics and summarizing your data
+
+<div class="tenor-gif-embed" data-postid="18886161" data-share-method="host" data-aspect-ratio="1.78771" data-width="100%"><a href="https://tenor.com/view/its-kinda-hard-to-describe-mrwhosetheboss-i-dont-know-how-to-say-it-hard-to-put-into-words-gif-18886161">Its Kinda Hard To Describe Mrwhosetheboss GIF</a>from <a href="https://tenor.com/search/its+kinda+hard+to+describe-gifs">Its Kinda Hard To Describe GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
 ```{r}
 #| label: setup
 #| echo: false
@@ -31,9 +35,6 @@ box::use(
 # Load data
 load(file = "C:/Users/damon/Desktop/psci_2075/psci_2075_data.RData")
 ```
-# 👀 Descriptive statistics and summarizing your data
-
-<div class="tenor-gif-embed" data-postid="18886161" data-share-method="host" data-aspect-ratio="1.78771" data-width="100%"><a href="https://tenor.com/view/its-kinda-hard-to-describe-mrwhosetheboss-i-dont-know-how-to-say-it-hard-to-put-into-words-gif-18886161">Its Kinda Hard To Describe Mrwhosetheboss GIF</a>from <a href="https://tenor.com/search/its+kinda+hard+to+describe-gifs">Its Kinda Hard To Describe GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
 In the previous exercise, we successfully loaded our data 💪 and we were able to get a sense of how many observations and variables we had for our data. You may have noticed, however, that we were only previewing our data. We still do not have a super solid sense of what our data look like. 👀
 
