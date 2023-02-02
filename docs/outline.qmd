@@ -22,6 +22,11 @@
 
 ## Week 3
 
+- Attendance
+- Go over how to load the datasets for the class. [Load data](07_loading_data.qmd)
+- Go over describing variables in your data. [Descriptive statistics](08_summarizing_data.qmd)
+- (If time) get groups together to work on Group Assignment 1.
+
 ## Week 4
 
 ## Week 5

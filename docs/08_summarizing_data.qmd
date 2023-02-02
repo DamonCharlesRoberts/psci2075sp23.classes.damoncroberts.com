@@ -1,23 +1,280 @@
-# Descriptive statistics and Summarizing your data
+```{r}
+#| label: setup
+#| echo: false
 
-In the previous exercise, we successfully loaded our data and we were able to get a sense of how many observations and variables we had for our data. You may have noticed, however, that we were only previewing our data. We still do not have a super solid sense of what our data look like.
+# Modularly load functions
+box::use(
+    #* For the pipe operator
+    magrittr = magrittr[
+        `%>%`
+    ],
+    #* Helpful functions for dataframe management
+    dplyr = dplyr[
+        rename,
+        select
+    ],
+    #* Helpful functions for making graphs
+    ggplot2 = ggplot2[
+        ggplot,
+        aes,
+        geom_histogram,
+        geom_boxplot,
+        theme_minimal,
+        labs
+    ],
+    #* Helpful functions for makeing tables of descriptive statistics
+    modelsummary = modelsummary[
+        datasummary_skim
+    ]
+
+)
+# Load data
+load(file = "C:/Users/damon/Desktop/psci_2075/psci_2075_data.RData")
+```
+# 👀 Descriptive statistics and summarizing your data
+
+<div class="tenor-gif-embed" data-postid="18886161" data-share-method="host" data-aspect-ratio="1.78771" data-width="100%"><a href="https://tenor.com/view/its-kinda-hard-to-describe-mrwhosetheboss-i-dont-know-how-to-say-it-hard-to-put-into-words-gif-18886161">Its Kinda Hard To Describe Mrwhosetheboss GIF</a>from <a href="https://tenor.com/search/its+kinda+hard+to+describe-gifs">Its Kinda Hard To Describe GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+In the previous exercise, we successfully loaded our data 💪 and we were able to get a sense of how many observations and variables we had for our data. You may have noticed, however, that we were only previewing our data. We still do not have a super solid sense of what our data look like. 👀
 
 There are two main ways that we can describe and get a handle on our data:
 
 1. get a measure of our **central tendency**
 2. get a measure of our **spread**
 
-# The central tendency
+## The central tendency
 
 The central tendency of a variable (univariate) would describe where most of your observations lie on possible values that a observation can take on for that particular variable.
 
 There are a number of ways to quantify this. The most common are the **mean** ($\bar{x}$) and the **median**.
 
-<!--
-    Notes: 
-        - FINISH THIS ONE UP 
-        - Cover tables for descriptive stats
-        - Cover graphs for descriptive stats
+## The spread
 
--->
-# The spread
+It is not necessarily the case that observations all sit at the mean (they may, but do not have to). Think for example about house prices. If the average house price is $405,000, that does not imply that every single house price is $405,000. Some will be higher than that or lower than that.
+
+This motivates our need to describe a variable by not just its central tendency but also the variance or spread around the mean. There are two common metrics we can calculate to do this:
+
+1. The variance ($\sigma^2$)
+2. The standard deviation ($\sigma$)
+
+The difference between the two is that the standard deviation is 
+
+$$
+\sigma (\text{std. dev.}) = \sqrt{\sigma^2 (\text{variance})}
+$$
+
+## Easy ways to describe these with R
+
+### Graphics
+
+In R, there are tons of graphical ways that we can describe a single variable.
+
+A really handy website that you can use for inspiration and for example code, is [R-Graph-Gallery](http://r-graph-gallery.com/).
+
+The most popular R package for making nice-looking graphics in R is called `ggplot2()` [@ggplot2]. 
+
+For your first time using it, you should install the `ggplot2()` [@ggplot2] package.
+
+```{r}
+#| label: install-ggplot
+#| eval: false
+
+# Install the ggplot2 package
+install.packages("ggplot2")
+```
+
+Then once we've installed it, we want to make sure to load by using the `library()` function in our `.R` script before we use it.
+
+```{r}
+#| label: load-ggplot
+#| eval: false
+library(ggplot2)
+```
+
+#### Histograms
+
+Histograms are really useful charts that we can use to visually depict the distribution of observations for a particular variable in our dataset.
+
+Say, for example we want to visualize the breakdown of countries' GDPPC. We can do that with a histogram.
+
+```{r}
+#| label: gdp-histogram
+#| eval: false
+world %>% # grab the world dataset, and do the following
+    ggplot() + # make a ggplot object
+    geom_histogram( # make a histogram
+        aes(x = gdppc), # use the gdppc variable
+        fill = "#D3D3D3", # fill the bars with light grey
+        color = "#000000" # make the outlines of the bars black
+    ) +
+    theme_minimal() + # change the theme to be prettier
+    labs( # clean up the labels
+        x = "GDP (Per Capita)", # change the x-axis label to this
+        y = "Count of countries", # change the y-axis label to this
+        captions = "Data source: World dataset." # add a caption
+    )
+```
+
+What the code is doing above:
+
+1. Grab the world data set and use the `pipe` function from the `magrittr` package [@magrittr] to connect the other functions to it.
+2. Create a `ggplot()` [@ggplot2] object.
+3. I want to make a histogram, so I'm going to use `ggplot` [@ggplot2] and will use the `geom_histogram()` function.
+4. Inside the `geom_histogram()` function, I want to tell it what variable I want to plot. So I am going to use the `aes()` function which will grab from the `world` dataset object and will then grab the `gddpc` variable. I am going to use the `log()` function to log-transform it. This will make the x-axis a bit easier to read.
+5. For the histogram, I want to change the default colors of the graph a bit. I want to `fill` in the bars with a light grey color (using a hex code) `"#D3D3D3"` and I want to make the outline of the bars black (using a hex code) `"#000000"`.
+5. Then, I want to make the rest of the plot look a little bit prettier - so I am going to use the `theme_minimal()` function from the `ggplot2` package.
+6. Also to help make the plot a bit prettier, I am going to change some labels for the figure with the `labs()` function from the `ggplot2` package. To change my x-axis label, I am going to set `x` equal to `"GDP (Per Capita)"`. To change my y-axis label, I am going to set `y` equal to `"Count of countries"`. And I want to add a caption at the bottom for my reader to know what dataset this is from, so I am going to set `caption` equal to `"Data source: World dataset."`.
+
+```{r}
+#| label: fig-gdp-histogram
+#| fig-cap: Distribution of Countries' GDP (Per capita)
+#| echo: false
+world %>% # grab the world dataset, and do the following
+    ggplot() + # make a ggplot object
+    geom_histogram( # make a histogram
+        aes(x = log(gdppc)), # use the gdppc variable
+        fill = "#D3D3D3", # fill the bars with light grey
+        color = "#000000" # make the outlines of the bars black
+    ) +
+    theme_minimal() + # change the theme to be prettier
+    labs( # clean up the labels
+        x = "GDP (Per Capita)", # change the x-axis label to this
+        y = "Count of countries", # change the y-axis label to this
+        captions = "Data source: World dataset." # add a caption
+    )
+```
+
+#### Boxplot
+
+Another common way to visually describe a variable in your data is through a boxplot. Boxplots lets us visualize not only the median (one metric of our central tendency) of a variable (the line down the middle), but also the spread through the edges of the box (which represent the first and third quantiles), and the minimum and maximum values. Any extra "dots" that the plot shows reflects "outliers" -- which are observations that are quite abnormal relative to the sample.
+
+```{r}
+#| label: boxplot-example
+#| eval: false
+
+world %>% # grab the world dataset
+    ggplot() + # make a ggplot object
+    geom_boxplot( # make a geom_boxplot
+        aes(x = gdppc), # using the gdppc variable
+        fill = "#D3D3D3", # fill it with a light grey color
+        alpha = 0.7 # don't make the color solid
+    ) +
+    theme_minimal() + # use the minimal theme to look nicer
+    labs( # adjust the labels
+        x = "GDP (per capita)", # change the x axis to this
+        caption = "Data source: World dataset."
+    )
+```
+
+To make the boxplot for the GDP (per capita) `gdppc` variable in the `world` dataset, I can run the code above.
+
+1. I first grab the `world` dataframe object
+2. Using the `pipe` function (`%>%`), I connect the world dataframe object to the code below.
+3. I first create a `ggplot` object with the `ggplot()` function.
+4. I then specify that with that `ggplot` object, I want to make a boxplot by using the `geom_boxplot()` function from the `ggplot2` package. I specify a couple of options. I first specify that I want to use the `gdppc` variable for the plot. I also indicate that I want the fill color for the plot to be light grey (hex code `"#D3D3D3"`). I then don't want the color to be solid light grey and want to add some transparency too it, so I specify the `alpha` option to make it a bit more transparent.
+5. I then use the `theme_minimal` function from `ggplot2` to make the plot look a bit nicer.
+6. Finally, I wanted to adjust the labels and so I use the `labs()` function from the `ggplot2` function. Since I want to adjust the label for the x-axis, I specify the `x` option and set it equal to `GDP (per capita)`. I also want to add a caption to indicate where I got these data from and so I use the `caption` option and set it equal to the text that I want for the caption.
+
+```{r}
+#| label: fig-boxplot-example
+#| fig-cap: Boxplot of GDP (per capita)
+#| echo: false
+
+world %>% # grab the world dataset
+    ggplot() + # make a ggplot object
+    geom_boxplot( # make a geom_boxplot
+        aes(x = gdppc), # using the gdppc variable
+        fill = "#D3D3D3", # fill it with a light grey color
+        alpha = 0.7 # don't make the color solid
+    ) +
+    theme_minimal() + # use the minimal theme to look nicer
+    labs( # adjust the labels
+        x = "GDP (per capita)", # change the x axis to this
+        caption = "Data source: World dataset."
+    )
+```
+
+### Tables
+
+Tables are a numeric, rather than visual, way to help us understand characteristics of particular variables in our dataset.
+
+Unlike what we have with @fig-gdp-histogram, we may want concrete numerical descriptions of our data. There are a few ways we can do this.
+
+We can calculate the mean of our variable by using the `mean()` function:
+
+```{r}
+#| label: gdp-mean
+mean(world$gdppc, na.rm = TRUE) # from the world dataset, grab ($) the column called gdppc
+```
+
+:::{.callout-note}
+
+Note that for the `mean` and `sd` functions, I have to include an additional option `(na.rm = TRUE)` to ignore missing values: countries that didn't report their GDP (per capita) in the dataset.
+:::
+
+We can also calculate the standard deviation of our variable by using the `sd()` function:
+
+```{r}
+#| label: gdp-sd
+sd(world$gdppc, na.rm = TRUE) # from the world dataset, grab ($) the column called gdppc
+```
+
+Additionally, if we want to see both the mean and the median, we can use the `summary()` function:
+
+```{r}
+summary(world$gdppc) # from the world dataset, grab ($) the column called gdppc
+```
+
+Notice how it doesn't give us a calculation for our standard deviation? UGHH.
+
+Another drawback to these is that the output doesn't look all that nice and it would also require us to copy and paste things. Which opens up the chance that we accidentally copy the result for our standard deviation and refer to it as our mean in our report or we may accidentally pick the wrong number.
+
+One super nifty function that we can use is the `datasummary_skim()` function from the `modelsummary` package [@modelsummary]. What the modelsummary package does, is it can calculate these things, along with quite a few others as well.
+
+So, I am going to tell R to grab my `world` dataset object, and to apply the following functions to it -- I do this with the `pipe` function (`%>%`):
+
+- With `dplyr`'s [@dplyr] `select()` function, I am going to `select()` the `gdppc` column
+- With `dplyr`'s [@dplyr] `rename()` function, I am going to `rename()` the `gdppc` column to `GDP (per capita)`
+
+:::{.callout-note}
+
+Note how instead of using quotations in the `rename()` function, I am using the forward apostrophe symbol? I am doing this because I am technically renaming the column. So if I am using the `rename()` function, I should use that instead of quotations.
+:::
+
+- Then, with `modelsummary`'s [@modelsummary] `datasummary_skim()` function, I am going to make a table for the selected variables. 
+    - I want to put a note on the bottom of the table telling my readers where I got the data for that variable from, so I am going to add a `note` that says `"Data source: world dataset."`.
+    - I want to have the output be easy to pull over to a `.docx` file, so I am going to save a `.html` file called `gdppc_summary.html` in my working directory (should be the `psci_2075` folder on my `Desktop`). I can then find the file on my computer, and open with my web browser of choice by double clicking on the `gdppc_summary.html` file (e.g., Firefox, Google Chrome, Safari, etc.), and then I can copy and paste the table that it opens into my report document.
+
+```{r}
+#| label: gdppc-table
+#| eval: false
+world %>%
+    select(gdppc) %>%
+    rename(`GDP (per capita)` = gdppc) %>%
+    datasummary_skim(
+        notes = "Data source: world dataset.",
+        output = "gdppc_summary.html"
+    )
+```
+
+```{r}
+#| label: tbl-gdppc-table
+#| tbl-cap: Descriptive statistics of countries' GDP (per capita)
+#| echo: false
+world %>%
+    select(gdppc) %>%
+    rename(`GDP (per capita)` = gdppc) %>%
+    datasummary_skim(
+        notes = "Data source: world dataset."
+    )
+```
+
+It gives me a whole bunch of things. Including a (albeit small) histogram in the last column. Nice!
+
+## Some final notes
+
+- If you want to know how to make a graph in R, I highly recommend [R Graph Gallery](http://r-graph-gallery.com/). They have tons of examples (with code) and using either `base-r` plots (the uglier, but easier to create, ones) or `ggplot2` (the prettier, but more verbose, ones). 
+- An example `.R` file from Dr. Philips' lecture can be found on canvas.
+- To see an example `.R` file for all of this (all together and in one place), can be found on [this page](https://github.com/DamonCharlesRoberts/psci2075sp23.classes.damoncroberts.com/blob/main/examples/descriptive_statistics.R). (You can either download the file or copy and paste its contents into your own `.R` file.)
+- A lot of people love to jump at the chance to add all these colors to graphs and such. I am much more skeptical of this. While I love loud colors, they can be a problem in data visualization. You should not rely exclusively on color in your data visualizations as there is significant variation in people's ability to detect and distinguish particular colors. Therefore, though it is boring, I often recommend grey scale to make it easier for everyone to see your graphs!
+- Also, you should be very careful about what types of figures you use to describe your data. You are providing a visual narrative about your data. Just as a comic book author should be conscious and careful about their choices for their illustrations, so too should an analyst be with their data visualizations.

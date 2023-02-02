@@ -5,14 +5,15 @@
 #| echo: false
 # Load libraries
 box::use(
-    dplyr = dplyr[select]
+    dplyr = dplyr[select],
+    magrittr = magrittr[`%>%`]
 )
 # Load data
     #* Results in:
         #* nes(data.frame)
         #* world(data.frame)
         #* states(data.frame)
-data <- load("C:/Users/damon/Desktop/psci_2075/psci_2075_data.RData")
+data <- load(file = "C:/Users/damon/Desktop/psci_2075/psci_2075_data.RData")
 ```
 
 In R, we aren't just adding `2+2`, we are often trying to analyze data that we've collected on Countries, Legislative bodies, or citizens. As a result, many of the calculations we are preforming in Political and Social Scientific research are too cumbersome to be doing by hand.
@@ -24,7 +25,7 @@ A variable refers to some quantification of some concept. An example of a variab
 ```{r}
 #| label: gdp-example
 #| echo: false
-world_view <- world |>
+world_view <- world %>%
     select(country, gdppc)
 head(world_view, 5)
 ```
