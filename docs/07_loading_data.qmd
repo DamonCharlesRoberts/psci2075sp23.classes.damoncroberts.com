@@ -1,4 +1,4 @@
-# Loading Data {#sec-loading-data}
+# 🔃 Loading Data {#sec-loading-data}
 
 ```{r}
 #| label: setup

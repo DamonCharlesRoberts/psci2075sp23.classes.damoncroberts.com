@@ -1,4 +1,4 @@
-# Computer File Structure {#sec-file-structure}
+# 📁 Computer File Structure {#sec-file-structure}
 
 In an age of cloud and mobile access, many of us have lost sight of the fact that files have to be stored somewhere. As we produce *a lot* of files, we need to make sure that they are relatively organized in some coherent way.
 
