@@ -1,8 +1,8 @@
-*.qmd linguist-language =r
-*.yaml linguist-language =r
-*.tex linguist-language =r
-*.js linguist-language =r
+*.qmd linguist-language=Rscript
+*.yaml linguist-language=Rscript
+*.tex linguist-language=Rscript
+*.js linguist-language=Rscript
 *.bib linguist-vendored
-*.lua linguist-vendored =r
-*.css linguist-vendored =r
-*.html linguist-vendored =r
+*.lua linguist-vendored=Rscript
+*.css linguist-vendored=Rscript
+*.html linguist-vendored=Rscript
