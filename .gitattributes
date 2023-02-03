@@ -1,4 +1,5 @@
 *.qmd linguist-language = R
+*.yaml linguist-language = R
 *.tex linguist-language = R
 *.js linguist-language = R
 *.bib linguist-vendored
