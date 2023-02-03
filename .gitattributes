@@ -5,4 +5,4 @@
 *.bib linguist-vendored
 *.lua linguist-language=Rscript
 *.css linguist-language=Rscript
-*.html linguist-vendored
+*.html linguist-detectable=false
