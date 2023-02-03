@@ -3,6 +3,6 @@
 *.tex linguist-language = R
 *.js linguist-language = R
 *.bib linguist-vendored
-*.lua linguist-vendored
-*.css linguist-vendored
-*.html linguist-vendored
+*.lua linguist-vendored = R
+*.css linguist-vendored = R
+*.html linguist-vendored = R
