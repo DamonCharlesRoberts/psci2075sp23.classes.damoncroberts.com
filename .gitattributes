@@ -5,4 +5,3 @@
 *.bib linguist-vendored
 *.lua linguist-language=Rscript
 *.css linguist-language=Rscript
-*.html linguist-language=Rscript
