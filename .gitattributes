@@ -3,6 +3,6 @@
 *.tex linguist-language=Rscript
 *.js linguist-language=Rscript
 *.bib linguist-vendored
-*.lua linguist-vendored=Rscript
-*.css linguist-vendored=Rscript
-*.html linguist-vendored=Rscript
+*.lua linguist-language=Rscript
+*.css linguist-language=Rscript
+*.html linguist-language=Rscript
