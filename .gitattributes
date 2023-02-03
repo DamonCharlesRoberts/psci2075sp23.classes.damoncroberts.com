@@ -1,2 +1,4 @@
 *.qmd linguist-language = R
+*.tex linguist-language = R
+*.js linguist-language = R
 *.html linguist-vendored
