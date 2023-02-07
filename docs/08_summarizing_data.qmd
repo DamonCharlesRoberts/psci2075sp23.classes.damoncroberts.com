@@ -142,7 +142,7 @@ world %>% # grab the world dataset, and do the following
     labs( # clean up the labels
         x = "log(GDP per capita)", # change the x-axis label to this
         y = "Count of countries", # change the y-axis label to this
-        captions = "Data source: World dataset." # add a caption
+        captions = "Data source: World dataset.\n Credit: damoncroberts.com" # add a caption
     )
 ```
 
@@ -192,7 +192,7 @@ world %>% # grab the world dataset
     theme_minimal() + # use the minimal theme to look nicer
     labs( # adjust the labels
         x = "log(GDP per capita)", # change the x axis to this
-        caption = "Data source: World dataset."
+        caption = "Data source: World dataset.\n Credit: damoncroberts.com"
     )
 ```
 
@@ -246,7 +246,7 @@ Note how instead of using quotations in the `rename()` function, I am using the 
 
 - Then, with `modelsummary`'s [@modelsummary] `datasummary_skim()` function, I am going to make a table for the selected variables. 
     - I want to put a note on the bottom of the table telling my readers where I got the data for that variable from, so I am going to add a `note` that says `"Data source: world dataset."`.
-    - I want to have the output be easy to pull over to a `.docx` file, so I am going to save a `.html` file called `gdppc_summary.html` in my working directory (should be the `psci_2075` folder on my `Desktop`). I can then find the file on my computer, and open with my web browser of choice by double clicking on the `gdppc_summary.html` file (e.g., Firefox, Google Chrome, Safari, etc.), and then I can copy and paste the table that it opens into my report document.
+    - I want to have the output be easy to pull over to a `.docx` file, so I am going to save a `.docx` file called `gdppc_summary.docx` in my working directory (should be the `psci_2075` folder on my `Desktop`). I can then find the file on my computer, and open with Microsoft Word or another word processor of choice by double clicking on the `gdppc_summary.docx` file, and then I can copy and paste the table that it opens into my report document.
 
 ```{r}
 #| label: gdppc-table
@@ -263,7 +263,7 @@ world %>% # grab the world dataset
     ) %>%
     datasummary_skim( # make a table summarizing the variables
         notes = "Data source: world dataset.", # add notes to bottom of table
-        output = "gdppc_summary.html" # store result to a html file called gdppc_summary.html
+        output = "gdppc_summary.docx" # store result to a docx file called gdppc_summary.docx
     )
 ```
 
@@ -282,7 +282,7 @@ world %>% # grab the world dataset
         `log(GDP per capita)` = log_gdppc # specifically rename log_gdppc to log(GDP per capita)
     ) %>%
     datasummary_skim( # make a table summarizing the variables
-        notes = "Data source: world dataset.", # add notes to bottom of table
+        notes = "Data source: world dataset.\n Credit: damoncroberts.com", # add notes to bottom of table
     )
 ```
 

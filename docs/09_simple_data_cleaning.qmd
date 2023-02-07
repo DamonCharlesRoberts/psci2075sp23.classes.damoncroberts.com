@@ -1,5 +1,7 @@
 # 🧹 Simple data cleaning
 
+<div class="tenor-gif-embed" data-postid="4998775" data-share-method="host" data-aspect-ratio="1.39888" data-width="100%"><a href="https://tenor.com/view/sponge-bob-cleaning-cats-household-chores-gif-4998775">Sponge Bob Cleaning GIF</a>from <a href="https://tenor.com/search/sponge+bob-gifs">Sponge Bob GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
 ```{r}
 #| label: setup
 #| 
@@ -18,8 +20,11 @@ box::use(
         case_when
     ]
 )
+# Load data
+load("C:/Users/damon/Desktop/psci_2075/psci_2075_data.RData")
 ```
-For the most part, the data in this class are quite "clean". However, there are circumstances where you might want to "clean" the variables some more. By "clean", I mean usable.
+
+For the most part, the data in this class are quite "clean". However, there are circumstances where you might want to "clean" the variables some more. By "clean", I mean to make the data usable for your analysis.
 
 So here are some quick functions that all come from the nifty `dplyr` package [@dplyr] to refer to that can help with cleaning your dataset, creating a new variable, or more.
 
@@ -54,7 +59,7 @@ nes_renamed <- nes_subset %>% # take the nes_subset and do the following to it
 head(nes_renamed, 5)
 ```
 
-Notice how I use the little accents for the new variable names. I only do this because the new variable names include spaces in it. You do not have to rename variables this way. I often recommend only doing this if you are preparing the dataset for visualization. Typically I'd refrain from doing this until you are about to make some tables and graphs and need a pretty variable name.
+Notice how I use the little accents for the new variable names. I only do this because the new variable names include spaces in it. You do not have to rename variables this way. I often recommend ***only*** doing this if you are preparing the dataset for visualization. Typically I'd refrain from doing this until you are about to make some tables and graphs and need a pretty variable name.
 
 3. `filter()`: for when you want to filter your dataset for particular cases.
 
@@ -122,3 +127,33 @@ nes_clean <- nes %>% # take the nes dataset...
 
 summary(nes_clean$vote_clean)
 ```
+
+If we want to add labels to each of the values, we can do that with the built-in `factor()` function.
+
+```{r}
+#| label: factor
+
+nes_clean <- nes %>% # take the nes dataset...
+    mutate( # take an existing variable and make a new one with it
+        vote_clean = case_when( # create vote_clean column with the following values
+            vote12 == "Mitt Romney" ~ 0, # if Mitt Romney, code it to 0
+            vote12 == "Barack Obama" ~ 1, # if Barack Obama, code it to 1
+            vote12 == "Someone Else" ~ 0 # if Someone Else, code it to 0
+        ),
+        vote_clean = factor( # convert a variable to have value labels and call it vote_clean
+            vote_clean, # take the vote_clean variable I created above
+            labels = c(
+                "Someone Else", # give the first value the label Someone Else
+                "Barack Obama" # give the next value the label Obama
+            ),
+            ordered = TRUE # The order of the values matter (i.e., 0 = Someone Else, 1 = Obama)
+        )
+    )
+summary(nes_clean$vote_clean)
+```
+
+## Some final notes:
+
+- Datasets that we deal with are *rarely* clean. We often need to do a lot of adjusting to our data to make it usable.
+- As we have enough control to change our data, **we need to be extremely careful and thoughtful** about this step! You cannot just code any variable the way you want. This can be used to fake data and mislead people. What is a more common problem to look out for is people making mistakes in their code at this stage and this can lead to data that mislead people as well.
+- For an example R script for the cleaning that I did above, you can [go here](https://github.com/DamonCharlesRoberts/psci2075sp23.classes.damoncroberts.com/blob/main/examples/simple_data_cleaning.R). You can also check Dr. Philip's labs posted on Canvas.

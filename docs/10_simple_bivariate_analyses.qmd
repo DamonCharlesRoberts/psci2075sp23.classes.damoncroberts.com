@@ -1,5 +1,7 @@
 # 2️⃣ Simple bivariate analyses
 
+<div class="tenor-gif-embed" data-postid="14756452" data-share-method="host" data-aspect-ratio="0.590625" data-width="100%"><a href="https://tenor.com/view/happy-birthday-cake-two-blow-gif-14756452">Happy Birthday Cake GIF</a>from <a href="https://tenor.com/search/happy+birthday-gifs">Happy Birthday GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
 ```{r}
 #| label: setup-block
 #| echo: false
@@ -23,18 +25,19 @@ box::use(
     ggplot2 = ggplot2[
         ggplot,
         geom_boxplot,
+        geom_point,
         aes,
         theme_minimal,
         labs
     ]
 )
 # Load data
-load("C:/Users/damon/Desktop/psci_2075/psci_2075_data.RData")
+load("~/Desktop/psci_2075/psci_2075_data.RData")
 ```
 
 Often times in science, we don't want to just understand how one thing occurs. We often want to understand and explain phenomenon. These phenomenon are not just how one feature in the world varies, but how it varies *with* something else.
 
-We often seek to understand each variable on its own through univariate analyses through summarizing our variables. We then move into examining how two or more variables vary together through bivariate (two variables) and multivariate (more than two variables) analyses.
+We often seek to understand each variable on its own through univariate analyses through summarizing our variables [see the summarizing data page](@08_summarizing_data.qmd). We then move into examining how two or more variables vary together through bivariate (two variables) and multivariate (more than two variables) analyses.
 
 Many new analysts often want to jump right into examining correlations between two variables or even getting into exploring how one variable may *cause* another. But, again, it is important to first understand our variables and their underlying processes before we jump right into more complicated analyses. If we jump right into more complicated analyses, we could be missing some really important insights that may highlight a number of useful things to the analyst. We will see examples of what kinds of things it can help us identify as we move throughout the term.
 
@@ -52,6 +55,8 @@ There are a few ways that we can create a crosstab in R:
 
 1. `table()` function: this is the most simple code, but also provides the least visual information
 
+I am going to use the `table()` function and will tell it to take the `votes12` and `disc_police` variables from the nes dataset to create a crosstab. I tell it how to access those variables from the `nes` dataset by using the `$` function (e.g., `nes$vote12` and `nes$disc_police`).
+
 ```{r}
 #| label: table
 
@@ -63,6 +68,12 @@ table( # use the table function
 ```
 
 2. `xtabs()` and `ftable()` functions: a bit more code, but easier to read
+    1. I am going to first create the crosstab using the `xtabs()` function. I can tell it to make a cross tab with the `vote12` and `disc_police` variables. I am going to tell it which dataset these variables are in by using the `data` options. I am also going to use the `~` symbol at the front so that R knows which variable comes first. I will then use the `+` to let it know what the second variable is.
+    2. I can then make the crosstab a bit more readable by then passing the result of my `xtabs()` function to the `ftable()` function.
+
+Notice how I do the second step differently in the code below. In the first one, I store the results of the crosstab produced with the `xtabs()` function into an object called `tab`. I then tell the `ftable()` function to use the `tab` object to make the table. In the second option, I use the `%>%` function instead. I tell it to grab the `nes` dataset, to then use the `xtabs()` function on the `vote12` and `disc_police` variables in the nes dataset. I then use the `%>%` function again to pass the result of the `xtabs()` function directly to the `ftable()` function. This code is a bit more compact and easier to read. Either approach gets you the same result.
+
+
 ```{r}
 #| labels: xtabs
 #| eval: false
@@ -98,18 +109,44 @@ nes %>% # grab the nes dataset
 
 3. `datasummary_crosstab()` from the `modelsummary` package [@modelsummary]: code is much cleaner, so is output.
 
+A third option for making crosstab is to use the `datasummary_crosstab()` function from the `modelsummary` package. I personally think these crosstabs are a bit easier to read and are a bit cleaner. As they are tables produced from the same package we used to do univariate descriptive statistics, we can use very similar code to produce these crosstabs!
+
+First, I am going to take the `nes` dataset and am going to tell R to apply the `datasummary_crosstab()` function to it. In the options for the functions, I am going to tell it to use the `disc_police`  and `vote12` variables. I am going to also tell it to add a `note` to the bottom of the table that lets the reader know the dataset you used here. Since I am using the `%>%` function, I can use the shortcut `.` to tell it what dataset I am using. Using the `%>%` already let R know that I am using the `nes` dataset so I do not need to write it out in that option. Finally, I am going to tell R to save the table from the crosstab in a word document called `bivariate_crosstab.docx`. I can then open the file after I've run the code, and then copy and paste the results into my main report or assignment for the class!
+
 ```{r}
 #| label: datasummary
+#| eval: false
 nes %>% # grab the nes dataset
     datasummary_crosstab( # use the datasummary_crosstab on it
         disc_police ~ vote12, # using the disc_police and vote12 variables
+        notes = "Data source: NES dataset.", # add notes to table
+        data = ., # using the dataset connected by the pipe operator
+        output = "bivariate_crosstab.docx" # store result in the word document bivariate_crosstab.docx
+    )
+```
+
+```{r}
+#| label: datasummary-example
+#| echo: false
+nes %>% # grab the nes dataset
+    datasummary_crosstab( # use the datasummary_crosstab on it
+        disc_police ~ vote12, # using the disc_police and vote12 variables
+        notes = "Data source: NES dataset.\n Credit: damoncroberts.com", # add notes to table
         data = . # using the dataset connected by the pipe operator
     )
 ```
 
 Notice how we've got a few different options to choose from here. One additional thing to make our interpretation a bit easier is to clean the variables. Again, remember the primary goal of my analysis from the start was to examine whether or not people that voted for Barack Obama in the 2012 election felt that Black Americans are more discriminated against by the police or not. This implies that we can compare folks that voted for Obama to those who did not and only on whether they felt that Black Americans were targets of discrimination by the police or not. This means that for my particular analysis here, I can turn these two variables into a dichotomous variable to help me examine my question. One variable that reflects whether the respondent voted for Barack Obama or not and a second variable that reflects whether the respondent indicates that Black Americans are not treated better by the police or those who believe that Black Americans are compared to Whites.
 
-Recall from the previous exercise on the basics of cleaning data, that we can take advantage of the super nifty functions provided by the `dplyr` [@dplyr] package for data cleaning.
+Recall from [the previous exercise on the basics of cleaning data](09_simple_data_cleaning.qmd), that we can take advantage of the super nifty functions provided by the `dplyr` [@dplyr] package for data cleaning.
+
+I am going to take the `nes` dataset and am going to `select()` the two columns I am interested in examining. 
+
+Since I am going to be trying to make new columns using the `vote12` and `disc_police` columns, I can use the `mutate()` function. First, I am going to create a new column called `vote12_clean` that has a value of 1 if the respondent voted for Obama and a value of 0 if they voted for Mitt Romney or Someone Else. 
+
+Then, I am going to add value labels with the `factor()` function where people that have a value of 0 for the newly created `vote12_clean` variable have a label of "Not Obama" and a label of "Obama" if they did vote for Obama (a value of 1). 
+
+I am going to do a similar thing with the `disc_police` variable. For people that do not indicate that the police treat Black Americans better, they will have a value of 0 in the new `disc_police_clean` variable. Those that say that police do treat Black Americans better will now have a value of 1 in the new `disc_police_clean` variable. I am going to use the `factor()` function to add labels to the values of 0 and 1 to make my life easier. I am going to tell it to add a label "Does not treat better" to the smallest value in the new `disc_police_clean` variable -- so 0 -- and add the label "Does treat better" to those who have a value of 1 in the new `disc_police_clean` variable.
 
 ```{r}
 #| labels: cleaning
@@ -175,21 +212,177 @@ nes_clean <- nes %>% # from the nes dataset...
     )
 ```
 
+Now I can make a even cleaner crosstab.
+
 ```{r}
 #| label: cleaned-crosstab
+#| eval: false
 nes_clean %>% # use the nes_clean dataset...
     datasummary_crosstab( # ... with the dataset, create a crosstab
         disc_police_clean ~ vote12_clean, #... and use the two cleaned variables
+        notes = "Data source: Nes dataset.", # add notes to table
+        data = ., # and use the dataset connected by the pipe operator
+        output = "cleaner_bivariate_crosstab.docx" # store the table in this word document
+    )
+```
+
+```{r}
+#| label: cleaned-crosstab-example
+#| echo: false
+nes_clean %>% # use the nes_clean dataset...
+    datasummary_crosstab( # ... with the dataset, create a crosstab
+        disc_police_clean ~ vote12_clean, #... and use the two cleaned variables
+        notes = "Data source: NES dataset.\n Credit: damoncroberts.com", # add notes to table
         data = . # and use the dataset connected by the pipe operator
     )
 ```
 
-## Boxplots
+## Visual
+
+### Boxplots
+
+Just as we can with univariate summaries, we can visually depict bivariate summaries. One of the more powerful ways to do this if you have ***at least one*** categorical variable is to use a boxplot. In [the previous exercise](08_summarizing_data.qmd), we used a boxplot for a univariate description. In that example, we only specified a variable for the x-axis. For a bivariate case, we can put a categorical variable on the x-axis and a variable on the y-axis.
+
+Say we want to examine the composition of states' murder rate that voted for Donald Trump in the 2016 Presidential election relative to states that did not vote for Donald Trump. We can use a categorical variable that documents whether Trump won the state or lost the state. We can put this categorical variable on the x-axis. For the y-axis, we can use a variable documenting the state's murder rate. 
+
+We can use the `states` dataset as it has both of these variables. The first variable, `trumpwin`, documents whether Trump won or lost in a given state. The second variable, `murderrate`, documents the murder rate per capita in a state.
+
+To make the box plot, we can run the following code:
+
 ```{r}
-states %>%
-    ggplot() +
-    geom_boxplot(
-        aes(x = as.factor(trumpwin), y = murderrate)
+#| labels: bivariate-boxplot
+#| eval: false
+states %>% # grab the states dataset
+    mutate( # create a new column based on an existing one
+        trumpwin_clean = factor( # create a column trumpwin_clean with value labels
+            trumpwin, # use the existing trumpwin variable for this
+            labels = c(
+                "Loss", # for the first value (0), label it Loss
+                "Won" # for the second value (1), label it Won
+            ),
+            ordered = TRUE # the order of the values and labels matter
+        )
+    ) %>% # after I've done this, now I can make a plot
+    ggplot() + # make a ggplot object
+    geom_boxplot( # make a box plot
+        aes(
+            x = trumpwin_clean, # where the x-axis is whether trump won or not
+            y = murderrate # and the y-axis is the murder rate in the state
+        ),
+        fill = "#D3D3D3" # fill the boxplot with a light grey color
     ) +
-    theme_minimal() 
+    theme_minimal() + # add the minimal theme to look prettier
+    labs( # clean up the labels
+        x = "Trump won state", # change x-axis label to this
+        y = "Murder rate per capita", # change y-axis label to this
+        caption = "Data source: States dataset." # add caption
+    )
 ```
+
+Here is a break down of what this code does:
+
+1. I am going to grab the `states` dataset and use the pipe function (`%>%`) to chain all of the code together. This makes it so that R knows that I am referring to the `states` dataset for the the code connected by pipe functions.
+2. I am going to use some of my data cleaning skills learned in [the previous exercise](08_summarizing_data.qmd) and am going to add value labels to the `trumpwin` variable. I do this because I want it to be easier for me to keep track of what a 0 means for the `trumpwin` variable versus a 1. So to add these value labels, I am going to use the built-in `factor()` function. With `dplyr`'s `mutate()` function [@dplyr], I am able to tell R that I am going to create a new column using information from an existing variable. I am going to create a new variable called `trumpwin_clean` that will have the value labels defined by the `factor()` function. So I am going to tell it that I am going to be using the `trumpwin` variable and am going to add the value labels of "Loss" and "Win" to the variable. So values of 0 in the `trumpwin` variable will be labelled as "Loss" in the `trumpwin_clean` variable and values of 1 in `trumpwin` will be labelled as "Win". I am also going to set the `ordered` option equal to `TRUE` because I want to respect the order of the values in the original `trumpwin` variable.
+3. Now I can make a plot. So I am going to use the `ggplot()` function to tell R, that after you've done the previous things, now I am going to make a plot.
+4. I am going to use the `geom_boxplot()` function to tell R that the plot I told it I want to make will be a boxplot. Within that function, I am going to provide a couple of options. I am going to tell it that I want to make the x-axis of the boxplot the new variable that I created with the value labels, `trumpwin_clean`. I am also going to tell it that the y-axis should be the `murderrate` variable. Finally, I am going to tell it that I want the color of the boxes to be filled in with a light grey color.
+5. I want to make the plot prettier so I am going to use the `theme_minimal()` function to apply that theme to the plot
+6. I am also going to add cleaner labels to the plot as well. So I am going to use the `labs()` function to tell it that I want the x-axis to be labeled as "Trump won state", the y-axis to be "Murder rate per capita", and to add a caption to the bottom that says "Data source: States dataset." 
+
+```{r}
+#| labels: bivariate-boxplot
+#| echo: false
+states %>% # grab the states dataset
+    mutate( # create a new column based on an existing one
+        trumpwin_clean = factor( # create a column trumpwin_clean with value labels
+            trumpwin, # use the existing trumpwin variable for this
+            labels = c(
+                "Loss", # for the first value (0), label it Loss
+                "Won" # for the second value (1), label it Won
+            ),
+            ordered = TRUE # the order of the values and labels matter
+        )
+    ) %>% # after I've done this, now I can make a plot
+    ggplot() + # make a ggplot object
+    geom_boxplot( # make a box plot
+        aes(
+            x = trumpwin_clean, # where the x-axis is whether trump won or not
+            y = murderrate # and the y-axis is the murder rate in the state
+        ),
+        fill = "#D3D3D3" # fill the boxplot with a light grey color
+    ) +
+    theme_minimal() + # add the minimal theme to look prettier
+    labs( # adjust the labels
+        x = "Trump won state", # change x-axis label to this
+        y = "Murder rate per capita", # change y-axis label to this
+        caption = "Data source: States dataset.\n Credit: damoncroberts.com" # add caption
+    )
+```
+
+## Scatterplot
+
+If we have two continuous variables, then we can make a scatterplot instead. 
+
+Say for example, we want to look at those who have positive feelings toward Barack Obama and their feelings toward LGBTQIA+ rights.
+
+Looking at the `nes` dataset,  I see that there is a question that people were asked about their "temperature" toward Obama and toward Gay rights. These questions are referred to as feeling thermometers where respondents can choose on a scale from 0-100, how warmly they feel toward the person or group or how cold their feelings are toward them. There is a feeling thermometer for Obama, `ftobama`, and for the LGBTQIA+ community, `ftgay`, in the `nes` dataset.
+
+Using functions from the `ggplot2` package [@ggplot], I can make a scatter plot for these.
+
+```{r}
+#| label: scatterplot
+#| eval: false
+
+nes %>% # grab the nes dataset and apply the following
+    ggplot() + # create a ggplot object
+    geom_point( # make this plot a scatterplot
+        aes(
+            x = ftobama, # use the ftobama variable for the x-axis
+            y = ftgay # use the ftgay variable for the y-axis
+        ),
+        color = "#000000", # add black for outline of points
+        fill = "#D3D3D3", # add grey to fill of points
+        alpha = 0.5 # add transparency to each point
+    ) + 
+    theme_minimal() + # use the minimal theme to make prettier
+    labs( # adjust the labels
+        x = "Feeling thermometer: Obama", # change the x-axis label to this
+        y = "Feeling thermometer: LGBTQIA+", # change the y-axis label to this
+        caption = "Data source: NES dataset." # add this as the caption
+    )
+```
+
+Here's what this code does:
+1. Take the `nes` dataset and apply the following to it.
+2. Make a `ggplot()` object
+3. Specifically, make a scatter plot with the `geom_point()` function. For this scatterplot, I want the x-axis to be the `ftobama` variable and the y-axis variable to be the `ftgay` variable. I want to make the outline `color` of the circles to be black and the `fill` color of the circles to be light grey. I want the dots to be somewhat transparent so I am going to set the `alpha` to 0.5.
+4. Then, I want to use the minimal theme for the plot, so I am going to use the `theme_minimal()` function.
+5. I also want to change the labels on the plot. So using the `labs()` function, I am going to tell the x-axis to be labelled as "Feeling thermometer: Obama", the y-axis to be labelled as "Feeling thermometer: LGBTQIA+", and add a caption to indicate that the data source is the "NES dataset."
+
+```{r}
+#| label: fig-scatterplot
+#| fig-cap: Feeling thermometer of Obama and the LGBTQIA+ community
+#| echo: false
+
+nes %>% # grab the nes dataset and apply the following
+    ggplot() + # create a ggplot object
+    geom_point( # make this plot a scatterplot
+        aes(
+            x = ftobama, # use the ftobama variable for the x-axis
+            y = ftgay # use the ftgay variable for the y-axis
+        ),
+        color = "#000000", # add black for outline of points
+        fill = "#D3D3D3", # add grey to fill of points
+        alpha = 0.5 # add transparency to each point
+    ) + 
+    theme_minimal() + # use the minimal theme to make prettier
+    labs( # adjust the labels
+        x = "Feeling thermometer: Obama", # change the x-axis label to this
+        y = "Feeling thermometer: LGBTQIA+", # change the y-axis label to this
+        caption = "Data source: NES dataset.\n Credit: damoncroberts.com" # add this as the caption
+    )
+```
+
+## Some final notes:
+
+- The choices and considerations that apply when you are trying to summarize a single variable *more* than double by doing this for two variables. You should think very carefully about what information you want to convey to your reader. This will help you know what steps you need to take (should I clean a variable before hand? Should I use a scatterplot or a boxplot? etc.)
+- You can find a complete working R file for this by [going to this page](https://github.com/DamonCharlesRoberts/psci2075sp23.classes.damoncroberts.com/blob/main/examples/simple_bivariate_analyses.R).
