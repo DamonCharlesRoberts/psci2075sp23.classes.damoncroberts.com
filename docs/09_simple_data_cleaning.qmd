@@ -1,0 +1,124 @@
+# 🧹 Simple data cleaning
+
+```{r}
+#| label: setup
+#| 
+# Load functions
+box::use(
+    #* For pipe operator
+    magrittr = magrittr[
+        `%>%`
+    ],
+    #* For helpful data cleaning functions
+    dplyr = dplyr[
+        select,
+        rename,
+        filter,
+        mutate,
+        case_when
+    ]
+)
+```
+For the most part, the data in this class are quite "clean". However, there are circumstances where you might want to "clean" the variables some more. By "clean", I mean usable.
+
+So here are some quick functions that all come from the nifty `dplyr` package [@dplyr] to refer to that can help with cleaning your dataset, creating a new variable, or more.
+
+1. `select()`: for when you want to make a new dataset containing only a handful of variables from the original dataset.
+
+Say for example that I want to create a new dataset containing only the following two variables from the `nes` dataset: `vote12` and `disc_police`. What I am doing here is a different task than just grabbing a variable by doing `nes$vote12`. Here, I want to put these two variables into a new dataset. A subset of the previous dataset, if you will.
+
+```{r}
+#| label: subset
+
+nes_subset <- nes %>% # grab the nes dataset and store the result of the following in nes_subset
+    select( # select the following columns...
+        vote12, # ...vote12...
+        disc_police # ...and disc_police
+    )
+head(nes_subset, 5) # preview the first 5 rows of the new dataset
+```
+
+2. `rename()`: for when you want to rename a variable.
+
+Say, for example, you want to rename a variable to something that makes more sense to you. In previous exercises, you've seen me use this function to rename a variable to look better for tables.
+
+Say, for example that I want to rename the variables that I have in the `nes_subset` dataset that I created earlier.
+
+```{r}
+nes_renamed <- nes_subset %>% # take the nes_subset and do the following to it
+    rename(
+        `Vote for Obama` = vote12, # rename vote12 to Vote for Obama
+        `Police discrimination` = disc_police # rename disc_police to Police discrimination
+    )
+
+head(nes_renamed, 5)
+```
+
+Notice how I use the little accents for the new variable names. I only do this because the new variable names include spaces in it. You do not have to rename variables this way. I often recommend only doing this if you are preparing the dataset for visualization. Typically I'd refrain from doing this until you are about to make some tables and graphs and need a pretty variable name.
+
+3. `filter()`: for when you want to filter your dataset for particular cases.
+
+Say, for example, that I want to examine the connection between voting for Obama in 2012 or not and the belief that Whites are treated better by the police, but I only want to examine this connection among White respondents. I can filter the dataset to only include the cases where the respondent indicated that they were White.
+
+Beware of doing this, however. You should not go crazy with filtering out respondents. Do so only in cases that make a lot of sense.
+
+```{r}
+#| label: filter
+
+nes_filtered <- nes %>% # grab the nes_subset dataset...
+    filter(
+        race == "White" # ...and filter it to include only white respondents
+    )
+
+summary(nes_filtered$race) #... we should only see one type of respondent here
+```
+
+4. `mutate()`: for when you need to make a new variable out of an old one through transforming it
+
+Perhaps the most common thing we have to do as analysts is make new variables out of old ones. There are a variety of circumstances that would necessitate this. One example might be to make a log transformation of a variable like GDP Per Capita. Another example might be that you want to take a variable that has multiple categories and convert it into two (This is often referred to as data collapsing. I often don't recommend you do this, but there are some circumstances where you may need to to.), or you might need to reorder the values of a variable to make more logical sense.
+
+Let's do two examples. In the first example, let's perform a log transformation on the `gdppc` variable in the `world` dataset and store it into a new column.
+
+```{r}
+#| label: log-transform
+
+world_clean <- world %>% # with the world dataset...
+    mutate( # ...mutate an existing variable to make a new one...
+        log_gdppc = log(gdppc) # use the log function to take the log of gdppc and call the result log_gdppc
+    )
+
+print(
+    paste("Old gdppc", mean(world_clean$gdppc, na.rm = TRUE))
+    )
+print(
+    paste("Log transformed gdppc", mean(world_clean$log_gdppc, na.rm = TRUE))
+)
+```
+
+Another example is that we want to do more hands on adjusting of the values that a variable takes on based on an existing variable in our dataset. So in this case we will use the `case_when()` function *inside* the `mutate()` function.
+
+Say that we are looking at the `nes` dataset and want to examine whether someone voted for Obama or not. In this case, you don't care who they voted for besides Obama, just whether they did or didn't. You look at the `vote12` variable in the `nes` dataset and it is close to what you want, but not *quite* what you are looking for:
+
+```{r}
+#| label: vote12
+
+summary(nes$vote12) # get understanding of vote12
+```
+
+We can recode this variable to be two categories instead of the three!
+
+```{r}
+#| label: vote12-cleaning 
+
+nes_clean <- nes %>% # take the nes dataset...
+    mutate( # take an existing variable and make a new one with it
+        vote_clean = case_when( # make a new variable called vote_clean
+            vote12 == "Mitt Romney" ~ 0, # if Mitt Romney, code it to 0
+            vote12 == "Barack Obama" ~ 1, # if Barack Obama, code it to 1
+            vote12 == "Someone Else" ~ 0 # if Someone Else, code it to 0
+        )
+
+    )
+
+summary(nes_clean$vote_clean)
+```

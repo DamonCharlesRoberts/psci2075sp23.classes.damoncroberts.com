@@ -1,0 +1,195 @@
+# 2️⃣ Simple bivariate analyses
+
+```{r}
+#| label: setup-block
+#| echo: false
+# Modularly load functions
+box::use(
+    #* Pipe operator
+    magrittr = magrittr[
+        `%>%`
+    ],
+    #* Helpful functions for tables
+    modelsummary = modelsummary[
+        datasummary_crosstab
+    ],
+    #* Helpful functions for cleaning
+    dplyr = dplyr[
+        select,
+        mutate,
+        case_when
+    ],
+    #* Helpful functions for plots
+    ggplot2 = ggplot2[
+        ggplot,
+        geom_boxplot,
+        aes,
+        theme_minimal,
+        labs
+    ]
+)
+# Load data
+load("C:/Users/damon/Desktop/psci_2075/psci_2075_data.RData")
+```
+
+Often times in science, we don't want to just understand how one thing occurs. We often want to understand and explain phenomenon. These phenomenon are not just how one feature in the world varies, but how it varies *with* something else.
+
+We often seek to understand each variable on its own through univariate analyses through summarizing our variables. We then move into examining how two or more variables vary together through bivariate (two variables) and multivariate (more than two variables) analyses.
+
+Many new analysts often want to jump right into examining correlations between two variables or even getting into exploring how one variable may *cause* another. But, again, it is important to first understand our variables and their underlying processes before we jump right into more complicated analyses. If we jump right into more complicated analyses, we could be missing some really important insights that may highlight a number of useful things to the analyst. We will see examples of what kinds of things it can help us identify as we move throughout the term.
+
+So again, recall we want to provide univariate summaries of our data before we even engage in bivariate summaries. What are the tools that we can use to perform bivariate summaries? Like with univariate descriptive statistics, we can use a number of visual or numerical representations. Let's start with numerical.
+
+## Numerical representations
+
+### Cross tabulations (crosstabs)
+
+One really great option for summarizing the relationship between categorical (discrete) variables is through a cross tabulation. The cross tabulation allows us to examine how various values of one variable map onto the values of another variable.
+
+Let's go through an example. Say we want to examine whether Barack Obama voters in the 2012 presidential election are more likely to believe that the police treat White citizens better than Black citizens.
+
+There are a few ways that we can create a crosstab in R:
+
+1. `table()` function: this is the most simple code, but also provides the least visual information
+
+```{r}
+#| label: table
+
+# Create crosstab with table
+table( # use the table function
+    nes$vote12, # from the nes dataset, use the vote12 variable
+    nes$disc_police # from the nes dataset, use the disc_police variable
+)
+```
+
+2. `xtabs()` and `ftable()` functions: a bit more code, but easier to read
+```{r}
+#| labels: xtabs
+#| eval: false
+
+# Option 1: Less compact code
+tab <- xtabs( # store the result in tab
+    ~ vote12 + disc_police, # use the vote12 and disc_police variables
+    data = nes # use the nes dataset for these variables
+)
+ftable( # Apply the ftable function to...
+    tab # ... the tab object (defined above)
+)
+
+# Option 2: More compact code
+nes %>% # grab the nes dataset
+    xtabs( # perform the crosstab..
+        ~ vote12 + disc_police, # use the vote12 and disc_police variables
+    data = . # and use the data connected by the pipe operator (can just use .)
+    ) %>%
+    ftable()  #... and then make it look nicer with ftable
+```
+
+```{r}
+#| labels: ftable-example
+#| echo: false
+nes %>% # grab the nes dataset
+    xtabs( # perform the crosstab ...
+        ~ vote12 + disc_police, # use the vote12 and disc_police variable
+        data = . # and use the data connected by the pipe operator (can just use .)
+    ) %>%
+    ftable() #... and then make it look nicer
+```
+
+3. `datasummary_crosstab()` from the `modelsummary` package [@modelsummary]: code is much cleaner, so is output.
+
+```{r}
+#| label: datasummary
+nes %>% # grab the nes dataset
+    datasummary_crosstab( # use the datasummary_crosstab on it
+        disc_police ~ vote12, # using the disc_police and vote12 variables
+        data = . # using the dataset connected by the pipe operator
+    )
+```
+
+Notice how we've got a few different options to choose from here. One additional thing to make our interpretation a bit easier is to clean the variables. Again, remember the primary goal of my analysis from the start was to examine whether or not people that voted for Barack Obama in the 2012 election felt that Black Americans are more discriminated against by the police or not. This implies that we can compare folks that voted for Obama to those who did not and only on whether they felt that Black Americans were targets of discrimination by the police or not. This means that for my particular analysis here, I can turn these two variables into a dichotomous variable to help me examine my question. One variable that reflects whether the respondent voted for Barack Obama or not and a second variable that reflects whether the respondent indicates that Black Americans are not treated better by the police or those who believe that Black Americans are compared to Whites.
+
+Recall from the previous exercise on the basics of cleaning data, that we can take advantage of the super nifty functions provided by the `dplyr` [@dplyr] package for data cleaning.
+
+```{r}
+#| labels: cleaning
+# Clean the variables of interest in the nes datasets
+nes_clean <- nes %>% # from the nes dataset...
+    select( # ... select the following variables...
+        vote12, # ... the vote12 variable...
+        disc_police #... and the disc_police variable
+    ) %>% # ... after they've been selected...
+    mutate( #... I am now going to "mutate" or transform these columns into a new one
+        #* vote12 - did the respondent vote for Obama in '12 or not?
+            #** Coded as: 
+                #*** 1 = Mitt Romney
+                #*** 2 = Barack Obama
+                #*** 3 = Someone Else
+                #*** 4 = Not asked
+            #** Recoded to:
+                #*** 0 = Mitt Romney/Someone Else
+                #*** 1 = Barack Obama
+                #*** NA = Not Asked
+        vote12_clean = case_when(
+            vote12 == "Mitt Romney" ~ 0, # make values of Mitt Romney equal to 0
+            vote12 == "Barack Obama" ~ 1, # make values of Barack Obama equal to 1
+            vote12 == "Someone Else" ~ 0 # make values of Someone Else equal to 0
+        ),
+                vote12_clean = factor(
+            vote12_clean, # take the newly created column
+            labels = c(
+                "Not Obama", # add this label to values of 0
+                "Obama" # add this labels to values of 1
+            ),
+            ordered = TRUE # the numerical value order matters here
+        ),
+        #* disc_police - belief that police treat Black Americans better than Whites
+            #** Coded as:
+                #*** 1 = Treat Whites much better
+                #*** 2 = Treat Whites moderately better
+                #*** 3 = Treats Whites a little better
+                #*** 4 = Treats both the same 
+                #*** 5 = Treats Blacks a little better
+                #*** 6 = Treats Blacks moderately better
+                #*** 7 = Treats Blacks much better
+            #** Recoded to:
+                #*** 0 = Treats Whites [much/moderately/a little better]/treats both the same
+                #*** 1 = Treats Blacks [much/moderately a little better]
+        disc_police_clean = case_when(
+            disc_police == "Treats whites much better" ~ 0, # make this response equal to 0
+            disc_police == "Treats whites moderately better" ~ 0, # make this response equal to 0
+            disc_police == "Treats whites a little better" ~ 0, # make this response equal to 0
+            disc_police == "Treats both the same" ~ 0, # make this response equal to 0
+            disc_police == "Treats blacks a little better" ~ 1, # make this response equal to 1
+            disc_police == "Treats blacks moderately better" ~ 1, # make this response equal to 1
+            disc_police == "Treats Blacks much better" ~ 1 # make this response equal to 1
+        ),
+        disc_police_clean = factor(
+            disc_police_clean, # take the newly created column
+            labels = c(
+                "Does not treat better", # add this label if equal to 0
+                "Does treat better" # add this label if equal to 1
+            ),
+            ordered =  TRUE # the numerical value order matters here
+        )
+    )
+```
+
+```{r}
+#| label: cleaned-crosstab
+nes_clean %>% # use the nes_clean dataset...
+    datasummary_crosstab( # ... with the dataset, create a crosstab
+        disc_police_clean ~ vote12_clean, #... and use the two cleaned variables
+        data = . # and use the dataset connected by the pipe operator
+    )
+```
+
+## Boxplots
+```{r}
+states %>%
+    ggplot() +
+    geom_boxplot(
+        aes(x = as.factor(trumpwin), y = murderrate)
+    ) +
+    theme_minimal() 
+```

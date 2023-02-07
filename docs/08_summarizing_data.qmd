@@ -27,7 +27,7 @@ box::use(
         theme_minimal,
         labs
     ],
-    #* Helpful functions for makeing tables of descriptive statistics
+    #* Helpful functions for making tables of descriptive statistics
     modelsummary = modelsummary[
         datasummary_skim
     ]
@@ -122,7 +122,7 @@ What the code is doing above:
 1. Grab the world data set and use the `pipe` function from the `magrittr` package [@magrittr] to connect the other functions to it.
 2. Create a `ggplot()` [@ggplot2] object.
 3. I want to make a histogram, so I'm going to use `ggplot` [@ggplot2] and will use the `geom_histogram()` function.
-4. Inside the `geom_histogram()` function, I want to tell it what variable I want to plot. So I am going to use the `aes()` function which will grab from the `world` dataset object and will then grab the `gddpc` variable. I am going to use the `log()` function to log-transform it. This will make the x-axis a bit easier to read.
+4. Inside the `geom_histogram()` function, I want to tell it what variable I want to plot. So I am going to use the `aes()` function which will grab from the `world` dataset object and will then grab the `gdppc` variable. I am going to use the `log()` function to log-transform it. This will make the x-axis a bit easier to read.
 5. For the histogram, I want to change the default colors of the graph a bit. I want to `fill` in the bars with a light grey color (using a hex code) `"#D3D3D3"` and I want to make the outline of the bars black (using a hex code) `"#000000"`.
 5. Then, I want to make the rest of the plot look a little bit prettier - so I am going to use the `theme_minimal()` function from the `ggplot2` package.
 6. Also to help make the plot a bit prettier, I am going to change some labels for the figure with the `labs()` function from the `ggplot2` package. To change my x-axis label, I am going to set `x` equal to `"GDP (Per Capita)"`. To change my y-axis label, I am going to set `y` equal to `"Count of countries"`. And I want to add a caption at the bottom for my reader to know what dataset this is from, so I am going to set `caption` equal to `"Data source: World dataset."`.
@@ -148,7 +148,7 @@ world %>% # grab the world dataset, and do the following
 
 #### Boxplot
 
-Another common way to visually describe a variable in your data is through a boxplot. Boxplots lets us visualize not only the median (one metric of our central tendency) of a variable (the line down the middle), but also the spread through the edges of the box (which represent the first and third quantiles), and the minimum and maximum values. Any extra "dots" that the plot shows reflects "outliers" -- which are observations that are quite abnormal relative to the sample.
+Another common way to visually describe a variable in your data is through a boxplot. Boxplots lets us visualize not only the median (one metric of our central tendency) of a variable (the line down the middle), but also the spread through the edges of the box (which represent the first and third quartiles), and the minimum and maximum values. Any extra "dots" that the plot shows reflects "outliers" -- which are observations that are quite abnormal relative to the sample.
 
 ```{r}
 #| label: boxplot-example
@@ -261,7 +261,7 @@ world %>% # grab the world dataset
     rename( # rename columns
         `log(GDP per capita)` = log_gdppc # specifically rename log_gdppc to log(GDP per capita)
     ) %>%
-    datasummary_skim( # make a table sumamrizing the variables
+    datasummary_skim( # make a table summarizing the variables
         notes = "Data source: world dataset.", # add notes to bottom of table
         output = "gdppc_summary.html" # store result to a html file called gdppc_summary.html
     )
@@ -281,7 +281,7 @@ world %>% # grab the world dataset
     rename( # rename columns
         `log(GDP per capita)` = log_gdppc # specifically rename log_gdppc to log(GDP per capita)
     ) %>%
-    datasummary_skim( # make a table sumamrizing the variables
+    datasummary_skim( # make a table summarizing the variables
         notes = "Data source: world dataset.", # add notes to bottom of table
     )
 ```
