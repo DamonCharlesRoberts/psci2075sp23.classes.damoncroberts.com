@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -358,7 +358,7 @@ gtag('config', 'G-8Z2BLG3VEE', { 'anonymize_ip': true});
 <li>Grab the world data set and use the <code>pipe</code> function from the <code>magrittr</code> package <span class="citation" data-cites="magrittr">(<a href="references.html#ref-magrittr" role="doc-biblioref">Bache and Wickham 2022</a>)</span> to connect the other functions to it.</li>
 <li>Create a <code>ggplot()</code> <span class="citation" data-cites="ggplot2">(<a href="references.html#ref-ggplot2" role="doc-biblioref">Wickham 2016</a>)</span> object.</li>
 <li>I want to make a histogram, so I’m going to use <code>ggplot</code> <span class="citation" data-cites="ggplot2">(<a href="references.html#ref-ggplot2" role="doc-biblioref">Wickham 2016</a>)</span> and will use the <code>geom_histogram()</code> function.</li>
-<li>Inside the <code>geom_histogram()</code> function, I want to tell it what variable I want to plot. So I am going to use the <code>aes()</code> function which will grab from the <code>world</code> dataset object and will then grab the <code>gddpc</code> variable. I am going to use the <code>log()</code> function to log-transform it. This will make the x-axis a bit easier to read.</li>
+<li>Inside the <code>geom_histogram()</code> function, I want to tell it what variable I want to plot. So I am going to use the <code>aes()</code> function which will grab from the <code>world</code> dataset object and will then grab the <code>gdppc</code> variable. I am going to use the <code>log()</code> function to log-transform it. This will make the x-axis a bit easier to read.</li>
 <li>For the histogram, I want to change the default colors of the graph a bit. I want to <code>fill</code> in the bars with a light grey color (using a hex code) <code>"#D3D3D3"</code> and I want to make the outline of the bars black (using a hex code) <code>"#000000"</code>.</li>
 <li>Then, I want to make the rest of the plot look a little bit prettier - so I am going to use the <code>theme_minimal()</code> function from the <code>ggplot2</code> package.</li>
 <li>Also to help make the plot a bit prettier, I am going to change some labels for the figure with the <code>labs()</code> function from the <code>ggplot2</code> package. To change my x-axis label, I am going to set <code>x</code> equal to <code>"GDP (Per Capita)"</code>. To change my y-axis label, I am going to set <code>y</code> equal to <code>"Count of countries"</code>. And I want to add a caption at the bottom for my reader to know what dataset this is from, so I am going to set <code>caption</code> equal to <code>"Data source: World dataset."</code>.</li>
@@ -382,7 +382,7 @@ gtag('config', 'G-8Z2BLG3VEE', { 'anonymize_ip': true});
 </section>
 <section id="boxplot" class="level4" data-number="9.3.1.2">
 <h4 data-number="9.3.1.2" class="anchored" data-anchor-id="boxplot"><span class="header-section-number">9.3.1.2</span> Boxplot</h4>
-<p>Another common way to visually describe a variable in your data is through a boxplot. Boxplots lets us visualize not only the median (one metric of our central tendency) of a variable (the line down the middle), but also the spread through the edges of the box (which represent the first and third quantiles), and the minimum and maximum values. Any extra “dots” that the plot shows reflects “outliers” – which are observations that are quite abnormal relative to the sample.</p>
+<p>Another common way to visually describe a variable in your data is through a boxplot. Boxplots lets us visualize not only the median (one metric of our central tendency) of a variable (the line down the middle), but also the spread through the edges of the box (which represent the first and third quartiles), and the minimum and maximum values. Any extra “dots” that the plot shows reflects “outliers” – which are observations that are quite abnormal relative to the sample.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>world <span class="sc">%&gt;%</span> <span class="co"># grab the world dataset</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="co"># make a ggplot object</span></span>
@@ -486,7 +486,7 @@ Note
 <li>Then, with <code>modelsummary</code>’s <span class="citation" data-cites="modelsummary">(<a href="references.html#ref-modelsummary" role="doc-biblioref">Arel-Bundock 2022</a>)</span> <code>datasummary_skim()</code> function, I am going to make a table for the selected variables.
 <ul>
 <li>I want to put a note on the bottom of the table telling my readers where I got the data for that variable from, so I am going to add a <code>note</code> that says <code>"Data source: world dataset."</code>.</li>
-<li>I want to have the output be easy to pull over to a <code>.docx</code> file, so I am going to save a <code>.html</code> file called <code>gdppc_summary.html</code> in my working directory (should be the <code>psci_2075</code> folder on my <code>Desktop</code>). I can then find the file on my computer, and open with my web browser of choice by double clicking on the <code>gdppc_summary.html</code> file (e.g., Firefox, Google Chrome, Safari, etc.), and then I can copy and paste the table that it opens into my report document.</li>
+<li>I want to have the output be easy to pull over to a <code>.docx</code> file, so I am going to save a <code>.docx</code> file called <code>gdppc_summary.docx</code> in my working directory (should be the <code>psci_2075</code> folder on my <code>Desktop</code>). I can then find the file on my computer, and open with Microsoft Word or another word processor of choice by double clicking on the <code>gdppc_summary.docx</code> file, and then I can copy and paste the table that it opens into my report document.</li>
 </ul></li>
 </ul>
 <div class="cell">
@@ -500,9 +500,9 @@ Note
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>( <span class="co"># rename columns</span></span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">`</span><span class="at">log(GDP per capita)</span><span class="st">`</span> <span class="ot">=</span> log_gdppc <span class="co"># specifically rename log_gdppc to log(GDP per capita)</span></span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">datasummary_skim</span>( <span class="co"># make a table sumamrizing the variables</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">datasummary_skim</span>( <span class="co"># make a table summarizing the variables</span></span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">notes =</span> <span class="st">"Data source: world dataset."</span>, <span class="co"># add notes to bottom of table</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">output =</span> <span class="st">"gdppc_summary.html"</span> <span class="co"># store result to a html file called gdppc_summary.html</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">output =</span> <span class="st">"gdppc_summary.docx"</span> <span class="co"># store result to a docx file called gdppc_summary.docx</span></span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
@@ -550,7 +550,8 @@ Note
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
-<sup></sup> Data source: world dataset.</td></tr></tfoot>
+<sup></sup> Data source: world dataset.
+ Credit: damoncroberts.com</td></tr></tfoot>
 </table>
 
 </div>
@@ -733,6 +734,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2021-2023 Damon Charles Roberts</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></div>
+  </div>
+</footer>
 
 
 
