@@ -131,6 +131,8 @@ What the code is doing above:
 #| label: fig-gdp-histogram
 #| fig-cap: Distribution of Countries' GDP (Per capita)
 #| echo: false
+#| warning: false
+#| message: false
 world %>% # grab the world dataset, and do the following
     ggplot() + # make a ggplot object
     geom_histogram( # make a histogram
@@ -181,7 +183,8 @@ To make the boxplot for the GDP (per capita) `gdppc` variable in the `world` dat
 #| label: fig-boxplot-example
 #| fig-cap: Boxplot of GDP (per capita)
 #| echo: false
-
+#| warning: false
+#| message: false
 world %>% # grab the world dataset
     ggplot() + # make a ggplot object
     geom_boxplot( # make a geom_boxplot
@@ -271,6 +274,8 @@ world %>% # grab the world dataset
 #| label: tbl-gdppc-table
 #| tbl-cap: Descriptive statistics of countries' GDP (per capita)
 #| echo: false
+#| warning: false
+#| message: false
 world %>% # grab the world dataset
     mutate( # change the values for a variable
         log_gdppc = log(gdppc) # take the log of gdppc and store it in new column called log_gdppc

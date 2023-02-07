@@ -289,8 +289,11 @@ Here is a break down of what this code does:
 6. I am also going to add cleaner labels to the plot as well. So I am going to use the `labs()` function to tell it that I want the x-axis to be labeled as "Trump won state", the y-axis to be "Murder rate per capita", and to add a caption to the bottom that says "Data source: States dataset." 
 
 ```{r}
-#| labels: bivariate-boxplot
+#| labels: fig-bivariate-boxplot
+#| fig-cap: Boxplot of Trump winning and murder rate for a state
 #| echo: false
+#| warning: false
+#| message: false
 states %>% # grab the states dataset
     mutate( # create a new column based on an existing one
         trumpwin_clean = factor( # create a column trumpwin_clean with value labels
@@ -362,6 +365,8 @@ Here's what this code does:
 #| label: fig-scatterplot
 #| fig-cap: Feeling thermometer of Obama and the LGBTQIA+ community
 #| echo: false
+#| warning: false
+#| message: false
 
 nes %>% # grab the nes dataset and apply the following
     ggplot() + # create a ggplot object
