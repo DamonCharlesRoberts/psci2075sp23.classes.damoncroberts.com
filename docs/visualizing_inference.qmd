@@ -1,0 +1,279 @@
+---
+title: "Visualizing samples relative to the population"
+format:
+  html:
+    toc: false
+    echo: false
+    keep-hidden: true
+    code-tools: true
+---
+
+```{python}
+#| label: setup-block
+# Import functions
+from random import seed
+from numpy.random import normal, negative_binomial, binomial
+import pandas as pd
+# Set seed
+seed(2075)
+```
+
+```{python}
+#| label: simulate-population
+
+data = pd.DataFrame({
+    "Normal": normal(0, 1, 100000),
+    "Poisson": negative_binomial(1, 0.5, 100000),
+    "Binomial": binomial(1, 0.5, 100000)
+})
+
+sample_20 = data.sample(20)
+
+sample_50 = data.sample(50)
+
+sample_100 = data.sample(100)
+
+sample_200 = data.sample(200)
+
+sample_500 = data.sample(500)
+
+sample_1000 = data.sample(1000)
+
+sample_5000 = data.sample(5000)
+
+condition_normal = data["Poisson"] != 0
+conditional_poisson = data["Normal"] < 1
+
+
+non_random_20 = data[condition_normal & conditional_poisson].sample(20)
+non_random_50 = data[condition_normal & conditional_poisson].sample(50)
+non_random_100 = data[condition_normal & conditional_poisson].sample(100)
+non_random_200 = data[condition_normal & conditional_poisson].sample(200)
+non_random_500 = data[condition_normal & conditional_poisson].sample(500)
+non_random_1000 = data[condition_normal & conditional_poisson].sample(1000)
+non_random_5000 = data[condition_normal & conditional_poisson].sample(5000)
+```
+
+```{python}
+ojs_define(
+  dataset = data,
+  twenty = sample_20,
+  fifty = sample_50,
+  one_hundred = sample_100,
+  two_hundred = sample_200,
+  five_hundred = sample_500,
+  one_thousand = sample_1000,
+  five_thousand = sample_5000,
+  non_random_twenty = non_random_20,
+  non_random_fifty = non_random_50,
+  non_random_one_hundred = non_random_100,
+  non_random_two_hundred = non_random_200,
+  non_random_five_hundred = non_random_500,
+  non_random_one_thousand = non_random_1000,
+  non_random_five_thousand = non_random_5000,
+)
+```
+
+```{ojs}
+d3 = require("d3@7")
+```
+
+```{ojs}
+data = transpose(dataset)
+```
+
+## Population distributions
+
+```{ojs}
+//| label: fig-population-distribution
+//| fig-cap: Population Distributions
+//| fig-subcap:
+//|   - "Normal Distribution"
+//|   - "Binomial Distribution"
+//|   - "Poisson Distribution"
+Plot.plot({
+  grid: true,
+  marks: [
+    Plot.frame(),
+    Plot.rectY(data, Plot.binX(
+      {y: "count"},
+      {x: "Normal",
+       fill: "#D3D3D3",
+       strokeWidth: .5, // linewidth = 0.5
+       stroke: "#000000", // equivalent of edgecolor="black"
+       thresholds: 10 // equivalent of "bins=10"
+      }
+    ))
+  ]
+})
+Plot.plot({
+  grid: true,
+  marks: [
+    Plot.frame(),
+    Plot.rectY(data, Plot.binX(
+      {y: "count"},
+      {x: "Binomial",
+       fill: "#D3D3D3",
+       strokeWidth: .5, // linewidth = 0.5
+       stroke: "#000000", // equivalent of edgecolor="black"
+       thresholds: 2 // equivalent of "bins=10"
+      }
+    ))
+  ]
+})
+
+Plot.plot({
+  grid: true,
+  marks: [
+    Plot.frame(),
+    Plot.rectY(data, Plot.binX(
+      {y: "count"},
+      {x: "Poisson",
+       fill: "#D3D3D3",
+       strokeWidth: .5, // linewidth = 0.5
+       stroke: "#000000", // equivalent of edgecolor="black"
+       thresholds: 10 // equivalent of "bins=10"
+      }
+    ))
+  ]
+})
+```
+
+## Random samples of the population distributions
+
+```{ojs}
+options = [
+  {name: "N = 20", object: transpose(twenty)},
+  {name: "N = 50", object: transpose(fifty)},
+  {name: "N = 100", object: transpose(one_hundred)},
+  {name: "N = 200", object: transpose(two_hundred)},
+  {name: "N = 500", object: transpose(five_hundred)},
+  {name: "N = 1,000", object: transpose(one_thousand)},
+  {name: "N = 5,000", object: transpose(five_thousand)}
+]
+viewof selected =  Inputs.select(options, {label: "Sample", format: x => x.name, value: options.find(t => t.name === "20")})
+
+```
+
+```{ojs}
+//| labels: fig-sample
+//| fig-cap: Grabbing a random sample
+//| fig-subcap:
+//|   - "Normal distribution"
+//|   - "Binomial distribution"
+//|   - "Poisson distribution"
+Plot.plot({
+  grid: true,
+  marks: [
+    Plot.frame(),
+    Plot.rectY(selected.object, Plot.binX(
+      {y: "count"},
+      {x: "Normal",
+       fill: "#D3D3D3",
+       strokeWidth: .5, // linewidth = 0.5
+       stroke: "#000000", // equivalent of edgecolor="black"
+       thresholds: 10 // equivalent of "bins=10"
+      }
+    ))
+  ]
+})
+Plot.plot({
+  grid: true,
+  marks: [
+    Plot.frame(),
+    Plot.rectY(selected.object, Plot.binX(
+      {y: "count"},
+      {x: "Binomial",
+       fill: "#D3D3D3",
+       strokeWidth: .5, // linewidth = 0.5
+       stroke: "#000000", // equivalent of edgecolor="black"
+       thresholds: 10 // equivalent of "bins=10"
+      }
+    ))
+  ]
+})
+Plot.plot({
+  grid: true,
+  marks: [
+    Plot.frame(),
+    Plot.rectY(selected.object, Plot.binX(
+      {y: "count"},
+      {x: "Poisson",
+       fill: "#D3D3D3",
+       strokeWidth: .5, // linewidth = 0.5
+       stroke: "#000000", // equivalent of edgecolor="black"
+       thresholds: 10 // equivalent of "bins=10"
+      }
+    ))
+  ]
+})
+```
+
+## Distributions of non-random samples
+
+```{ojs}
+non_random_options = [
+  {name: "N = 20", object: transpose(non_random_twenty)},
+  {name: "N = 50", object: transpose(non_random_fifty)},
+  {name: "N = 100", object: transpose(non_random_one_hundred)},
+  {name: "N = 200", object: transpose(non_random_two_hundred)},
+  {name: "N = 500", object: transpose(non_random_five_hundred)},
+  {name: "N = 1,000", object: transpose(non_random_one_thousand)},
+  {name: "N = 5,000", object: transpose(non_random_five_thousand)}
+]
+viewof non_random_selected =  Inputs.select(non_random_options, {label: "Sample", format: x => x.name, value: options.find(t => t.name === "20")})
+```
+
+```{ojs}
+//| labels: fig-non-randomsample
+//| fig-cap: Grabbing a non-random sample
+//| fig-subcap:
+//|   - "Normal distribution"
+//|   - "Binomial distribution"
+//|   - "Poisson distribution"
+Plot.plot({
+  grid: true,
+  marks: [
+    Plot.frame(),
+    Plot.rectY(non_random_selected.object, Plot.binX(
+      {y: "count"},
+      {x: "Normal",
+       fill: "#D3D3D3",
+       strokeWidth: .5, // linewidth = 0.5
+       stroke: "#000000", // equivalent of edgecolor="black"
+       thresholds: 10 // equivalent of "bins=10"
+      }
+    ))
+  ]
+})
+Plot.plot({
+  grid: true,
+  marks: [
+    Plot.frame(),
+    Plot.rectY(non_random_selected.object, Plot.binX(
+      {y: "count"},
+      {x: "Binomial",
+       fill: "#D3D3D3",
+       strokeWidth: .5, // linewidth = 0.5
+       stroke: "#000000", // equivalent of edgecolor="black"
+       thresholds: 10 // equivalent of "bins=10"
+      }
+    ))
+  ]
+})
+Plot.plot({
+  grid: true,
+  marks: [
+    Plot.frame(),
+    Plot.rectY(non_random_selected.object, Plot.binX(
+      {y: "count"},
+      {x: "Poisson",
+       fill: "#D3D3D3",
+       strokeWidth: .5, // linewidth = 0.5
+       stroke: "#000000", // equivalent of edgecolor="black"
+       thresholds: 10 // equivalent of "bins=10"
+      }
+    ))
+  ]
+})
+```

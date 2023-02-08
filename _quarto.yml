@@ -17,6 +17,9 @@ book:
     - docs/06_r_syntax_basics.qmd
     - docs/07_loading_data.qmd
     - docs/08_summarizing_data.qmd
+    - docs/09_simple_data_cleaning.qmd
+    - docs/10_simple_bivariate_analyses.qmd
+    #- docs/visualizing_inference.qmd
     - docs/references.qmd
   page-footer:
     center: |
