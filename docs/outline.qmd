@@ -30,8 +30,8 @@
 ## Week 4
 
 - Attendance
-- Group project time
-- Bivariate (two variables) descriptive statistics
+- Introduction to [cleaning variables](09_simple_data_cleaning.qmd)
+- [Bivariate (two variables) descriptive statistics](10_simple_bivariate_analyses.qmd)
 
 ## Week 5
 
