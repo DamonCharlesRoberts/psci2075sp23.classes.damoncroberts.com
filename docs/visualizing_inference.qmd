@@ -8,12 +8,23 @@ format:
     code-tools: true
 ---
 
+In statistics, we use the phrase *population* to refer to the group of folks/organizations/countries we are interested in studying. The population does not necessarily imply that we are talking about all of the countries in the world or all of the citizens in a given jurisdiction. It really is just the group of interest. 
+
+For example, say that I am interested in studying Black Americans' political attitudes on federal taxes. My population of interest would not include non-Black Americans. Another example would be that if I wanted to understand the voting intentions for American voters, my population does not include every American as there are a number of disenfranchised populations that are not allowed to vote. If I want to examine whether the EU decreased interstate conflict between those countries, I would not include countries outside of the EU in my analysis.
+
+The population is often very hard to get complete data on. Therefore, we often rely on whats called *samples* for our statistical analyses. These samples are ideally a randomly selected/collected subset of our population. For example, when we do a poll of Black Americans' attitudes, we often aren't able to ask every person who identifies as Black in the United States. We randomly select folks who are part of our population to ask the questions to.
+
+Why do we care that our sample is a *randomly* selected subset? As you will see later in the term, we care about this because we do not want to introduce what is referred to as *systematic error* into our sample. We care about reducing the amount of *systematic error* in the way we collect our data, because that can make our results less accurate (more biased). This systematic error makes things less accurate because it makes the sample that we've collected data on look different than our population, on average.
+
+Let's try visualizing this. Let's say that our population has `100000` people in it. Say we want to collect data on three variables for our sample from the population. [@fig-population-distribution] displays the distribution of our population if we *could* collect all of the data. In practice, this is often theoretical (based on our expertise).
+
 ```{python}
 #| label: setup-block
 # Import functions
 from random import seed
 from numpy.random import normal, negative_binomial, binomial
 import pandas as pd
+from helper import sample
 # Set seed
 seed(2075)
 ```
@@ -22,9 +33,9 @@ seed(2075)
 #| label: simulate-population
 
 data = pd.DataFrame({
-    "Normal": normal(0, 1, 100000),
-    "Poisson": negative_binomial(1, 0.5, 100000),
-    "Binomial": binomial(1, 0.5, 100000)
+    "Variable A": normal(0, 1, 100000),
+    "Variable B": negative_binomial(1, 0.5, 100000),
+    "Variable C": binomial(1, 0.5, 100000)
 })
 
 sample_20 = data.sample(20)
@@ -41,8 +52,8 @@ sample_1000 = data.sample(1000)
 
 sample_5000 = data.sample(5000)
 
-condition_normal = data["Poisson"] != 0
-conditional_poisson = data["Normal"] < 1
+condition_normal = data["Variable B"] != 0
+conditional_poisson = data["Variable A"] < 1
 
 
 non_random_20 = data[condition_normal & conditional_poisson].sample(20)
@@ -89,15 +100,15 @@ data = transpose(dataset)
 //| fig-cap: Population Distributions
 //| fig-subcap:
 //|   - "Normal Distribution"
-//|   - "Binomial Distribution"
 //|   - "Poisson Distribution"
+//|   - "Binomial Distribution"
 Plot.plot({
   grid: true,
   marks: [
     Plot.frame(),
     Plot.rectY(data, Plot.binX(
       {y: "count"},
-      {x: "Normal",
+      {x: "Variable A",
        fill: "#D3D3D3",
        strokeWidth: .5, // linewidth = 0.5
        stroke: "#000000", // equivalent of edgecolor="black"
@@ -112,7 +123,7 @@ Plot.plot({
     Plot.frame(),
     Plot.rectY(data, Plot.binX(
       {y: "count"},
-      {x: "Binomial",
+      {x: "Variable B",
        fill: "#D3D3D3",
        strokeWidth: .5, // linewidth = 0.5
        stroke: "#000000", // equivalent of edgecolor="black"
@@ -128,7 +139,7 @@ Plot.plot({
     Plot.frame(),
     Plot.rectY(data, Plot.binX(
       {y: "count"},
-      {x: "Poisson",
+      {x: "Variable C",
        fill: "#D3D3D3",
        strokeWidth: .5, // linewidth = 0.5
        stroke: "#000000", // equivalent of edgecolor="black"
@@ -138,6 +149,10 @@ Plot.plot({
   ]
 })
 ```
+
+[@fig-population-distribution-1] shows that the first variable for the population is distributed Normally (with a bell curve). [@fig-population-distribution-2] shows that the second variable is distributed with what we call a Poisson Distribution. These sorts of distributions are generated with what we refer to as count data. Examples of count data are things like how many time an event occurs. Finally, [@fig-population-distribution-3] shows that the third variable is distributed with what we call a Binomial Distribution. This occurs where we only have two outcomes. In this case, the population suggests that the probability of someone having a value of 0 or 1 for variable C is 50%.
+
+Let's take random samples from these population distributions. We can try out different sample sizes and see what changes.
 
 ## Random samples of the population distributions
 
@@ -160,15 +175,15 @@ viewof selected =  Inputs.select(options, {label: "Sample", format: x => x.name,
 //| fig-cap: Grabbing a random sample
 //| fig-subcap:
 //|   - "Normal distribution"
-//|   - "Binomial distribution"
 //|   - "Poisson distribution"
+//|   - "Binomial distribution"
 Plot.plot({
   grid: true,
   marks: [
     Plot.frame(),
     Plot.rectY(selected.object, Plot.binX(
       {y: "count"},
-      {x: "Normal",
+      {x: "Variable A",
        fill: "#D3D3D3",
        strokeWidth: .5, // linewidth = 0.5
        stroke: "#000000", // equivalent of edgecolor="black"
@@ -183,7 +198,7 @@ Plot.plot({
     Plot.frame(),
     Plot.rectY(selected.object, Plot.binX(
       {y: "count"},
-      {x: "Binomial",
+      {x: "Variable B",
        fill: "#D3D3D3",
        strokeWidth: .5, // linewidth = 0.5
        stroke: "#000000", // equivalent of edgecolor="black"
@@ -198,7 +213,7 @@ Plot.plot({
     Plot.frame(),
     Plot.rectY(selected.object, Plot.binX(
       {y: "count"},
-      {x: "Poisson",
+      {x: "Variable C",
        fill: "#D3D3D3",
        strokeWidth: .5, // linewidth = 0.5
        stroke: "#000000", // equivalent of edgecolor="black"
@@ -208,6 +223,16 @@ Plot.plot({
   ]
 })
 ```
+
+If you pick through the different sample sizes, you might notice a couple of things:
+
+1. The larger the sample, it tends to look more like the population distribution (not always, but it tends to on average).
+2. Even with a smaller sample, the sample and population distributions don't look alarmingly different on average.
+
+What about the situations where my random sample didn't look like my population?! It turns out to still be okay. What we care about is that *on average* our samples look like our population. Random samples have this tendency to, on average, give us the same mean as our population distribution. This is referred to as the ***Central Limit Theorem***
+
+Let's demonstrate this point visually.
+
 
 ## Distributions of non-random samples
 

@@ -355,6 +355,7 @@ nes %>% # grab the nes dataset and apply the following
 ```
 
 Here's what this code does:
+
 1. Take the `nes` dataset and apply the following to it.
 2. Make a `ggplot()` object
 3. Specifically, make a scatter plot with the `geom_point()` function. For this scatterplot, I want the x-axis to be the `ftobama` variable and the y-axis variable to be the `ftgay` variable. I want to make the outline `color` of the circles to be black and the `fill` color of the circles to be light grey. I want the dots to be somewhat transparent so I am going to set the `alpha` to 0.5.

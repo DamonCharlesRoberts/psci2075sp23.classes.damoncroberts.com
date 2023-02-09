@@ -812,7 +812,14 @@ Not asked                                       67                              
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">caption =</span> <span class="st">"Data source: NES dataset."</span> <span class="co"># add this as the caption</span></span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Here’s what this code does: 1. Take the <code>nes</code> dataset and apply the following to it. 2. Make a <code>ggplot()</code> object 3. Specifically, make a scatter plot with the <code>geom_point()</code> function. For this scatterplot, I want the x-axis to be the <code>ftobama</code> variable and the y-axis variable to be the <code>ftgay</code> variable. I want to make the outline <code>color</code> of the circles to be black and the <code>fill</code> color of the circles to be light grey. I want the dots to be somewhat transparent so I am going to set the <code>alpha</code> to 0.5. 4. Then, I want to use the minimal theme for the plot, so I am going to use the <code>theme_minimal()</code> function. 5. I also want to change the labels on the plot. So using the <code>labs()</code> function, I am going to tell the x-axis to be labelled as “Feeling thermometer: Obama”, the y-axis to be labelled as “Feeling thermometer: LGBTQIA+”, and add a caption to indicate that the data source is the “NES dataset.”</p>
+<p>Here’s what this code does:</p>
+<ol type="1">
+<li>Take the <code>nes</code> dataset and apply the following to it.</li>
+<li>Make a <code>ggplot()</code> object</li>
+<li>Specifically, make a scatter plot with the <code>geom_point()</code> function. For this scatterplot, I want the x-axis to be the <code>ftobama</code> variable and the y-axis variable to be the <code>ftgay</code> variable. I want to make the outline <code>color</code> of the circles to be black and the <code>fill</code> color of the circles to be light grey. I want the dots to be somewhat transparent so I am going to set the <code>alpha</code> to 0.5.</li>
+<li>Then, I want to use the minimal theme for the plot, so I am going to use the <code>theme_minimal()</code> function.</li>
+<li>I also want to change the labels on the plot. So using the <code>labs()</code> function, I am going to tell the x-axis to be labelled as “Feeling thermometer: Obama”, the y-axis to be labelled as “Feeling thermometer: LGBTQIA+”, and add a caption to indicate that the data source is the “NES dataset.”</li>
+</ol>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-scatterplot" class="quarto-figure quarto-figure-center anchored">
