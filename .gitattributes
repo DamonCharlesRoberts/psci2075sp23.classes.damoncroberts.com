@@ -6,3 +6,4 @@
 *.lua linguist-language=Rscript
 *.css linguist-language=Rscript
 *.html linguist-detectable=false
+*.py linguist-detectable
