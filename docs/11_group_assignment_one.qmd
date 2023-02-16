@@ -323,7 +323,7 @@ world_clean %>% # grab the world_clean dataset and apply the following functions
     datasummary_skim( # make a table...
         ., #... with the above data...
         notes = "Data source: World dataset", #... add a note to the table...
-        output = "summary_stats_two.docx" #... and store the results into a word document
+        output = "summary_stats_log_gdppc.docx" #... and store the results into a word document
     )
 ```
 
@@ -384,3 +384,10 @@ world_clean %>% # grab the world dataset
         notes = "Data source: World dataset" # ... add notes to the plot...
     )
 ```
+
+## Some final notes:
+
+- Make sure that you answer all parts to a question
+- Make sure that when writing your RScripts, that things are organized! Comment your code, have your code in the correct order, etc.
+- If you are stuck on these things, look at Dr. Philips' slides and his labs. I also encourage you to look through this recitation handout as well as a resource!
+- For a full RScript of this exercise, [go to this page](https://github.com/DamonCharlesRoberts/psci2075sp23.classes.damoncroberts.com/blob/main/examples/group_assignment_one_example.R)
