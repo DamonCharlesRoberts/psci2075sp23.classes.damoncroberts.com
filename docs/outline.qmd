@@ -37,6 +37,11 @@ ariables](09_simple_data_cleaning.qmd)
 
 ## Week 5
 
+- Attendance
+- Review
+- [Group assignment 1 debrief](11_group_assignment_one.qmd)
+- Group work
+
 ## Week 6
 
 ## Week 7

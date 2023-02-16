@@ -112,7 +112,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../docs/references.html" rel="next">
+<link href="../docs/11_group_assignment_one.html" rel="next">
 <link href="../docs/09_simple_data_cleaning.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -257,6 +257,11 @@ gtag('config', 'G-8Z2BLG3VEE', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../docs/11_group_assignment_one.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Group Assignment 1</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../docs/references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
@@ -304,7 +309,7 @@ gtag('config', 'G-8Z2BLG3VEE', { 'anonymize_ip': true});
 
 </div>
 <p>Often times in science, we don’t want to just understand how one thing occurs. We often want to understand and explain phenomenon. These phenomenon are not just how one feature in the world varies, but how it varies <em>with</em> something else.</p>
-<p>We often seek to understand each variable on its own through univariate analyses through summarizing our variables <a href="@08_summarizing_data.qmd">see the summarizing data page</a>. We then move into examining how two or more variables vary together through bivariate (two variables) and multivariate (more than two variables) analyses.</p>
+<p>We often seek to understand each variable on its own through univariate analyses through summarizing our variables <a href="../docs/08_summarizing_data.html">see the summarizing data page</a>. We then move into examining how two or more variables vary together through bivariate (two variables) and multivariate (more than two variables) analyses.</p>
 <p>Many new analysts often want to jump right into examining correlations between two variables or even getting into exploring how one variable may <em>cause</em> another. But, again, it is important to first understand our variables and their underlying processes before we jump right into more complicated analyses. If we jump right into more complicated analyses, we could be missing some really important insights that may highlight a number of useful things to the analyst. We will see examples of what kinds of things it can help us identify as we move throughout the term.</p>
 <p>So again, recall we want to provide univariate summaries of our data before we even engage in bivariate summaries. What are the tools that we can use to perform bivariate summaries? Like with univariate descriptive statistics, we can use a number of visual or numerical representations. Let’s start with numerical.</p>
 <section id="numerical-representations" class="level2" data-number="11.1">
@@ -792,7 +797,7 @@ Not asked                                       67                              
 <p>If we have two continuous variables, then we can make a scatterplot instead.</p>
 <p>Say for example, we want to look at those who have positive feelings toward Barack Obama and their feelings toward LGBTQIA+ rights.</p>
 <p>Looking at the <code>nes</code> dataset, I see that there is a question that people were asked about their “temperature” toward Obama and toward Gay rights. These questions are referred to as feeling thermometers where respondents can choose on a scale from 0-100, how warmly they feel toward the person or group or how cold their feelings are toward them. There is a feeling thermometer for Obama, <code>ftobama</code>, and for the LGBTQIA+ community, <code>ftgay</code>, in the <code>nes</code> dataset.</p>
-<p>Using functions from the <code>ggplot2</code> package <span class="citation" data-cites="ggplot">(<a href="references.html#ref-ggplot" role="doc-biblioref"><strong>ggplot?</strong></a>)</span>, I can make a scatter plot for these.</p>
+<p>Using functions from the <code>ggplot2</code> package <span class="citation" data-cites="ggplot2">(<a href="references.html#ref-ggplot2" role="doc-biblioref">Wickham 2016</a>)</span>, I can make a scatter plot for these.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nes <span class="sc">%&gt;%</span> <span class="co"># grab the nes dataset and apply the following</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="co"># create a ggplot object</span></span>
@@ -842,6 +847,9 @@ Not asked                                       67                              
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
 <div id="ref-modelsummary" class="csl-entry" role="doc-biblioentry">
 Arel-Bundock, Vincent. 2022. <span>“<span class="nocase">modelsummary</span>: Data and Model Summaries in <span>R</span>.”</span> <em>Journal of Statistical Software</em> 103 (1): 1–23. <a href="https://doi.org/10.18637/jss.v103.i01">https://doi.org/10.18637/jss.v103.i01</a>.
+</div>
+<div id="ref-ggplot2" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
 </div>
 <div id="ref-dplyr" class="csl-entry" role="doc-biblioentry">
 Wickham, Hadley, Romain François, Lionel Henry, Kirill Müller, and Davis Vaughan. 2023. <em>Dplyr: A Grammar of Data Manipulation</em>.
@@ -990,8 +998,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../docs/references.html" class="pagination-link">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../docs/11_group_assignment_one.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Group Assignment 1</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

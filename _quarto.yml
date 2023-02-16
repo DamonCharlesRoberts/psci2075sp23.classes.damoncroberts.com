@@ -19,6 +19,7 @@ book:
     - docs/08_summarizing_data.qmd
     - docs/09_simple_data_cleaning.qmd
     - docs/10_simple_bivariate_analyses.qmd
+    - docs/11_group_assignment_one.qmd
     #- docs/visualizing_inference.qmd
     - docs/references.qmd
   page-footer:

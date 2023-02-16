@@ -17,8 +17,13 @@ library(ggplot2) # for graphs
 #| echo: false
 # Load functions
 box::use(
-    magrittr = magrittr[`%>%`]
+    magrittr = magrittr[`%>%`],
+    dplyr = dplyr[select, rename, mutate, case_when],
+    modelsummary = modelsummary[datasummary_skim],
+    ggplot2 = ggplot2[ggplot, geom_histogram, geom_boxplot, aes, theme_minimal, labs]
 )
+# Load data
+load(file = "C:/Users/damon/Desktop/psci_2075/psci_2075_data.RData")
 ```
 
 ## Part I
@@ -38,6 +43,12 @@ In the example for **Part I**, I am going to use the `compromise` variable from 
 #| eval: false
 
 nes %>% # grab the nes dataset, and apply the following functions
+    mutate( # transform an existing variable and make a new one
+        compromise = case_when( # overwrite the compromise variable with the following conditions...
+            compromise == "Compromies to get things done" ~ 1, #... when it equals this statement, set it to the value of 1
+            compromise == "Sticks to his or her principles" ~ 0 #... when it equals this statement, set it to the value of 0
+        )
+    ) %>%
     select( # grab a variable...
         compromise # ... specifically the compromise variable
     ) %>%
@@ -52,11 +63,18 @@ nes %>% # grab the nes dataset, and apply the following functions
 ```
 
 ```{r}
-#| label: summary-stats
+#| label: tbl-summary-stats
+#| tbl-cap: Descriptive statistics
 #| echo: false
 #| eval: true
 
 nes %>% # grab the nes dataset, and apply the following functions
+    mutate( # transform an existing variable and make a new one
+        compromise = case_when( # overwrite the compromise variable with the following conditions...
+            compromise == "Compromies to get things done" ~ 1, #... when it equals this statement, set it to the value of 1
+            compromise == "Sticks to his or her principles" ~ 0 #... when it equals this statement, set it to the value of 0
+        )
+    ) %>%
     select( # grab a variable...
         compromise # ... specifically the compromise variable
     ) %>%
@@ -78,11 +96,17 @@ Then interpret what these things mean:
 3. Explore your variable using either a histogram or boxplot. Are there any interesting or surprising values?
 
 ```{r}
-#| label: boxplot-example
+#| label: boxplot-compromise-example
 #| echo: true
 #| eval: false
 
 nes %>% # grab the nes dataset, and apply the following functions
+    mutate( # transform an existing variable and make a new one
+        compromise = case_when( # overwrite the compromise variable with the following conditions...
+            compromise == "Compromies to get things done" ~ 1, #... when it equals this statement, set it to the value of 1
+            compromise == "Sticks to his or her principles" ~ 0 #... when it equals this statement, set it to the value of 0
+        )
+    ) %>%
     ggplot() + # make a ggplot object...
     geom_histogram( #... specifically a histogram...
         aes(
@@ -105,6 +129,12 @@ nes %>% # grab the nes dataset, and apply the following functions
 #| echo: false
 #| eval: true
 nes %>% # grab the nes dataset, and apply the following functions
+    mutate( # transform an existing variable and make a new one
+        compromise = case_when( # overwrite the compromise variable with the following conditions...
+            compromise == "Compromies to get things done" ~ 1, #... when it equals this statement, set it to the value of 1
+            compromise == "Sticks to his or her principles" ~ 0 #... when it equals this statement, set it to the value of 0
+        )
+    ) %>%
     ggplot() + # make a ggplot object...
     geom_histogram( #... specifically a histogram...
         aes(
@@ -126,6 +156,12 @@ nes %>% # grab the nes dataset, and apply the following functions
 #| echo: true
 #| eval: false
 nes %>% # grab the nes dataset, and apply the following functions
+    mutate( # transform an existing variable and make a new one
+        compromise = case_when( # overwrite the compromise variable with the following conditions...
+            compromise == "Compromies to get things done" ~ 1, #... when it equals this statement, set it to the value of 1
+            compromise == "Sticks to his or her principles" ~ 0 #... when it equals this statement, set it to the value of 0
+        )
+    ) %>%
     ggplot() + # make a ggplot object ...
     geom_boxplot( #... specifically a boxplot ...
         aes(
@@ -148,6 +184,12 @@ nes %>% # grab the nes dataset, and apply the following functions
 #| echo: false
 #| eval: true
 nes %>% # grab the nes dataset, and apply the following functions
+    mutate( # transform an existing variable and make a new one
+        compromise = case_when( # overwrite the compromise variable with the following conditions...
+            compromise == "Compromies to get things done" ~ 1, #... when it equals this statement, set it to the value of 1
+            compromise == "Sticks to his or her principles" ~ 0 #... when it equals this statement, set it to the value of 0
+        )
+    ) %>%
     ggplot() + # make a ggplot object ...
     geom_boxplot( #... specifically a boxplot ...
         aes(
@@ -171,5 +213,172 @@ Then look around these plots! The data are telling a story. Translate what that 
 > Data rarely come to us in the form we would like. Either the data do not align with the theory we are interested in exploring or the variables are so skewed that it’s extremely hard to discover any underlying patterns. This exercise takes one common problem we face in data analysis and asks you to make the proper transformation in order to answer a specific question or to discover an important underlying pattern you may not have observed otherwise.
 
 1. Using the 'world' data, summarize (mean, variance, median) GDP per capita (gdppc) and create a histogram. What do you notice?
+
+```{r}
+#| labels: descriptive-statistics-example-two
+#| echo: true
+#| eval: false
+world %>% # grab the world dataset and apply the following functions to it
+    select( # grab a column...
+        gdppc # ...specifically the gdppc column
+    ) %>%
+    rename( # rename a column...
+        `GDP per capita` = gdppc #... specifically the gdppc column
+    ) %>%
+    datasummary_skim( # make a table...
+        ., #... with the above data...
+        notes = "Data source: World dataset", #... add a note to the table...
+        output = "summary_stats_two.docx" #... and store the results into a word document
+    )
+```
+
+```{r}
+#| labels: tbl-descriptive-statistics-example-two
+#| tbl-cap: Descriptive statistics
+#| echo: false
+#| eval: true
+world %>% # grab the world dataset and apply the following functions to it
+    select( # grab a column...
+        gdppc # ...specifically the gdppc column
+    ) %>%
+    rename( # rename a column...
+        `GDP per capita` = gdppc #... specifically the gdppc column
+    ) %>%
+    datasummary_skim( # make a table...
+        ., #... with the above data...
+        notes = "Data source: World dataset", #... add a note to the table...
+    )
+```
+
+```{r}
+#| labels: world-histogram
+#| echo: true
+#| eval: false
+#| 
+world %>% # grab the world dataset
+    ggplot() + # make a ggplot object...
+    geom_histogram( #... make a histogram...
+        aes(x = gdppc), # ... put the gdppc column on the x axis
+        fill = "#D3D3D3", # ...fill the bars with light grey...
+        color = "#000000" #... make the outlines of the bars black...
+    ) +
+    theme_minimal() + # apply the minimal theme to it
+    labs( # ... clean up the labels...
+        y = "Count", # ...change the y-axis to this...
+        x = "GDP per capita", # ... change the x-axis to this...
+        notes = "Data source: World dataset" # ... add notes to the plot...
+    )
+```
+
+```{r}
+#| labels: fig-world-histogram
+#| fig-cap: Histogram of GDP Per capita
+#| echo: false
+#| eval: true
+world %>% # grab the world dataset
+    ggplot() + # make a ggplot object...
+    geom_histogram( #... make a histogram...
+        aes(x = gdppc), # ... put the gdppc column on the x axis
+        fill = "#D3D3D3", # ...fill the bars with light grey...
+        color = "#000000" #... make the outlines of the bars black...
+    ) +
+    theme_minimal() + # apply the minimal theme to it
+    labs( # ... clean up the labels...
+        y = "Count", # ...change the y-axis to this...
+        x = "GDP per capita", # ... change the x-axis to this...
+        notes = "Data source: World dataset" # ... add notes to the plot...
+    )
+```
+
+You can mention that this has a right skew, that the mean and median do not match, discuss the standard deviation, can talk about how there are some countries that has a *massive* GDP per capita relative to most countries, etc.
+
 2. Sometimes when data are positive and skewed towards the right tail of the distribution we take the log transformation. Create a new variable that is the log of GDP per capita.
+
+A couple ways to do this. Here is the way I like to do it.
+
+```{r}
+#| label: create-log-gdppc
+#| echo: true
+#| eval: true
+world_clean <- world %>% # grab the world dataset and apply the following functions with the results stored in world_clean
+    mutate( # make a transformation to an existing variable and store it in new one
+        log_gdppc = log(gdppc) # make new variable called log_gdppc that is equal to the log of the gdppc variable
+    )
+```
 3. Summarize (mean, variance, median) this new variable. Create a histogram. How does this compare to the original variable of GDP per capita?
+
+```{r}
+#| labels: descriptive-statistics-example-two
+#| echo: true
+#| eval: false
+world_clean %>% # grab the world_clean dataset and apply the following functions to it
+    select( # grab a column...
+        log_gdppc # ...specifically the log_gdppc column
+    ) %>%
+    rename( # rename a column...
+        `log(GDP per capita)` = log_gdppc #... specifically the log_gdppc column
+    ) %>%
+    datasummary_skim( # make a table...
+        ., #... with the above data...
+        notes = "Data source: World dataset", #... add a note to the table...
+        output = "summary_stats_two.docx" #... and store the results into a word document
+    )
+```
+
+```{r}
+#| labels: tbl-descriptive-statistics-example-two
+#| tbl-cap: Descriptive statistics
+#| echo: false
+#| eval: true
+world_clean %>% # grab the world_clean dataset and apply the following functions to it
+    select( # grab a column...
+        log_gdppc # ...specifically the log_gdppc column
+    ) %>%
+    rename( # rename a column...
+        `log(GDP per capita)` = log_gdppc #... specifically the log_gdppc column
+    ) %>%
+    datasummary_skim( # make a table...
+        ., #... with the above data...
+        notes = "Data source: World dataset", #... add a note to the table...
+    )
+```
+
+```{r}
+#| labels: world-histogram
+#| echo: true
+#| eval: false
+#| 
+world_clean %>% # grab the world_clean dataset
+    ggplot() + # make a ggplot object...
+    geom_histogram( #... make a histogram...
+        aes(x = log_gdppc), # ... put the log_gdppc column on the x axis
+        fill = "#D3D3D3", # ...fill the bars with light grey...
+        color = "#000000" #... make the outlines of the bars black...
+    ) +
+    theme_minimal() + # apply the minimal theme to it
+    labs( # ... clean up the labels...
+        y = "Count", # ...change the y-axis to this...
+        x = "GDP per capita", # ... change the x-axis to this...
+        notes = "Data source: World dataset" # ... add notes to the plot...
+    )
+```
+
+```{r}
+#| labels: fig-world-histogram
+#| fig-cap: Histogram of GDP Per capita
+#| echo: false
+#| eval: true
+world %>% # grab the world dataset
+    ggplot() + # make a ggplot object...
+    geom_histogram( #... make a histogram...
+        aes(x = gdppc), # ... put the gdppc column on the x axis
+        fill = "#D3D3D3", # ...fill the bars with light grey...
+        color = "#000000" #... make the outlines of the bars black...
+    ) +
+    theme_minimal() + # apply the minimal theme to it
+    labs( # ... clean up the labels...
+        y = "Count", # ...change the y-axis to this...
+        x = "GDP per capita", # ... change the x-axis to this...
+        notes = "Data source: World dataset" # ... add notes to the plot...
+    )
+```

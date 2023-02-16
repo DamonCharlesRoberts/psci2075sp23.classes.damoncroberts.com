@@ -37,7 +37,7 @@ load("~/Desktop/psci_2075/psci_2075_data.RData")
 
 Often times in science, we don't want to just understand how one thing occurs. We often want to understand and explain phenomenon. These phenomenon are not just how one feature in the world varies, but how it varies *with* something else.
 
-We often seek to understand each variable on its own through univariate analyses through summarizing our variables [see the summarizing data page](@08_summarizing_data.qmd). We then move into examining how two or more variables vary together through bivariate (two variables) and multivariate (more than two variables) analyses.
+We often seek to understand each variable on its own through univariate analyses through summarizing our variables [see the summarizing data page](08_summarizing_data.qmd). We then move into examining how two or more variables vary together through bivariate (two variables) and multivariate (more than two variables) analyses.
 
 Many new analysts often want to jump right into examining correlations between two variables or even getting into exploring how one variable may *cause* another. But, again, it is important to first understand our variables and their underlying processes before we jump right into more complicated analyses. If we jump right into more complicated analyses, we could be missing some really important insights that may highlight a number of useful things to the analyst. We will see examples of what kinds of things it can help us identify as we move throughout the term.
 
@@ -329,7 +329,7 @@ Say for example, we want to look at those who have positive feelings toward Bara
 
 Looking at the `nes` dataset,  I see that there is a question that people were asked about their "temperature" toward Obama and toward Gay rights. These questions are referred to as feeling thermometers where respondents can choose on a scale from 0-100, how warmly they feel toward the person or group or how cold their feelings are toward them. There is a feeling thermometer for Obama, `ftobama`, and for the LGBTQIA+ community, `ftgay`, in the `nes` dataset.
 
-Using functions from the `ggplot2` package [@ggplot], I can make a scatter plot for these.
+Using functions from the `ggplot2` package [@ggplot2], I can make a scatter plot for these.
 
 ```{r}
 #| label: scatterplot
