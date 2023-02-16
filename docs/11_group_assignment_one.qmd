@@ -1,5 +1,7 @@
 # Group Assignment 1
 
+<div class="tenor-gif-embed" data-postid="25388930" data-share-method="host" data-aspect-ratio="1.60804" data-width="100%"><a href="https://tenor.com/view/abbott-elementary-hyped-turnt-lit-turn-up-gif-25388930">Abbott Elementary Hyped GIF</a>from <a href="https://tenor.com/search/abbott+elementary-gifs">Abbott Elementary GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
 This exercise will show some examples of how you might do the code for the first Group Assignment.
 
 ```{r}
