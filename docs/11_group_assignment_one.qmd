@@ -1,0 +1,175 @@
+# Group Assignment 1
+
+This exercise will show some examples of how you might do the code for the first Group Assignment.
+
+```{r}
+#| label: setup-fake
+#| echo: true
+#| eval: false
+library(dplyr) # for dataset management
+library(magrittr) # for pipe operator
+library(modelsummary) # for tables
+library(ggplot2) # for graphs
+```
+
+```{r}
+#| label: setup-block
+#| echo: false
+# Load functions
+box::use(
+    magrittr = magrittr[`%>%`]
+)
+```
+
+## Part I
+> This week’s assignment is designed to build familiarity with the data we will be using this semester. Using either the ‘states’ or ‘world’ data, make a discovery! Learn something you didn’t know before. Pick one variable that interests you:
+1. Describe it. Is it continuous or categorical?
+
+**Continuous variable**: can theoretically run from any value from $(-\infty, \infty)$. One good sign is that it includes decimals.
+**Categorical variable**: takes discrete values. One good sign is that it includes integers (full numbers).
+
+In the example for **Part I**, I am going to use the `compromise` variable from the `nes` dataset.
+
+2. Talk about its features in terms of its central tendency and dispersion. Calculate the mean and standard deviation of your variable. Are the means and medians similar? Why or why not?
+
+```{r}
+#| label: summary-stats-example
+#| echo: true
+#| eval: false
+
+nes %>% # grab the nes dataset, and apply the following functions
+    select( # grab a variable...
+        compromise # ... specifically the compromise variable
+    ) %>%
+    rename( # rename a variable...
+        Compromise = compromise #... specifically the compromise variable
+    ) %>%
+    datasummary_skim( # make a table of summary statistics
+        ., # using the data from above
+        notes = "Data source: NES dataset.", # add these notes to the table
+        output = "part_1_summary_stats.docx" # save the table in a word docx file
+    )
+```
+
+```{r}
+#| label: summary-stats
+#| echo: false
+#| eval: true
+
+nes %>% # grab the nes dataset, and apply the following functions
+    select( # grab a variable...
+        compromise # ... specifically the compromise variable
+    ) %>%
+    rename( # rename a variable...
+        Compromise = compromise #... specifically the compromise variable
+    ) %>%
+    datasummary_skim( # make a table of summary statistics
+        ., # using the data from above
+        notes = "Data source: NES dataset." # add these notes to the table
+    )
+```
+
+Then interpret what these things mean:
+- What does the mean represent?
+- What does the standard deviation represent?
+- What does the median represent?
+- Does the mean and median being different imply a skew?
+
+3. Explore your variable using either a histogram or boxplot. Are there any interesting or surprising values?
+
+```{r}
+#| label: boxplot-example
+#| echo: true
+#| eval: false
+
+nes %>% # grab the nes dataset, and apply the following functions
+    ggplot() + # make a ggplot object...
+    geom_histogram( #... specifically a histogram...
+        aes(
+            x = compromise # put the compromise variable on the x-axis
+        ),
+        fill = "#D3D3D3", # ...fill the bars with light grey...
+        color = "#000000" #... make the outlines of the bars black...
+    ) +
+    theme_minimal() + # apply the minimal theme to it
+    labs( # ... clean up the labels...
+        y = "Count", # ...change the y-axis to this...
+        x = "Compromise", # ... change the x-axis to this...
+        notes = "Data source: NES dataset" # ... add notes to the plot...
+    )
+```
+
+```{r}
+#| label: fig-histogram
+#| fig-cap: Distribution of Compromise
+#| echo: false
+#| eval: true
+nes %>% # grab the nes dataset, and apply the following functions
+    ggplot() + # make a ggplot object...
+    geom_histogram( #... specifically a histogram...
+        aes(
+            x = compromise # put the compromise variable on the x-axis
+        ),
+        fill = "#D3D3D3", # ...fill the bars with light grey...
+        color = "#000000" #... make the outlines of the bars black...
+    ) +
+    theme_minimal() + # apply the minimal theme to it
+    labs( # ... clean up the labels...
+        y = "Count", # ...change the y-axis to this...
+        x = "Compromise", # ... change the x-axis to this...
+        notes = "Data source: NES dataset" # ... add notes to the plot...
+    )
+```
+
+```{r}
+#| label: boxplot-example
+#| echo: true
+#| eval: false
+nes %>% # grab the nes dataset, and apply the following functions
+    ggplot() + # make a ggplot object ...
+    geom_boxplot( #... specifically a boxplot ...
+        aes(
+            x = compromise # put the compromise variable on the x axis
+        ),
+        fill = "#D3D3D3", # ...fill the bars with light grey...
+        color = "#000000" #... make the outlines of the bars black...
+    ) +
+    theme_minimal() + # apply the minimal theme to it
+    labs( # ... clean up the labels...
+        y = "Count", # ...change the y-axis to this...
+        x = "Compromise", # ... change the x-axis to this...
+        notes = "Data source: NES dataset" # ... add notes to the plot...
+    )
+```
+
+```{r}
+#| label: fig-boxplot
+#| fig-cap: Boxplot of compromise
+#| echo: false
+#| eval: true
+nes %>% # grab the nes dataset, and apply the following functions
+    ggplot() + # make a ggplot object ...
+    geom_boxplot( #... specifically a boxplot ...
+        aes(
+            x = compromise # put the compromise variable on the x axis
+        ),
+        fill = "#D3D3D3", # ...fill the bars with light grey...
+        color = "#000000" #... make the outlines of the bars black...
+    ) +
+    theme_minimal() + # apply the minimal theme to it
+    labs( # ... clean up the labels...
+        y = "Count", # ...change the y-axis to this...
+        x = "Compromise", # ... change the x-axis to this...
+        notes = "Data source: NES dataset" # ... add notes to the plot...
+    )
+```
+
+Then look around these plots! The data are telling a story. Translate what that story is. Is there something in there that looks weird? Are there some observations that are super high or low relative to others? Are the data really spaced out? Find some interesting pieces of information conveyed by the plot.
+
+## Part II
+
+> Data rarely come to us in the form we would like. Either the data do not align with the theory we are interested in exploring or the variables are so skewed that it’s extremely hard to discover any underlying patterns. This exercise takes one common problem we face in data analysis and asks you to make the proper transformation in order to answer a specific question or to discover an important underlying pattern you may not have observed otherwise.
+
+1. Using the 'world' data, summarize (mean, variance, median) GDP per capita (gdppc) and create a histogram. What do you notice?
+2. Sometimes when data are positive and skewed towards the right tail of the distribution we take the log transformation. Create a new variable that is the log of GDP per capita.
+3. Summarize (mean, variance, median) this new variable. Create a histogram. How does this compare to the original variable of GDP per capita?

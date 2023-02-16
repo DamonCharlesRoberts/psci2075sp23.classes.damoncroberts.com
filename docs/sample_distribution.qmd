@@ -1,0 +1,200 @@
+---
+title: "Sample Distributions"
+format:
+  html:
+    toc: false
+    echo: false
+    keep-hidden: true
+    code-tools: true
+---
+```{python}
+#| label: setup-block
+# Import needed functions
+from helper import sample_histogram # for creating histogram of sample
+
+# Import needed objects
+from inference_data import sample_data, non_random_sample_data # import the simulated data
+
+# Convert to ojs data
+ojs_define(
+    sample_data_20 = sample_data.get("size_20"),
+    sample_data_50 = sample_data.get("size_50"),
+    sample_data_100 = sample_data.get("size_100"),
+    sample_data_200 = sample_data.get("size_200"),
+    sample_data_500 = sample_data.get("size_500"),
+    sample_data_1000 = sample_data.get("size_1000"),
+    sample_data_2000 = sample_data.get("size_2000"),
+    non_random_sample_data_20 = non_random_sample_data.get("size_20"),
+    non_random_sample_data_50 = non_random_sample_data.get("size_50"),
+    non_random_sample_data_100 = non_random_sample_data.get("size_100"),
+    non_random_sample_data_200 = non_random_sample_data.get("size_200"),
+    non_random_sample_data_500 = non_random_sample_data.get("size_500"),
+    non_random_sample_data_1000 = non_random_sample_data.get("size_1000"),
+    non_random_sample_data_2000 = non_random_sample_data.get("size_2000")
+)
+```
+
+The population is often very hard to get complete data on. (That is why, in the [previous exercise](population_distribution.qmd) I said that we rarely have data on our population.) Therefore, we often rely on whats called *samples* for our statistical analyses. These samples are ideally a randomly selected/collected subset of our population. For example, when we do a poll of Black Americans' attitudes, we often aren't able to ask every person who identifies as Black in the United States. We randomly select folks who are part of our population to ask the questions to. In practice, we often collect 1 sample. But we can definitely do this multiple times if we have the resources.
+
+Why do we care that our sample is a *randomly* selected subset? As you will see later in the term, we care about this because we do not want to introduce what is referred to as *systematic error* (or *systematic bias*) into our sample. We care about reducing the amount of *systematic error* in the way we collect our data, because that can make our results less accurate (more *biased*). This systematic error makes things less accurate because it makes the sample that we've collected data on look different than our population, on average.
+
+How is a sample *randomly* selected? There is no one best way to do this; it is actually a big area of research. One way that we can get a random sample from our population is by being extremely careful to not select observations that are convenient to collect data on. For example, if we are interested in examining interstate conflicts, our population would be every country around the world. But let's say that it would be to costly to get data on all interstate wars that every country engaged in. So we decide to pick a subset of countries. A *random* subset here would be that we make a list of countries and then randomly choose a certain number (*sample size*) of countries from that list. A *non-random* subset would be that before we select our sample, we exclude some countries from our list because they may be reclusive and may heavily restrict access to information about them. While this is a simple example, our *random* subset was chosen completely at random from our population without any *systematic conditions or limitations*. The *non-random* subset had a pre-condition to what countries we could choose before we even did a sample. This pre-condition introduces that *systematic error* where our understanding of interstate conflict between countries is dependent/biased because we only have information on those countries that share information about themselves.
+
+Another source of *systematic error* in a sample is dependent not just on *how* we select observations from our population, but also how *many*. Going back to the example above on interstate conflict, say that we make a list of all of the countries in the world to construct our sample. Say that we are committed to randomly selecting countries from that list. But, say that we limit our sample to only be one country. Do you think there might be some problems there? Say that we select a country like the United States and that represents our entire sample. Do we think that *only* looking at interstate conflicts that the United States have been involved with will give us a good understanding of all countries and their interstate conflicts? Probably not. So, say instead, we increase our sample size to two countries instead of one. Say that we still randomly select these two countries and end up with Russia and the United States. Do we still think that these two countries will give us an accurate understanding of the population at large? No, probably not. The lesson to learn from this, is that the fewer observations you have in your sample (the smaller your sample size), the more influence each individual observation has on your analysis.
+
+Let's visualize these problems. To do so, I am going to use the **exact same data** that I used to visualize the [population distributions](population_distribution.qmd) to pick my samples.
+
+Let's draw a single sample randomly and non-randomly and see how they differ. At the same time, you can change the sample size. 
+
+## Random sample
+
+```{ojs}
+//| label: random-sample-options
+random_options = [
+    {name: "n = 20", object: transpose(sample_data_20)},
+    {name: "n = 50", object: transpose(sample_data_50)},
+    {name: "n = 100", object: transpose(sample_data_100)},
+    {name: "n = 200", object: transpose(sample_data_200)},
+    {name: "n = 500", object: transpose(sample_data_500)},
+    {name: "n = 1000", object: transpose(sample_data_1000)},
+    {name: "n = 2000", object: transpose(sample_data_2000)}
+]
+viewof random_selected =  Inputs.select(random_options, {label: "Sample size", format: x => x.name, value: random_options.find(t => t.name === "20")})
+```
+
+```{ojs}
+//| label: fig-rand-sample-distribution
+//| fig-cap: Random sample distributions
+//| fig-subcap:
+//|  - Normal distribution
+//|  - Poisson distribution
+//|  - Binomial distribution
+Plot.plot({
+  grid: true,
+  marks: [
+    Plot.frame(),
+    Plot.rectY(random_selected.object, Plot.binX(
+      {y: "count"},
+      {x: "data.normal",
+       fill: "#D3D3D3",
+       strokeWidth: .5, // linewidth = 0.5
+       stroke: "#000000", // equivalent of edgecolor="black"
+       thresholds: 10 // equivalent of "bins=10"
+      }
+    ))
+  ]
+})
+Plot.plot({
+  grid: true,
+  marks: [
+    Plot.frame(),
+    Plot.rectY(random_selected.object, Plot.binX(
+      {y: "count"},
+      {x: "data.poisson",
+       fill: "#D3D3D3",
+       strokeWidth: .5, // linewidth = 0.5
+       stroke: "#000000", // equivalent of edgecolor="black"
+       thresholds: 10 // equivalent of "bins=10"
+      }
+    ))
+  ]
+})
+Plot.plot({
+  grid: true,
+  marks: [
+    Plot.frame(),
+    Plot.rectY(random_selected.object, Plot.binX(
+      {y: "count"},
+      {x: "data.binomial",
+       fill: "#D3D3D3",
+       strokeWidth: .5, // linewidth = 0.5
+       stroke: "#000000", // equivalent of edgecolor="black"
+       thresholds: 10 // equivalent of "bins=10"
+      }
+    ))
+  ]
+})
+```
+
+## Non-random samples
+
+```{ojs}
+non_random_options = [
+    {name: "n = 20", object: transpose(non_random_sample_data_20)},
+    {name: "n = 50", object: transpose(non_random_sample_data_50)},
+    {name: "n = 100", object: transpose(non_random_sample_data_100)},
+    {name: "n = 200", object: transpose(non_random_sample_data_200)},
+    {name: "n = 500", object: transpose(non_random_sample_data_500)},
+    {name: "n = 1000", object: transpose(non_random_sample_data_1000)},
+    {name: "n = 2000", object: transpose(non_random_sample_data_2000)}
+]
+viewof non_random_selected =  Inputs.select(non_random_options, {label: "Sample size", format: x => x.name, value: non_random_options.find(t => t.name === "20")})
+```
+
+```{ojs}
+//| labels: fig-non-randomsample
+//| fig-cap: Grabbing a non-random sample
+//| fig-subcap:
+//|   - "Normal distribution"
+//|   - "Binomial distribution"
+//|   - "Poisson distribution"
+Plot.plot({
+  grid: true,
+  marks: [
+    Plot.frame(),
+    Plot.rectY(non_random_selected.object, Plot.binX(
+      {y: "count"},
+      {x: "data.normal",
+       fill: "#D3D3D3",
+       strokeWidth: .5, // linewidth = 0.5
+       stroke: "#000000", // equivalent of edgecolor="black"
+       thresholds: 10 // equivalent of "bins=10"
+      }
+    ))
+  ]
+})
+Plot.plot({
+  grid: true,
+  marks: [
+    Plot.frame(),
+    Plot.rectY(non_random_selected.object, Plot.binX(
+      {y: "count"},
+      {x: "data.binomial",
+       fill: "#D3D3D3",
+       strokeWidth: .5, // linewidth = 0.5
+       stroke: "#000000", // equivalent of edgecolor="black"
+       thresholds: 10 // equivalent of "bins=10"
+      }
+    ))
+  ]
+})
+Plot.plot({
+  grid: true,
+  marks: [
+    Plot.frame(),
+    Plot.rectY(non_random_selected.object, Plot.binX(
+      {y: "count"},
+      {x: "data.poisson",
+       fill: "#D3D3D3",
+       strokeWidth: .5, // linewidth = 0.5
+       stroke: "#000000", // equivalent of edgecolor="black"
+       thresholds: 10 // equivalent of "bins=10"
+      }
+    ))
+  ]
+})
+```
+
+We see a couple of lessons here:
+
+1. The random samples look much more like the population distribution than the non-random samples.
+2. Even if you do a random sample and the sample is smaller, it looks more different from the original population distribution than the same random sample but with a larger sample size.
+
+So what makes a good sample?
+1. It should ideally be random (this is often not the case and this is why our statistical tools in the social sciences get much more complex)
+2. You should ideally have a pretty large sample. How large? It is extremely dependent on the context. But often a good rule of thumb is somewhere above 20 observations (`n = 20`).
+
+
+If I am collecting a random sample, what do I do if my sample doesn't look exactly like what I'd expect my population distribution to look like? Well, if you have a random sample that doesn't seem to match what you'd expect for your population distribution, that is actually okay! If your sample is random, it definitely (and usually) does look different than my population distribution. Well then, why would it be valid for me to use that sample then? Do I just keep randomly collecting samples until it looks like my population? NO! 
+
+The [next exercise](sampling_distributions.qmd) is designed to help you visualize why any single random sample you collect does not need to look like what you'd expect from your population for it to still be a useful sample.
