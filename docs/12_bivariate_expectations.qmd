@@ -119,7 +119,7 @@ waffle_cat <- waffles %>%
             Divorce_Norm > 0 & Divorce_Norm <= 1 ~ 1.0,
             Divorce_Norm < 1 ~ 2.0
         ),
-        Divorce_Cat = factor(
+        Divorce_Cat_Labelled = factor(
             Divorce_Cat,
             labels = c(
                 "Much lower than average",
@@ -142,7 +142,7 @@ Let me first describe each of the variables in isolation. I do this to get an un
 waffle_cat %>% # grab the cleaned nes dataset from above
     select( # grab the following columns
         WaffleHouses_Binary,
-        Divorce
+        Divorce_Cat
     ) %>%
     datasummary_skim(
         data = ., # use the dataset linked with the pipe operators
@@ -159,7 +159,7 @@ waffle_cat %>% # grab the cleaned nes dataset from above
 waffle_cat %>% # grab the cleaned nes dataset from above
     select( # grab the following columns
         WaffleHouses_Binary,
-        Divorce
+        Divorce_Cat
     ) %>%
     datasummary_skim(
         data = ., # use the dataset linked with the pipe operators
@@ -192,7 +192,7 @@ waffle_cat %>% # grab the waffles dataset
 waffle_cat%>% # grab the waffles dataset
     ggplot() + # make a plot with these data
     geom_histogram( # specifically a histogram
-        aes(x = Divorce), # put this column on the x-axis
+        aes(x = Divorce_Cat), # put this column on the x-axis
         fill = "grey", # fill the bars with a grey color 
         color = "black" # make the lines of the bars black
     ) + 
@@ -231,7 +231,7 @@ waffle_cat %>% # grab the nes_clean dataset
 waffle_cat %>% # grab the nes_clean dataset
     ggplot() + # make a plot with these data
     geom_histogram( # specifically a histogram
-        aes(x = Divorce), # put this column on the x-axis
+        aes(x = Divorce_Cat), # put this column on the x-axis
         fill = "grey", # fill the bars with a grey color 
         color = "black", # make the lines of the bars black,
         stat = "Count" # since I want to count
@@ -251,7 +251,7 @@ Now I can look at patterns between these two variables.
 #| eval: false
 waffle_cat %>% # use the waffles_cat dataset...
     datasummary_crosstab( # ... with the dataset, create a crosstab
-        WaffleHouses_Cat ~ Divorce_Cat, #... and use the two cleaned variables
+        WaffleHouses_Cat ~ Divorce_Cat_Labelled, #... and use the two cleaned variables
         notes = "Data source: Waffles dataset (McElreath 2020)", # add notes to table
         data = ., # and use the dataset connected by the pipe operator
         output = "cleaner_bivariate_crosstab.docx" # store the table in this word document
@@ -264,7 +264,7 @@ waffle_cat %>% # use the waffles_cat dataset...
 #| echo: false
 waffle_cat %>% # use the waffles_cat dataset...
     datasummary_crosstab( # ... with the dataset, create a crosstab
-        WaffleHouses_Cat ~ Divorce_Cat, #... and use the two cleaned variables
+        WaffleHouses_Cat ~ Divorce_Cat_Labelled, #... and use the two cleaned variables
         notes = "Data source: Waffles dataset (McElreath 2020).\n Credit: damoncroberts.com", # add notes to table
         data = . # and use the dataset connected by the pipe operator
     )
@@ -272,7 +272,7 @@ waffle_cat %>% # use the waffles_cat dataset...
 
 ```{r}
 #| label: fig-cat-mosaic-plot-example
-#| fig-cap: Mosiac plot
+#| fig-cap: Mosaic plot
 #| eval: false
 #| echo: true
 waffle_cat %>% # take the waffle_cat dataset
@@ -281,9 +281,9 @@ waffle_cat %>% # take the waffle_cat dataset
             aes( # for the axes 
                 x = product( # on the x axis, plot the combination of the following variables
                     WaffleHouses_Cat, 
-                    Divorce_Cat
+                    Divorce_Cat_Labelled
                 ),
-                fill = Divorce_Cat # fill it with the Divorce_Cat variable
+                fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
@@ -292,8 +292,8 @@ waffle_cat %>% # take the waffle_cat dataset
             wes_palette("Moonrise3") # add these color palettes
             ) + 
         labs( # adjust the labels to the plot
-            x = "Waffle House?", # x-axis label
-            y = "Divorce rate", # y-axis label
+            x = "Divorce Rate", # x-axis label
+            y = "Waffle House?", # y-axis label
             caption = "Data source: Waffles dataset (McElreath 2020)" # caption
         )
 ```
@@ -311,7 +311,7 @@ waffle_cat %>% # take the waffle_cat dataset
                     WaffleHouses_Cat, 
                     Divorce_Cat
                 ),
-                fill = Divorce_Cat # fill it with the Divorce_Cat variable
+                fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
@@ -320,8 +320,8 @@ waffle_cat %>% # take the waffle_cat dataset
             wes_palette("Moonrise3") # add these color palettes
             ) + 
         labs(
-            x = "Waffle House?",
-            y = "Divorce rate",
+            x = "Divorce rate",
+            y = "Waffle House?",
             caption = "Data source: Waffles dataset (McElreath 2020).\n Credit: damoncroberts.com"
         )
 ```
@@ -345,14 +345,14 @@ I am going to again provide descriptive statistics of each of the variables by t
 
 ```{r}
 #| label: tbl-tri-descriptives-example
-#| tbl-cap:  Descriptive statistics
+#| tbl-cap: Descriptive statistics
 #| echo: true
 #| eval: false
 waffle_cat %>% # grab the cleaned nes dataset from above
     select( # grab the following columns
         WaffleHouses_Binary,
         Age_Cat,
-        Divorce,
+        Divorce_Cat,
     ) %>%
     datasummary_skim(
         data = ., # use the dataset linked with the pipe operators
@@ -369,8 +369,8 @@ waffle_cat %>% # grab the cleaned nes dataset from above
 waffle_cat %>% # grab the cleaned nes dataset from above
     select( # grab the following columns
         WaffleHouses_Binary,
-        Age,
-        Divorce
+        Age_Cat,
+        Divorce_Cat
     ) %>%
     datasummary_skim(
         data = ., # use the dataset linked with the pipe operators
@@ -418,7 +418,7 @@ waffle_cat %>% # grab the waffles dataset
 waffle_cat%>% # grab the waffles dataset
     ggplot() + # make a plot with these data
     geom_histogram( # specifically a histogram
-        aes(x = Divorce_Cat), # put this column on the x-axis
+        aes(x = Divorce_Cat_Labelled), # put this column on the x-axis
         fill = "grey", # fill the bars with a grey color 
         color = "black" # make the lines of the bars black
     ) + 
@@ -473,7 +473,7 @@ waffle_cat %>% # grab the nes_clean dataset
 waffle_cat %>% # grab the nes_clean dataset
     ggplot() + # make a plot with these data
     geom_histogram( # specifically a histogram
-        aes(x = Divorce_Cat), # put this column on the x-axis
+        aes(x = Divorce_Cat_Labelled), # put this column on the x-axis
         fill = "grey", # fill the bars with a grey color 
         color = "black", # make the lines of the bars black
         stat = "count"
@@ -500,15 +500,15 @@ waffle_cat %>% # take the waffle_cat dataset
         geom_mosaic( # specifically a mosaic plot
             aes( # for the axes 
                 x = product( # on the x axis, plot the combination of the following variables
-                    Divorce_Cat, 
+                    Divorce_Cat_Labelled, 
                     WaffleHouses_Cat
                 ),
-                fill = Divorce_Cat # fill it with the Divorce_Cat variable
+                fill = Divorce_Cat_Labelled # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
-        scale_color_brewer(
-            name = "Age", # make this the legend title
+        scale_fill_brewer(
+            name = "Divorce rate", # make this the legend title
             wes_palette("Moonrise3") # add these color palettes
             ) + 
         labs( # adjust the labels to the plot
@@ -523,15 +523,15 @@ waffle_cat %>% # take the waffle_cat dataset
         geom_mosaic( # specifically a mosaic plot
             aes( # for the axes 
                 x = product( # on the x axis, plot the combination of the following variables
-                    Divorce_Cat, 
+                    Divorce_Cat_Labelled, 
                     WaffleHouses_Cat
                 ),
-                fill = Divorce_Cat # fill it with the Divorce_Cat variable
+                fill = Divorce_Cat_Labelled # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
-        scale_color_brewer(
-            name = "Age", # make this the legend title
+        scale_fill_brewer(
+            name = "Divorce rate", # make this the legend title
             wes_palette("Moonrise3") # add these color palettes
             ) + 
         labs( # adjust the labels to the plot
@@ -546,15 +546,15 @@ waffle_cat %>% # take the waffle_cat dataset
         geom_mosaic( # specifically a mosaic plot
             aes( # for the axes 
                 x = product( # on the x axis, plot the combination of the following variables
-                    Divorce_Cat, 
+                    Divorce_Cat_Labelled, 
                     WaffleHouses_Cat
                 ),
                 fill = Divorce_Cat # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
-        scale_color_brewer(
-            name = "Age", # make this the legend title
+        scale_fill_brewer(
+            name = "Divorce rate", # make this the legend title
             wes_palette("Moonrise3") # add these color palettes
             ) + 
         labs( # adjust the labels to the plot
@@ -569,15 +569,15 @@ waffle_cat %>% # take the waffle_cat dataset
         geom_mosaic( # specifically a mosaic plot
             aes( # for the axes 
                 x = product( # on the x axis, plot the combination of the following variables
-                    Divorce_Cat, 
+                    Divorce_Cat_Labelled, 
                     WaffleHouses_Cat
                 ),
                 fill = Divorce_Cat # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
-        scale_color_brewer(
-            name = "Age", # make this the legend title
+        scale_fill_brewer(
+            name = "Divorce rate", # make this the legend title
             wes_palette("Moonrise3") # add these color palettes
             ) + 
         labs( # adjust the labels to the plot
@@ -603,21 +603,21 @@ waffle_cat %>% # take the waffle_cat dataset
         geom_mosaic( # specifically a mosaic plot
             aes( # for the axes 
                 x = product( # on the x axis, plot the combination of the following variables
-                    Divorce_Cat, 
+                    Divorce_Cat_Labelled, 
                     WaffleHouses_Cat
                 ),
-                fill = Divorce_Cat # fill it with the Divorce_Cat variable
+                fill = Divorce_Cat_Labelled # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
-        scale_color_brewer(
-            name = "Age", # make this the legend title
+        scale_fill_brewer(
+            name = "Divorce rate", # make this the legend title
             wes_palette("Moonrise3") # add these color palettes
             ) + 
         labs( # adjust the labels to the plot
             x = "Waffle House?", # x-axis label
             y = "Divorce rate", # y-axis label
-            caption = "Data source: Waffles dataset (McElreath 2020)" # caption
+            caption = "Data source: Waffles dataset (McElreath 2020). Credit: damoncroberts.com" # caption
         )
 
 waffle_cat %>% # take the waffle_cat dataset
@@ -626,21 +626,21 @@ waffle_cat %>% # take the waffle_cat dataset
         geom_mosaic( # specifically a mosaic plot
             aes( # for the axes 
                 x = product( # on the x axis, plot the combination of the following variables
-                    Divorce_Cat, 
+                    Divorce_Cat_Labelled, 
                     WaffleHouses_Cat
                 ),
-                fill = Divorce_Cat # fill it with the Divorce_Cat variable
+                fill = Divorce_Cat_Labelled # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
-        scale_color_brewer(
-            name = "Age", # make this the legend title
+        scale_fill_brewer(
+            name = "Divorce rate", # make this the legend title
             wes_palette("Moonrise3") # add these color palettes
             ) + 
         labs( # adjust the labels to the plot
             x = "Waffle House?", # x-axis label
             y = "Divorce rate", # y-axis label
-            caption = "Data source: Waffles dataset (McElreath 2020)" # caption
+            caption = "Data source: Waffles dataset (McElreath 2020). Credit: damoncroberts.com" # caption
         )
 
 waffle_cat %>% # take the waffle_cat dataset
@@ -649,21 +649,21 @@ waffle_cat %>% # take the waffle_cat dataset
         geom_mosaic( # specifically a mosaic plot
             aes( # for the axes 
                 x = product( # on the x axis, plot the combination of the following variables
-                    Divorce_Cat, 
+                    Divorce_Cat_Labelled, 
                     WaffleHouses_Cat
                 ),
                 fill = Divorce_Cat # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
-        scale_color_brewer(
-            name = "Age", # make this the legend title
+        scale_fill_brewer(
+            name = "Divorce rate", # make this the legend title
             wes_palette("Moonrise3") # add these color palettes
             ) + 
         labs( # adjust the labels to the plot
             x = "Waffle House?", # x-axis label
             y = "Divorce rate", # y-axis label
-            caption = "Data source: Waffles dataset (McElreath 2020)" # caption
+            caption = "Data source: Waffles dataset (McElreath 2020). Credit: damoncroberts.com" # caption
         )
 
 waffle_cat %>% # take the waffle_cat dataset
@@ -672,21 +672,21 @@ waffle_cat %>% # take the waffle_cat dataset
         geom_mosaic( # specifically a mosaic plot
             aes( # for the axes 
                 x = product( # on the x axis, plot the combination of the following variables
-                    Divorce_Cat, 
+                    Divorce_Cat_Labelled, 
                     WaffleHouses_Cat
                 ),
                 fill = Divorce_Cat # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
-        scale_color_brewer(
-            name = "Age", # make this the legend title
+        scale_fill_brewer(
+            name = "Divorce rate", # make this the legend title
             wes_palette("Moonrise3") # add these color palettes
             ) + 
         labs( # adjust the labels to the plot
             x = "Waffle House?", # x-axis label
             y = "Divorce rate", # y-axis label
-            caption = "Data source: Waffles dataset (McElreath 2020)" # caption
+            caption = "Data source: Waffles dataset (McElreath 2020). Credit: damoncroberts.com" # caption
         )
 ```
 
