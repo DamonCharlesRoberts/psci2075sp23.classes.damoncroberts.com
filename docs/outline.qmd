@@ -44,6 +44,11 @@ ariables](09_simple_data_cleaning.qmd)
 
 ## Week 6
 
+- Attendance
+- Review
+- [Conditional analyses](12_bivariate_expectations.qmd)
+- Group work
+
 ## Week 7
 
 ## Week 8

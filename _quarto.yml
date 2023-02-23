@@ -20,6 +20,7 @@ book:
     - docs/09_simple_data_cleaning.qmd
     - docs/10_simple_bivariate_analyses.qmd
     - docs/11_group_assignment_one.qmd
+    - docs/12_bivariate_expectations.qmd
     #- docs/visualizing_inference.qmd
     - docs/references.qmd
   page-footer:
