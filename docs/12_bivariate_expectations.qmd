@@ -117,14 +117,15 @@ waffle_cat <- waffles %>%
             Divorce_Norm >= -1 & Divorce_Norm < 0 ~ -1.0,
             Divorce_Norm == 0 ~ 0,
             Divorce_Norm > 0 & Divorce_Norm <= 1 ~ 1.0,
-            Divorce_Norm < 1 ~ 2.0
+            Divorce_Norm > 1 ~ 2.0
         ),
         Divorce_Cat_Labelled = factor(
             Divorce_Cat,
             labels = c(
                 "Much lower than average",
                 "Lower than average",
-                "Higher than average"
+                "Higher than average",
+                "Much Higher than average"
             ),
             ordered = TRUE
         )
