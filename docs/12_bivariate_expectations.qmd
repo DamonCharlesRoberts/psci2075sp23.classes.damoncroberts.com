@@ -351,7 +351,7 @@ I am going to again provide descriptive statistics of each of the variables by t
 waffle_cat %>% # grab the cleaned nes dataset from above
     select( # grab the following columns
         WaffleHouses_Binary,
-        Age_Cat,
+        Age,
         Divorce_Cat,
     ) %>%
     datasummary_skim(
@@ -369,7 +369,7 @@ waffle_cat %>% # grab the cleaned nes dataset from above
 waffle_cat %>% # grab the cleaned nes dataset from above
     select( # grab the following columns
         WaffleHouses_Binary,
-        Age_Cat,
+        Age,
         Divorce_Cat
     ) %>%
     datasummary_skim(
