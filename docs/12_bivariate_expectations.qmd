@@ -501,8 +501,8 @@ waffle_cat %>% # take the waffle_cat dataset
         geom_mosaic( # specifically a mosaic plot
             aes( # for the axes 
                 x = product( # on the x axis, plot the combination of the following variables
-                    Divorce_Cat_Labelled, 
-                    WaffleHouses_Cat
+                    WaffleHouses_Cat,
+                    Divorce_Cat_Labelled
                 ),
                 fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
@@ -524,8 +524,8 @@ waffle_cat %>% # take the waffle_cat dataset
         geom_mosaic( # specifically a mosaic plot
             aes( # for the axes 
                 x = product( # on the x axis, plot the combination of the following variables
-                    Divorce_Cat_Labelled, 
-                    WaffleHouses_Cat
+                    WaffleHouses_Cat,
+                    Divorce_Cat_Labelled
                 ),
                 fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
@@ -547,8 +547,8 @@ waffle_cat %>% # take the waffle_cat dataset
         geom_mosaic( # specifically a mosaic plot
             aes( # for the axes 
                 x = product( # on the x axis, plot the combination of the following variables
-                    Divorce_Cat_Labelled, 
-                    WaffleHouses_Cat
+                    WaffleHouses_Cat,
+                    Divorce_Cat_Labelled
                 ),
                 fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
@@ -570,8 +570,8 @@ waffle_cat %>% # take the waffle_cat dataset
         geom_mosaic( # specifically a mosaic plot
             aes( # for the axes 
                 x = product( # on the x axis, plot the combination of the following variables
-                    Divorce_Cat_Labelled, 
-                    WaffleHouses_Cat
+                    WaffleHouses_Cat,
+                    Divorce_Cat_Labelled
                 ),
                 fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
@@ -604,8 +604,8 @@ waffle_cat %>% # take the waffle_cat dataset
         geom_mosaic( # specifically a mosaic plot
             aes( # for the axes 
                 x = product( # on the x axis, plot the combination of the following variables
-                    Divorce_Cat_Labelled, 
-                    WaffleHouses_Cat
+                    WaffleHouses_Cat,
+                    Divorce_Cat_Labelled
                 ),
                 fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
@@ -627,8 +627,8 @@ waffle_cat %>% # take the waffle_cat dataset
         geom_mosaic( # specifically a mosaic plot
             aes( # for the axes 
                 x = product( # on the x axis, plot the combination of the following variables
-                    Divorce_Cat_Labelled, 
-                    WaffleHouses_Cat
+                    WaffleHouses_Cat,
+                    Divorce_Cat_Labelled
                 ),
                 fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
@@ -650,8 +650,8 @@ waffle_cat %>% # take the waffle_cat dataset
         geom_mosaic( # specifically a mosaic plot
             aes( # for the axes 
                 x = product( # on the x axis, plot the combination of the following variables
-                    Divorce_Cat_Labelled, 
-                    WaffleHouses_Cat
+                    WaffleHouses_Cat,
+                    Divorce_Cat_Labelled
                 ),
                 fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
@@ -673,8 +673,8 @@ waffle_cat %>% # take the waffle_cat dataset
         geom_mosaic( # specifically a mosaic plot
             aes( # for the axes 
                 x = product( # on the x axis, plot the combination of the following variables
-                    Divorce_Cat_Labelled, 
-                    WaffleHouses_Cat
+                    WaffleHouses_Cat,
+                    Divorce_Cat_Labelled
                 ),
                 fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
