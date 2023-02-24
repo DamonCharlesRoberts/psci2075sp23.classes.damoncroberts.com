@@ -504,7 +504,7 @@ waffle_cat %>% # take the waffle_cat dataset
                     Divorce_Cat_Labelled, 
                     WaffleHouses_Cat
                 ),
-                fill = Divorce_Cat_Labelled # fill it with the Divorce_Cat variable
+                fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
@@ -527,7 +527,7 @@ waffle_cat %>% # take the waffle_cat dataset
                     Divorce_Cat_Labelled, 
                     WaffleHouses_Cat
                 ),
-                fill = Divorce_Cat_Labelled # fill it with the Divorce_Cat variable
+                fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
@@ -550,7 +550,7 @@ waffle_cat %>% # take the waffle_cat dataset
                     Divorce_Cat_Labelled, 
                     WaffleHouses_Cat
                 ),
-                fill = Divorce_Cat # fill it with the Divorce_Cat variable
+                fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
@@ -573,7 +573,7 @@ waffle_cat %>% # take the waffle_cat dataset
                     Divorce_Cat_Labelled, 
                     WaffleHouses_Cat
                 ),
-                fill = Divorce_Cat # fill it with the Divorce_Cat variable
+                fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
@@ -607,7 +607,7 @@ waffle_cat %>% # take the waffle_cat dataset
                     Divorce_Cat_Labelled, 
                     WaffleHouses_Cat
                 ),
-                fill = Divorce_Cat_Labelled # fill it with the Divorce_Cat variable
+                fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
@@ -630,7 +630,7 @@ waffle_cat %>% # take the waffle_cat dataset
                     Divorce_Cat_Labelled, 
                     WaffleHouses_Cat
                 ),
-                fill = Divorce_Cat_Labelled # fill it with the Divorce_Cat variable
+                fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
@@ -653,7 +653,7 @@ waffle_cat %>% # take the waffle_cat dataset
                     Divorce_Cat_Labelled, 
                     WaffleHouses_Cat
                 ),
-                fill = Divorce_Cat # fill it with the Divorce_Cat variable
+                fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
@@ -676,7 +676,7 @@ waffle_cat %>% # take the waffle_cat dataset
                     Divorce_Cat_Labelled, 
                     WaffleHouses_Cat
                 ),
-                fill = Divorce_Cat # fill it with the Divorce_Cat variable
+                fill = WaffleHouses_Cat # fill it with the Divorce_Cat variable
             ),
         ) + 
         theme_minimal() + # add this theme
