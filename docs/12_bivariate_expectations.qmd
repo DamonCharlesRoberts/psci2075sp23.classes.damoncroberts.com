@@ -616,8 +616,8 @@ waffle_cat %>% # take the waffle_cat dataset
             wes_palette("Moonrise3") # add these color palettes
             ) + 
         labs( # adjust the labels to the plot
-            x = "Waffle House?", # x-axis label
-            y = "Divorce rate", # y-axis label
+            x = "Divorce rate", # x-axis label
+            y = "Waffle House?", # y-axis label
             caption = "Data source: Waffles dataset (McElreath 2020). Credit: damoncroberts.com" # caption
         )
 
@@ -639,8 +639,8 @@ waffle_cat %>% # take the waffle_cat dataset
             wes_palette("Moonrise3") # add these color palettes
             ) + 
         labs( # adjust the labels to the plot
-            x = "Waffle House?", # x-axis label
-            y = "Divorce rate", # y-axis label
+            x = "Divorce rate", # x-axis label
+            y = "Waffle house?", # y-axis label
             caption = "Data source: Waffles dataset (McElreath 2020). Credit: damoncroberts.com" # caption
         )
 
@@ -662,8 +662,8 @@ waffle_cat %>% # take the waffle_cat dataset
             wes_palette("Moonrise3") # add these color palettes
             ) + 
         labs( # adjust the labels to the plot
-            x = "Waffle House?", # x-axis label
-            y = "Divorce rate", # y-axis label
+            x = "Divorce rate", # x-axis label
+            y = "Waffle house?", # y-axis label
             caption = "Data source: Waffles dataset (McElreath 2020). Credit: damoncroberts.com" # caption
         )
 
@@ -685,8 +685,8 @@ waffle_cat %>% # take the waffle_cat dataset
             wes_palette("Moonrise3") # add these color palettes
             ) + 
         labs( # adjust the labels to the plot
-            x = "Waffle House?", # x-axis label
-            y = "Divorce rate", # y-axis label
+            x = "Divorce rate", # x-axis label
+            y = "Waffle House?", # y-axis label
             caption = "Data source: Waffles dataset (McElreath 2020). Credit: damoncroberts.com" # caption
         )
 ```
