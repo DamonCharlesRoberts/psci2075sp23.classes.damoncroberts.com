@@ -11,7 +11,7 @@ box::use(
     magrittr = magrittr[`%>%`],
     dplyr = dplyr[select, rename, filter, mutate, case_when],
     modelsummary[modelsummary],
-    ggplot2 = ggplot2[ggplot, aes, geom_point, geom_smooth, theme_minimal, labs, geom_histogram]
+    ggplot2 = ggplot2[ggplot, aes, geom_point, geom_smooth, geom_vline, theme_minimal, labs, geom_histogram]
 )
 # Load data
 waffles <- read.csv(file = "../assets/waffles.csv", sep = ";")
@@ -135,7 +135,7 @@ waffles %>% # grab the waffles dataset
 
 We can kind of see that there appears to be a positive relationship between these two variables: when the number of waffle houses in a state increases, so does the rate of divorce for that state.
 
-But this is a bit tricky and can be harder with other data. So let's have R apply a `line of best fit` that puts a straight line through the data points that `best` fit the data points.
+But this is a bit tricky and can be harder with other data. So let's have R apply a `line of best fit` that puts a straight line through the data points that `best` fit to the data points.
 
 ```{r}
 #| label: fig-scatterplot-line-example
@@ -216,7 +216,6 @@ So what does this tell us? That residuals reflect uncertainty about the line tha
 
 Let me go back to how to provide precise numbers for $\alpha$ and $\beta$.
 
-
 Let's run some R code to fit a regression model to the data ourselves rather than have `ggplot2` do it for us.
 
 ```{r}
@@ -284,7 +283,7 @@ modelsummary( # make a table summarizing the model output
 )
 ```
 
-We still see that we've got information on our $\alpha$, that it equals 9.460, and our $\beta$, that it equals 0.007. But what are those numbers in the parenthases underneath the what we sometimes call `point estimates` for $\alpha \text{and} \beta$? They are called `standard errors`.
+We still see that we've got information on our $\alpha$, that it equals 9.460, and our $\beta$, that it equals 0.007. But what are those numbers in the parentheses underneath the what we sometimes call `point estimates` for $\alpha \text{and} \beta$? They are called `standard errors`.
 
 The `standard error` reflects a calculation of the standard deviation in our residuals. Recall back to what the standard deviation tells us. It tells us how much variation there is in a particular variable. So the standard error tells us how all over the place our residuals are. If we think back to what the residual represents, we would want a smaller standard error, right? It means that even if there are residuals that do not equal 0, but if we have a small standard error, then our model is incorrect in a similar way.
 
@@ -297,13 +296,17 @@ Since I stored the results of the model into an object, I can treat the `model` 
 #| fig-cap: Histogram of residuals
 #| echo: true
 #| eval: false
-
-model %>% # take the model object
+waffles %>% # take the waffles data
     ggplot() + # make a plot with it
     geom_histogram( # specifically a histogram
-        aes(x = residuals), # and put the residuals on the x-axis
+        aes(x = model$residuals), # and put the residuals from the model on the x-axis
         color = "#000000", # make the lines between the bars black
         fill = "#D3D3D3" # fill the bars with a light grey color
+    ) +
+    geom_vline( # add a vertical line
+        xintercept = mean(model$residuals), # the vertical line should be the mean value of my residuals
+        color = "#000000", # the color of the line should be black
+        linetype = 2 # and I want the line to be dotted
     ) +
     theme_minimal() + # apply the minimal theme to it
     labs( # adjust some of the labels
@@ -325,6 +328,11 @@ waffles %>% # take the waffles data
         color = "#000000", # make the lines between the bars black
         fill = "#D3D3D3" # fill the bars with a light grey color
     ) +
+    geom_vline( # add a vertical line
+        xintercept = mean(model$residuals), # the vertical line should be the mean value of my residuals
+        color = "#000000", # the color of the line should be black
+        linetype = 2 # and I want the line to be dotted
+    ) +
     theme_minimal() + # apply the minimal theme to it
     labs( # adjust some of the labels
         x = "Residuals", # make x-axis label this
@@ -338,3 +346,15 @@ What can we see here? Well, first we see that most of the residuals tend to be c
 So what do the standard errors mean for our results? Well, we see from our coefficients (point estimates) in the table that the number of waffle houses in a state has a positive effect on divorce rates for that state. The standard error, gives us a sense of how wrong our model is about that estimation right? So the standard error gives us a sense of how uncertain we are that our estimation of a positive relationship. We can be relatively confident, given how small our standard errors are, that there is actually a positive relationship between these two variables.
 
 We'll go into more detail about some of these things and the other parts spit out in the table later.
+
+## Some final notes:
+
+- $\beta$: the slope that describes the relationship between your `independent` (predictor/explanatory/x) variable and your `dependent` (outcome/y) variable.
+    - Should be interpreted as: For each unit increase in my independent variable, there is a $\beta$ unit increase in my dependent variable.
+- $\alpha$: the left-over stuff from the model that isn't explained by your $\beta$ coefficients. Since we can't parse out all of that different "stuff", it all gets lumped together and is assumed to be what your dependent variable is equal to when your independent variable is equal to 0. It is your y-intercept.
+    - Should be interpreted as: When my independent variable is 0, my dependent variable is equal to $\alpha$.
+- residuals: the difference between the actual, `observed`, values in my dataset and the `predicted` values that my line of best fit generates.
+    - If I go across different values of my independent variable and look at what the values are for my dependent variable based on my dataset (observed) and what my line would predict, then subtract the observed from the predicted, that'd give me a residual.
+- standard error: what a single standard deviation of my residuals are. It tells me how spread out my residuals are from the average residual in my dataset. The smaller my standard deviation, the more compact my residuals are. This is useful for determining the uncertainty of my model, and thus, whether I think that the $\beta$ coefficient that I calculated is *actually* different from 0 or not.
+- $R^2$: the percentage of variance that the model (as a whole) explains in your dependent variable. Basically it gives us a sense of how much we are explaining the dependent variable. The higher the $R^2$ value, the better our model is at explaining why our dependent variable is the way that it is.
+- For a full working example R script, [go to this page](https://github.com/DamonCharlesRoberts/psci2075sp23.classes.damoncroberts.com/blob/main/examples/bivariate_regression.R).

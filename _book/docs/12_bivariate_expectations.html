@@ -112,7 +112,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../docs/references.html" rel="next">
+<link href="../docs/13_bivariate_regression.html" rel="next">
 <link href="../docs/11_group_assignment_one.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -270,6 +270,26 @@ gtag('config', 'G-8Z2BLG3VEE', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../docs/13_bivariate_regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bivariate regression</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/population_distribution.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Population Distributions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/sample_distribution.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Sample Distributions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/sampling_distributions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../docs/references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
@@ -334,7 +354,7 @@ A[Presence of Sun] --&gt; B[Temperature]
 </div>
 <p>One such way of providing evidence of this pattern is by collecting data on each feature (temperature and presence of the sun) in isolation and then demonstrating the pattern between the two. First, we can develop a tool to measure heat - a thermometer. Next, we can develop a procedure where we check every so often to see if the sun is still in the sky, record whether it was or not. While we do this we can then look over to our thermometer and record the temperature. What we can then do is examine the patterns by which the temperature is higher and whether the sun is present or not. We can do this by constructing something like the two-way boxplot that we pulled together in <a href="../docs/10_simple_bivariate_analyses.html">the exercise on examining simple bivariate relationships</a>.</p>
 <p>What if, however, someone comes to you and says: “No its not the sun that explains temperature, it is the presence of clouds.” You may think to yourself “Well, yeah, the presence of clouds could definitely contribute to this, but even when it is not cloudy I can have either a cold or warm day. I still think the biggest factor is the sun.”</p>
-<p>The alternative hypothesis this person presents may be what we call a <em>confounding</em> variable. We have this expectation about the world that we can simplify into what is called a “model”. In our simplest form of our model, we believe what is presented in <a href="#fig-simple-hypothesis">Figure&nbsp;<span>13.1</span></a> But now, we may be expecting a slightly more complicated “model” of the world as shown in <a href="#fig-confounded-hypothesis">Figure&nbsp;<span>13.2</span></a>.</p>
+<p>The alternative hypothesis this person presents may be what we call a <em>confounding</em> variable. We have this expectation about the world that we can simplify into what is called a “model”. In our simplest form of our model, we believe what is presented in <a href="13_bivariate_regression.html#fig-simple-hypothesis">Figure&nbsp;<span>14.1</span></a> But now, we may be expecting a slightly more complicated “model” of the world as shown in <a href="#fig-confounded-hypothesis">Figure&nbsp;<span>13.2</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-confounded-hypothesis" class="quarto-figure quarto-figure-center anchored">
@@ -1008,7 +1028,7 @@ C --&gt; B
 </section>
 <section id="continuous-data" class="level1" data-number="14">
 <h1 data-number="14"><span class="header-section-number">14</span> Continuous data</h1>
-<p>Thankfully I have these data as continuous data instead. Let me look at the exact same hypotheses presented in <a href="#fig-simple-hypothesis">Figure&nbsp;<span>13.1</span></a> and <a href="#fig-categorical-complicated-hypothesis">Figure&nbsp;<span>13.7</span></a>.</p>
+<p>Thankfully I have these data as continuous data instead. Let me look at the exact same hypotheses presented in <a href="13_bivariate_regression.html#fig-simple-hypothesis">Figure&nbsp;<span>14.1</span></a> and <a href="#fig-categorical-complicated-hypothesis">Figure&nbsp;<span>13.7</span></a>.</p>
 <p>Again, first I am going to try to understand each variable in isolation first.</p>
 <div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>waffle_cat <span class="sc">%&gt;%</span> <span class="co"># grab the cleaned nes dataset from above</span></span>
@@ -1389,8 +1409,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../docs/references.html" class="pagination-link">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../docs/13_bivariate_regression.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bivariate regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

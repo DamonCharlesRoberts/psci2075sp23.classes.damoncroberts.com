@@ -9,7 +9,7 @@ format:
 ---
 
 
-Why is it okay to not have a random sample that doesn't match the population distribution?
+Why is it okay to not have a random sample that doesn't match the population distribution? That is, why is it possible and not all too worrisome if we collect a random sample, but it doesn't necessarily look how we might expect it to for our population? It is important to note here that if we have a sample that looks different from what we'd expect with our population and we non-randomly collected it, it's a problem. The important part here is that it was intended to be random.
 
 Say we are able to take an infinite number of random samples. For each of those samples, we calculate its mean. What we should expect, if the samples are truly random, that most of them, on average, will have a mean similar to that of the population. Yes, we may have some samples where the mean of the sample may have a mean quite a bit different than the population. But, we know that on average, we should do okay at producing a sample that has a mean similar to that of the population. This idea is referred to as ***The central limit theorem***.
 
