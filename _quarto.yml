@@ -43,6 +43,5 @@ format:
     code-copy: true
 
 execute:
-  freeze: auto
   warning: false
   message: false
