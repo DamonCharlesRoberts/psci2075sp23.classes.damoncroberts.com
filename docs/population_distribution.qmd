@@ -6,6 +6,7 @@ format:
     echo: false
     keep-hidden: true
     code-tools: true
+engine: knitr
 ---
 
 In statistics, we use the phrase *population* to refer to the group of folks/organizations/countries we are interested in studying. The population does not necessarily imply that we are talking about all of the countries in the world or all of the citizens in a given jurisdiction. It really is just the group of interest. 
