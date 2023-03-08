@@ -82,7 +82,7 @@ D --> B
 
 The first situation that I described is reflected by the `Z` variable in @fig-waffle-abstract. Divorce has an alternative explanation coming from some other variable I will call `Z`. In this particular circumstance, `Z` is a truly alternative explanation to Divorce rates.
 
-The second situation that I described is reflected by the `C` variable in @fig-waffle-abstract. `C` in this case is what we call a `Counfounding variable`. We've already talked about these in the context of visually examining conditional bivariate relationships [^14_multivariate_regression-1]. A counfounding variable, as is visually represented in @fig-waffle-abstract, explains both Waffle Houses and Divorce.
+The second situation that I described is reflected by the `C` variable in @fig-waffle-abstract. `C` in this case is what we call a `Confounding variable`. We've already talked about these in the context of visually examining conditional bivariate relationships [^14_multivariate_regression-1]. A confounding variable, as is visually represented in @fig-waffle-abstract, explains both Waffle Houses and Divorce.
 
 [^14_multivariate_regression-1]: [see the conditional bivariate relationships exercise](12_bivariate_expectations.qmd)
 
@@ -116,7 +116,7 @@ waffles %>% # grab my waffles dataset
         aes(
             x = WaffleHouses, # put this variable on my x-axis
             y = Divorce, # put this variable on my y-axis
-            size = MedianAgeMarriage # change the size of the dots based on age of marraige variable
+            size = MedianAgeMarriage # change the size of the dots based on age of marriage variable
         ),
         fill = "#D3D3D3", # fill the color of each dot with light grey
         color = "#D3D3D3" # color the dots with light grey
@@ -147,7 +147,7 @@ waffles %>% # grab my waffles dataset
         aes(
             x = WaffleHouses, # put this variable on my x-axis
             y = Divorce, # put this variable on my y-axis
-            size = MedianAgeMarriage # change the size of the dots based on age of marraige variable
+            size = MedianAgeMarriage # change the size of the dots based on age of marriage variable
         ),
         fill = "#D3D3D3", # fill the color of each dot with light grey
         color = "#D3D3D3" # color the dots with light grey
@@ -170,7 +170,7 @@ While we can still see a positive relationship between these two things, the lin
 Let's use the `lm()` function [@r_software] we used before to calculate a regression but one that `controls` for our confounding variable `MedianAgeMarriage`. The code is actually not that much more complex!
 
 ```{r}
-#| label: r-muliple-regression
+#| label: r-multiple-regression
 #| echo: true
 #| eval: true
 lm( # going to calculate a regression with a straight line
@@ -182,7 +182,7 @@ lm( # going to calculate a regression with a straight line
 Like we did in the [Bivariate regression exercise](13_bivariate_regression.qmd), I can make a table with these data with relative ease by using the `modelsummary()` function in the `modelsummary` package [@modelsummary]. What I'll have to do instead is store the result of my `lm()` function [@r_software] into an object.
 
 ```{r}
-#| lable: r-multiple-regression-with-table
+#| label: r-multiple-regression-with-table
 multivariate_regression <- lm( # calculate a regression with a straight line
     formula = Divorce ~ WaffleHouses + MedianAgeMarriage, # keep what I had before, just add MedianAgeMarriage to my formula
     data = waffles # using the waffles dataset
@@ -194,7 +194,7 @@ modelsummary( # make a table of results to a regression
     notes = c(
         "Data source: Waffles dataset (McElreath 2020).",
         "Coefficient estimates from OLS.",
-        "Standard errors in parenthases", # add a note to tell people how this model was created and with what data.
+        "Standard errors in parentheses", # add a note to tell people how this model was created and with what data.
     ),
     stars = TRUE # print out the stars to show my p-values
 )
