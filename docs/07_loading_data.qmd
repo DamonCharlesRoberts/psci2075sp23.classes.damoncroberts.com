@@ -13,7 +13,7 @@ box::use(
         #* nes(data.frame)
         #* world(data.frame)
         #* states(data.frame)
-data <- load(file = "C:/Users/damon/Desktop/psci_2075/psci_2075_data.RData")
+data <- load(file = "../assets/PSCI_2075_v2.1.RData")
 ```
 
 In R, we aren't just adding `2+2`, we are often trying to analyze data that we've collected on Countries, Legislative bodies, or citizens. As a result, many of the calculations we are preforming in Political and Social Scientific research are too cumbersome to be doing by hand.
@@ -47,7 +47,7 @@ To write the code to write your data, you can simply enter:
 ```{r}
 #| eval: false
 # Load my data
-load("psci_2075_data_file.RData")
+load("PSCI_2075_v2.1.RData")
 ```
 
 What did that do? Running that loaded three different datasets. The `nes`, the `world`, and the `states` dataset. These popped up as three objects called `nes`, `world`, and `states` in your RStudio environment.

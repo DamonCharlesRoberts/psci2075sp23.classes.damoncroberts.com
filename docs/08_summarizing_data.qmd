@@ -34,7 +34,7 @@ box::use(
 
 )
 # Load data
-load(file = "~/Desktop/psci_2075/psci_2075_data.RData")
+load(file = "../assets/PSCI_2075_v2.1.RData")
 ```
 
 In the previous exercise, we successfully loaded our data 💪 and we were able to get a sense of how many observations and variables we had for our data. You may have noticed, however, that we were only previewing our data. We still do not have a super solid sense of what our data look like. 👀

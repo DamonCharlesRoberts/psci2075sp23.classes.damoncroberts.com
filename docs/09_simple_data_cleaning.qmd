@@ -4,7 +4,6 @@
 
 ```{r}
 #| label: setup
-#| 
 # Load functions
 box::use(
     #* For pipe operator
@@ -21,7 +20,7 @@ box::use(
     ]
 )
 # Load data
-load("C:/Users/damon/Desktop/psci_2075/psci_2075_data.RData")
+load("../assets/PSCI_2075_v2.1.RData")
 ```
 
 For the most part, the data in this class are quite "clean". However, there are circumstances where you might want to "clean" the variables some more. By "clean", I mean to make the data usable for your analysis.

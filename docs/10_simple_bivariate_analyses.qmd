@@ -32,7 +32,7 @@ box::use(
     ]
 )
 # Load data
-load("~/Desktop/psci_2075/psci_2075_data.RData")
+load("../assets/PSCI_2075_v2.1.RData")
 ```
 
 Often times in science, we don't want to just understand how one thing occurs. We often want to understand and explain phenomenon. These phenomenon are not just how one feature in the world varies, but how it varies *with* something else.

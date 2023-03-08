@@ -15,7 +15,7 @@ box::use(
 )
 library(ggmosaic)
 # Load data
-load(file = "C:/Users/damon/Desktop/psci_2075/psci_2075_data.RData")
+load(file = "../assets/PSCI_2075_v2.1.RData")
 waffles <- read.csv(file = "../assets/waffles.csv", sep = ";")
 ```
 Why are we collecting data and describing variables in isolation or patterns between two variables in the first place? While this is kind of a meta question, it is an important one to address.
