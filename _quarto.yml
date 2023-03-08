@@ -23,9 +23,9 @@ book:
     - docs/12_bivariate_expectations.qmd
     - docs/13_bivariate_regression.qmd
     - docs/14_multivariate_regression.qmd
-    - docs/population_distribution.qmd
-    - docs/sample_distribution.qmd
-    - docs/sampling_distributions.qmd
+    #- docs/population_distribution.qmd
+    #- docs/sample_distribution.qmd
+    #- docs/sampling_distributions.qmd
     - docs/references.qmd
   page-footer:
     center: |

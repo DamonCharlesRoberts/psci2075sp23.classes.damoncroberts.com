@@ -8,6 +8,8 @@
 # Modularly load functions
 box::use(
     magrittr[`%>%`],
+    ggplot2[ggplot, aes, geom_point, geom_smooth, theme_minimal, labs],
+    modelsummary[modelsummary]
 )
 
 # Load data
@@ -122,6 +124,10 @@ waffles %>% # grab my waffles dataset
         color = "#D3D3D3" # color the dots with light grey
     ) +
     geom_smooth( # add a line of best fit to it
+        aes(
+            x = WaffleHouses, # this variable should be on the x-axis
+            y = Divorce # this variable should be on the y-axis
+        ),
         method = "lm", # specifically a straight line
         color = "#000000", # make the line black
         se = FALSE # do not include a visual representation of uncertainty
@@ -153,6 +159,10 @@ waffles %>% # grab my waffles dataset
         color = "#D3D3D3" # color the dots with light grey
     ) +
     geom_smooth( # add a line of best fit to it
+        aes(
+            x = WaffleHouses, # this variable should be on the x-axis
+            y = Divorce # this variable should be on the y-axis
+        ),
         method = "lm", # specifically a straight line
         color = "#000000", # make the line black
         se = FALSE # do not include a visual representation of uncertainty
@@ -194,7 +204,7 @@ modelsummary( # make a table of results to a regression
     notes = c(
         "Data source: Waffles dataset (McElreath 2020).",
         "Coefficient estimates from OLS.",
-        "Standard errors in parentheses", # add a note to tell people how this model was created and with what data.
+        "Standard errors in parentheses" # add a note to tell people how this model was created and with what data.
     ),
     stars = TRUE # print out the stars to show my p-values
 )

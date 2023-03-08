@@ -6,11 +6,12 @@ authors = ["Damon C. Roberts <damon.charles.roberts@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 pandas = "^1.5.3"
 ipywidgets = "^8.0.4"
 plotly = "^5.13.1"
 numpy = "^1.24.2"
+jupyter = "^1.0.0"
 
 [tool.poetry.group.dev.dependencies]
 numpy = "^1.24.2"
