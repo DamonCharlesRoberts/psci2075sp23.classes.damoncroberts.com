@@ -14,7 +14,7 @@ box::use(
 
 # Load data
 waffles <- read.csv(file = "../assets/waffles.csv", sep = ";")
-load(file = "../assets/PSCI_2075_V2.1.RData")
+load(file = "../assets/PSCI_2075_v2.1.RData")
 ```
 
 In the previous couple of exercises we have examined relationships between variables. In the last exercise, we addressed a particular type of relationship that is often of interest to scientists: a `causal` relationship. A causal relationship not only says that two variables are related to one another, but that one variable *causes* the other variable. That is, a `causal` relationship *argues* that there is a structure to that relationship, whereas a `correlational` relationship is agnostic about the structure of such relationship and only suggests that there is a relationship.
