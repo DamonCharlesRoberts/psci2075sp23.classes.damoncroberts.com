@@ -6,7 +6,6 @@ format:
     echo: false
     keep-hidden: true
     code-tools: true
-engine: knitr
 ---
 
 
