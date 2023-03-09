@@ -58,6 +58,11 @@ ariables](09_simple_data_cleaning.qmd)
 
 ## Week 8
 
+- Attendance
+- Review
+- [Multivariate regression](14_multivariate_regression.qmd)
+- Group work
+
 ## Week 9
 
 ## Week 10
