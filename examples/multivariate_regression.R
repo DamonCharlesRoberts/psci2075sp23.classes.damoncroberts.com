@@ -1,4 +1,4 @@
-# Title: bivariate regression example
+# Title: multivariate regression example
 
 # Notes:
     #* Description:

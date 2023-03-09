@@ -214,9 +214,9 @@ Note, that instead of using `modelsummary()` from the `modelsummary` package [@m
 
 How would I interpret this table? The general template to follow is this:
 
-> For every one unit increase in \[my independent variable\], I observe a \[$\beta$ coefficient\] unit \[increase or decrease\] in \[my dependent variable\]. The probability that the effect of \[my independent variable\] on \[my dependent variable\] would be this large or larger if the true effect were actually zero is \[p-value\]. It seems relatively \[plausible/implausible\] that the true effect is not actually zero.
+> For every one unit increase in [my independent variable], I observe a [$beta$ coefficient] unit [increase or decrease] in [my dependent variable]. The probability that the effect of [my independent variable] on [my dependent variable] would be this large or larger if the true effect were actually zero is [p-value $\times 100$]. It seems relatively [plausible/implausible] that the true effect is not actually zero.
 
-So for this particular model, I would say: For every one more Waffle House in a state, I would expect a ```r sprintf('%.3f', multivariate_regression$coefficients[[2]])``` increase in divorce rate for the state. The probability that the effect of Waffle Houses on Divorce rates would be this large or larger if the true effect were actually 0 is ```r sprintf('%.3f', summary(multivariate_regression)$coefficients[[2, 4]])```. It seems relatively plausible that once we account for Median Age of Marriage, that the effect of Waffle Houses on Divorce rates is actually zero.
+So for this particular model, I would say: For every one more Waffle House in a state, I would expect a ```r sprintf('%.3f', multivariate_regression$coefficients[[2]])``` increase in divorce rate for the state. The probability that the effect of Waffle Houses on Divorce rates would be this large or larger if the true effect were actually 0 is ```r sprintf('%.3f', summary(multivariate_regression)$coefficients[[2, 4]] * 100)```. It seems relatively plausible that once we account for Median Age of Marriage, that the effect of Waffle Houses on Divorce rates is actually zero.
 
 ::: callout-note
 How do I know which p-value or number of stars is sufficient to determine whether it is plausible or implausible that the true effect is actually 0?
