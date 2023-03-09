@@ -17,3 +17,5 @@ Rather than use slides, I thought that for my recitation sections in PSCI 2075 (
 I will try to keep this maintained as the semester progresses.
 
 This can be accessed at: https://sp23.psci2075.classes.damoncroberts.com/
+
+For documentation about this repository (to help you navigate it and to describe, in more detail, what this repository is), go to the [repository's WIKI](https://github.com/DamonCharlesRoberts/psci2075sp23.classes.damoncroberts.com/wiki)
