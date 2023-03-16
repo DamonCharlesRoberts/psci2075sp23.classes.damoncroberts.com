@@ -61,8 +61,8 @@ A[Waffle Houses] --> B[Divorce]
 # Load packages
 library(magrittr) # for pipe operator (%>%)
 library(modelsummary) # for table of regression results
-library(sjPlot) # one option for plotting results
 library(marginaleffects) # other option for plotting results
+library(visreg) # option for plotting results
 ```
 
 Let's say that I have a variable that just tells me: is there a waffle house in the state or not. Not necessarily how many there are. So I want to examine this relationship instead.[^ Though I'd recommend not doing this because you lose a lot of information!]
