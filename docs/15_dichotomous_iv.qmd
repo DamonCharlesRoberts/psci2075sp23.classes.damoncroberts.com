@@ -5,6 +5,7 @@
 #| echo: false
 #| eval: true
 
+install.packages("marginaleffects")
 # Modularly load functions
 box::use(
     magrittr[`%>%`],
