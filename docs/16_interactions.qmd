@@ -7,10 +7,12 @@
 
 # Load functions
 box::use(
-    magrittr[`%>%`], # for pipe operator
-    modelsummary[modelsummary], # for regression table
-    marginaleffects[plot_predictions], # for regression plot
-    visreg[visreg] # alternative regression plot
+    magrittr[`%>%`],
+    dplyr[mutate, case_when],
+    ggplot2[ggplot, aes, geom_point, geom_smooth, theme_minimal, labs],
+    modelsummary[modelsummary],
+    marginaleffects[plot_predictions],
+    visreg[visreg]
 )
 # Load data
 load(file = "../assets/PSCI_2075_v2.1.RData")
