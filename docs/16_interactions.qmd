@@ -9,6 +9,8 @@
 box::use(
     magrittr[`%>%`], # for pipe operator
     modelsummary[modelsummary], # for regression table
+    marginaleffects[plot_predictions], # for regression plot
+    visreg[visreg] # alternative regression plot
 )
 # Load data
 load(file = "../assets/PSCI_2075_v2.1.RData")
