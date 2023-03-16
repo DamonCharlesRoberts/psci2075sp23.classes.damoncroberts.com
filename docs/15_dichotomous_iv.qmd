@@ -5,8 +5,6 @@
 #| echo: false
 #| eval: true
 
-install.packages("marginaleffects")
-install.packages("visreg")
 # Modularly load functions
 box::use(
     magrittr[`%>%`],
