@@ -1,5 +1,6 @@
-# When we think our effect may be conditional on something else
+# 🫠 When we think our effect may be conditional on something else
 
+<div class="tenor-gif-embed" data-postid="22396296" data-share-method="host" data-aspect-ratio="1.78771" data-width="100%"><a href="https://tenor.com/view/nuance-spongebob-imagination-its-complicated-complicated-gif-22396296">Nuance Spongebob GIF</a>from <a href="https://tenor.com/search/nuance-gifs">Nuance GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 ```{r}
 #| label: setup-block
 #| eval: true

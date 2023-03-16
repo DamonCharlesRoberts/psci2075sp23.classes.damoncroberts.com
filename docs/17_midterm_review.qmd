@@ -1,0 +1,218 @@
+# 😸 Midterm review!
+
+<div class="tenor-gif-embed" data-postid="5631297" data-share-method="host" data-aspect-ratio="1.78571" data-width="100%"><a href="https://tenor.com/view/bye-sunglasses-blackish-diva-confident-gif-5631297">L8r H8rs GIF</a>from <a href="https://tenor.com/search/bye-gifs">Bye GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+```{r}
+#| label: setup-block
+#| echo: false
+# Load functions
+box::use(
+    modelsummary[modelsummary]
+)
+
+# Load data
+load(file = "../assets/PSCI_2075_v2.1.RData")
+```
+Below are some sample questions that you should be able to answer before you take the midterm! This does not necessarily reflect the questions you may be asked on the midterm. 
+
+
+- Why might I want to take the log of a variable?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+To make it appear as though there is less skew in the data. To bring large values closer to smaller values. Makes it appear more like a normal distribution.
+
+:::
+
+- What does the central tendency of a univariate descriptive statistic refer to?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+It is *one* way of describing a value I might expect to get if I randomly grabbed an observation from my data.
+:::
+
+- What are two calculations I can make to describe the central tendency of a variable?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+- Mean
+- Median
+:::
+
+- What does the dispersion or the spread of a univariate descriptive statistic refer to?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+It goes beyond saying what the average value is for a variable in my data, but it tells me how spread out they are. I need to know more than what the median house price is; I may want to know whether all houses are around that median or if there are some *really* cheap houses and some *really* expensive houses.
+:::
+
+- What are the two calculations I can make to describe the spread or dispersion of a variable?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+- Variance ($\sigma^2$)
+- Standard deviation ($\sigma$)
+:::
+
+- When you are asked to describe a variable, what are the two things that you should include to describe it?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+- Central tendency
+- Spread/dispersion
+
+I need to do this because one of these things on their own is not sufficient for me to understand what the bulk of observations look like on that observation (central tendency -- mean or median) or I won't understand how spread out observations are from that central tendency (spread/dispersion -- variance or standard deviation).
+:::
+
+- An independent variable refers to what?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+The variable that we think *explains*, has an *effect upon* or *predicts* another variable.
+:::
+
+- A dependent variable refers to what?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+The variable that we think is the *outcome*, is *explained by*, or is *dependent* on some other variable.
+:::
+
+- A bivariate regression refers to a regression including two variables or more variables?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+Two variables. Bi -- two; variate -- variables
+:::
+
+- What is a confounding variable?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+A variable that *effects* both the dependent and independent variable. It is not a variable that is effected by either of the two.
+:::
+
+- What plot is appropriate for describing the bivariate relationship between a categorical variable and a continuous variable?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+A two-way boxplot! The categorical variable goes on the x-axis and the continuous variable would be on the y-axis. Make sure to know which plots are most appropriate for different types of data!
+:::
+
+- How would I interpret @tbl-bivariate-regression from a bivariate regression model?
+
+```{r}
+#| label: tbl-bivariate-regression
+#| tbl-cap: The effect of family income on feelings toward Hillary Clinton
+#| echo: false
+#| eval: true
+
+bivariate <- lm( # run linear regression
+    formula = fthrc ~ faminc, # fthrc = dependent variable, faminc = independent variable
+    data = nes
+)
+
+modelsummary( # make table of regression results
+    bivariate, # with the bivariate regression model from above
+    notes = c(
+        "Data source: Waffles dataset (McElreath 2020).",
+        "Credit: damoncroberts.com",
+        "Coefficient estimates from OLS.",
+        "Standard errors in parentheses" # add a note to tell people how this model was created and with what data.
+    ),
+    stars = TRUE # print out the stars to show my p-values
+)
+```
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+For every unit increase in family income, I would expect a ```r sprintf('%.3f', bivariate$coefficients[[2]])``` decrease in favorable attitudes directed toward Hillary Clinton. The probability that the effect of family income on feelings toward Hillary Clinton would be this large or larger if the true effect were actually 0 is ```r sprintf('%.3f', summary(bivariate)$coefficients[[2, 4]] * 100)```. It seems relatively plausible that the effect of income on feelings toward Hillary Clinton is actually zero.
+:::
+
+- For @tbl-bivariate-regression, what does the constant represent?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+It reflects the variation in Feelings toward Hillary Clinton (the dependent variable) that is not explained by the independent and control variables I include in my model. It reflects the baseline feeling toward Hillary Clinton for people that have 0 family income. It is the y-intercept.
+:::
+
+- What does the p-value of a model represent and what does it tell me about statistical significance?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+The p-value states the probability that I'd observe an effect (my $\beta$ coefficient) that large or larger if the actual effect is zero.
+
+Smaller values means it is more implausible that I would have come up with a $\beta$ coefficient if the effect of the independent variable on the dependent variable were actually zero.
+
+This means that the smaller the p-value, the better for statistical significance! Usually the standard is: if your p-value is less than 0.05, then you have a statistically significant result on your hands.
+:::
+
+- What is a residual?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+It is the difference between the *observed value* (what I have in my data) and the *predicted value* I get from my regression model (or line of best fit if I plot it). It reflects how well my particular regression fits to my data. The larger the residuals, the worse my model is doing in predicting my observed values.
+:::
+
+- Knowing this about a residual, what does my standard error tell me?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+The standard error is an estimate of how uncertain we are about our model. It tells us that, when I am wrong (when my residual is not equal to zero), just how "off" am I? When I am wrong, is my residual huge or small? The smaller the standard error, the better. It would mean that, if I am off, my residuals aren't all that large on average.
+:::
+
+- Say I give you @tbl-interaction-regression to interpret, how would you go about doing that?
+
+```{r}
+#| label: tbl-interaction-regression
+#| tbl-cap: The effect of family income on feelings toward Hillary Clinton, conditional on gender.
+#| echo: false
+#| eval: true
+
+interaction <- lm( # run linear regression
+    formula = fthrc ~ faminc + gender + faminc:gender, # fthrc = dependent variable, faminc = independent variable
+    data = nes
+)
+
+modelsummary( # make table of regression results
+    interaction, # with the interaction regression model from above
+    notes = c(
+        "Data source: Waffles dataset (McElreath 2020).",
+        "Credit: damoncroberts.com",
+        "Coefficient estimates from OLS.",
+        "Standard errors in parentheses" # add a note to tell people how this model was created and with what data.
+    ),
+    stars = TRUE # print out the stars to show my p-values
+)
+```
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+When I am looking at male respondents (when family income equals zero), for every unit increase in family income, there is a ```r sprintf('%.3f', interaction$coefficients[[2]])``` unit decrease in feelings toward Hillary Clinton. This effect does not appear statistically insignificant. When Looking at Female individuals with zero income, they tend to report ```r sprintf('%.3f', interaction$coefficients[[3]])``` points higher on their feelings toward Hillary Clinton relative to Males with zero income. This does not appear to be statistically significant. We see that for every unit increase in family income, Women tend to report ```r sprintf('%.3f', interaction$coefficients[[4]])``` points higher on their feelings toward Hillary Clinton relative to males. This effect also does not appear to be statistically significant. 
+:::

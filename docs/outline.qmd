@@ -65,6 +65,11 @@ ariables](09_simple_data_cleaning.qmd)
 
 ## Week 9
 
+- Attendance
+- Point out [dichotomous independent variable interpretation](15_dichotomous_iv.qmd) and [interaction models](16_interactions.qmd)
+- [Midterm review](17_midterm_review.qmd)
+- Group work
+
 ## Week 10
 
 ## Week 11

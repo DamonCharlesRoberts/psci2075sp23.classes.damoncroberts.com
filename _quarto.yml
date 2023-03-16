@@ -25,6 +25,7 @@ book:
     - docs/14_multivariate_regression.qmd
     - docs/15_dichotomous_iv.qmd
     - docs/16_interactions.qmd
+    - docs/17_midterm_review.qmd
     - docs/population_distribution.qmd
     - docs/sample_distribution.qmd
     - docs/sampling_distributions.qmd

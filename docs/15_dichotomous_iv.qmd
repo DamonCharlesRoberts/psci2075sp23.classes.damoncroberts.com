@@ -1,5 +1,6 @@
-# Interpreting models with dichotomous independent variables
+# 🎯Interpreting models with dichotomous independent variables
 
+<div class="tenor-gif-embed" data-postid="18187716" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/cubs-two-gif-18187716">Cubs Two GIF</a>from <a href="https://tenor.com/search/cubs-gifs">Cubs GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 ```{r}
 #| label: setup-block
 #| echo: false
