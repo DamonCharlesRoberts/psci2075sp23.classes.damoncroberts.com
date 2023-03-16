@@ -71,6 +71,20 @@
       ],
       "Hash": "e9c08b94391e9f3f97355841229124f2"
     },
+    "RcppEigen": {
+      "Package": "RcppEigen",
+      "Version": "0.3.3.9.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "Matrix",
+        "R",
+        "Rcpp",
+        "stats",
+        "utils"
+      ],
+      "Hash": "1e035db628cefb315c571202d70202fe"
+    },
     "askpass": {
       "Package": "askpass",
       "Version": "1.1",
@@ -154,7 +168,7 @@
     },
     "broom": {
       "Package": "broom",
-      "Version": "1.0.3",
+      "Version": "1.0.4",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -164,13 +178,14 @@
         "ellipsis",
         "generics",
         "glue",
+        "lifecycle",
         "purrr",
         "rlang",
         "stringr",
         "tibble",
         "tidyr"
       ],
-      "Hash": "ab67f5ce0aa79b8db7ddba5cb0d4012d"
+      "Hash": "f62b2504021369a2449c54bbda362d30"
     },
     "bslib": {
       "Package": "bslib",
@@ -545,7 +560,7 @@
     },
     "haven": {
       "Package": "haven",
-      "Version": "2.5.0",
+      "Version": "2.5.2",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -562,7 +577,7 @@
         "tidyselect",
         "vctrs"
       ],
-      "Hash": "e3058e4ac77f4fa686f68a1838d5b715"
+      "Hash": "8b331e659e67d757db0fcc28e689c501"
     },
     "highr": {
       "Package": "highr",
@@ -804,6 +819,23 @@
         "R"
       ],
       "Hash": "7ce2733a9826b3aeb1775d56fd305472"
+    },
+    "marginaleffects": {
+      "Package": "marginaleffects",
+      "Version": "0.11.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "Rcpp",
+        "RcppEigen",
+        "checkmate",
+        "data.table",
+        "generics",
+        "insight",
+        "methods"
+      ],
+      "Hash": "4e038fa0d21cba74845de4eb3a9bc318"
     },
     "memoise": {
       "Package": "memoise",
@@ -1229,6 +1261,17 @@
       ],
       "Hash": "3838071b66e0c566d55cc26bd6e27bf4"
     },
+    "stargazer": {
+      "Package": "stargazer",
+      "Version": "5.2.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "stats",
+        "utils"
+      ],
+      "Hash": "d313fa83180f3376229f98633813cd31"
+    },
     "stringi": {
       "Package": "stringi",
       "Version": "1.7.8",
@@ -1414,6 +1457,16 @@
         "R"
       ],
       "Hash": "62f4b5da3e08d8e5bcba6cac15603f70"
+    },
+    "visreg": {
+      "Package": "visreg",
+      "Version": "2.7.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "lattice"
+      ],
+      "Hash": "f8f4418faf69c4b1c0814bb0b9781d76"
     },
     "vroom": {
       "Package": "vroom",
