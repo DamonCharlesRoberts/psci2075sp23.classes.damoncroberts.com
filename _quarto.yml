@@ -26,9 +26,9 @@ book:
     - docs/15_dichotomous_iv.qmd
     - docs/16_interactions.qmd
     - docs/17_midterm_review.qmd
-    - docs/population_distribution.qmd
-    - docs/sample_distribution.qmd
-    - docs/sampling_distributions.qmd
+    - docs/18_population_distribution.qmd
+    - docs/19_sample_distribution.qmd
+    - docs/20_sampling_distributions.qmd
     - docs/references.qmd
   page-footer:
     center: |
