@@ -29,6 +29,7 @@ book:
     - docs/18_population_distribution.qmd
     - docs/19_sample_distribution.qmd
     - docs/20_sampling_distributions.qmd
+    - docs/21_inference_and_confidence_intervals.qmd
     - docs/references.qmd
   page-footer:
     center: |
