@@ -72,8 +72,16 @@ ariables](09_simple_data_cleaning.qmd)
 
 ## Week 10
 
+- Midterm
+
 ## Week 11
 
+- Attendance
+- [Population Distributions](18_population_distribution.qmd)
+- [Sample Distributions](19_sample_distribution.qmd)
+- [Sampling Distributions](20_sampling_distributions.qmd)
+- [Inference and Confidence Intervals](21_inference_and_confidence_intervals.qmd)
+- Group work
 ## Week 12
 
 ## Week 13
