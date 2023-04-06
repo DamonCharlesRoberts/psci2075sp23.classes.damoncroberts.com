@@ -69,7 +69,7 @@
         "methods",
         "utils"
       ],
-      "Hash": "e9c08b94391e9f3f97355841229124f2"
+      "Hash": "e749cae40fa9ef469b6050959517453c"
     },
     "RcppEigen": {
       "Package": "RcppEigen",
@@ -1345,6 +1345,19 @@
         "utils"
       ],
       "Hash": "ed2d1baf1c2e2f4684e3c3971196a19e"
+    },
+    "texreg": {
+      "Package": "texreg",
+      "Version": "1.38.6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "httr",
+        "methods",
+        "stats"
+      ],
+      "Hash": "ed426fb42db20ca6b4f336425f55619e"
     },
     "tibble": {
       "Package": "tibble",
