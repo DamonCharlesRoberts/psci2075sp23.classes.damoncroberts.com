@@ -82,6 +82,7 @@ ariables](09_simple_data_cleaning.qmd)
 - [Sampling Distributions](20_sampling_distributions.qmd)
 - [Inference and Confidence Intervals](21_inference_and_confidence_intervals.qmd)
 - Group work
+
 ## Week 12
 
 ## Week 13
