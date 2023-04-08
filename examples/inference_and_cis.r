@@ -1,9 +1,9 @@
-# Title: bivariate regression example
+# Title: confidence intervals example
 
 # Notes:
     #* Description:
-        #** Complete working example of doing a bivariate regression
-    #* Updated: 2023-03-01
+        #** Complete working example of calculating confidence intervals
+    #* Updated: 2023-04-07
         #** by: dcr
 
 # Ensure working directory is set to psci_2075 folder on desktop
