@@ -91,7 +91,7 @@ ariables](09_simple_data_cleaning.qmd)
 
 - Attendance
 - [Some comments on common areas for improvements](22_areas_for_improvement.qmd)
-- Post-estimation diagnostics
+- [Post-estimation diagnostics](23_post-estimation_diagnostics.qmd)
 
 ## Week 14
 
