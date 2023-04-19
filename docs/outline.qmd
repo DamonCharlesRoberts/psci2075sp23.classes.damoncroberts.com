@@ -85,7 +85,13 @@ ariables](09_simple_data_cleaning.qmd)
 
 ## Week 12
 
+- Damon out of town for conference
+
 ## Week 13
+
+- Attendance
+- [Some comments on common areas for improvements](22_areas_for_improvement.qmd)
+- Post-estimation diagnostics
 
 ## Week 14
 

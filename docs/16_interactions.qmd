@@ -192,6 +192,7 @@ visreg(# plot the predicted values from this
     interaction,
     "faminc",
     by = "gender",
+    band = FALSE,
     overlap = TRUE
 )
 ```
