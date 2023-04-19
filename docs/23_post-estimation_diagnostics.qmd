@@ -51,7 +51,7 @@ modelsummary( # make table of regression results
 
 ```{r}
 #| label: tbl-bivariate-reg
-#| tbl-cap: Effect of gender on attitudes toward Hillary Clinton
+#| tbl-cap: Effect of party identification on attitudes toward Hillary Clinton
 #| echo: false
 #| eval: true
 
@@ -201,8 +201,8 @@ modelsummary( # make table of regression results
 ```
 
 ```{r}
-#| label: tbl-bivariate-reg
-#| tbl-cap: Effect of gender on attitudes toward Hillary Clinton
+#| label: tbl-multivariate-reg
+#| tbl-cap: Effect of gender and partisan identification on attitudes toward Hillary Clinton
 #| echo: false
 #| eval: true
 
