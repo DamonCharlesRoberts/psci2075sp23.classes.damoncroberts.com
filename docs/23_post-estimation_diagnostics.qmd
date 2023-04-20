@@ -2,7 +2,8 @@
 
 ```{r}
 #| label: setup
-
+#| echo: false
+#| eval: true
 # Load relevant functions
 box::use(
     modelsummary[modelsummary]
@@ -338,4 +339,4 @@ And the last plot lets me see a different representation of whether I have some 
 
 - There are multiple ways to diagnose regression models. Whichever package you use is fine. Just make sure that you discuss how the plots you produce for the diagnostics answer questions about the appropriateness of the model.
 - No matter how you try to diagnose your regression model, there is a lot of subjectivity. For some, people will read the diagnostics and not be concerned, while others will see the same diagnostics and be really concerned. What matters is that you think carefully about what the residuals tell us about the regression model. If there are some weird abnormalities, then there definitely might be a problem. But what is abnormal to some varies. Just be honest and transparent about the way that you are evaluating these diagnostics.
-- For an R script to replicate what we did in this exercise, [go to this page.]()
+- For an R script to replicate what we did in this exercise, [go to this page.](https://github.com/DamonCharlesRoberts/psci2075sp23.classes.damoncroberts.com/blob/main/examples/post-estimation_diagnostics.r)
