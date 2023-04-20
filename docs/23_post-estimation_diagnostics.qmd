@@ -117,8 +117,8 @@ So I see that R has stored some information about my residuals in the `regressio
 ```{r}
 #| label: fig-residuals-histogram
 #| fig-cap: Histogram of residuals
-#| echo: true
-#| eval: false
+#| echo: false
+#| eval: true
     ggplot(
     ) + # make a plot
     geom_histogram( # specifically a histogram
@@ -253,8 +253,8 @@ Let's look at those residuals now!
 ```{r}
 #| label: fig-multivariate-residuals-histogram
 #| fig-cap: Histogram of residuals from multivariate regression
-#| echo: true
-#| eval: false
+#| echo: false
+#| eval: true
     ggplot(
     ) + # make a plot
     geom_histogram( # specifically a histogram

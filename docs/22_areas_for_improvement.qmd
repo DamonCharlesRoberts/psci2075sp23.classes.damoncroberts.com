@@ -105,6 +105,8 @@ labs(
     x = "Continuous_Variable",
     caption = "Data source: MYDATASET.\n Effect of Continous_Variable on Y, conditional on Dichotomous_Variable."
 )
+```
+
 ### Interpreting the regression with confidence intervals
 
 If you are asked to interpret the statistical significance of a regression model by its confidence intervals rather than the p-value, you can often use what is called a coefficient plot to do so!
