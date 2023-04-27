@@ -69,6 +69,19 @@ nes$pid7[nes$pid7 == "Not sure"] <- "Independent"
 # then remove labels from pid7 and store as pid7_int
 nes$pid7_int <- as.numeric(nes$pid7)
 
+# Make a new column called white...
+    #* ...and make the default value NA
+nes$white <- NA
+
+# if said "White", then make them White
+nes$white[nes$race == "White"] <- "White"
+
+# if said "Black", then make them Black
+nes$white[nes$race == "Black"] <- "Black"
+
+# Convert to factor
+nes$white <- as.factor(nes$white)
+
 # let's remove all NA rows from the dataset
 nes_clean <- na.omit(nes)
 ```
@@ -384,6 +397,97 @@ labs( # apply the following labels
 Both plots show me the same thing: The probability that I'd vote for Obama, the more Republican I am decreases. We see that the probability of voting for Obama if I am a strong Democrat is almost 1. However, if I am an independent, the probability that I vote for Obama is just above 0.5. And if I am a strong Republican, the probability that I vote for Obama is just above 0.
 
 While the interpretation of these models requires a bit more work, we can see that we are no longer coming up with super wonky predictions (value outside of 0 and 1). Because we don't have really weird predictions anymore, we can also be a bit more comfortable that our residuals aren't super messed up anymore either!
+
+Now, say that I do a multivariate logistic regression. The interpretation of this plot changes slightly and can be a bit more complicated!
+
+```{r}
+#| label: multivariate-logit-example
+#| echo: true
+#| eval: false
+
+# run logistic regression model
+logistic_regression <- glm(
+    formula = vote_obama ~ pid7_int + white # vote for obama as predicted by party identification and race
+    , data = nes_clean # using this dataset 
+    , family = binomial # a logistic regression model
+)
+
+# make table of results
+modelsummary(
+    logistic_regression # the regression I made above
+    , notes = c(
+        "Data source: NES dataset."
+        , "Estimates from an Ordinary Least Squares regression."
+        , "Standard errors in parentheses."
+    ) # include these notes at the bottom of the table
+    , stars = TRUE # include stars in table
+    , output = "my_linear_bivariate_regression.docx"
+)
+```
+
+```{r}
+#| label: tbl-multivariate-logit-example
+#| tbl-cap: The effect of party identification on vote choice
+#| echo: false
+#| eval: true
+
+# run logistic regression model
+logistic_regression <- glm(
+    formula = vote_obama ~ pid7_int + white # vote for obama as predicted by party identification and race
+    , data = nes_clean # using this dataset
+    , family = binomial # a logistic regression model
+)
+
+# make table of results
+modelsummary(
+    logistic_regression # the regression I made above
+    , notes = c(
+        "Data source: NES dataset."
+        , "Credit: damoncroberts.com"
+        , "Estimates are from a logistic regression; interpreted as logged-odds."
+        , "Standard errors in parentheses."
+    ) # include these notes at the bottom of the table
+    , stars = TRUE # include stars in table
+)
+```
+
+```{r}
+#| label: fig-predicted-prob-visreg-multi
+#| fig-cap: The predicted probability of voting for Obama (Visreg)
+
+visreg(
+    logistic_regression # the logistic regression model above
+    , "pid7_int" # the independent variable
+    , scale = "response" # want to look at it in terms of possible values (0 or 1)
+    , band = FALSE # do not show a band of confidence intervals
+)
+```
+
+This plot demonstrates that the probability of voting for Obama decreases the more Republican an individual is when holding the `white` variable at it's mean value.
+
+What if we don't want to hold `white` at it's mean value? Well we can plot this with a few tweaks to the function.
+
+```{r}
+#| label: fig-predicted-probs-multivariate
+#| fig-cap: Predicted probability of voting for Obama depending on party identification
+#| echo: true
+#| eval: true
+summary(nes_clean$white)
+
+visreg(
+    logistic_regression # the logistic regression model above
+    , "pid7_int" # the independent variable
+    , by = "white"
+    , breaks = c("White", "Black")
+    , scale = "response" # want to look at it in terms of possible values (0 or 1)
+    , band = FALSE # do not show a band of confidence intervals
+    , overlay = TRUE # overlay the plots
+)
+```
+
+This plot demonstrates that the probability of voting for Obama decreases the more Republican someone is. We see this occurs for both white and Black respondents. Though it appears that the decrease in predicted probability for Obama for Black respondents remains relatively high, even if they identify as a "Strong Republican".
+
+Note you can make a similar graph using the `effect_plot()` function.
 
 ## Some final notes:
 

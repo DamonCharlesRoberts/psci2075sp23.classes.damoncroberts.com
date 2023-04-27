@@ -94,4 +94,9 @@
 
 ## Week 14
 
+- Attendance
+- Highlighting a real world example of all of this stuff.
+- [Logistic regression](24_logits.qmd)
+- Group work
+
 ## Week 15
