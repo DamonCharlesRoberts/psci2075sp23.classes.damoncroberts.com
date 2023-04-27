@@ -32,6 +32,7 @@ book:
     - docs/21_inference_and_confidence_intervals.qmd
     - docs/22_areas_for_improvement.qmd
     - docs/23_post-estimation_diagnostics.qmd
+    - docs/24_logits.qmd
     - docs/references.qmd
   page-footer:
     center: |
