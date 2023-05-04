@@ -1,0 +1,489 @@
+# Closing exercise
+
+Below are some important, and hopefully useful, practical things to keep in mind.
+
+## Difference between regression and correlation
+
+Correlation: tells us about the relationship between two variables. It doesn't tell us, however, **how** those variables are related. That is what regression does for us. Regression not only tells us whether two variables are related, but they allow us to examine how one variable might **cause** the other.
+
+One example of calculating a correlation is through a t-test or a difference of means test.
+
+## Difference of means test (t-test)
+
+To perform a difference of means test, also called a t-test, in R is quite straight forward. You can just use the `t.test()` function to do this. Then you'd want to interpret the t-value calculated by it, which is just the difference in the means between the two variables and then the p-value to determine whether that difference in the means is statistically significant or not.
+
+```{.r}
+t.test(MYDATASET$Y ~ MYDATASET$X)
+```
+
+## When asked to report regression results, put it in a table
+
+For many beginners, they often will either forget reporting the results of a regression altogether or just using the `summary()` function and pasting the output into the documents.
+
+Both of these provide incomplete information that will make it harder for you to interpret the results of your regression and it will also give the reader insufficient amount of information to see the results of your analyses.
+
+So, be sure that you use either the `stargazer()` function from the `stargazer` package [@stargazer] or the `modelsummary()` function from the `modelsummary` package. These are relatively easy to use. Here is an example below.
+
+```{.r}
+
+# Run my regression
+regression <- lm( # store the result in an object called regression
+    formula = Y ~ X + Z # Fit this regression where Y is the dependent variable and X and Z are the independent variables
+    , data = MYDATASET # These variables can be found in this dataset called MYDATASET
+)
+
+# Put the regression results in a table
+    #* With the stargazer package
+stargazer( # make a table of regression outputs
+    regression # here is the stored result from my regression above
+    , type = "text" # make it a table that I can copy and paste into a word document
+)
+    #* With the modelsummary package
+modelsummary( # make a table of regression outputs
+    regression # here is the stored result from my regression above
+    , stars = TRUE # include stars based on p-values
+    , output = "myRegressionTable.docx" # store the table in a word document called myRegressionTable
+)
+```
+
+## Be careful about how to interpret your regression results!
+
+Folks often make the mistake of either only interpreting the $\beta$ coefficient or, more commonly, only interpreting the statistical significance of the effect. Remember that we need to discuss both! The $\beta$ coefficient tells us the size of the relationship between the two variables and the p-value tells us whether or not we believe that it is likely this relationship exists outside of our sample -- for our population.
+
+Another problem that I see happens here is that people will only interpret the results for *some* of the variables in the regression. You should make sure that you interpret *all* of the variables in your regression model.
+
+### General template for interpreting regression results
+
+>For every one unit increase in [my independent variable], I'd expect a [$\beta$] unit [increase/decrease] in my [dependent variable] when I hold my other independent variables constant. This effect [is/is not] statistically significant. This means that it is relatively [plausible/implausible] that I'd have a $\beta$ coefficient this large or larger if the true relationship between these two variables was zero.
+
+### Template for interpreting regression results for a dichotomous independent variable
+
+>The difference between [the baseline category/what it means when the variable is 0] and [the category when the variable is 1] is [$\beta$] units [greater/smaller] when I hold my other independent variables constant. This difference [is/is not] statistically significant. This means that it is relatively [plausible/implausible] that I'd have a $\beta$ coefficient this large or larger if the true relationship between these two variables was zero.
+
+### Template for interpreting regression results with an interaction term
+
+For the continuous independent variable:
+
+>When [the other independent variable] equals 0, a one unit increase in [my continuous independent variable], I'd expect a [$\beta$] unit [increase/decrease] in my [dependent variable]. This effect [is/is not] statistically significant. This means that it is relatively [plausible/implausible] that I'd have a $\beta$ coefficient this large or larger if the true relationship between these two variables was zero. 
+
+For the dichotomous independent variable:
+
+>When [the other independent variable] equals 0, a one unit increase in [my continuous independent variable], I'd expect a [$\beta$] unit [increase/decrease] in my [dependent variable]. This effect [is/is not] statistically significant. This means that it is relatively [plausible/implausible] that I'd have a $\beta$ coefficient this large or larger if the true relationship between these two variables was zero. 
+
+For the interaction term:
+
+>When [one of your continuous independent variables] increase by one unit, the difference between [the baseline category for your dichotmous independent variable/what it means when the dichotomous variable is zero] [increases/decreases]. This effect [is/is not] statistically significant. This means that it is relatively [plausible/implausible] that I'd have a $\beta$ coefficient this large or larger if the true relationship was zero.
+
+You can also interpret these results with a plot with the `visreg` package as well instead of a table. This can sometimes be easier for newer folks. You will still want to interpret the same components as you do above with a table, but you can do it with a table. You can use this code to make that plot with `visreg`.
+
+```{.r}
+# Run my regression
+regression <- lm( # store the result in an object called regression
+    formula = Y ~ Continuous_Variable + Dichotomous_Variable + Continuous_Variable:Dichotomous_Variable
+    , data = MYDATASET # These variables can be found in this dataset called MYDATASET
+)
+
+visreg( # make a plot to show the expected value with an interaction
+    regression, # use the results from my regression model made above
+    ,"Continous_Variable" 
+    , by = "Dichotomous_Variable"
+    , band=FALSE
+    , overlay=TRUE
+)
+```
+
+You have another option to make the same plot with the `modelsummary` package.
+
+```{.r}
+# Run my regression
+regression <- lm( # store the result in an object called regression
+    formula = Y ~ Continuous_Variable + Dichotomous_Variable + Continuous_Variable:Dichotomous_Variable
+    , data = MYDATASET # These variables can be found in this dataset called MYDATASET
+)
+
+plot_predictions( # plot predicted values from this
+    regression, # plot the interaction model
+    condition = c("Continuous_Variable", "Dichotomous_Variable")
+) +
+theme_minimal() +
+labs(
+    y = "Y",
+    x = "Continuous_Variable",
+    caption = "Data source: MYDATASET.\n Effect of Continous_Variable on Y, conditional on Dichotomous_Variable."
+)
+```
+
+### Interpreting the regression with confidence intervals
+
+If you are asked to interpret the statistical significance of a regression model by its confidence intervals rather than the p-value, you can often use what is called a coefficient plot to do so!
+
+These coefficient plots are relatively easy to create. One option would be to do this with the `modelsummary` package:
+
+```{.r}
+
+# Run my regression
+regression <- lm( # store the result in an object called regression
+    formula = Y ~ X + Z # Fit this regression where Y is the dependent variable and X and Z are the independent variables
+    , data = MYDATASET # These variables can be found in this dataset called MYDATASET
+)
+
+modelplot( # make a plot with the CI's
+    regression # with the bivariate regression
+    ,coef_omit="Intercept" # do not include the intercept term
+) +
+geom_vline(
+    aes(xintercept = 0),
+    linetype = 2
+)
+```
+
+OR with the `texreg` package:
+
+```{.r}
+# Run my regression
+regression <- lm( # store the result in an object called regression
+    formula = Y ~ X + Z # Fit this regression where Y is the dependent variable and X and Z are the independent variables
+    , data = MYDATASET # These variables can be found in this dataset called MYDATASET
+)
+
+plotreg( # make a plot with the CI's
+    bivariate # with the bivariate regression
+    ,omit.coef = "(Intercept)" # do not include the intercept term
+)
+```
+
+## Logistic regression
+
+If we have a dichotomous dependent variable (a outcome variable that is measured with only two categories), then linear regression is often insufficient. There are two problems that come about when we preform a standard linear regression on a dichotomous dependent variable.
+
+1. The predicted values from the linear regression for the outcome are often non-sensical. With the linear regression, we can get values that theoretically range from $-\infty$ to $\infty$. When we have a dichotomous outome where it can only take the value of 0 or 1, this is suboptimal. 
+2. Because of linear regression's inability to come up with predicted values that are either 0 or 1, the residuals will have an unequal variance.
+
+Logistic regression seeks to correct for these two issues. Using a link function, logistic regression "bends" the line so that we can only get predicted values of either 0 or 1. This also is good for the variance of our residuals! For more details on logisitic regression, see [the logistic regression exercise](23_logits.qmd).
+
+Interpreting logistic regressions is a bit trickier because of this link function. When we fit a logistic regression, the coefficients are on the scale of **logged-odds**. Because of this, we have to interpret a table of results from our logistic regression in terms of logged-odds. See a template below for example:
+
+>The logged-odds of [the outcome of my dependent variable when it equals 1] [increases/decreases] when [my independent variable] [increases/decreases] holding all of my other independent variables at their mean value. This effect [is/is not] statistically significant.
+
+- When $\beta = 0$, the logged-odds of the outcome reflected by the value of 1 for my dependent variable remains the same.
+- When $\beta > 0$, the logged-odds of the outcome reflected by the value of 1 for my dependent variable increase.
+- When $\beta < 0$, the logged-odds of the outcome reflected by the value of 1 for my dependent variable decrease.
+
+We can take the exponent of our coefficient ($exp(\beta)$) to retrieve the odds-ratio of an event occurring. In such a situation, we would interpret the results the following way:
+
+>The odds of [the outcome of my dependent variable when it equals 1] [increases/decreases] when [my independent variable] [increases/decreases] holding all of my other independent variables at their mean value. This effect [is/is not] statistically significant.
+
+- When $\beta = 1$, the odds of the outcome reflected by the value of 1 for my dependent variable remains the same.
+- When $\beta > 1$, the odds of the outcome reflected by the value of 1 for my dependent variable increase.
+- When $\beta < 1$, the odds of the outcome reflected by the value of 1 for my dependent variable decrease.
+
+Logged-odds and odds are often still a bit too complicated for most folks. We can preform more calculations to try to make it even more natural for folks. To do this, we can do some algebra to calculate the predicted probability of an outcome occurring. Thankfully we have R to do this for us. We can do this with the `visreg` package [@visreg]. It is important to keep in mind that we can only put one of our independent variables on our x-axis. So when we are interpreting such a plot, we need to keep in mind that the predicted probability either increases or decreases as the variable on the x-axis increases. BUT with all of the other independent variables, they are being held at their mean value. If we want the other independent variables to have their values change too, we can with a little bit more effort. See [the exercise on logistic regressions](23_logits.qmd) for examples of this.
+
+## Testing your knowledge
+
+```{r}
+#| label: setup-block
+#| echo: false
+# Load functions
+box::use(
+    modelsummary[modelsummary]
+)
+
+# Load data
+load(file = "../assets/PSCI_2075_v2.1.RData")
+``` 
+
+- Why might I want to take the log of a variable?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+To make it appear as though there is less skew in the data. To bring large values closer to smaller values. Makes it appear more like a normal distribution.
+
+:::
+
+- What does the central tendency of a univariate descriptive statistic refer to?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+It is *one* way of describing a value I might expect to get if I randomly grabbed an observation from my data.
+:::
+
+- What are two calculations I can make to describe the central tendency of a variable?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+- Mean
+- Median
+:::
+
+- What does the dispersion or the spread of a univariate descriptive statistic refer to?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+It goes beyond saying what the average value is for a variable in my data, but it tells me how spread out they are. I need to know more than what the median house price is; I may want to know whether all houses are around that median or if there are some *really* cheap houses and some *really* expensive houses.
+:::
+
+- What are the two calculations I can make to describe the spread or dispersion of a variable?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+- Variance ($\sigma^2$)
+- Standard deviation ($\sigma$)
+:::
+
+- When you are asked to describe a variable, what are the two things that you should include to describe it?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+- Central tendency
+- Spread/dispersion
+
+I need to do this because one of these things on their own is not sufficient for me to understand what the bulk of observations look like on that observation (central tendency -- mean or median) or I won't understand how spread out observations are from that central tendency (spread/dispersion -- variance or standard deviation).
+:::
+
+- An independent variable refers to what?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+The variable that we think *explains*, has an *effect upon* or *predicts* another variable.
+:::
+
+- A dependent variable refers to what?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+The variable that we think is the *outcome*, is *explained by*, or is *dependent* on some other variable.
+:::
+
+- A bivariate regression refers to a regression including two variables or more variables?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+Two variables. Bi -- two; variate -- variables
+:::
+
+- What is a confounding variable?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+A variable that *effects* both the dependent and independent variable. It is not a variable that is effected by either of the two.
+:::
+
+- What plot is appropriate for describing the bivariate relationship between a categorical variable and a continuous variable?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+A two-way boxplot! The categorical variable goes on the x-axis and the continuous variable would be on the y-axis. Make sure to know which plots are most appropriate for different types of data!
+:::
+
+- How would I interpret @tbl-bivariate-regression from a bivariate regression model?
+
+```{r}
+#| label: tbl-bivariate-regression
+#| tbl-cap: The effect of family income on feelings toward Hillary Clinton
+#| echo: false
+#| eval: true
+
+bivariate <- lm( # run linear regression
+    formula = fthrc ~ faminc, # fthrc = dependent variable, faminc = independent variable
+    data = nes
+)
+
+modelsummary( # make table of regression results
+    bivariate, # with the bivariate regression model from above
+    notes = c(
+        "Data source: Waffles dataset (McElreath 2020).",
+        "Credit: damoncroberts.com",
+        "Coefficient estimates from OLS.",
+        "Standard errors in parentheses" # add a note to tell people how this model was created and with what data.
+    ),
+    stars = TRUE # print out the stars to show my p-values
+)
+```
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+For every unit increase in family income, I would expect a ```r sprintf('%.3f', bivariate$coefficients[[2]])``` decrease in favorable attitudes directed toward Hillary Clinton. The probability that the effect of family income on feelings toward Hillary Clinton would be this large or larger if the true effect were actually 0 is ```r sprintf('%.3f', summary(bivariate)$coefficients[[2, 4]] * 100)```. It seems relatively plausible that the effect of income on feelings toward Hillary Clinton is actually zero.
+:::
+
+- For @tbl-bivariate-regression, what does the constant represent?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+It reflects the variation in Feelings toward Hillary Clinton (the dependent variable) that is not explained by the independent and control variables I include in my model. It reflects the baseline feeling toward Hillary Clinton for people that have 0 family income. It is the y-intercept.
+:::
+
+- What does the p-value of a model represent and what does it tell me about statistical significance?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+The p-value states the probability that I'd observe an effect (my $\beta$ coefficient) that large or larger if the actual effect is zero.
+
+Smaller values means it is more implausible that I would have come up with a $\beta$ coefficient if the effect of the independent variable on the dependent variable were actually zero.
+
+This means that the smaller the p-value, the better for statistical significance! Usually the standard is: if your p-value is less than 0.05, then you have a statistically significant result on your hands.
+:::
+
+- What is a residual?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+It is the difference between the *observed value* (what I have in my data) and the *predicted value* I get from my regression model (or line of best fit if I plot it). It reflects how well my particular regression fits to my data. The larger the residuals, the worse my model is doing in predicting my observed values.
+:::
+
+- Knowing this about a residual, what does my standard error tell me?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+The standard error is an estimate of how uncertain we are about our model. It tells us that, when I am wrong (when my residual is not equal to zero), just how "off" am I? When I am wrong, is my residual huge or small? The smaller the standard error, the better. It would mean that, if I am off, my residuals aren't all that large on average.
+:::
+
+- Say I give you @tbl-interaction-regression to interpret, how would you go about doing that?
+
+```{r}
+#| label: tbl-interaction-regression
+#| tbl-cap: The effect of family income on feelings toward Hillary Clinton, conditional on gender.
+#| echo: false
+#| eval: true
+
+interaction <- lm( # run linear regression
+    formula = fthrc ~ faminc + gender + faminc:gender, # fthrc = dependent variable, faminc = independent variable
+    data = nes
+)
+
+modelsummary( # make table of regression results
+    interaction, # with the interaction regression model from above
+    notes = c(
+        "Data source: Waffles dataset (McElreath 2020).",
+        "Credit: damoncroberts.com",
+        "Coefficient estimates from OLS.",
+        "Standard errors in parentheses" # add a note to tell people how this model was created and with what data.
+    ),
+    stars = TRUE # print out the stars to show my p-values
+)
+```
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+When I am looking at male respondents (when family income equals zero), for every unit increase in family income, there is a ```r sprintf('%.3f', interaction$coefficients[[2]])``` unit decrease in feelings toward Hillary Clinton. This effect does not appear statistically significant. When Looking at Female individuals with zero income, they tend to report ```r sprintf('%.3f', interaction$coefficients[[3]])``` points higher on their feelings toward Hillary Clinton relative to Males with zero income. This does not appear to be statistically significant. We see that for every unit increase in family income, Women tend to report ```r sprintf('%.3f', interaction$coefficients[[4]])``` points higher on their feelings toward Hillary Clinton relative to males. This effect also does not appear to be statistically significant. 
+:::
+
+- If instead of reporting standard errors and the p-values, how would I interpret @tbl-confidence-intervals that reports confidence intervals instead?
+
+```{r}
+#| label: tbl-confidence-intervals
+#| tbl-cap: The effect of family income on feelings toward Hillary Clinton
+#| echo: false
+#| eval: true
+
+regression <- lm( # run linear regression
+    formula = fthrc ~ faminc + gender, # fthrc = dependent variable, faminc = independent variable, gender = independent variable
+    data = nes
+)
+
+modelsummary( # make table of regression results
+    regression, # with the bivariate regression model from above
+    notes = c(
+        "Data source: Waffles dataset (McElreath 2020).",
+        "Credit: damoncroberts.com",
+        "Coefficient estimates from OLS.",
+        "Standard errors in parentheses" # add a note to tell people how this model was created and with what data.
+    ),
+    statistic = "conf.int", # report the confidence intervals
+    stars = FALSE # print out the stars to show my p-values
+)
+```
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+As family income increases by a unit, feelings toward Hillary Clinton decrease by 0.034 points when holding other variables constant. Upon repeated samples, 95% of the confidence intervals should contain the true value. As 0 is contained within the confidence interval, this effect does not appear to be statistically significant at this level. Female respondents report 6.7 points higher on their feelings toward Hillary Clinton than male respondents when holding the other variables constant. Upon repeated samples, 95% of the confidence intervals should contain the true value. As 0 is not contained within the confidence interval, this effect appears to be statistically significant at this level.
+:::
+
+- Why might we need to look at the residuals of our model, even though our linear regression is said to be the line of best fit?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+Even though the line come up with is the line of best fit, it does not necessarily mean that it is the best possible line! The line of best fit is "best" so long as we have met a series of assumptions. 
+
+Primary among that is that the model we specify, assumes that it is sufficient enough to predict that outcome. In other words, the independent variables we say predict our outcome variable are assumed to be sufficient. If we have additional confounding variables or alternative explanations we are not accounting for, then it is not the best possible line of best fit -- we can be more accurate. However, R cannot know this for us. It can only fit the best line with the model you've specified.
+
+Another big assumption is that we want the average value of our squared errors to be zero. If we have squared errors that are not zero, then that means on average our model is doing a poor job at accurately predicting our data.
+
+The third big assumption we have focused on here is that we want our residuals to be homoskedastic. That is, we do not want our residuals to be heteroskedastic. Heteroskedastic residuals refer to errors that have unequal variance. What it means to have Heteroskedastic residuals in practical terms is that we are doing a better job at predicting our outcome variable in some places but worse in others.
+
+So even with a line of best fit, our residuals will still show some odd patterns if our assumptions are violated and our model is poor. Without checking the residuals of our model, we might be missing some important signals that our model is inadequate!
+:::
+
+- What are the two main motivations leading us to use logistic regression models when we have a dichotomous dependent variable?
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+1. The predicted values from the linear regression for the outcome are often non-sensical. With the linear regression, we can get values that theoretically range from $-\infty$ to $\infty$. When we have a dichotomous outome where it can only take the value of 0 or 1, this is suboptimal. 
+2. Because of linear regression's inability to come up with predicted values that are either 0 or 1, the residuals will have an unequal variance.
+:::
+
+- I have fit a logistic regression to examine how the percentage of Democratic voters and the percentage of evangelicals in a state predict whether Trump won or lost in that state. How would I interpret @tbl-logistic-regression?
+
+```{r}
+#| label: tbl-logistic-regression
+#| tbl-cap: The effect of state characteristics on Trump winning in a state
+#| echo: false
+#| eval: true
+
+logisticRegression <- glm(
+    formula = trumpwin ~ democrat + evangel
+    ,data = states
+    ,family="binomial"
+)
+
+modelsummary( # make table of regression results
+    logisticRegression, # with the interaction regression model from above
+    notes = c(
+        "Data source: States dataset",
+        "Credit: damoncroberts.com",
+        "Coefficient estimates from logistic regression; interpreted as logged-odds.",
+        "Standard errors in parentheses" # add a note to tell people how this model was created and with what data.
+    ),
+    stars = TRUE # print out the stars to show my p-values
+)
+```
+
+:::{.callout-note collapse="true"}
+
+## Answer
+
+The logged-odds of Trump winning in a state that has a higher proportion of Democrats decreases relative to states that have lower proportions of Democrats when holding the states' proportion of evangelicals at its mean. This effect is statistically significant. The logged-odds of Trump winning in a state that has a higher proportion of evangelicals increases relative to states that have lower proportions of evangelicals when holding the states' proportion of Democrats at its mean. This effect is statistically significant.
+:::

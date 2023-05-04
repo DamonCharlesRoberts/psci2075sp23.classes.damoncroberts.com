@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.319">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>PSCI 2075 Recitation Handout - 14&nbsp; Bivariate regression</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../docs/14_multivariate_regression.html" rel="next">
+<link href="../docs/12_bivariate_expectations.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-8Z2BLG3VEE"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-8Z2BLG3VEE', { 'anonymize_ip': true});
+</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/13_bivariate_regression.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bivariate regression</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">PSCI 2075 Recitation Handout</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👋 Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recitation Policies</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/outline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><i class="fa-solid fa-timeline" aria-label="timeline"></i> Outline: What we’ve done in recitation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/01_setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">🏁 R Setup</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/02_anatomy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">🫀 Anatomy of IDE interface</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/03_file_structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📁 Computer File Structure</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/04_run_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🏃‍♂️Running Code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/05_quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">🙀 Quarto (Optional)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/06_r_syntax_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">👾 Basics of R syntax</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/07_loading_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">🔃 Loading Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/08_summarizing_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">👀 Descriptive statistics and summarizing your data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/09_simple_data_cleaning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">🧹 Simple data cleaning</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/10_simple_bivariate_analyses.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">2️⃣ Simple bivariate analyses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/11_group_assignment_one.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Group Assignment 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/12_bivariate_expectations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Expectations about bivariate relationships</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/13_bivariate_regression.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bivariate regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/14_multivariate_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">🤓 Multivariate regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/15_dichotomous_iv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">🎯Interpreting models with dichotomous independent variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/16_interactions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">🫠 When we think our effect may be conditional on something else</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/17_midterm_review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">😸 Midterm review!</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/18_population_distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Population Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/19_sample_distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Sample Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/20_sampling_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/21_inference_and_confidence_intervals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Inference and confidence intervals</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/22_post-estimation_diagnostics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Post-estimation diagnostics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/23_logits.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/24_closing_exercise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Closing exercise</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#some-final-notes" id="toc-some-final-notes" class="nav-link active" data-scroll-target="#some-final-notes"><span class="header-section-number">14.1</span> Some final notes:</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bivariate regression</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>So far we have only visually examined patterns between two variables. These patterns give us hints about the <code>correlation</code> between the two variables, but have not necessarily told us anything about the <code>structure</code> of the relationship between the two variables. Additionally, as we discussed, it can sometimes be difficult to determine a pattern just from visuals alone.</p>
+<p>Regression allows us to quantify and to impose a structure onto the relationship between the two variables we are interested in. Let’s start simple.</p>
+<p>In the previous exercise, I used the example of hypothesizing that the sun causes an increase in temperature (visually depicted in <a href="#fig-simple-hypothesis">Figure&nbsp;<span class="quarto-unresolved-ref">fig-simple-hypothesis</span></a>)</p>
+<div class="cell" data-fig-width="6">
+<div class="cell-output-display">
+<div id="fig-simple-hypothesis" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-simple-hypothesis">%%{init: {'theme':'base', 'themeVariables':{'primaryColor':'#ffffff', 'primaryBorderColor': '#000000'}}}%%
+graph LR
+A[Presence of Sun] --&gt; B[Temperature] 
+</pre>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;14.1: My simple hypothesis</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In that exercise, I only examined patterns between the two. But did any of my analyses necessarily examine whether the presence of the sun caused an increase in temperature? No, none of the previous tools I used necessarily examined the structure of the relationship between the two variables; just whether there was a relationship that existed.</p>
+<p>That is the primary objective of regression. We mathematically impose a structured relationship between two variables. This structure implies that one variable, the <code>independent variable</code> explains or causes the other variable, the <code>dependent variable</code>.</p>
+<p>How does this work? Well, it is rather complicated, but just look at a simple equation for the regression that would be built given my hypothesis in <a href="#fig-simple-hypothesis">Figure&nbsp;<span class="quarto-unresolved-ref">fig-simple-hypothesis</span></a>.</p>
+<p><span class="math display">\[
+\text{Temp} = \beta * \text{Sun} + \alpha
+\]</span></p>
+<p>What is going on in this equation?</p>
+<ul>
+<li>We are saying that the sun has some effect, quantified as <span class="math inline">\(\beta\)</span>, on the temperature. Plus there is some base value of temperature that occurs when there is no sun, <span class="math inline">\(\alpha\)</span>.
+<ul>
+<li>All this equation is saying is that these things together (<span class="math inline">\(\beta * \text{Sun} + \alpha\)</span>) explain the temperature.</li>
+</ul></li>
+</ul>
+<p>How do we calculate <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\alpha\)</span>?</p>
+<p>Well, this is a bit complicated, but let’s go through the really general way that we do this.</p>
+<p>Let’s go back to an example that we’ve used before: the relationship between the presence of waffle houses and rates of divorce (see <a href="#fig-waffle-hypothesis">Figure&nbsp;<span class="quarto-unresolved-ref">fig-waffle-hypothesis</span></a>).</p>
+<div class="cell" data-fig-width="6">
+<div class="cell-output-display">
+<div id="fig-waffle-hypothesis" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-waffle-hypothesis">%%{init: {'theme':'base', 'themeVariables':{'primaryColor':'#ffffff', 'primaryBorderColor': '#000000'}}}%%
+graph LR
+A[Waffle Houses] --&gt; B[Divorce] 
+</pre>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;14.2: My simple hypothesis</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I’ve already done all of my univariate statistics and am now looking at a scatterplot to try to understand the pattern between these two variables.</p>
+<p>My hypothesis states that the Waffle Houses are causing Divorce and that the relationship isn’t the other way around (Divorce causes Waffle Houses, though this seems like it could be pretty plausible).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>waffles <span class="ot">&lt;-</span> (<span class="st">"waffles_data.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># for graphs</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr) <span class="co"># for the nifty pipe operator</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary) <span class="co"># to make plots of model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>waffles <span class="sc">%&gt;%</span> <span class="co"># grab the waffles dataset</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> .,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> <span class="co"># make a ggplot object</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>( <span class="co"># specifically a scatterplot</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> WaffleHouses, <span class="co"># put waffle houses on the x-axis</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> Divorce <span class="co"># put Divorce on the y-axis</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            ),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">fill =</span> <span class="st">"#D3D3D3"</span>, <span class="co">#fill the color of each dot with light grey</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">"#D3D3D3"</span> <span class="co">#color the dots with light grey</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="co"># add the minimal theme</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>( <span class="co"># adjust the labels</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">"Number of waffle houses"</span>, <span class="co"># change x-axis label to this</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">"Divorce"</span>, <span class="co"># change y-axis label to this</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">caption =</span> <span class="st">"Data source: Waffles dataset (McElreath 2020)."</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-scatterplot" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="13_bivariate_regression_files/figure-html/fig-scatterplot-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;14.3: Scatterplot</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can kind of see that there appears to be a positive relationship between these two variables: when the number of waffle houses in a state increases, so does the rate of divorce for that state.</p>
+<p>But this is a bit tricky and can be harder with other data. So let’s have R apply a <code>line of best fit</code> that puts a straight line through the data points that <code>best</code> fit to the data points.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>waffles <span class="sc">%&gt;%</span> <span class="co"># grab the waffles dataset</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> .,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> WaffleHouses, <span class="co"># put waffle houses on the x-axis</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> Divorce <span class="co"># put Divorce on the y-axis</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> <span class="co"># make a ggplot object</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>( <span class="co"># specifically a scatterplot</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">fill =</span> <span class="st">"#D3D3D3"</span>, <span class="co">#fill the color of each dot with light grey</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">"#D3D3D3"</span> <span class="co">#color the dots with light grey</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_smooth</span>( <span class="co"># apply a line of best fit to the data</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">method =</span> lm, <span class="co"># the line should be linear</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="co"># make this line black</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">se =</span> <span class="cn">FALSE</span> <span class="co"># do not include visual representation of uncertainty</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="co"># add the minimal theme</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>( <span class="co"># adjust the labels</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">"Number of waffle houses"</span>, <span class="co"># change x-axis label to this</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">"Divorce"</span>, <span class="co"># change y-axis label to this</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">caption =</span> <span class="st">"Data source: Waffles dataset (McElreath 2020)."</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-scatterplot-line" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="13_bivariate_regression_files/figure-html/fig-scatterplot-line-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;14.4: Scatterplot</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This <code>line of best fit</code> demonstrates that there is indeed a positive relationship between these two things. <span class="math inline">\(\alpha\)</span> from our equation above would be the y-intercept (the value of the variable on our y-axis when the variable on our x-axis equals 0). <span class="math inline">\(\beta\)</span> is the slope of this line. I’ll provide a table displaying the actual numbers for both <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\alpha\)</span> in a little bit. Let me first make a point that may appear like a tangent at first.</p>
+<p>Now, one thing that you may be asking yourself is how do we know this is the <code>line of *best* fit</code>? What determines that this line is the <em>best</em> one?</p>
+<p>We can see that this particular line doesn’t go through every single point. This distance between the predicted values on the line and the observed values in our data are called <code>residuals</code>. These residuals provide information to us about how uncertain we are that this particular line fits these data well. If we have a line that perfectly fits the data, then the residuals should equal 0. The line drawn by R in <a href="#fig-scatterplot-line">Figure&nbsp;<span class="quarto-unresolved-ref">fig-scatterplot-line</span></a> was determined to be the one that made these residuals the smallest of all possible lines we could imagine drawing between these points.</p>
+<p>So, if this is the best linear line to fit the data, why are the residuals not zero here? We have a couple of constraints.</p>
+<ol type="1">
+<li>We have to draw a straight line. We defined that the method to fit the data is linear. So we can only choose between the different straight lines that we could generate for the data.</li>
+<li>Even if we went with non-straight lines (referred to as <code>non-parametric</code>), have we perfectly explained divorce and what causes it by only examining the number of waffle houses? No, of course not.</li>
+</ol>
+<p>So what does this tell us? That residuals reflect uncertainty about the line that we plot but that R can’t choose the <em>theoretical</em> best line, but rather the best line based on the constraints we put on R. BTW, there aren’t any clear ways to determine the <em>theoretical</em> best line. If there were, then we could just do away with scientists and just have our computers do everything for us. Instead, the constraints that we place on this line of best fit have to be informed by our expertise and what seem most appropriate.</p>
+<p>Let me go back to how to provide precise numbers for <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>.</p>
+<p>Let’s run some R code to fit a regression model to the data ourselves rather than have <code>ggplot2</code> do it for us.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit regression model to data</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>( <span class="co"># fit a linear model to the data </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> waffles, <span class="co"># going to use the waffles data</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">formula =</span> Divorce <span class="sc">~</span> WaffleHouses <span class="co"># the formula says that I want to examine whether Divorces are caused (~) by WaffleHouses</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Divorce ~ WaffleHouses, data = waffles)
+
+Coefficients:
+ (Intercept)  WaffleHouses  
+    9.460231      0.007043  </code></pre>
+</div>
+</div>
+<p>The output tells us that <span class="math inline">\(\alpha = 9.46\)</span> and <span class="math inline">\(\beta = 0.007\)</span>. What does this mean? <strong>Recall that <span class="math inline">\(\alpha\)</span> reflects the parts of the data that are <em>not</em> explained by our independent variable.</strong> So, when there are 0 waffle houses in a state, then we should expect that the rate of divorce should be approximately 9.46%. Now, for every waffle house in a state, it increases the divorce rate by 0.007%. Again, we got that number from our <span class="math inline">\(\beta\)</span>.</p>
+<p>What does this tell us about what <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> mean?</p>
+<p><span class="math inline">\(\beta\)</span>: reflects the parts of the data in the Divorce rate variable that vary <code>systematically</code> because of the number of waffle houses.</p>
+<p><span class="math inline">\(\alpha\)</span>: is a catch-all that reflects the parts of the data in the Divorce rate variable that vary for reasons other than what is covered in what we defined with the <code>systematic</code> part of the model.</p>
+<p>One thing you might be asking is: “wait, what happened to the discussion of residuals? Where are those in the output?”</p>
+<p>Don’t worry, all of that information is still there. Let’s generate a nifty table to give us all of this important information.</p>
+<div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run the model again, but store it in an object called model</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>( <span class="co"># fit a linear model to the data </span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> waffles, <span class="co"># going to use the waffles data</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">formula =</span> Divorce <span class="sc">~</span> WaffleHouses <span class="co"># the formula says that I want to examine whether Divorces are caused (~) by WaffleHouses</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>( <span class="co"># make a table summarizing the model output</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    model, <span class="co"># take the stored model results and make a table with it</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">notes =</span> <span class="fu">c</span>(</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Data source: Waffles dataset (McElreath 2020)."</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Coefficient estimates from OLS."</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Standard errors in parenthases."</span>), <span class="co"># add a note to tell people how this model was created and with what data.</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">output =</span> <span class="st">"my_first_regression.docx"</span> <span class="co"># store the results of this in a word doc so that I can easily put it in my reports!</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-regression-example" class="cell tbl-parent quarto-layout-panel anchored" data-tbl-cap="The number of Waffle houses increases the Divorce rate">
+<div class="panel-caption table-caption">
+<p><strong>?(caption)</strong></p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-regression" class="anchored">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Table&nbsp;14.1: The number of Waffle houses increases the Divorce rate</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: center;">9.460</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.281)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">WaffleHouses</td>
+<td style="text-align: center;">0.007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; box-shadow: 0px 1px;"></td>
+<td style="text-align: center; box-shadow: 0px 1px;">(0.004)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Num.Obs.</td>
+<td style="text-align: center;">50</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R2</td>
+<td style="text-align: center;">0.065</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R2 Adj.</td>
+<td style="text-align: center;">0.045</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AIC</td>
+<td style="text-align: center;">203.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BIC</td>
+<td style="text-align: center;">209.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Log.Lik.</td>
+<td style="text-align: center;">−98.732</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RMSE</td>
+<td style="text-align: center;">1.74</td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> Data source: Waffles dataset (McElreath 2020).</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><sup></sup> Coefficient estimates from OLS.</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> Standard errors in parenthases.</td>
+<td style="text-align: center;"></td>
+</tr>
+</tfoot>
+
+</table>
+</div>
+
+
+</div>
+</div>
+<p>We still see that we’ve got information on our <span class="math inline">\(\alpha\)</span>, that it equals 9.460, and our <span class="math inline">\(\beta\)</span>, that it equals 0.007. But what are those numbers in the parentheses underneath the what we sometimes call <code>point estimates</code> for <span class="math inline">\(\alpha \text{and} \beta\)</span>? They are called <code>standard errors</code>.</p>
+<p>The <code>standard error</code> reflects a calculation of the standard deviation in our residuals squared. Recall back to what the standard deviation tells us. It tells us how much variation there is in a particular variable. So the standard error tells us how all over the place our residuals are. If we think back to what the residual represents, we would want a smaller standard error, right? It means that even if there are residuals that do not equal 0, but if we have a small standard error, then our model is incorrect in a similar way.</p>
+<p>Let’s visualize this. Let me take the residuals from the model we just created and let me make a histogram of it.</p>
+<p>Since I stored the results of the model into an object, I can treat the <code>model</code> object as kind of like a dataset. So I can make a histogram of my residuals like I would when doing other forms of univariate descriptive analyses.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>waffles <span class="sc">%&gt;%</span> <span class="co"># take the waffles data</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="co"># make a plot with it</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>( <span class="co"># specifically a histogram</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x =</span> model<span class="sc">$</span>residuals), <span class="co"># and put the residuals from the model on the x-axis</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="co"># make the lines between the bars black</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">"#D3D3D3"</span> <span class="co"># fill the bars with a light grey color</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>( <span class="co"># add a vertical line</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">xintercept =</span> <span class="fu">mean</span>(model<span class="sc">$</span>residuals), <span class="co"># the vertical line should be the mean value of my residuals</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="co"># the color of the line should be black</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">linetype =</span> <span class="dv">2</span> <span class="co"># and I want the line to be dotted</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="co"># apply the minimal theme to it</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>( <span class="co"># adjust some of the labels</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">"Residuals"</span>, <span class="co"># make x-axis label this</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">"Count"</span>, <span class="co"># make y-axis label this</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">caption =</span> <span class="st">"Plot of residuals from model."</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-residuals-plot" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="13_bivariate_regression_files/figure-html/fig-residuals-plot-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;14.5: Histogram of residuals</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What can we see here? Well, first we see that most of the residuals tend to be centered around 0. That is a good sign. That means that for a large number of our observed values that we predicted them perfectly with the fitted model that we defined with the <code>lm()</code> function! We also can see that the largest residuals tend to be close to 4 and -3. This means that we have some predicted values coming from that line that are 4 above or 3 percentage points below the actual value of divorce rate than what we’d predict. That’s not crazy high, but not super small either. Overall, we see that for the most part, when our model is “off”, it isn’t “off” by a massive amount. This fits with the reported standard error in our table; the standard deviation for our residuals after squaring them. When we are off, we aren’t off all over the place but are off in ways that are kind of clumped together. We can discuss what all that means later.</p>
+<p>So what do the standard errors mean for our results? Well, we see from our coefficients (point estimates) in the table that the number of waffle houses in a state has a positive effect on divorce rates for that state. The standard error, gives us a sense of how wrong our model is about that estimation right? So the standard error gives us a sense of how uncertain we are that our estimation of a positive relationship. We can be relatively confident, given how small our standard errors are, that there is actually a positive relationship between these two variables.</p>
+<p>We’ll go into more detail about some of these things and the other parts spit out in the table later.</p>
+<section id="some-final-notes" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="some-final-notes"><span class="header-section-number">14.1</span> Some final notes:</h2>
+<ul>
+<li><span class="math inline">\(\beta\)</span>: the slope that describes the relationship between your <code>independent</code> (predictor/explanatory/x) variable and your <code>dependent</code> (outcome/y) variable.
+<ul>
+<li>Should be interpreted as: For each unit increase in my independent variable, there is a <span class="math inline">\(\beta\)</span> unit increase in my dependent variable.</li>
+</ul></li>
+<li><span class="math inline">\(\alpha\)</span>: the left-over stuff from the model that isn’t explained by your <span class="math inline">\(\beta\)</span> coefficients. Since we can’t parse out all of that different “stuff”, it all gets lumped together and is assumed to be what your dependent variable is equal to when your independent variable is equal to 0. It is your y-intercept.
+<ul>
+<li>Should be interpreted as: When my independent variable is 0, my dependent variable is equal to <span class="math inline">\(\alpha\)</span>.</li>
+</ul></li>
+<li>residuals: the difference between the actual, <code>observed</code>, values in my dataset and the <code>predicted</code> values that my line of best fit generates.
+<ul>
+<li>If I go across different values of my independent variable and look at what the values are for my dependent variable based on my dataset (observed) and what my line would predict, then subtract the observed from the predicted, that’d give me a residual.</li>
+</ul></li>
+<li>standard error: what a single standard deviation of my residuals are. It tells me how spread out my residuals are from the average residual in my dataset. The smaller my standard deviation, the more compact my residuals are. This is useful for determining the uncertainty of my model, and thus, whether I think that the <span class="math inline">\(\beta\)</span> coefficient that I calculated is <em>actually</em> different from 0 or not.</li>
+<li><span class="math inline">\(R^2\)</span>: the percentage of variance that the model (as a whole) explains in your dependent variable. Basically it gives us a sense of how much we are explaining the dependent variable. The higher the <span class="math inline">\(R^2\)</span> value, the better our model is at explaining why our dependent variable is the way that it is.</li>
+<li>For a full working example R script, <a href="https://github.com/DamonCharlesRoberts/psci2075sp23.classes.damoncroberts.com/blob/main/examples/bivariate_regression.R">go to this page</a>.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../docs/12_bivariate_expectations.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Expectations about bivariate relationships</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../docs/14_multivariate_regression.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">🤓 Multivariate regression</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2021-2023 Damon Charles Roberts</span> <span class="faux-block"><br>All content licensed under <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons CC BY-SA 4.0</a></span></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
