@@ -89,14 +89,17 @@
 ## Week 13
 
 - Attendance
-- [Some comments on common areas for improvements](22_areas_for_improvement.qmd)
-- [Post-estimation diagnostics](23_post-estimation_diagnostics.qmd)
+- Some comments on common areas for improvements
+- [Post-estimation diagnostics](22_post-estimation_diagnostics.qmd)
 
 ## Week 14
 
 - Attendance
 - Highlighting a real world example of all of this stuff.
-- [Logistic regression](24_logits.qmd)
+- [Logistic regression](23_logits.qmd)
 - Group work
 
 ## Week 15
+
+- [Final exercise](24_closing_exercise.qmd)
+- Answering questions and big study sesh!
