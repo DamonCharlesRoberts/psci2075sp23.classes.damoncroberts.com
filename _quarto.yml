@@ -45,8 +45,9 @@ bibliography: references.bib
 format:
   html:
     theme:
-      - journal
-      - assets/custom.scss
+      - assets/custom.css
+      #- journal
+      #- assets/custom.scss
     css: styles.css
     code-copy: true
 
